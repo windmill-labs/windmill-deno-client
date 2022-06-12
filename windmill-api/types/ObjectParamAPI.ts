@@ -47,6 +47,7 @@ import { InlineObject9 } from '../models/InlineObject9.ts';
 import { InlineResponse200 } from '../models/InlineResponse200.ts';
 import { InlineResponse2001 } from '../models/InlineResponse2001.ts';
 import { InlineResponse2002 } from '../models/InlineResponse2002.ts';
+import { InlineResponse2003 } from '../models/InlineResponse2003.ts';
 import { InputTransform } from '../models/InputTransform.ts';
 import { Job } from '../models/Job.ts';
 import { JobAllOf } from '../models/JobAllOf.ts';
@@ -1239,7 +1240,7 @@ export class ObjectJobApi {
      * get job updates
      * @param param the request object
      */
-    public getJobUpdates(param: JobApiGetJobUpdatesRequest, options?: Configuration): Promise<InlineResponse2002> {
+    public getJobUpdates(param: JobApiGetJobUpdatesRequest, options?: Configuration): Promise<InlineResponse2003> {
         return this.api.getJobUpdates(param.workspace, param.id, param.running, param.logOffset,  options).toPromise();
     }
 
@@ -1820,6 +1821,15 @@ export interface ScriptApiDenoToJsonschemaRequest {
     body: string
 }
 
+export interface ScriptApiGetHubScriptContentByPathRequest {
+    /**
+     * 
+     * @type string
+     * @memberof ScriptApigetHubScriptContentByPath
+     */
+    path: string
+}
+
 export interface ScriptApiGetScriptByHashRequest {
     /**
      * 
@@ -1863,6 +1873,9 @@ export interface ScriptApiGetScriptDeploymentStatusRequest {
      * @memberof ScriptApigetScriptDeploymentStatus
      */
     hash: string
+}
+
+export interface ScriptApiListHubScriptsRequest {
 }
 
 export interface ScriptApiListScriptsRequest {
@@ -1997,6 +2010,14 @@ export class ObjectScriptApi {
     }
 
     /**
+     * get hub script content by path
+     * @param param the request object
+     */
+    public getHubScriptContentByPath(param: ScriptApiGetHubScriptContentByPathRequest, options?: Configuration): Promise<string> {
+        return this.api.getHubScriptContentByPath(param.path,  options).toPromise();
+    }
+
+    /**
      * get script by hash
      * @param param the request object
      */
@@ -2016,8 +2037,16 @@ export class ObjectScriptApi {
      * get script deployment status
      * @param param the request object
      */
-    public getScriptDeploymentStatus(param: ScriptApiGetScriptDeploymentStatusRequest, options?: Configuration): Promise<InlineResponse2001> {
+    public getScriptDeploymentStatus(param: ScriptApiGetScriptDeploymentStatusRequest, options?: Configuration): Promise<InlineResponse2002> {
         return this.api.getScriptDeploymentStatus(param.workspace, param.hash,  options).toPromise();
+    }
+
+    /**
+     * list all available hub scripts
+     * @param param the request object
+     */
+    public listHubScripts(param: ScriptApiListHubScriptsRequest = {}, options?: Configuration): Promise<Array<InlineResponse2001>> {
+        return this.api.listHubScripts( options).toPromise();
     }
 
     /**

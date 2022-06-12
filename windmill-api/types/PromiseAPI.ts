@@ -47,6 +47,7 @@ import { InlineObject9 } from '../models/InlineObject9.ts';
 import { InlineResponse200 } from '../models/InlineResponse200.ts';
 import { InlineResponse2001 } from '../models/InlineResponse2001.ts';
 import { InlineResponse2002 } from '../models/InlineResponse2002.ts';
+import { InlineResponse2003 } from '../models/InlineResponse2003.ts';
 import { InputTransform } from '../models/InputTransform.ts';
 import { Job } from '../models/Job.ts';
 import { JobAllOf } from '../models/JobAllOf.ts';
@@ -460,7 +461,7 @@ export class PromiseJobApi {
      * @param running 
      * @param logOffset 
      */
-    public getJobUpdates(workspace: string, id: string, running?: boolean, logOffset?: number, _options?: Configuration): Promise<InlineResponse2002> {
+    public getJobUpdates(workspace: string, id: string, running?: boolean, logOffset?: number, _options?: Configuration): Promise<InlineResponse2003> {
         const result = this.api.getJobUpdates(workspace, id, running, logOffset, _options);
         return result.toPromise();
     }
@@ -864,6 +865,15 @@ export class PromiseScriptApi {
     }
 
     /**
+     * get hub script content by path
+     * @param path 
+     */
+    public getHubScriptContentByPath(path: string, _options?: Configuration): Promise<string> {
+        const result = this.api.getHubScriptContentByPath(path, _options);
+        return result.toPromise();
+    }
+
+    /**
      * get script by hash
      * @param workspace 
      * @param hash 
@@ -888,8 +898,16 @@ export class PromiseScriptApi {
      * @param workspace 
      * @param hash 
      */
-    public getScriptDeploymentStatus(workspace: string, hash: string, _options?: Configuration): Promise<InlineResponse2001> {
+    public getScriptDeploymentStatus(workspace: string, hash: string, _options?: Configuration): Promise<InlineResponse2002> {
         const result = this.api.getScriptDeploymentStatus(workspace, hash, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * list all available hub scripts
+     */
+    public listHubScripts(_options?: Configuration): Promise<Array<InlineResponse2001>> {
+        const result = this.api.listHubScripts(_options);
         return result.toPromise();
     }
 

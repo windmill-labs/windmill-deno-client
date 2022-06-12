@@ -12,28 +12,35 @@
 
 import { HttpFile } from '../http/http.ts';
 
-export class EditResourceType {
-    'schema'?: string;
-    'description'?: string;
+export class InlineResponse2003 {
+    'running'?: boolean;
+    'completed'?: boolean;
+    'newLogs'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "schema",
-            "baseName": "schema",
-            "type": "string",
+            "name": "running",
+            "baseName": "running",
+            "type": "boolean",
             "format": ""
         },
         {
-            "name": "description",
-            "baseName": "description",
+            "name": "completed",
+            "baseName": "completed",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "newLogs",
+            "baseName": "new_logs",
             "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return EditResourceType.attributeTypeMap;
+        return InlineResponse2003.attributeTypeMap;
     }
 
     public constructor() {

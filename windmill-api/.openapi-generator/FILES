@@ -82,6 +82,7 @@ models/InlineObject9.ts
 models/InlineResponse200.ts
 models/InlineResponse2001.ts
 models/InlineResponse2002.ts
+models/InlineResponse2003.ts
 models/InputTransform.ts
 models/Job.ts
 models/JobAllOf.ts

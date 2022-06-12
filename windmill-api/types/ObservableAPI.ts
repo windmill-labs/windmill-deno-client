@@ -48,6 +48,7 @@ import { InlineObject9 } from '../models/InlineObject9.ts';
 import { InlineResponse200 } from '../models/InlineResponse200.ts';
 import { InlineResponse2001 } from '../models/InlineResponse2001.ts';
 import { InlineResponse2002 } from '../models/InlineResponse2002.ts';
+import { InlineResponse2003 } from '../models/InlineResponse2003.ts';
 import { InputTransform } from '../models/InputTransform.ts';
 import { Job } from '../models/Job.ts';
 import { JobAllOf } from '../models/JobAllOf.ts';
@@ -809,7 +810,7 @@ export class ObservableJobApi {
      * @param running 
      * @param logOffset 
      */
-    public getJobUpdates(workspace: string, id: string, running?: boolean, logOffset?: number, _options?: Configuration): Observable<InlineResponse2002> {
+    public getJobUpdates(workspace: string, id: string, running?: boolean, logOffset?: number, _options?: Configuration): Observable<InlineResponse2003> {
         const requestContextPromise = this.requestFactory.getJobUpdates(workspace, id, running, logOffset, _options);
 
         // build promise chain
@@ -1644,6 +1645,29 @@ export class ObservableScriptApi {
     }
 
     /**
+     * get hub script content by path
+     * @param path 
+     */
+    public getHubScriptContentByPath(path: string, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.getHubScriptContentByPath(path, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getHubScriptContentByPath(rsp)));
+            }));
+    }
+
+    /**
      * get script by hash
      * @param workspace 
      * @param hash 
@@ -1696,7 +1720,7 @@ export class ObservableScriptApi {
      * @param workspace 
      * @param hash 
      */
-    public getScriptDeploymentStatus(workspace: string, hash: string, _options?: Configuration): Observable<InlineResponse2001> {
+    public getScriptDeploymentStatus(workspace: string, hash: string, _options?: Configuration): Observable<InlineResponse2002> {
         const requestContextPromise = this.requestFactory.getScriptDeploymentStatus(workspace, hash, _options);
 
         // build promise chain
@@ -1712,6 +1736,28 @@ export class ObservableScriptApi {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getScriptDeploymentStatus(rsp)));
+            }));
+    }
+
+    /**
+     * list all available hub scripts
+     */
+    public listHubScripts(_options?: Configuration): Observable<Array<InlineResponse2001>> {
+        const requestContextPromise = this.requestFactory.listHubScripts(_options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listHubScripts(rsp)));
             }));
     }
 

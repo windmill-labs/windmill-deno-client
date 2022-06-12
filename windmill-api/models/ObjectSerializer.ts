@@ -43,6 +43,7 @@ export * from './InlineObject9.ts';
 export * from './InlineResponse200.ts';
 export * from './InlineResponse2001.ts';
 export * from './InlineResponse2002.ts';
+export * from './InlineResponse2003.ts';
 export * from './InputTransform.ts';
 export * from './Job.ts';
 export * from './JobAllOf.ts';
@@ -112,6 +113,7 @@ import { InlineObject9 } from './InlineObject9.ts';
 import { InlineResponse200 } from './InlineResponse200.ts';
 import { InlineResponse2001 } from './InlineResponse2001.ts';
 import { InlineResponse2002 } from './InlineResponse2002.ts';
+import { InlineResponse2003 } from './InlineResponse2003.ts';
 import { InputTransform, InputTransformTypeEnum      } from './InputTransform.ts';
 import { Job, JobTypeEnum                    , JobJobKindEnum       , JobLanguageEnum      } from './Job.ts';
 import { JobAllOf, JobAllOfTypeEnum   } from './JobAllOf.ts';
@@ -222,6 +224,7 @@ let typeMap: {[index: string]: any} = {
     "InlineResponse200": InlineResponse200,
     "InlineResponse2001": InlineResponse2001,
     "InlineResponse2002": InlineResponse2002,
+    "InlineResponse2003": InlineResponse2003,
     "InputTransform": InputTransform,
     "Job": Job,
     "JobAllOf": JobAllOf,

@@ -10,6 +10,7 @@ import {SecurityAuthentication} from '../auth/auth.ts';
 
 import { InlineObject10 } from '../models/InlineObject10.ts';
 import { InlineResponse2001 } from '../models/InlineResponse2001.ts';
+import { InlineResponse2002 } from '../models/InlineResponse2002.ts';
 import { MainArgSignature } from '../models/MainArgSignature.ts';
 import { Script } from '../models/Script.ts';
 
@@ -281,6 +282,48 @@ export class ScriptApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * get hub script content by path
+     * @param path 
+     */
+    public async getHubScriptContentByPath(path: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'path' is not null or undefined
+        if (path === null || path === undefined) {
+            throw new RequiredError("ScriptApi", "getHubScriptContentByPath", "path");
+        }
+
+
+        // Path Params
+        const localVarPath = '/scripts/hub/get/{path}'
+            .replace('{' + 'path' + '}', encodeURIComponent(String(path)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["cookieAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * get script by hash
      * @param workspace 
      * @param hash 
@@ -404,6 +447,40 @@ export class ScriptApiRequestFactory extends BaseAPIRequestFactory {
         const localVarPath = '/w/{workspace}/scripts/deployment_status/h/{hash}'
             .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)))
             .replace('{' + 'hash' + '}', encodeURIComponent(String(hash)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["cookieAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * list all available hub scripts
+     */
+    public async listHubScripts(_options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // Path Params
+        const localVarPath = '/scripts/hub/list';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -754,6 +831,35 @@ export class ScriptApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to getHubScriptContentByPath
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getHubScriptContentByPath(response: ResponseContext): Promise<string > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to getScriptByHash
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -815,22 +921,51 @@ export class ScriptApiResponseProcessor {
      * @params response Response returned by the server for a request to getScriptDeploymentStatus
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getScriptDeploymentStatus(response: ResponseContext): Promise<InlineResponse2001 > {
+     public async getScriptDeploymentStatus(response: ResponseContext): Promise<InlineResponse2002 > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: InlineResponse2001 = ObjectSerializer.deserialize(
+            const body: InlineResponse2002 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "InlineResponse2001", ""
-            ) as InlineResponse2001;
+                "InlineResponse2002", ""
+            ) as InlineResponse2002;
             return body;
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: InlineResponse2001 = ObjectSerializer.deserialize(
+            const body: InlineResponse2002 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "InlineResponse2001", ""
-            ) as InlineResponse2001;
+                "InlineResponse2002", ""
+            ) as InlineResponse2002;
+            return body;
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to listHubScripts
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async listHubScripts(response: ResponseContext): Promise<Array<InlineResponse2001> > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: Array<InlineResponse2001> = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Array<InlineResponse2001>", ""
+            ) as Array<InlineResponse2001>;
+            return body;
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: Array<InlineResponse2001> = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Array<InlineResponse2001>", ""
+            ) as Array<InlineResponse2001>;
             return body;
         }
 

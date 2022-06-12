@@ -9,9 +9,11 @@ Method | HTTP request | Description
 [**createScript**](ScriptApi.md#createScript) | **POST** /w/{workspace}/scripts/create | create script
 [**deleteScriptByHash**](ScriptApi.md#deleteScriptByHash) | **POST** /w/{workspace}/scripts/delete/h/{hash} | delete script by hash (erase content but keep hash)
 [**denoToJsonschema**](ScriptApi.md#denoToJsonschema) | **POST** /scripts/deno/tojsonschema | inspect deno code to infer jsonschema of arguments
+[**getHubScriptContentByPath**](ScriptApi.md#getHubScriptContentByPath) | **GET** /scripts/hub/get/{path} | get hub script content by path
 [**getScriptByHash**](ScriptApi.md#getScriptByHash) | **GET** /w/{workspace}/scripts/get/h/{hash} | get script by hash
 [**getScriptByPath**](ScriptApi.md#getScriptByPath) | **GET** /w/{workspace}/scripts/get/p/{path} | get script by path
 [**getScriptDeploymentStatus**](ScriptApi.md#getScriptDeploymentStatus) | **GET** /w/{workspace}/scripts/deployment_status/h/{hash} | get script deployment status
+[**listHubScripts**](ScriptApi.md#listHubScripts) | **GET** /scripts/hub/list | list all available hub scripts
 [**listScripts**](ScriptApi.md#listScripts) | **GET** /w/{workspace}/scripts/list | list all available scripts
 [**pythonToJsonschema**](ScriptApi.md#pythonToJsonschema) | **POST** /scripts/python/tojsonschema | inspect python code to infer jsonschema of arguments
 
@@ -305,6 +307,59 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getHubScriptContentByPath**
+> string getHubScriptContentByPath()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .ScriptApi(configuration);
+
+let body:.ScriptApiGetHubScriptContentByPathRequest = {
+  // string
+  path: "path_example",
+};
+
+apiInstance.getHubScriptContentByPath(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | script details |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **getScriptByHash**
 > Script getScriptByHash()
 
@@ -418,7 +473,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **getScriptDeploymentStatus**
-> InlineResponse2001 getScriptDeploymentStatus()
+> InlineResponse2002 getScriptDeploymentStatus()
 
 
 ### Example
@@ -454,7 +509,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**InlineResponse2001**
+**InlineResponse2002**
 
 ### Authorization
 
@@ -470,6 +525,53 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | script details |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listHubScripts**
+> Array<InlineResponse2001> listHubScripts()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .ScriptApi(configuration);
+
+let body:any = {};
+
+apiInstance.listHubScripts(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+
+### Return type
+
+**Array<InlineResponse2001>**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | hub scripts list |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
