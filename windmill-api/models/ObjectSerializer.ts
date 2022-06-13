@@ -120,7 +120,7 @@ import { JobAllOf, JobAllOfTypeEnum   } from './JobAllOf.ts';
 import { ListableVariable } from './ListableVariable.ts';
 import { Login } from './Login.ts';
 import { MainArgSignature } from './MainArgSignature.ts';
-import { MainArgSignatureArgs , MainArgSignatureArgsTypEnum     } from './MainArgSignatureArgs.ts';
+import { MainArgSignatureArgs } from './MainArgSignatureArgs.ts';
 import { NewSchedule } from './NewSchedule.ts';
 import { NewToken } from './NewToken.ts';
 import { NewUser } from './NewUser.ts';
@@ -171,7 +171,6 @@ let enumsMap: Set<string> = new Set<string>([
     "JobJobKindEnum",
     "JobLanguageEnum",
     "JobAllOfTypeEnum",
-    "MainArgSignatureArgsTypEnum",
     "PreviewLanguageEnum",
     "QueuedJobJobKindEnum",
     "QueuedJobLanguageEnum",
