@@ -47,10 +47,12 @@ export async function getResource(path: string, initializeToTypeIfNotExist?: str
 
 }
 
-function getInternalStatePath(suffix?: string): string {
+export function getInternalStatePath(suffix?: string): string {
+    const env_flow_path = Deno.env.get("WM_FLOW_PATH")
+    const env_job_path = Deno.env.get("WM_JOB_PATH")
     const permissioned_as = Deno.env.get("WM_PERMISSIONED_AS")
-    const flow_path = Deno.env.get("WM_FLOW_PATH") ?? 'NO_FLOW_PATH'
-    const script_path = suffix ?? Deno.env.get("WM_JOB_PATH") ?? 'NO_JOB_PATH'
+    const flow_path = env_flow_path != undefined && env_flow_path != "" ? env_flow_path : 'NO_FLOW_PATH'
+    const script_path = suffix ?? (env_job_path != undefined && env_job_path != "" ? env_job_path : 'NO_JOB_PATH')
 
     return `${permissioned_as}/${flow_path}/${script_path}`
 }
@@ -67,7 +69,7 @@ export async function setResource(path: string, value: any, initializeToTypeIfNo
         await new ResourceApi(conf).updateResource(conf.workspace_id, path, { value })
     } catch (e) {
         if (initializeToTypeIfNotExist && e.code === 404) {
-            await new ResourceApi(conf).createResource(conf.workspace_id, { path, value: {}, resourceType: initializeToTypeIfNotExist })
+            await new ResourceApi(conf).createResource(conf.workspace_id, { path, value, resourceType: initializeToTypeIfNotExist })
         } else {
             throw e
         }
