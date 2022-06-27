@@ -436,6 +436,7 @@ export class ObjectSerializer {
         if (mediaType === "application/json") {
             return JSON.parse(rawData);
         }
+        if (mediaType === "text/plain") { return rawData }
 
         throw new Error("The mediaType " + mediaType + " is not supported by ObjectSerializer.parse.");
     }
