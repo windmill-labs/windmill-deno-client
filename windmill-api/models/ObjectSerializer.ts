@@ -33,6 +33,9 @@ export * from './InlineObject19.ts';
 export * from './InlineObject2.ts';
 export * from './InlineObject20.ts';
 export * from './InlineObject21.ts';
+export * from './InlineObject22.ts';
+export * from './InlineObject23.ts';
+export * from './InlineObject24.ts';
 export * from './InlineObject3.ts';
 export * from './InlineObject4.ts';
 export * from './InlineObject5.ts';
@@ -44,6 +47,7 @@ export * from './InlineResponse200.ts';
 export * from './InlineResponse2001.ts';
 export * from './InlineResponse2002.ts';
 export * from './InlineResponse2003.ts';
+export * from './InlineResponse2004.ts';
 export * from './InputTransform.ts';
 export * from './Job.ts';
 export * from './JobAllOf.ts';
@@ -60,6 +64,8 @@ export * from './Resource.ts';
 export * from './ResourceType.ts';
 export * from './Schedule.ts';
 export * from './Script.ts';
+export * from './SlackToken.ts';
+export * from './SlackTokenBot.ts';
 export * from './TruncatedToken.ts';
 export * from './User.ts';
 export * from './UserWorkspaceList.ts';
@@ -90,10 +96,10 @@ import { GlobalUserInfo , GlobalUserInfoLoginTypeEnum       } from './GlobalUser
 import { Group } from './Group.ts';
 import { InlineObject } from './InlineObject.ts';
 import { InlineObject1 } from './InlineObject1.ts';
-import { InlineObject10        , InlineObject10LanguageEnum   } from './InlineObject10.ts';
+import { InlineObject10 } from './InlineObject10.ts';
 import { InlineObject11 } from './InlineObject11.ts';
 import { InlineObject12 } from './InlineObject12.ts';
-import { InlineObject13 } from './InlineObject13.ts';
+import { InlineObject13        , InlineObject13LanguageEnum   } from './InlineObject13.ts';
 import { InlineObject14 } from './InlineObject14.ts';
 import { InlineObject15 } from './InlineObject15.ts';
 import { InlineObject16 } from './InlineObject16.ts';
@@ -103,6 +109,9 @@ import { InlineObject19 } from './InlineObject19.ts';
 import { InlineObject2 } from './InlineObject2.ts';
 import { InlineObject20 } from './InlineObject20.ts';
 import { InlineObject21 } from './InlineObject21.ts';
+import { InlineObject22 } from './InlineObject22.ts';
+import { InlineObject23 } from './InlineObject23.ts';
+import { InlineObject24 } from './InlineObject24.ts';
 import { InlineObject3 } from './InlineObject3.ts';
 import { InlineObject4 } from './InlineObject4.ts';
 import { InlineObject5 } from './InlineObject5.ts';
@@ -114,6 +123,7 @@ import { InlineResponse200 } from './InlineResponse200.ts';
 import { InlineResponse2001 } from './InlineResponse2001.ts';
 import { InlineResponse2002 } from './InlineResponse2002.ts';
 import { InlineResponse2003 } from './InlineResponse2003.ts';
+import { InlineResponse2004 } from './InlineResponse2004.ts';
 import { InputTransform, InputTransformTypeEnum      } from './InputTransform.ts';
 import { Job, JobTypeEnum                    , JobJobKindEnum       , JobLanguageEnum      } from './Job.ts';
 import { JobAllOf, JobAllOfTypeEnum   } from './JobAllOf.ts';
@@ -130,6 +140,8 @@ import { Resource } from './Resource.ts';
 import { ResourceType } from './ResourceType.ts';
 import { Schedule } from './Schedule.ts';
 import { Script                , ScriptLanguageEnum   } from './Script.ts';
+import { SlackToken } from './SlackToken.ts';
+import { SlackTokenBot } from './SlackTokenBot.ts';
 import { TruncatedToken } from './TruncatedToken.ts';
 import { User } from './User.ts';
 import { UserWorkspaceList } from './UserWorkspaceList.ts';
@@ -165,7 +177,7 @@ let enumsMap: Set<string> = new Set<string>([
     "FlowModuleValueTypeEnum",
     "FlowStatusModuleTypeEnum",
     "GlobalUserInfoLoginTypeEnum",
-    "InlineObject10LanguageEnum",
+    "InlineObject13LanguageEnum",
     "InputTransformTypeEnum",
     "JobTypeEnum",
     "JobJobKindEnum",
@@ -213,6 +225,9 @@ let typeMap: {[index: string]: any} = {
     "InlineObject2": InlineObject2,
     "InlineObject20": InlineObject20,
     "InlineObject21": InlineObject21,
+    "InlineObject22": InlineObject22,
+    "InlineObject23": InlineObject23,
+    "InlineObject24": InlineObject24,
     "InlineObject3": InlineObject3,
     "InlineObject4": InlineObject4,
     "InlineObject5": InlineObject5,
@@ -224,6 +239,7 @@ let typeMap: {[index: string]: any} = {
     "InlineResponse2001": InlineResponse2001,
     "InlineResponse2002": InlineResponse2002,
     "InlineResponse2003": InlineResponse2003,
+    "InlineResponse2004": InlineResponse2004,
     "InputTransform": InputTransform,
     "Job": Job,
     "JobAllOf": JobAllOf,
@@ -240,6 +256,8 @@ let typeMap: {[index: string]: any} = {
     "ResourceType": ResourceType,
     "Schedule": Schedule,
     "Script": Script,
+    "SlackToken": SlackToken,
+    "SlackTokenBot": SlackTokenBot,
     "TruncatedToken": TruncatedToken,
     "User": User,
     "UserWorkspaceList": UserWorkspaceList,
@@ -418,6 +436,7 @@ export class ObjectSerializer {
      * Convert data to a string according the given media type
      */
     public static stringify(data: any, mediaType: string): string {
+        if (mediaType === "text/plain") { return rawData }
         if (mediaType === "application/json") {
             return JSON.stringify(data);
         }
@@ -436,7 +455,6 @@ export class ObjectSerializer {
         if (mediaType === "application/json") {
             return JSON.parse(rawData);
         }
-        if (mediaType === "text/plain") { return rawData }
 
         throw new Error("The mediaType " + mediaType + " is not supported by ObjectSerializer.parse.");
     }

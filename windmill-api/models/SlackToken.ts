@@ -10,44 +10,45 @@
  * Do not edit the class manually.
  */
 
+import { SlackTokenBot } from './SlackTokenBot.ts';
 import { HttpFile } from '../http/http.ts';
 
-export class Workspace {
-    'id': string;
-    'name': string;
-    'owner': string;
-    'domain'?: string;
+export class SlackToken {
+    'accessToken': string;
+    'teamId': string;
+    'teamName': string;
+    'bot': SlackTokenBot;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "id",
-            "baseName": "id",
+            "name": "accessToken",
+            "baseName": "access_token",
             "type": "string",
             "format": ""
         },
         {
-            "name": "name",
-            "baseName": "name",
+            "name": "teamId",
+            "baseName": "team_id",
             "type": "string",
             "format": ""
         },
         {
-            "name": "owner",
-            "baseName": "owner",
+            "name": "teamName",
+            "baseName": "team_name",
             "type": "string",
             "format": ""
         },
         {
-            "name": "domain",
-            "baseName": "domain",
-            "type": "string",
+            "name": "bot",
+            "baseName": "bot",
+            "type": "SlackTokenBot",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return Workspace.attributeTypeMap;
+        return SlackToken.attributeTypeMap;
     }
 
     public constructor() {

@@ -1,21 +1,20 @@
-# .GroupApi
+# .OauthApi
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addUserToGroup**](GroupApi.md#addUserToGroup) | **POST** /w/{workspace}/groups/adduser/{name} | add user to group
-[**createGroup**](GroupApi.md#createGroup) | **POST** /w/{workspace}/groups/create | create group
-[**deleteGroup**](GroupApi.md#deleteGroup) | **DELETE** /w/{workspace}/groups/delete/{name} | delete group
-[**getGroup**](GroupApi.md#getGroup) | **GET** /w/{workspace}/groups/get/{name} | get group
-[**listGroupNames**](GroupApi.md#listGroupNames) | **GET** /w/{workspace}/groups/listnames | list group names
-[**listGroups**](GroupApi.md#listGroups) | **GET** /w/{workspace}/groups/list | list groups
-[**removeUserToGroup**](GroupApi.md#removeUserToGroup) | **POST** /w/{workspace}/groups/removeuser/{name} | remove user to group
-[**updateGroup**](GroupApi.md#updateGroup) | **POST** /w/{workspace}/groups/update/{name} | update group
+[**connectCallback**](OauthApi.md#connectCallback) | **POST** /oauth/connect_callback/{client_name} | connect callback
+[**connectSlackCallback**](OauthApi.md#connectSlackCallback) | **POST** /oauth/connect_slack_callback | connect slack callback
+[**disconnectAccount**](OauthApi.md#disconnectAccount) | **POST** /w/{workspace}/oauth/disconnect/{account_id} | disconnect account
+[**disconnectSlack**](OauthApi.md#disconnectSlack) | **POST** /w/{workspace}/oauth/disconnect_slack | disconnect slack
+[**listOAuthConnects**](OauthApi.md#listOAuthConnects) | **GET** /oauth/list_connects | list oauth connects
+[**listOAuthLogins**](OauthApi.md#listOAuthLogins) | **GET** /oauth/list_logins | list oauth logins
+[**setWorkspaceSlack**](OauthApi.md#setWorkspaceSlack) | **POST** /w/{workspace}/oauth/set_workspace_slack | set workspace&#39;s slack
 
 
-# **addUserToGroup**
-> string addUserToGroup(inlineObject21)
+# **connectCallback**
+> InlineResponse2001 connectCallback(inlineObject12)
 
 
 ### Example
@@ -26,20 +25,19 @@ import {  } from '';
 import * as fs from 'fs';
 
 const configuration = .createConfiguration();
-const apiInstance = new .GroupApi(configuration);
+const apiInstance = new .OauthApi(configuration);
 
-let body:.GroupApiAddUserToGroupRequest = {
+let body:.OauthApiConnectCallbackRequest = {
   // string
-  workspace: "workspace_example",
-  // string
-  name: "name_example",
-  // InlineObject21
-  inlineObject21: {
-    username: "username_example",
+  clientName: "client_name_example",
+  // InlineObject12
+  inlineObject12: {
+    code: "code_example",
+    state: "state_example",
   },
 };
 
-apiInstance.addUserToGroup(body).then((data:any) => {
+apiInstance.connectCallback(body).then((data:any) => {
   console.log('API called successfully. Returned data: ' + data);
 }).catch((error:any) => console.error(error));
 ```
@@ -49,14 +47,13 @@ apiInstance.addUserToGroup(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject21** | **InlineObject21**|  |
- **workspace** | [**string**] |  | defaults to undefined
- **name** | [**string**] |  | defaults to undefined
+ **inlineObject12** | **InlineObject12**|  |
+ **clientName** | [**string**] |  | defaults to undefined
 
 
 ### Return type
 
-**string**
+**InlineResponse2001**
 
 ### Authorization
 
@@ -65,18 +62,18 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: text/plain
+ - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | user added to group |  -  |
+**200** | oauth token |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **createGroup**
-> string createGroup(inlineObject19)
+# **connectSlackCallback**
+> SlackToken connectSlackCallback(inlineObject11)
 
 
 ### Example
@@ -87,19 +84,17 @@ import {  } from '';
 import * as fs from 'fs';
 
 const configuration = .createConfiguration();
-const apiInstance = new .GroupApi(configuration);
+const apiInstance = new .OauthApi(configuration);
 
-let body:.GroupApiCreateGroupRequest = {
-  // string
-  workspace: "workspace_example",
-  // InlineObject19
-  inlineObject19: {
-    name: "name_example",
-    summary: "summary_example",
+let body:.OauthApiConnectSlackCallbackRequest = {
+  // InlineObject11
+  inlineObject11: {
+    code: "code_example",
+    state: "state_example",
   },
 };
 
-apiInstance.createGroup(body).then((data:any) => {
+apiInstance.connectSlackCallback(body).then((data:any) => {
   console.log('API called successfully. Returned data: ' + data);
 }).catch((error:any) => console.error(error));
 ```
@@ -109,13 +104,12 @@ apiInstance.createGroup(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject19** | **InlineObject19**|  |
- **workspace** | [**string**] |  | defaults to undefined
+ **inlineObject11** | **InlineObject11**|  |
 
 
 ### Return type
 
-**string**
+**SlackToken**
 
 ### Authorization
 
@@ -124,18 +118,18 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: text/plain
+ - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | group created |  -  |
+**200** | slack token |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **deleteGroup**
-> string deleteGroup()
+# **disconnectAccount**
+> string disconnectAccount()
 
 
 ### Example
@@ -146,16 +140,16 @@ import {  } from '';
 import * as fs from 'fs';
 
 const configuration = .createConfiguration();
-const apiInstance = new .GroupApi(configuration);
+const apiInstance = new .OauthApi(configuration);
 
-let body:.GroupApiDeleteGroupRequest = {
+let body:.OauthApiDisconnectAccountRequest = {
   // string
   workspace: "workspace_example",
   // string
-  name: "name_example",
+  account: "account_example",
 };
 
-apiInstance.deleteGroup(body).then((data:any) => {
+apiInstance.disconnectAccount(body).then((data:any) => {
   console.log('API called successfully. Returned data: ' + data);
 }).catch((error:any) => console.error(error));
 ```
@@ -166,7 +160,7 @@ apiInstance.deleteGroup(body).then((data:any) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | [**string**] |  | defaults to undefined
- **name** | [**string**] |  | defaults to undefined
+ **account** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -186,12 +180,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | group deleted |  -  |
+**200** | disconnected client |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getGroup**
-> Group getGroup()
+# **disconnectSlack**
+> string disconnectSlack()
 
 
 ### Example
@@ -202,16 +196,14 @@ import {  } from '';
 import * as fs from 'fs';
 
 const configuration = .createConfiguration();
-const apiInstance = new .GroupApi(configuration);
+const apiInstance = new .OauthApi(configuration);
 
-let body:.GroupApiGetGroupRequest = {
+let body:.OauthApiDisconnectSlackRequest = {
   // string
   workspace: "workspace_example",
-  // string
-  name: "name_example",
 };
 
-apiInstance.getGroup(body).then((data:any) => {
+apiInstance.disconnectSlack(body).then((data:any) => {
   console.log('API called successfully. Returned data: ' + data);
 }).catch((error:any) => console.error(error));
 ```
@@ -222,12 +214,58 @@ apiInstance.getGroup(body).then((data:any) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | [**string**] |  | defaults to undefined
- **name** | [**string**] |  | defaults to undefined
 
 
 ### Return type
 
-**Group**
+**string**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | disconnected slack |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listOAuthConnects**
+> { [key: string]: Array<string>; } listOAuthConnects()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .OauthApi(configuration);
+
+let body:any = {};
+
+apiInstance.listOAuthConnects(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+
+### Return type
+
+**{ [key: string]: Array<string>; }**
 
 ### Authorization
 
@@ -242,12 +280,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | group |  -  |
+**200** | list of oauth connects clients |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listGroupNames**
-> Array<string> listGroupNames()
+# **listOAuthLogins**
+> Array<string> listOAuthLogins()
 
 
 ### Example
@@ -258,24 +296,18 @@ import {  } from '';
 import * as fs from 'fs';
 
 const configuration = .createConfiguration();
-const apiInstance = new .GroupApi(configuration);
+const apiInstance = new .OauthApi(configuration);
 
-let body:.GroupApiListGroupNamesRequest = {
-  // string
-  workspace: "workspace_example",
-};
+let body:any = {};
 
-apiInstance.listGroupNames(body).then((data:any) => {
+apiInstance.listOAuthLogins(body).then((data:any) => {
   console.log('API called successfully. Returned data: ' + data);
 }).catch((error:any) => console.error(error));
 ```
 
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | [**string**] |  | defaults to undefined
+This endpoint does not need any parameter.
 
 
 ### Return type
@@ -295,12 +327,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | group list |  -  |
+**200** | list of oauth login clients |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listGroups**
-> Array<Group> listGroups()
+# **setWorkspaceSlack**
+> string setWorkspaceSlack(slackToken)
 
 
 ### Example
@@ -311,79 +343,23 @@ import {  } from '';
 import * as fs from 'fs';
 
 const configuration = .createConfiguration();
-const apiInstance = new .GroupApi(configuration);
+const apiInstance = new .OauthApi(configuration);
 
-let body:.GroupApiListGroupsRequest = {
+let body:.OauthApiSetWorkspaceSlackRequest = {
   // string
   workspace: "workspace_example",
-  // number | which page to return (start at 1, default 1) (optional)
-  page: 1,
-  // number | number of items to return for a given page (default 30, max 100) (optional)
-  perPage: 1,
-};
-
-apiInstance.listGroups(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | [**string**] |  | defaults to undefined
- **page** | [**number**] | which page to return (start at 1, default 1) | (optional) defaults to undefined
- **perPage** | [**number**] | number of items to return for a given page (default 30, max 100) | (optional) defaults to undefined
-
-
-### Return type
-
-**Array<Group>**
-
-### Authorization
-
-[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | group list |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **removeUserToGroup**
-> string removeUserToGroup(inlineObject22)
-
-
-### Example
-
-
-```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .GroupApi(configuration);
-
-let body:.GroupApiRemoveUserToGroupRequest = {
-  // string
-  workspace: "workspace_example",
-  // string
-  name: "name_example",
-  // InlineObject22
-  inlineObject22: {
-    username: "username_example",
+  // SlackToken
+  slackToken: {
+    accessToken: "accessToken_example",
+    teamId: "teamId_example",
+    teamName: "teamName_example",
+    bot: {
+      botAccessToken: "botAccessToken_example",
+    },
   },
 };
 
-apiInstance.removeUserToGroup(body).then((data:any) => {
+apiInstance.setWorkspaceSlack(body).then((data:any) => {
   console.log('API called successfully. Returned data: ' + data);
 }).catch((error:any) => console.error(error));
 ```
@@ -393,9 +369,8 @@ apiInstance.removeUserToGroup(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject22** | **InlineObject22**|  |
+ **slackToken** | **SlackToken**|  |
  **workspace** | [**string**] |  | defaults to undefined
- **name** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -415,68 +390,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | user removed from group |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **updateGroup**
-> string updateGroup(inlineObject20)
-
-
-### Example
-
-
-```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .GroupApi(configuration);
-
-let body:.GroupApiUpdateGroupRequest = {
-  // string
-  workspace: "workspace_example",
-  // string
-  name: "name_example",
-  // InlineObject20
-  inlineObject20: {
-    summary: "summary_example",
-  },
-};
-
-apiInstance.updateGroup(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **inlineObject20** | **InlineObject20**|  |
- **workspace** | [**string**] |  | defaults to undefined
- **name** | [**string**] |  | defaults to undefined
-
-
-### Return type
-
-**string**
-
-### Authorization
-
-[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: text/plain
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | group updated |  -  |
+**200** | workspace slack is set |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

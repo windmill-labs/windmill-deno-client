@@ -179,56 +179,6 @@ export class WorkspaceApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * disconnect client
-     * @param workspace 
-     * @param clientName 
-     */
-    public async disconnectClient(workspace: string, clientName: string, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'workspace' is not null or undefined
-        if (workspace === null || workspace === undefined) {
-            throw new RequiredError("WorkspaceApi", "disconnectClient", "workspace");
-        }
-
-
-        // verify required parameter 'clientName' is not null or undefined
-        if (clientName === null || clientName === undefined) {
-            throw new RequiredError("WorkspaceApi", "disconnectClient", "clientName");
-        }
-
-
-        // Path Params
-        const localVarPath = '/w/{workspace}/oauth/disconnect/{client_name}'
-            .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)))
-            .replace('{' + 'client_name' + '}', encodeURIComponent(String(clientName)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["cookieAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
      * edit slack command
      * @param workspace 
      * @param inlineObject9 
@@ -722,35 +672,6 @@ export class WorkspaceApiResponseProcessor {
      * @throws ApiException if the response code was not in [200, 299]
      */
      public async deleteWorkspace(response: ResponseContext): Promise<string > {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: string = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "string", ""
-            ) as string;
-            return body;
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: string = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "string", ""
-            ) as string;
-            return body;
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to disconnectClient
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async disconnectClient(response: ResponseContext): Promise<string > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: string = ObjectSerializer.deserialize(

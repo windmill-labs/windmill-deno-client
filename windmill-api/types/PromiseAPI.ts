@@ -37,6 +37,9 @@ import { InlineObject19 } from '../models/InlineObject19.ts';
 import { InlineObject2 } from '../models/InlineObject2.ts';
 import { InlineObject20 } from '../models/InlineObject20.ts';
 import { InlineObject21 } from '../models/InlineObject21.ts';
+import { InlineObject22 } from '../models/InlineObject22.ts';
+import { InlineObject23 } from '../models/InlineObject23.ts';
+import { InlineObject24 } from '../models/InlineObject24.ts';
 import { InlineObject3 } from '../models/InlineObject3.ts';
 import { InlineObject4 } from '../models/InlineObject4.ts';
 import { InlineObject5 } from '../models/InlineObject5.ts';
@@ -48,6 +51,7 @@ import { InlineResponse200 } from '../models/InlineResponse200.ts';
 import { InlineResponse2001 } from '../models/InlineResponse2001.ts';
 import { InlineResponse2002 } from '../models/InlineResponse2002.ts';
 import { InlineResponse2003 } from '../models/InlineResponse2003.ts';
+import { InlineResponse2004 } from '../models/InlineResponse2004.ts';
 import { InputTransform } from '../models/InputTransform.ts';
 import { Job } from '../models/Job.ts';
 import { JobAllOf } from '../models/JobAllOf.ts';
@@ -64,6 +68,8 @@ import { Resource } from '../models/Resource.ts';
 import { ResourceType } from '../models/ResourceType.ts';
 import { Schedule } from '../models/Schedule.ts';
 import { Script } from '../models/Script.ts';
+import { SlackToken } from '../models/SlackToken.ts';
+import { SlackTokenBot } from '../models/SlackTokenBot.ts';
 import { TruncatedToken } from '../models/TruncatedToken.ts';
 import { User } from '../models/User.ts';
 import { UserWorkspaceList } from '../models/UserWorkspaceList.ts';
@@ -194,10 +200,10 @@ export class PromiseFlowApi {
     /**
      * create flow
      * @param workspace 
-     * @param inlineObject11 
+     * @param inlineObject14 
      */
-    public createFlow(workspace: string, inlineObject11: InlineObject11, _options?: Configuration): Promise<string> {
-        const result = this.api.createFlow(workspace, inlineObject11, _options);
+    public createFlow(workspace: string, inlineObject14: InlineObject14, _options?: Configuration): Promise<string> {
+        const result = this.api.createFlow(workspace, inlineObject14, _options);
         return result.toPromise();
     }
 
@@ -231,10 +237,10 @@ export class PromiseFlowApi {
      * update flow
      * @param workspace 
      * @param path 
-     * @param inlineObject12 
+     * @param inlineObject15 
      */
-    public updateFlow(workspace: string, path: string, inlineObject12: InlineObject12, _options?: Configuration): Promise<string> {
-        const result = this.api.updateFlow(workspace, path, inlineObject12, _options);
+    public updateFlow(workspace: string, path: string, inlineObject15: InlineObject15, _options?: Configuration): Promise<string> {
+        const result = this.api.updateFlow(workspace, path, inlineObject15, _options);
         return result.toPromise();
     }
 
@@ -262,10 +268,10 @@ export class PromiseGranularAclApi {
      * @param workspace 
      * @param path 
      * @param kind 
-     * @param inlineObject20 
+     * @param inlineObject23 
      */
-    public addGranularAcls(workspace: string, path: string, kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow', inlineObject20: InlineObject20, _options?: Configuration): Promise<string> {
-        const result = this.api.addGranularAcls(workspace, path, kind, inlineObject20, _options);
+    public addGranularAcls(workspace: string, path: string, kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow', inlineObject23: InlineObject23, _options?: Configuration): Promise<string> {
+        const result = this.api.addGranularAcls(workspace, path, kind, inlineObject23, _options);
         return result.toPromise();
     }
 
@@ -285,10 +291,10 @@ export class PromiseGranularAclApi {
      * @param workspace 
      * @param path 
      * @param kind 
-     * @param inlineObject21 
+     * @param inlineObject24 
      */
-    public removeGranularAcls(workspace: string, path: string, kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow', inlineObject21: InlineObject21, _options?: Configuration): Promise<string> {
-        const result = this.api.removeGranularAcls(workspace, path, kind, inlineObject21, _options);
+    public removeGranularAcls(workspace: string, path: string, kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow', inlineObject24: InlineObject24, _options?: Configuration): Promise<string> {
+        const result = this.api.removeGranularAcls(workspace, path, kind, inlineObject24, _options);
         return result.toPromise();
     }
 
@@ -315,20 +321,20 @@ export class PromiseGroupApi {
      * add user to group
      * @param workspace 
      * @param name 
-     * @param inlineObject18 
+     * @param inlineObject21 
      */
-    public addUserToGroup(workspace: string, name: string, inlineObject18: InlineObject18, _options?: Configuration): Promise<string> {
-        const result = this.api.addUserToGroup(workspace, name, inlineObject18, _options);
+    public addUserToGroup(workspace: string, name: string, inlineObject21: InlineObject21, _options?: Configuration): Promise<string> {
+        const result = this.api.addUserToGroup(workspace, name, inlineObject21, _options);
         return result.toPromise();
     }
 
     /**
      * create group
      * @param workspace 
-     * @param inlineObject16 
+     * @param inlineObject19 
      */
-    public createGroup(workspace: string, inlineObject16: InlineObject16, _options?: Configuration): Promise<string> {
-        const result = this.api.createGroup(workspace, inlineObject16, _options);
+    public createGroup(workspace: string, inlineObject19: InlineObject19, _options?: Configuration): Promise<string> {
+        const result = this.api.createGroup(workspace, inlineObject19, _options);
         return result.toPromise();
     }
 
@@ -376,10 +382,10 @@ export class PromiseGroupApi {
      * remove user to group
      * @param workspace 
      * @param name 
-     * @param inlineObject19 
+     * @param inlineObject22 
      */
-    public removeUserToGroup(workspace: string, name: string, inlineObject19: InlineObject19, _options?: Configuration): Promise<string> {
-        const result = this.api.removeUserToGroup(workspace, name, inlineObject19, _options);
+    public removeUserToGroup(workspace: string, name: string, inlineObject22: InlineObject22, _options?: Configuration): Promise<string> {
+        const result = this.api.removeUserToGroup(workspace, name, inlineObject22, _options);
         return result.toPromise();
     }
 
@@ -387,10 +393,10 @@ export class PromiseGroupApi {
      * update group
      * @param workspace 
      * @param name 
-     * @param inlineObject17 
+     * @param inlineObject20 
      */
-    public updateGroup(workspace: string, name: string, inlineObject17: InlineObject17, _options?: Configuration): Promise<string> {
-        const result = this.api.updateGroup(workspace, name, inlineObject17, _options);
+    public updateGroup(workspace: string, name: string, inlineObject20: InlineObject20, _options?: Configuration): Promise<string> {
+        const result = this.api.updateGroup(workspace, name, inlineObject20, _options);
         return result.toPromise();
     }
 
@@ -417,10 +423,10 @@ export class PromiseJobApi {
      * cancel queued job
      * @param workspace 
      * @param id 
-     * @param inlineObject13 
+     * @param inlineObject16 
      */
-    public cancelQueuedJob(workspace: string, id: string, inlineObject13: InlineObject13, _options?: Configuration): Promise<string> {
-        const result = this.api.cancelQueuedJob(workspace, id, inlineObject13, _options);
+    public cancelQueuedJob(workspace: string, id: string, inlineObject16: InlineObject16, _options?: Configuration): Promise<string> {
+        const result = this.api.cancelQueuedJob(workspace, id, inlineObject16, _options);
         return result.toPromise();
     }
 
@@ -461,7 +467,7 @@ export class PromiseJobApi {
      * @param running 
      * @param logOffset 
      */
-    public getJobUpdates(workspace: string, id: string, running?: boolean, logOffset?: number, _options?: Configuration): Promise<InlineResponse2003> {
+    public getJobUpdates(workspace: string, id: string, running?: boolean, logOffset?: number, _options?: Configuration): Promise<InlineResponse2004> {
         const result = this.api.getJobUpdates(workspace, id, running, logOffset, _options);
         return result.toPromise();
     }
@@ -581,6 +587,89 @@ export class PromiseJobApi {
      */
     public runScriptPreview(workspace: string, preview: Preview, _options?: Configuration): Promise<string> {
         const result = this.api.runScriptPreview(workspace, preview, _options);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableOauthApi } from './ObservableAPI.ts';
+
+import { OauthApiRequestFactory, OauthApiResponseProcessor} from "../apis/OauthApi.ts";
+export class PromiseOauthApi {
+    private api: ObservableOauthApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: OauthApiRequestFactory,
+        responseProcessor?: OauthApiResponseProcessor
+    ) {
+        this.api = new ObservableOauthApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * connect callback
+     * @param clientName 
+     * @param inlineObject12 
+     */
+    public connectCallback(clientName: string, inlineObject12: InlineObject12, _options?: Configuration): Promise<InlineResponse2001> {
+        const result = this.api.connectCallback(clientName, inlineObject12, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * connect slack callback
+     * @param inlineObject11 
+     */
+    public connectSlackCallback(inlineObject11: InlineObject11, _options?: Configuration): Promise<SlackToken> {
+        const result = this.api.connectSlackCallback(inlineObject11, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * disconnect account
+     * @param workspace 
+     * @param account 
+     */
+    public disconnectAccount(workspace: string, account: string, _options?: Configuration): Promise<string> {
+        const result = this.api.disconnectAccount(workspace, account, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * disconnect slack
+     * @param workspace 
+     */
+    public disconnectSlack(workspace: string, _options?: Configuration): Promise<string> {
+        const result = this.api.disconnectSlack(workspace, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * list oauth connects
+     */
+    public listOAuthConnects(_options?: Configuration): Promise<{ [key: string]: Array<string>; }> {
+        const result = this.api.listOAuthConnects(_options);
+        return result.toPromise();
+    }
+
+    /**
+     * list oauth logins
+     */
+    public listOAuthLogins(_options?: Configuration): Promise<Array<string>> {
+        const result = this.api.listOAuthLogins(_options);
+        return result.toPromise();
+    }
+
+    /**
+     * set workspace's slack
+     * @param workspace 
+     * @param slackToken 
+     */
+    public setWorkspaceSlack(workspace: string, slackToken: SlackToken, _options?: Configuration): Promise<string> {
+        const result = this.api.setWorkspaceSlack(workspace, slackToken, _options);
         return result.toPromise();
     }
 
@@ -767,10 +856,10 @@ export class PromiseScheduleApi {
 
     /**
      * preview schedule
-     * @param inlineObject14 
+     * @param inlineObject17 
      */
-    public previewSchedule(inlineObject14: InlineObject14, _options?: Configuration): Promise<Array<Date>> {
-        const result = this.api.previewSchedule(inlineObject14, _options);
+    public previewSchedule(inlineObject17: InlineObject17, _options?: Configuration): Promise<Array<Date>> {
+        const result = this.api.previewSchedule(inlineObject17, _options);
         return result.toPromise();
     }
 
@@ -778,10 +867,10 @@ export class PromiseScheduleApi {
      * set enabled schedule
      * @param workspace 
      * @param path 
-     * @param inlineObject15 
+     * @param inlineObject18 
      */
-    public setScheduleEnabled(workspace: string, path: string, inlineObject15: InlineObject15, _options?: Configuration): Promise<string> {
-        const result = this.api.setScheduleEnabled(workspace, path, inlineObject15, _options);
+    public setScheduleEnabled(workspace: string, path: string, inlineObject18: InlineObject18, _options?: Configuration): Promise<string> {
+        const result = this.api.setScheduleEnabled(workspace, path, inlineObject18, _options);
         return result.toPromise();
     }
 
@@ -838,10 +927,10 @@ export class PromiseScriptApi {
     /**
      * create script
      * @param workspace 
-     * @param inlineObject10 
+     * @param inlineObject13 
      */
-    public createScript(workspace: string, inlineObject10: InlineObject10, _options?: Configuration): Promise<string> {
-        const result = this.api.createScript(workspace, inlineObject10, _options);
+    public createScript(workspace: string, inlineObject13: InlineObject13, _options?: Configuration): Promise<string> {
+        const result = this.api.createScript(workspace, inlineObject13, _options);
         return result.toPromise();
     }
 
@@ -898,7 +987,7 @@ export class PromiseScriptApi {
      * @param workspace 
      * @param hash 
      */
-    public getScriptDeploymentStatus(workspace: string, hash: string, _options?: Configuration): Promise<InlineResponse2002> {
+    public getScriptDeploymentStatus(workspace: string, hash: string, _options?: Configuration): Promise<InlineResponse2003> {
         const result = this.api.getScriptDeploymentStatus(workspace, hash, _options);
         return result.toPromise();
     }
@@ -906,7 +995,7 @@ export class PromiseScriptApi {
     /**
      * list all available hub scripts
      */
-    public listHubScripts(_options?: Configuration): Promise<Array<InlineResponse2001>> {
+    public listHubScripts(_options?: Configuration): Promise<Array<InlineResponse2002>> {
         const result = this.api.listHubScripts(_options);
         return result.toPromise();
     }
@@ -1140,10 +1229,20 @@ export class PromiseUserApi {
 
     /**
      * login with password
-     * @param login Partially filled script
+     * @param login credentials
      */
     public login(login: Login, _options?: Configuration): Promise<string> {
         const result = this.api.login(login, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * login with oauth authorization flow
+     * @param clientName 
+     * @param inlineObject10 
+     */
+    public loginWithOauth(clientName: string, inlineObject10: InlineObject10, _options?: Configuration): Promise<string> {
+        const result = this.api.loginWithOauth(clientName, inlineObject10, _options);
         return result.toPromise();
     }
 
@@ -1346,16 +1445,6 @@ export class PromiseWorkspaceApi {
      */
     public deleteWorkspace(workspace: string, _options?: Configuration): Promise<string> {
         const result = this.api.deleteWorkspace(workspace, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * disconnect client
-     * @param workspace 
-     * @param clientName 
-     */
-    public disconnectClient(workspace: string, clientName: string, _options?: Configuration): Promise<string> {
-        const result = this.api.disconnectClient(workspace, clientName, _options);
         return result.toPromise();
     }
 

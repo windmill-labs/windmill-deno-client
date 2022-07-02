@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**listUsersAsSuperAdmin**](UserApi.md#listUsersAsSuperAdmin) | **GET** /users/list_as_super_admin | list all users as super admin (require to be super amdin)
 [**listWorkspaceInvites**](UserApi.md#listWorkspaceInvites) | **GET** /users/list_invites | list all workspace invites
 [**login**](UserApi.md#login) | **POST** /auth/login | login with password
+[**loginWithOauth**](UserApi.md#loginWithOauth) | **POST** /oauth/login_callback/{client_name} | login with oauth authorization flow
 [**logout**](UserApi.md#logout) | **POST** /users/logout | logout
 [**setPassword**](UserApi.md#setPassword) | **POST** /users/setpassword | set password
 [**updateUser**](UserApi.md#updateUser) | **POST** /w/{workspace}/users/update/{username} | update user (require admin privilege)
@@ -899,7 +900,7 @@ const configuration = .createConfiguration();
 const apiInstance = new .UserApi(configuration);
 
 let body:.UserApiLoginRequest = {
-  // Login | Partially filled script
+  // Login | credentials
   login: {
     email: "email_example",
     password: "password_example",
@@ -916,7 +917,66 @@ apiInstance.login(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **login** | **Login**| Partially filled script |
+ **login** | **Login**| credentials |
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: text/plain
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully authenticated. The session ID is returned in a cookie named &#x60;token&#x60; and as plaintext response. Preferred method of authorization is through the bearer token. The cookie is only for browser convenience.  |  * Set-Cookie -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **loginWithOauth**
+> string loginWithOauth(inlineObject10)
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .UserApi(configuration);
+
+let body:.UserApiLoginWithOauthRequest = {
+  // string
+  clientName: "client_name_example",
+  // InlineObject10
+  inlineObject10: {
+    code: "code_example",
+    state: "state_example",
+  },
+};
+
+apiInstance.loginWithOauth(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inlineObject10** | **InlineObject10**|  |
+ **clientName** | [**string**] |  | defaults to undefined
 
 
 ### Return type

@@ -9,10 +9,10 @@ import {SecurityAuthentication} from '../auth/auth.ts';
 
 
 import { Group } from '../models/Group.ts';
-import { InlineObject16 } from '../models/InlineObject16.ts';
-import { InlineObject17 } from '../models/InlineObject17.ts';
-import { InlineObject18 } from '../models/InlineObject18.ts';
 import { InlineObject19 } from '../models/InlineObject19.ts';
+import { InlineObject20 } from '../models/InlineObject20.ts';
+import { InlineObject21 } from '../models/InlineObject21.ts';
+import { InlineObject22 } from '../models/InlineObject22.ts';
 
 /**
  * no description
@@ -23,9 +23,9 @@ export class GroupApiRequestFactory extends BaseAPIRequestFactory {
      * add user to group
      * @param workspace 
      * @param name 
-     * @param inlineObject18 
+     * @param inlineObject21 
      */
-    public async addUserToGroup(workspace: string, name: string, inlineObject18: InlineObject18, _options?: Configuration): Promise<RequestContext> {
+    public async addUserToGroup(workspace: string, name: string, inlineObject21: InlineObject21, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
@@ -40,9 +40,9 @@ export class GroupApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'inlineObject18' is not null or undefined
-        if (inlineObject18 === null || inlineObject18 === undefined) {
-            throw new RequiredError("GroupApi", "addUserToGroup", "inlineObject18");
+        // verify required parameter 'inlineObject21' is not null or undefined
+        if (inlineObject21 === null || inlineObject21 === undefined) {
+            throw new RequiredError("GroupApi", "addUserToGroup", "inlineObject21");
         }
 
 
@@ -62,7 +62,7 @@ export class GroupApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(inlineObject18, "InlineObject18", ""),
+            ObjectSerializer.serialize(inlineObject21, "InlineObject21", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -90,9 +90,9 @@ export class GroupApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * create group
      * @param workspace 
-     * @param inlineObject16 
+     * @param inlineObject19 
      */
-    public async createGroup(workspace: string, inlineObject16: InlineObject16, _options?: Configuration): Promise<RequestContext> {
+    public async createGroup(workspace: string, inlineObject19: InlineObject19, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
@@ -101,9 +101,9 @@ export class GroupApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'inlineObject16' is not null or undefined
-        if (inlineObject16 === null || inlineObject16 === undefined) {
-            throw new RequiredError("GroupApi", "createGroup", "inlineObject16");
+        // verify required parameter 'inlineObject19' is not null or undefined
+        if (inlineObject19 === null || inlineObject19 === undefined) {
+            throw new RequiredError("GroupApi", "createGroup", "inlineObject19");
         }
 
 
@@ -122,7 +122,7 @@ export class GroupApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(inlineObject16, "InlineObject16", ""),
+            ObjectSerializer.serialize(inlineObject19, "InlineObject19", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -349,9 +349,9 @@ export class GroupApiRequestFactory extends BaseAPIRequestFactory {
      * remove user to group
      * @param workspace 
      * @param name 
-     * @param inlineObject19 
+     * @param inlineObject22 
      */
-    public async removeUserToGroup(workspace: string, name: string, inlineObject19: InlineObject19, _options?: Configuration): Promise<RequestContext> {
+    public async removeUserToGroup(workspace: string, name: string, inlineObject22: InlineObject22, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
@@ -366,9 +366,9 @@ export class GroupApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'inlineObject19' is not null or undefined
-        if (inlineObject19 === null || inlineObject19 === undefined) {
-            throw new RequiredError("GroupApi", "removeUserToGroup", "inlineObject19");
+        // verify required parameter 'inlineObject22' is not null or undefined
+        if (inlineObject22 === null || inlineObject22 === undefined) {
+            throw new RequiredError("GroupApi", "removeUserToGroup", "inlineObject22");
         }
 
 
@@ -388,7 +388,7 @@ export class GroupApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(inlineObject19, "InlineObject19", ""),
+            ObjectSerializer.serialize(inlineObject22, "InlineObject22", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -417,9 +417,9 @@ export class GroupApiRequestFactory extends BaseAPIRequestFactory {
      * update group
      * @param workspace 
      * @param name 
-     * @param inlineObject17 
+     * @param inlineObject20 
      */
-    public async updateGroup(workspace: string, name: string, inlineObject17: InlineObject17, _options?: Configuration): Promise<RequestContext> {
+    public async updateGroup(workspace: string, name: string, inlineObject20: InlineObject20, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
@@ -434,9 +434,9 @@ export class GroupApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'inlineObject17' is not null or undefined
-        if (inlineObject17 === null || inlineObject17 === undefined) {
-            throw new RequiredError("GroupApi", "updateGroup", "inlineObject17");
+        // verify required parameter 'inlineObject20' is not null or undefined
+        if (inlineObject20 === null || inlineObject20 === undefined) {
+            throw new RequiredError("GroupApi", "updateGroup", "inlineObject20");
         }
 
 
@@ -456,7 +456,7 @@ export class GroupApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(inlineObject17, "InlineObject17", ""),
+            ObjectSerializer.serialize(inlineObject20, "InlineObject20", ""),
             contentType
         );
         requestContext.setBody(serializedBody);

@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **cancelQueuedJob**
-> string cancelQueuedJob(inlineObject13)
+> string cancelQueuedJob(inlineObject16)
 
 
 ### Example
@@ -38,8 +38,8 @@ let body:.JobApiCancelQueuedJobRequest = {
   workspace: "workspace_example",
   // string
   id: "id_example",
-  // InlineObject13
-  inlineObject13: {
+  // InlineObject16
+  inlineObject16: {
     reason: "reason_example",
   },
 };
@@ -54,7 +54,7 @@ apiInstance.cancelQueuedJob(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject13** | **InlineObject13**|  |
+ **inlineObject16** | **InlineObject16**|  |
  **workspace** | [**string**] |  | defaults to undefined
  **id** | [**string**] |  | defaults to undefined
 
@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **getJobUpdates**
-> InlineResponse2003 getJobUpdates()
+> InlineResponse2004 getJobUpdates()
 
 
 ### Example
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**InlineResponse2003**
+**InlineResponse2004**
 
 ### Authorization
 

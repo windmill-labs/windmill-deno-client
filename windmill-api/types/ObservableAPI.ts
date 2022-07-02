@@ -38,6 +38,9 @@ import { InlineObject19 } from '../models/InlineObject19.ts';
 import { InlineObject2 } from '../models/InlineObject2.ts';
 import { InlineObject20 } from '../models/InlineObject20.ts';
 import { InlineObject21 } from '../models/InlineObject21.ts';
+import { InlineObject22 } from '../models/InlineObject22.ts';
+import { InlineObject23 } from '../models/InlineObject23.ts';
+import { InlineObject24 } from '../models/InlineObject24.ts';
 import { InlineObject3 } from '../models/InlineObject3.ts';
 import { InlineObject4 } from '../models/InlineObject4.ts';
 import { InlineObject5 } from '../models/InlineObject5.ts';
@@ -49,6 +52,7 @@ import { InlineResponse200 } from '../models/InlineResponse200.ts';
 import { InlineResponse2001 } from '../models/InlineResponse2001.ts';
 import { InlineResponse2002 } from '../models/InlineResponse2002.ts';
 import { InlineResponse2003 } from '../models/InlineResponse2003.ts';
+import { InlineResponse2004 } from '../models/InlineResponse2004.ts';
 import { InputTransform } from '../models/InputTransform.ts';
 import { Job } from '../models/Job.ts';
 import { JobAllOf } from '../models/JobAllOf.ts';
@@ -65,6 +69,8 @@ import { Resource } from '../models/Resource.ts';
 import { ResourceType } from '../models/ResourceType.ts';
 import { Schedule } from '../models/Schedule.ts';
 import { Script } from '../models/Script.ts';
+import { SlackToken } from '../models/SlackToken.ts';
+import { SlackTokenBot } from '../models/SlackTokenBot.ts';
 import { TruncatedToken } from '../models/TruncatedToken.ts';
 import { User } from '../models/User.ts';
 import { UserWorkspaceList } from '../models/UserWorkspaceList.ts';
@@ -280,10 +286,10 @@ export class ObservableFlowApi {
     /**
      * create flow
      * @param workspace 
-     * @param inlineObject11 
+     * @param inlineObject14 
      */
-    public createFlow(workspace: string, inlineObject11: InlineObject11, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.createFlow(workspace, inlineObject11, _options);
+    public createFlow(workspace: string, inlineObject14: InlineObject14, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.createFlow(workspace, inlineObject14, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -359,10 +365,10 @@ export class ObservableFlowApi {
      * update flow
      * @param workspace 
      * @param path 
-     * @param inlineObject12 
+     * @param inlineObject15 
      */
-    public updateFlow(workspace: string, path: string, inlineObject12: InlineObject12, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.updateFlow(workspace, path, inlineObject12, _options);
+    public updateFlow(workspace: string, path: string, inlineObject15: InlineObject15, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.updateFlow(workspace, path, inlineObject15, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -403,10 +409,10 @@ export class ObservableGranularAclApi {
      * @param workspace 
      * @param path 
      * @param kind 
-     * @param inlineObject20 
+     * @param inlineObject23 
      */
-    public addGranularAcls(workspace: string, path: string, kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow', inlineObject20: InlineObject20, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.addGranularAcls(workspace, path, kind, inlineObject20, _options);
+    public addGranularAcls(workspace: string, path: string, kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow', inlineObject23: InlineObject23, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.addGranularAcls(workspace, path, kind, inlineObject23, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -454,10 +460,10 @@ export class ObservableGranularAclApi {
      * @param workspace 
      * @param path 
      * @param kind 
-     * @param inlineObject21 
+     * @param inlineObject24 
      */
-    public removeGranularAcls(workspace: string, path: string, kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow', inlineObject21: InlineObject21, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.removeGranularAcls(workspace, path, kind, inlineObject21, _options);
+    public removeGranularAcls(workspace: string, path: string, kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow', inlineObject24: InlineObject24, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.removeGranularAcls(workspace, path, kind, inlineObject24, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -497,10 +503,10 @@ export class ObservableGroupApi {
      * add user to group
      * @param workspace 
      * @param name 
-     * @param inlineObject18 
+     * @param inlineObject21 
      */
-    public addUserToGroup(workspace: string, name: string, inlineObject18: InlineObject18, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.addUserToGroup(workspace, name, inlineObject18, _options);
+    public addUserToGroup(workspace: string, name: string, inlineObject21: InlineObject21, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.addUserToGroup(workspace, name, inlineObject21, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -521,10 +527,10 @@ export class ObservableGroupApi {
     /**
      * create group
      * @param workspace 
-     * @param inlineObject16 
+     * @param inlineObject19 
      */
-    public createGroup(workspace: string, inlineObject16: InlineObject16, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.createGroup(workspace, inlineObject16, _options);
+    public createGroup(workspace: string, inlineObject19: InlineObject19, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.createGroup(workspace, inlineObject19, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -642,10 +648,10 @@ export class ObservableGroupApi {
      * remove user to group
      * @param workspace 
      * @param name 
-     * @param inlineObject19 
+     * @param inlineObject22 
      */
-    public removeUserToGroup(workspace: string, name: string, inlineObject19: InlineObject19, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.removeUserToGroup(workspace, name, inlineObject19, _options);
+    public removeUserToGroup(workspace: string, name: string, inlineObject22: InlineObject22, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.removeUserToGroup(workspace, name, inlineObject22, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -667,10 +673,10 @@ export class ObservableGroupApi {
      * update group
      * @param workspace 
      * @param name 
-     * @param inlineObject17 
+     * @param inlineObject20 
      */
-    public updateGroup(workspace: string, name: string, inlineObject17: InlineObject17, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.updateGroup(workspace, name, inlineObject17, _options);
+    public updateGroup(workspace: string, name: string, inlineObject20: InlineObject20, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.updateGroup(workspace, name, inlineObject20, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -710,10 +716,10 @@ export class ObservableJobApi {
      * cancel queued job
      * @param workspace 
      * @param id 
-     * @param inlineObject13 
+     * @param inlineObject16 
      */
-    public cancelQueuedJob(workspace: string, id: string, inlineObject13: InlineObject13, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.cancelQueuedJob(workspace, id, inlineObject13, _options);
+    public cancelQueuedJob(workspace: string, id: string, inlineObject16: InlineObject16, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.cancelQueuedJob(workspace, id, inlineObject16, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -810,7 +816,7 @@ export class ObservableJobApi {
      * @param running 
      * @param logOffset 
      */
-    public getJobUpdates(workspace: string, id: string, running?: boolean, logOffset?: number, _options?: Configuration): Observable<InlineResponse2003> {
+    public getJobUpdates(workspace: string, id: string, running?: boolean, logOffset?: number, _options?: Configuration): Observable<InlineResponse2004> {
         const requestContextPromise = this.requestFactory.getJobUpdates(workspace, id, running, logOffset, _options);
 
         // build promise chain
@@ -1056,6 +1062,186 @@ export class ObservableJobApi {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.runScriptPreview(rsp)));
+            }));
+    }
+
+}
+
+import { OauthApiRequestFactory, OauthApiResponseProcessor} from "../apis/OauthApi.ts";
+export class ObservableOauthApi {
+    private requestFactory: OauthApiRequestFactory;
+    private responseProcessor: OauthApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: OauthApiRequestFactory,
+        responseProcessor?: OauthApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new OauthApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new OauthApiResponseProcessor();
+    }
+
+    /**
+     * connect callback
+     * @param clientName 
+     * @param inlineObject12 
+     */
+    public connectCallback(clientName: string, inlineObject12: InlineObject12, _options?: Configuration): Observable<InlineResponse2001> {
+        const requestContextPromise = this.requestFactory.connectCallback(clientName, inlineObject12, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.connectCallback(rsp)));
+            }));
+    }
+
+    /**
+     * connect slack callback
+     * @param inlineObject11 
+     */
+    public connectSlackCallback(inlineObject11: InlineObject11, _options?: Configuration): Observable<SlackToken> {
+        const requestContextPromise = this.requestFactory.connectSlackCallback(inlineObject11, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.connectSlackCallback(rsp)));
+            }));
+    }
+
+    /**
+     * disconnect account
+     * @param workspace 
+     * @param account 
+     */
+    public disconnectAccount(workspace: string, account: string, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.disconnectAccount(workspace, account, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.disconnectAccount(rsp)));
+            }));
+    }
+
+    /**
+     * disconnect slack
+     * @param workspace 
+     */
+    public disconnectSlack(workspace: string, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.disconnectSlack(workspace, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.disconnectSlack(rsp)));
+            }));
+    }
+
+    /**
+     * list oauth connects
+     */
+    public listOAuthConnects(_options?: Configuration): Observable<{ [key: string]: Array<string>; }> {
+        const requestContextPromise = this.requestFactory.listOAuthConnects(_options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listOAuthConnects(rsp)));
+            }));
+    }
+
+    /**
+     * list oauth logins
+     */
+    public listOAuthLogins(_options?: Configuration): Observable<Array<string>> {
+        const requestContextPromise = this.requestFactory.listOAuthLogins(_options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listOAuthLogins(rsp)));
+            }));
+    }
+
+    /**
+     * set workspace's slack
+     * @param workspace 
+     * @param slackToken 
+     */
+    public setWorkspaceSlack(workspace: string, slackToken: SlackToken, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.setWorkspaceSlack(workspace, slackToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.setWorkspaceSlack(rsp)));
             }));
     }
 
@@ -1436,10 +1622,10 @@ export class ObservableScheduleApi {
 
     /**
      * preview schedule
-     * @param inlineObject14 
+     * @param inlineObject17 
      */
-    public previewSchedule(inlineObject14: InlineObject14, _options?: Configuration): Observable<Array<Date>> {
-        const requestContextPromise = this.requestFactory.previewSchedule(inlineObject14, _options);
+    public previewSchedule(inlineObject17: InlineObject17, _options?: Configuration): Observable<Array<Date>> {
+        const requestContextPromise = this.requestFactory.previewSchedule(inlineObject17, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -1461,10 +1647,10 @@ export class ObservableScheduleApi {
      * set enabled schedule
      * @param workspace 
      * @param path 
-     * @param inlineObject15 
+     * @param inlineObject18 
      */
-    public setScheduleEnabled(workspace: string, path: string, inlineObject15: InlineObject15, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.setScheduleEnabled(workspace, path, inlineObject15, _options);
+    public setScheduleEnabled(workspace: string, path: string, inlineObject18: InlineObject18, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.setScheduleEnabled(workspace, path, inlineObject18, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -1576,10 +1762,10 @@ export class ObservableScriptApi {
     /**
      * create script
      * @param workspace 
-     * @param inlineObject10 
+     * @param inlineObject13 
      */
-    public createScript(workspace: string, inlineObject10: InlineObject10, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.createScript(workspace, inlineObject10, _options);
+    public createScript(workspace: string, inlineObject13: InlineObject13, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.createScript(workspace, inlineObject13, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -1720,7 +1906,7 @@ export class ObservableScriptApi {
      * @param workspace 
      * @param hash 
      */
-    public getScriptDeploymentStatus(workspace: string, hash: string, _options?: Configuration): Observable<InlineResponse2002> {
+    public getScriptDeploymentStatus(workspace: string, hash: string, _options?: Configuration): Observable<InlineResponse2003> {
         const requestContextPromise = this.requestFactory.getScriptDeploymentStatus(workspace, hash, _options);
 
         // build promise chain
@@ -1742,7 +1928,7 @@ export class ObservableScriptApi {
     /**
      * list all available hub scripts
      */
-    public listHubScripts(_options?: Configuration): Observable<Array<InlineResponse2001>> {
+    public listHubScripts(_options?: Configuration): Observable<Array<InlineResponse2002>> {
         const requestContextPromise = this.requestFactory.listHubScripts(_options);
 
         // build promise chain
@@ -2268,7 +2454,7 @@ export class ObservableUserApi {
 
     /**
      * login with password
-     * @param login Partially filled script
+     * @param login credentials
      */
     public login(login: Login, _options?: Configuration): Observable<string> {
         const requestContextPromise = this.requestFactory.login(login, _options);
@@ -2286,6 +2472,30 @@ export class ObservableUserApi {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.login(rsp)));
+            }));
+    }
+
+    /**
+     * login with oauth authorization flow
+     * @param clientName 
+     * @param inlineObject10 
+     */
+    public loginWithOauth(clientName: string, inlineObject10: InlineObject10, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.loginWithOauth(clientName, inlineObject10, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.loginWithOauth(rsp)));
             }));
     }
 
@@ -2695,30 +2905,6 @@ export class ObservableWorkspaceApi {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteWorkspace(rsp)));
-            }));
-    }
-
-    /**
-     * disconnect client
-     * @param workspace 
-     * @param clientName 
-     */
-    public disconnectClient(workspace: string, clientName: string, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.disconnectClient(workspace, clientName, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (let middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (let middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.disconnectClient(rsp)));
             }));
     }
 

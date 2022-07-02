@@ -8,9 +8,9 @@ import {canConsumeForm, isCodeInRange} from '../util.ts';
 import {SecurityAuthentication} from '../auth/auth.ts';
 
 
-import { InlineObject10 } from '../models/InlineObject10.ts';
-import { InlineResponse2001 } from '../models/InlineResponse2001.ts';
+import { InlineObject13 } from '../models/InlineObject13.ts';
 import { InlineResponse2002 } from '../models/InlineResponse2002.ts';
+import { InlineResponse2003 } from '../models/InlineResponse2003.ts';
 import { MainArgSignature } from '../models/MainArgSignature.ts';
 import { Script } from '../models/Script.ts';
 
@@ -122,9 +122,9 @@ export class ScriptApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * create script
      * @param workspace 
-     * @param inlineObject10 
+     * @param inlineObject13 
      */
-    public async createScript(workspace: string, inlineObject10: InlineObject10, _options?: Configuration): Promise<RequestContext> {
+    public async createScript(workspace: string, inlineObject13: InlineObject13, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
@@ -133,9 +133,9 @@ export class ScriptApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'inlineObject10' is not null or undefined
-        if (inlineObject10 === null || inlineObject10 === undefined) {
-            throw new RequiredError("ScriptApi", "createScript", "inlineObject10");
+        // verify required parameter 'inlineObject13' is not null or undefined
+        if (inlineObject13 === null || inlineObject13 === undefined) {
+            throw new RequiredError("ScriptApi", "createScript", "inlineObject13");
         }
 
 
@@ -154,7 +154,7 @@ export class ScriptApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(inlineObject10, "InlineObject10", ""),
+            ObjectSerializer.serialize(inlineObject13, "InlineObject13", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -921,22 +921,22 @@ export class ScriptApiResponseProcessor {
      * @params response Response returned by the server for a request to getScriptDeploymentStatus
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getScriptDeploymentStatus(response: ResponseContext): Promise<InlineResponse2002 > {
+     public async getScriptDeploymentStatus(response: ResponseContext): Promise<InlineResponse2003 > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: InlineResponse2002 = ObjectSerializer.deserialize(
+            const body: InlineResponse2003 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "InlineResponse2002", ""
-            ) as InlineResponse2002;
+                "InlineResponse2003", ""
+            ) as InlineResponse2003;
             return body;
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: InlineResponse2002 = ObjectSerializer.deserialize(
+            const body: InlineResponse2003 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "InlineResponse2002", ""
-            ) as InlineResponse2002;
+                "InlineResponse2003", ""
+            ) as InlineResponse2003;
             return body;
         }
 
@@ -950,22 +950,22 @@ export class ScriptApiResponseProcessor {
      * @params response Response returned by the server for a request to listHubScripts
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listHubScripts(response: ResponseContext): Promise<Array<InlineResponse2001> > {
+     public async listHubScripts(response: ResponseContext): Promise<Array<InlineResponse2002> > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Array<InlineResponse2001> = ObjectSerializer.deserialize(
+            const body: Array<InlineResponse2002> = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Array<InlineResponse2001>", ""
-            ) as Array<InlineResponse2001>;
+                "Array<InlineResponse2002>", ""
+            ) as Array<InlineResponse2002>;
             return body;
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Array<InlineResponse2001> = ObjectSerializer.deserialize(
+            const body: Array<InlineResponse2002> = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Array<InlineResponse2001>", ""
-            ) as Array<InlineResponse2001>;
+                "Array<InlineResponse2002>", ""
+            ) as Array<InlineResponse2002>;
             return body;
         }
 

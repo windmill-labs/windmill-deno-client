@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **previewSchedule**
-> Array<Date> previewSchedule(inlineObject14)
+> Array<Date> previewSchedule(inlineObject17)
 
 
 ### Example
@@ -207,8 +207,8 @@ const configuration = .createConfiguration();
 const apiInstance = new .ScheduleApi(configuration);
 
 let body:.ScheduleApiPreviewScheduleRequest = {
-  // InlineObject14
-  inlineObject14: {
+  // InlineObject17
+  inlineObject17: {
     schedule: "schedule_example",
     offset: 1,
   },
@@ -224,7 +224,7 @@ apiInstance.previewSchedule(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject14** | **InlineObject14**|  |
+ **inlineObject17** | **InlineObject17**|  |
 
 
 ### Return type
@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **setScheduleEnabled**
-> string setScheduleEnabled(inlineObject15)
+> string setScheduleEnabled(inlineObject18)
 
 
 ### Example
@@ -267,8 +267,8 @@ let body:.ScheduleApiSetScheduleEnabledRequest = {
   workspace: "workspace_example",
   // string
   path: "path_example",
-  // InlineObject15
-  inlineObject15: {
+  // InlineObject18
+  inlineObject18: {
     enabled: true,
   },
 };
@@ -283,7 +283,7 @@ apiInstance.setScheduleEnabled(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject15** | **InlineObject15**|  |
+ **inlineObject18** | **InlineObject18**|  |
  **workspace** | [**string**] |  | defaults to undefined
  **path** | [**string**] |  | defaults to undefined
 

@@ -8,88 +8,39 @@ import {canConsumeForm, isCodeInRange} from '../util.ts';
 import {SecurityAuthentication} from '../auth/auth.ts';
 
 
-import { Flow } from '../models/Flow.ts';
-import { InlineObject14 } from '../models/InlineObject14.ts';
-import { InlineObject15 } from '../models/InlineObject15.ts';
+import { InlineObject11 } from '../models/InlineObject11.ts';
+import { InlineObject12 } from '../models/InlineObject12.ts';
+import { InlineResponse2001 } from '../models/InlineResponse2001.ts';
+import { SlackToken } from '../models/SlackToken.ts';
 
 /**
  * no description
  */
-export class FlowApiRequestFactory extends BaseAPIRequestFactory {
+export class OauthApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * archive flow by path
-     * @param workspace 
-     * @param path 
+     * connect callback
+     * @param clientName 
+     * @param inlineObject12 
      */
-    public async archiveFlowByPath(workspace: string, path: string, _options?: Configuration): Promise<RequestContext> {
+    public async connectCallback(clientName: string, inlineObject12: InlineObject12, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
-        // verify required parameter 'workspace' is not null or undefined
-        if (workspace === null || workspace === undefined) {
-            throw new RequiredError("FlowApi", "archiveFlowByPath", "workspace");
+        // verify required parameter 'clientName' is not null or undefined
+        if (clientName === null || clientName === undefined) {
+            throw new RequiredError("OauthApi", "connectCallback", "clientName");
         }
 
 
-        // verify required parameter 'path' is not null or undefined
-        if (path === null || path === undefined) {
-            throw new RequiredError("FlowApi", "archiveFlowByPath", "path");
+        // verify required parameter 'inlineObject12' is not null or undefined
+        if (inlineObject12 === null || inlineObject12 === undefined) {
+            throw new RequiredError("OauthApi", "connectCallback", "inlineObject12");
         }
 
 
         // Path Params
-        const localVarPath = '/w/{workspace}/flows/archive/{path}'
-            .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)))
-            .replace('{' + 'path' + '}', encodeURIComponent(String(path)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["cookieAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * create flow
-     * @param workspace 
-     * @param inlineObject14 
-     */
-    public async createFlow(workspace: string, inlineObject14: InlineObject14, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'workspace' is not null or undefined
-        if (workspace === null || workspace === undefined) {
-            throw new RequiredError("FlowApi", "createFlow", "workspace");
-        }
-
-
-        // verify required parameter 'inlineObject14' is not null or undefined
-        if (inlineObject14 === null || inlineObject14 === undefined) {
-            throw new RequiredError("FlowApi", "createFlow", "inlineObject14");
-        }
-
-
-        // Path Params
-        const localVarPath = '/w/{workspace}/flows/create'
-            .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)));
+        const localVarPath = '/oauth/connect_callback/{client_name}'
+            .replace('{' + 'client_name' + '}', encodeURIComponent(String(clientName)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
@@ -102,7 +53,7 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(inlineObject14, "InlineObject14", ""),
+            ObjectSerializer.serialize(inlineObject12, "InlineObject12", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -128,177 +79,20 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * get flow by path
-     * @param workspace 
-     * @param path 
+     * connect slack callback
+     * @param inlineObject11 
      */
-    public async getFlowByPath(workspace: string, path: string, _options?: Configuration): Promise<RequestContext> {
+    public async connectSlackCallback(inlineObject11: InlineObject11, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
-        // verify required parameter 'workspace' is not null or undefined
-        if (workspace === null || workspace === undefined) {
-            throw new RequiredError("FlowApi", "getFlowByPath", "workspace");
-        }
-
-
-        // verify required parameter 'path' is not null or undefined
-        if (path === null || path === undefined) {
-            throw new RequiredError("FlowApi", "getFlowByPath", "path");
+        // verify required parameter 'inlineObject11' is not null or undefined
+        if (inlineObject11 === null || inlineObject11 === undefined) {
+            throw new RequiredError("OauthApi", "connectSlackCallback", "inlineObject11");
         }
 
 
         // Path Params
-        const localVarPath = '/w/{workspace}/flows/get/{path}'
-            .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)))
-            .replace('{' + 'path' + '}', encodeURIComponent(String(path)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["cookieAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * list all available flows
-     * @param workspace 
-     * @param page which page to return (start at 1, default 1)
-     * @param perPage number of items to return for a given page (default 30, max 100)
-     * @param orderDesc order by desc order (default true)
-     * @param createdBy mask to filter exact matching user creator
-     * @param pathStart mask to filter matching starting parh
-     * @param pathExact mask to filter exact matching path
-     * @param showArchived (default false) show also the archived files. when multiple archived hash share the same path, only the ones with the latest create_at are displayed. 
-     */
-    public async listFlows(workspace: string, page?: number, perPage?: number, orderDesc?: boolean, createdBy?: string, pathStart?: string, pathExact?: string, showArchived?: boolean, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'workspace' is not null or undefined
-        if (workspace === null || workspace === undefined) {
-            throw new RequiredError("FlowApi", "listFlows", "workspace");
-        }
-
-
-
-
-
-
-
-
-
-        // Path Params
-        const localVarPath = '/w/{workspace}/flows/list'
-            .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (page !== undefined) {
-            requestContext.setQueryParam("page", ObjectSerializer.serialize(page, "number", "int32"));
-        }
-
-        // Query Params
-        if (perPage !== undefined) {
-            requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", "int32"));
-        }
-
-        // Query Params
-        if (orderDesc !== undefined) {
-            requestContext.setQueryParam("order_desc", ObjectSerializer.serialize(orderDesc, "boolean", ""));
-        }
-
-        // Query Params
-        if (createdBy !== undefined) {
-            requestContext.setQueryParam("created_by", ObjectSerializer.serialize(createdBy, "string", ""));
-        }
-
-        // Query Params
-        if (pathStart !== undefined) {
-            requestContext.setQueryParam("path_start", ObjectSerializer.serialize(pathStart, "string", ""));
-        }
-
-        // Query Params
-        if (pathExact !== undefined) {
-            requestContext.setQueryParam("path_exact", ObjectSerializer.serialize(pathExact, "string", ""));
-        }
-
-        // Query Params
-        if (showArchived !== undefined) {
-            requestContext.setQueryParam("show_archived", ObjectSerializer.serialize(showArchived, "boolean", ""));
-        }
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["cookieAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * update flow
-     * @param workspace 
-     * @param path 
-     * @param inlineObject15 
-     */
-    public async updateFlow(workspace: string, path: string, inlineObject15: InlineObject15, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'workspace' is not null or undefined
-        if (workspace === null || workspace === undefined) {
-            throw new RequiredError("FlowApi", "updateFlow", "workspace");
-        }
-
-
-        // verify required parameter 'path' is not null or undefined
-        if (path === null || path === undefined) {
-            throw new RequiredError("FlowApi", "updateFlow", "path");
-        }
-
-
-        // verify required parameter 'inlineObject15' is not null or undefined
-        if (inlineObject15 === null || inlineObject15 === undefined) {
-            throw new RequiredError("FlowApi", "updateFlow", "inlineObject15");
-        }
-
-
-        // Path Params
-        const localVarPath = '/w/{workspace}/flows/update/{path}'
-            .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)))
-            .replace('{' + 'path' + '}', encodeURIComponent(String(path)));
+        const localVarPath = '/oauth/connect_slack_callback';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
@@ -311,7 +105,227 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(inlineObject15, "InlineObject15", ""),
+            ObjectSerializer.serialize(inlineObject11, "InlineObject11", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["cookieAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * disconnect account
+     * @param workspace 
+     * @param account 
+     */
+    public async disconnectAccount(workspace: string, account: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'workspace' is not null or undefined
+        if (workspace === null || workspace === undefined) {
+            throw new RequiredError("OauthApi", "disconnectAccount", "workspace");
+        }
+
+
+        // verify required parameter 'account' is not null or undefined
+        if (account === null || account === undefined) {
+            throw new RequiredError("OauthApi", "disconnectAccount", "account");
+        }
+
+
+        // Path Params
+        const localVarPath = '/w/{workspace}/oauth/disconnect/{account_id}'
+            .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)))
+            .replace('{' + 'account' + '}', encodeURIComponent(String(account)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["cookieAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * disconnect slack
+     * @param workspace 
+     */
+    public async disconnectSlack(workspace: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'workspace' is not null or undefined
+        if (workspace === null || workspace === undefined) {
+            throw new RequiredError("OauthApi", "disconnectSlack", "workspace");
+        }
+
+
+        // Path Params
+        const localVarPath = '/w/{workspace}/oauth/disconnect_slack'
+            .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["cookieAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * list oauth connects
+     */
+    public async listOAuthConnects(_options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // Path Params
+        const localVarPath = '/oauth/list_connects';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["cookieAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * list oauth logins
+     */
+    public async listOAuthLogins(_options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // Path Params
+        const localVarPath = '/oauth/list_logins';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["cookieAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * set workspace's slack
+     * @param workspace 
+     * @param slackToken 
+     */
+    public async setWorkspaceSlack(workspace: string, slackToken: SlackToken, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'workspace' is not null or undefined
+        if (workspace === null || workspace === undefined) {
+            throw new RequiredError("OauthApi", "setWorkspaceSlack", "workspace");
+        }
+
+
+        // verify required parameter 'slackToken' is not null or undefined
+        if (slackToken === null || slackToken === undefined) {
+            throw new RequiredError("OauthApi", "setWorkspaceSlack", "slackToken");
+        }
+
+
+        // Path Params
+        const localVarPath = '/w/{workspace}/oauth/set_workspace_slack'
+            .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(slackToken, "SlackToken", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -338,16 +352,74 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
 
 }
 
-export class FlowApiResponseProcessor {
+export class OauthApiResponseProcessor {
 
     /**
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to archiveFlowByPath
+     * @params response Response returned by the server for a request to connectCallback
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async archiveFlowByPath(response: ResponseContext): Promise<string > {
+     public async connectCallback(response: ResponseContext): Promise<InlineResponse2001 > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: InlineResponse2001 = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "InlineResponse2001", ""
+            ) as InlineResponse2001;
+            return body;
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: InlineResponse2001 = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "InlineResponse2001", ""
+            ) as InlineResponse2001;
+            return body;
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to connectSlackCallback
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async connectSlackCallback(response: ResponseContext): Promise<SlackToken > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: SlackToken = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SlackToken", ""
+            ) as SlackToken;
+            return body;
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: SlackToken = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SlackToken", ""
+            ) as SlackToken;
+            return body;
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to disconnectAccount
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async disconnectAccount(response: ResponseContext): Promise<string > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: string = ObjectSerializer.deserialize(
@@ -373,12 +445,12 @@ export class FlowApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to createFlow
+     * @params response Response returned by the server for a request to disconnectSlack
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createFlow(response: ResponseContext): Promise<string > {
+     public async disconnectSlack(response: ResponseContext): Promise<string > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("201", response.httpStatusCode)) {
+        if (isCodeInRange("200", response.httpStatusCode)) {
             const body: string = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "string", ""
@@ -402,25 +474,25 @@ export class FlowApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getFlowByPath
+     * @params response Response returned by the server for a request to listOAuthConnects
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getFlowByPath(response: ResponseContext): Promise<Flow > {
+     public async listOAuthConnects(response: ResponseContext): Promise<{ [key: string]: Array<string>; } > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Flow = ObjectSerializer.deserialize(
+            const body: { [key: string]: Array<string>; } = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Flow", ""
-            ) as Flow;
+                "{ [key: string]: Array<string>; }", ""
+            ) as { [key: string]: Array<string>; };
             return body;
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Flow = ObjectSerializer.deserialize(
+            const body: { [key: string]: Array<string>; } = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Flow", ""
-            ) as Flow;
+                "{ [key: string]: Array<string>; }", ""
+            ) as { [key: string]: Array<string>; };
             return body;
         }
 
@@ -431,25 +503,25 @@ export class FlowApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listFlows
+     * @params response Response returned by the server for a request to listOAuthLogins
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listFlows(response: ResponseContext): Promise<Array<Flow> > {
+     public async listOAuthLogins(response: ResponseContext): Promise<Array<string> > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Array<Flow> = ObjectSerializer.deserialize(
+            const body: Array<string> = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Array<Flow>", ""
-            ) as Array<Flow>;
+                "Array<string>", ""
+            ) as Array<string>;
             return body;
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Array<Flow> = ObjectSerializer.deserialize(
+            const body: Array<string> = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Array<Flow>", ""
-            ) as Array<Flow>;
+                "Array<string>", ""
+            ) as Array<string>;
             return body;
         }
 
@@ -460,10 +532,10 @@ export class FlowApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateFlow
+     * @params response Response returned by the server for a request to setWorkspaceSlack
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateFlow(response: ResponseContext): Promise<string > {
+     public async setWorkspaceSlack(response: ResponseContext): Promise<string > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: string = ObjectSerializer.deserialize(

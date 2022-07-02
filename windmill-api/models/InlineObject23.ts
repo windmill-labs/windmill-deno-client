@@ -12,27 +12,13 @@
 
 import { HttpFile } from '../http/http.ts';
 
-export class Workspace {
-    'id': string;
-    'name': string;
+export class InlineObject23 {
     'owner': string;
-    'domain'?: string;
+    'write'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "id",
-            "baseName": "id",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "name",
-            "baseName": "name",
-            "type": "string",
-            "format": ""
-        },
         {
             "name": "owner",
             "baseName": "owner",
@@ -40,14 +26,14 @@ export class Workspace {
             "format": ""
         },
         {
-            "name": "domain",
-            "baseName": "domain",
-            "type": "string",
+            "name": "write",
+            "baseName": "write",
+            "type": "boolean",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return Workspace.attributeTypeMap;
+        return InlineObject23.attributeTypeMap;
     }
 
     public constructor() {

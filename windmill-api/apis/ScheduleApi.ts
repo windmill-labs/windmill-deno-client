@@ -9,8 +9,8 @@ import {SecurityAuthentication} from '../auth/auth.ts';
 
 
 import { EditSchedule } from '../models/EditSchedule.ts';
-import { InlineObject14 } from '../models/InlineObject14.ts';
-import { InlineObject15 } from '../models/InlineObject15.ts';
+import { InlineObject17 } from '../models/InlineObject17.ts';
+import { InlineObject18 } from '../models/InlineObject18.ts';
 import { NewSchedule } from '../models/NewSchedule.ts';
 import { Schedule } from '../models/Schedule.ts';
 
@@ -187,14 +187,14 @@ export class ScheduleApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
      * preview schedule
-     * @param inlineObject14 
+     * @param inlineObject17 
      */
-    public async previewSchedule(inlineObject14: InlineObject14, _options?: Configuration): Promise<RequestContext> {
+    public async previewSchedule(inlineObject17: InlineObject17, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
-        // verify required parameter 'inlineObject14' is not null or undefined
-        if (inlineObject14 === null || inlineObject14 === undefined) {
-            throw new RequiredError("ScheduleApi", "previewSchedule", "inlineObject14");
+        // verify required parameter 'inlineObject17' is not null or undefined
+        if (inlineObject17 === null || inlineObject17 === undefined) {
+            throw new RequiredError("ScheduleApi", "previewSchedule", "inlineObject17");
         }
 
 
@@ -212,7 +212,7 @@ export class ScheduleApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(inlineObject14, "InlineObject14", ""),
+            ObjectSerializer.serialize(inlineObject17, "InlineObject17", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -241,9 +241,9 @@ export class ScheduleApiRequestFactory extends BaseAPIRequestFactory {
      * set enabled schedule
      * @param workspace 
      * @param path 
-     * @param inlineObject15 
+     * @param inlineObject18 
      */
-    public async setScheduleEnabled(workspace: string, path: string, inlineObject15: InlineObject15, _options?: Configuration): Promise<RequestContext> {
+    public async setScheduleEnabled(workspace: string, path: string, inlineObject18: InlineObject18, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
@@ -258,9 +258,9 @@ export class ScheduleApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'inlineObject15' is not null or undefined
-        if (inlineObject15 === null || inlineObject15 === undefined) {
-            throw new RequiredError("ScheduleApi", "setScheduleEnabled", "inlineObject15");
+        // verify required parameter 'inlineObject18' is not null or undefined
+        if (inlineObject18 === null || inlineObject18 === undefined) {
+            throw new RequiredError("ScheduleApi", "setScheduleEnabled", "inlineObject18");
         }
 
 
@@ -280,7 +280,7 @@ export class ScheduleApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(inlineObject15, "InlineObject15", ""),
+            ObjectSerializer.serialize(inlineObject18, "InlineObject18", ""),
             contentType
         );
         requestContext.setBody(serializedBody);

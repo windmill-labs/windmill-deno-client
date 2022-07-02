@@ -6,6 +6,7 @@ FlowApi.md
 GranularAclApi.md
 GroupApi.md
 JobApi.md
+OauthApi.md
 ResourceApi.md
 ScheduleApi.md
 ScriptApi.md
@@ -20,6 +21,7 @@ apis/FlowApi.ts
 apis/GranularAclApi.ts
 apis/GroupApi.ts
 apis/JobApi.ts
+apis/OauthApi.ts
 apis/ResourceApi.ts
 apis/ScheduleApi.ts
 apis/ScriptApi.ts
@@ -72,6 +74,9 @@ models/InlineObject19.ts
 models/InlineObject2.ts
 models/InlineObject20.ts
 models/InlineObject21.ts
+models/InlineObject22.ts
+models/InlineObject23.ts
+models/InlineObject24.ts
 models/InlineObject3.ts
 models/InlineObject4.ts
 models/InlineObject5.ts
@@ -83,6 +88,7 @@ models/InlineResponse200.ts
 models/InlineResponse2001.ts
 models/InlineResponse2002.ts
 models/InlineResponse2003.ts
+models/InlineResponse2004.ts
 models/InputTransform.ts
 models/Job.ts
 models/JobAllOf.ts
@@ -100,6 +106,8 @@ models/Resource.ts
 models/ResourceType.ts
 models/Schedule.ts
 models/Script.ts
+models/SlackToken.ts
+models/SlackTokenBot.ts
 models/TruncatedToken.ts
 models/User.ts
 models/UserWorkspaceList.ts

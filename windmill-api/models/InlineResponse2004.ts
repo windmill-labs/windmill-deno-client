@@ -12,42 +12,35 @@
 
 import { HttpFile } from '../http/http.ts';
 
-export class Workspace {
-    'id': string;
-    'name': string;
-    'owner': string;
-    'domain'?: string;
+export class InlineResponse2004 {
+    'running'?: boolean;
+    'completed'?: boolean;
+    'newLogs'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "string",
+            "name": "running",
+            "baseName": "running",
+            "type": "boolean",
             "format": ""
         },
         {
-            "name": "name",
-            "baseName": "name",
-            "type": "string",
+            "name": "completed",
+            "baseName": "completed",
+            "type": "boolean",
             "format": ""
         },
         {
-            "name": "owner",
-            "baseName": "owner",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "domain",
-            "baseName": "domain",
+            "name": "newLogs",
+            "baseName": "new_logs",
             "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return Workspace.attributeTypeMap;
+        return InlineResponse2004.attributeTypeMap;
     }
 
     public constructor() {
