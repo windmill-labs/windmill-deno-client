@@ -658,6 +658,8 @@ let body:.JobApiRunFlowPreviewRequest = {
           },
           value: {
             path: "path_example",
+            content: "content_example",
+            language: "deno",
             type: "script",
           },
         },
@@ -673,6 +675,8 @@ let body:.JobApiRunFlowPreviewRequest = {
         },
         value: {
           path: "path_example",
+          content: "content_example",
+          language: "deno",
           type: "script",
         },
       },

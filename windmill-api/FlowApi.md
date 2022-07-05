@@ -102,6 +102,8 @@ let body:.FlowApiCreateFlowRequest = {
           },
           value: {
             path: "path_example",
+            content: "content_example",
+            language: "deno",
             type: "script",
           },
         },
@@ -117,6 +119,8 @@ let body:.FlowApiCreateFlowRequest = {
         },
         value: {
           path: "path_example",
+          content: "content_example",
+          language: "deno",
           type: "script",
         },
       },
@@ -327,6 +331,8 @@ let body:.FlowApiUpdateFlowRequest = {
           },
           value: {
             path: "path_example",
+            content: "content_example",
+            language: "deno",
             type: "script",
           },
         },
@@ -342,6 +348,8 @@ let body:.FlowApiUpdateFlowRequest = {
         },
         value: {
           path: "path_example",
+          content: "content_example",
+          language: "deno",
           type: "script",
         },
       },
