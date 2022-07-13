@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **createScript**
-> string createScript(inlineObject13)
+> string createScript(inlineObject15)
 
 
 ### Example
@@ -147,8 +147,8 @@ const apiInstance = new .ScriptApi(configuration);
 let body:.ScriptApiCreateScriptRequest = {
   // string
   workspace: "workspace_example",
-  // InlineObject13
-  inlineObject13: {
+  // InlineObject15
+  inlineObject15: {
     path: "path_example",
     parentHash: "parentHash_example",
     summary: "summary_example",
@@ -173,7 +173,7 @@ apiInstance.createScript(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject13** | **InlineObject13**|  |
+ **inlineObject15** | **InlineObject15**|  |
  **workspace** | [**string**] |  | defaults to undefined
 
 
@@ -473,7 +473,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **getScriptDeploymentStatus**
-> InlineResponse2003 getScriptDeploymentStatus()
+> InlineResponse2002 getScriptDeploymentStatus()
 
 
 ### Example
@@ -509,7 +509,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**InlineResponse2003**
+**InlineResponse2002**
 
 ### Authorization
 
@@ -529,7 +529,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **listHubScripts**
-> Array<InlineResponse2002> listHubScripts()
+> Array<InlineResponse2001> listHubScripts()
 
 
 ### Example
@@ -556,7 +556,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**Array<InlineResponse2002>**
+**Array<InlineResponse2001>**
 
 ### Authorization
 

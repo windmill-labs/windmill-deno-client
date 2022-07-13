@@ -9,8 +9,8 @@ import {SecurityAuthentication} from '../auth/auth.ts';
 
 
 import { Flow } from '../models/Flow.ts';
-import { InlineObject14 } from '../models/InlineObject14.ts';
-import { InlineObject15 } from '../models/InlineObject15.ts';
+import { InlineObject16 } from '../models/InlineObject16.ts';
+import { InlineObject17 } from '../models/InlineObject17.ts';
 
 /**
  * no description
@@ -70,9 +70,9 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * create flow
      * @param workspace 
-     * @param inlineObject14 
+     * @param inlineObject16 
      */
-    public async createFlow(workspace: string, inlineObject14: InlineObject14, _options?: Configuration): Promise<RequestContext> {
+    public async createFlow(workspace: string, inlineObject16: InlineObject16, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
@@ -81,9 +81,9 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'inlineObject14' is not null or undefined
-        if (inlineObject14 === null || inlineObject14 === undefined) {
-            throw new RequiredError("FlowApi", "createFlow", "inlineObject14");
+        // verify required parameter 'inlineObject16' is not null or undefined
+        if (inlineObject16 === null || inlineObject16 === undefined) {
+            throw new RequiredError("FlowApi", "createFlow", "inlineObject16");
         }
 
 
@@ -102,7 +102,7 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(inlineObject14, "InlineObject14", ""),
+            ObjectSerializer.serialize(inlineObject16, "InlineObject16", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -272,9 +272,9 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
      * update flow
      * @param workspace 
      * @param path 
-     * @param inlineObject15 
+     * @param inlineObject17 
      */
-    public async updateFlow(workspace: string, path: string, inlineObject15: InlineObject15, _options?: Configuration): Promise<RequestContext> {
+    public async updateFlow(workspace: string, path: string, inlineObject17: InlineObject17, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
@@ -289,9 +289,9 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'inlineObject15' is not null or undefined
-        if (inlineObject15 === null || inlineObject15 === undefined) {
-            throw new RequiredError("FlowApi", "updateFlow", "inlineObject15");
+        // verify required parameter 'inlineObject17' is not null or undefined
+        if (inlineObject17 === null || inlineObject17 === undefined) {
+            throw new RequiredError("FlowApi", "updateFlow", "inlineObject17");
         }
 
 
@@ -311,7 +311,7 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(inlineObject15, "InlineObject15", ""),
+            ObjectSerializer.serialize(inlineObject17, "InlineObject17", ""),
             contentType
         );
         requestContext.setBody(serializedBody);

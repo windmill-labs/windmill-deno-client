@@ -8,8 +8,8 @@ import {canConsumeForm, isCodeInRange} from '../util.ts';
 import {SecurityAuthentication} from '../auth/auth.ts';
 
 
-import { InlineObject23 } from '../models/InlineObject23.ts';
-import { InlineObject24 } from '../models/InlineObject24.ts';
+import { InlineObject25 } from '../models/InlineObject25.ts';
+import { InlineObject26 } from '../models/InlineObject26.ts';
 
 /**
  * no description
@@ -21,9 +21,9 @@ export class GranularAclApiRequestFactory extends BaseAPIRequestFactory {
      * @param workspace 
      * @param path 
      * @param kind 
-     * @param inlineObject23 
+     * @param inlineObject25 
      */
-    public async addGranularAcls(workspace: string, path: string, kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow', inlineObject23: InlineObject23, _options?: Configuration): Promise<RequestContext> {
+    public async addGranularAcls(workspace: string, path: string, kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow', inlineObject25: InlineObject25, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
@@ -44,9 +44,9 @@ export class GranularAclApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'inlineObject23' is not null or undefined
-        if (inlineObject23 === null || inlineObject23 === undefined) {
-            throw new RequiredError("GranularAclApi", "addGranularAcls", "inlineObject23");
+        // verify required parameter 'inlineObject25' is not null or undefined
+        if (inlineObject25 === null || inlineObject25 === undefined) {
+            throw new RequiredError("GranularAclApi", "addGranularAcls", "inlineObject25");
         }
 
 
@@ -67,7 +67,7 @@ export class GranularAclApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(inlineObject23, "InlineObject23", ""),
+            ObjectSerializer.serialize(inlineObject25, "InlineObject25", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -155,9 +155,9 @@ export class GranularAclApiRequestFactory extends BaseAPIRequestFactory {
      * @param workspace 
      * @param path 
      * @param kind 
-     * @param inlineObject24 
+     * @param inlineObject26 
      */
-    public async removeGranularAcls(workspace: string, path: string, kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow', inlineObject24: InlineObject24, _options?: Configuration): Promise<RequestContext> {
+    public async removeGranularAcls(workspace: string, path: string, kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow', inlineObject26: InlineObject26, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
@@ -178,9 +178,9 @@ export class GranularAclApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'inlineObject24' is not null or undefined
-        if (inlineObject24 === null || inlineObject24 === undefined) {
-            throw new RequiredError("GranularAclApi", "removeGranularAcls", "inlineObject24");
+        // verify required parameter 'inlineObject26' is not null or undefined
+        if (inlineObject26 === null || inlineObject26 === undefined) {
+            throw new RequiredError("GranularAclApi", "removeGranularAcls", "inlineObject26");
         }
 
 
@@ -201,7 +201,7 @@ export class GranularAclApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(inlineObject24, "InlineObject24", ""),
+            ObjectSerializer.serialize(inlineObject26, "InlineObject26", ""),
             contentType
         );
         requestContext.setBody(serializedBody);

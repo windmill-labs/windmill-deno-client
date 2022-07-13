@@ -40,6 +40,7 @@ let body:.ResourceApiCreateResourceRequest = {
     value: {},
     description: "description_example",
     resourceType: "resourceType_example",
+    isOauth: true,
   },
 };
 

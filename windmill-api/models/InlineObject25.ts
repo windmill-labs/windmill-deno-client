@@ -12,42 +12,28 @@
 
 import { HttpFile } from '../http/http.ts';
 
-export class InlineResponse200 {
-    'workspaceId'?: string;
-    'slackName'?: string;
-    'slackTeamId'?: string;
-    'slackCommandScript'?: string;
+export class InlineObject25 {
+    'owner': string;
+    'write'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "workspaceId",
-            "baseName": "workspace_id",
+            "name": "owner",
+            "baseName": "owner",
             "type": "string",
             "format": ""
         },
         {
-            "name": "slackName",
-            "baseName": "slack_name",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "slackTeamId",
-            "baseName": "slack_team_id",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "slackCommandScript",
-            "baseName": "slack_command_script",
-            "type": "string",
+            "name": "write",
+            "baseName": "write",
+            "type": "boolean",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return InlineResponse200.attributeTypeMap;
+        return InlineObject25.attributeTypeMap;
     }
 
     public constructor() {

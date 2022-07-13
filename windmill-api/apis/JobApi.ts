@@ -10,8 +10,8 @@ import {SecurityAuthentication} from '../auth/auth.ts';
 
 import { CompletedJob } from '../models/CompletedJob.ts';
 import { FlowPreview } from '../models/FlowPreview.ts';
-import { InlineObject16 } from '../models/InlineObject16.ts';
-import { InlineResponse2004 } from '../models/InlineResponse2004.ts';
+import { InlineObject18 } from '../models/InlineObject18.ts';
+import { InlineResponse2003 } from '../models/InlineResponse2003.ts';
 import { Job } from '../models/Job.ts';
 import { Preview } from '../models/Preview.ts';
 import { QueuedJob } from '../models/QueuedJob.ts';
@@ -25,9 +25,9 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
      * cancel queued job
      * @param workspace 
      * @param id 
-     * @param inlineObject16 
+     * @param inlineObject18 
      */
-    public async cancelQueuedJob(workspace: string, id: string, inlineObject16: InlineObject16, _options?: Configuration): Promise<RequestContext> {
+    public async cancelQueuedJob(workspace: string, id: string, inlineObject18: InlineObject18, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
@@ -42,9 +42,9 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'inlineObject16' is not null or undefined
-        if (inlineObject16 === null || inlineObject16 === undefined) {
-            throw new RequiredError("JobApi", "cancelQueuedJob", "inlineObject16");
+        // verify required parameter 'inlineObject18' is not null or undefined
+        if (inlineObject18 === null || inlineObject18 === undefined) {
+            throw new RequiredError("JobApi", "cancelQueuedJob", "inlineObject18");
         }
 
 
@@ -64,7 +64,7 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(inlineObject16, "InlineObject16", ""),
+            ObjectSerializer.serialize(inlineObject18, "InlineObject18", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -1146,22 +1146,22 @@ export class JobApiResponseProcessor {
      * @params response Response returned by the server for a request to getJobUpdates
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getJobUpdates(response: ResponseContext): Promise<InlineResponse2004 > {
+     public async getJobUpdates(response: ResponseContext): Promise<InlineResponse2003 > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: InlineResponse2004 = ObjectSerializer.deserialize(
+            const body: InlineResponse2003 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "InlineResponse2004", ""
-            ) as InlineResponse2004;
+                "InlineResponse2003", ""
+            ) as InlineResponse2003;
             return body;
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: InlineResponse2004 = ObjectSerializer.deserialize(
+            const body: InlineResponse2003 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "InlineResponse2004", ""
-            ) as InlineResponse2004;
+                "InlineResponse2003", ""
+            ) as InlineResponse2003;
             return body;
         }
 

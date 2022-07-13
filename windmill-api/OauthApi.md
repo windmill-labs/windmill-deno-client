@@ -6,15 +6,17 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**connectCallback**](OauthApi.md#connectCallback) | **POST** /oauth/connect_callback/{client_name} | connect callback
 [**connectSlackCallback**](OauthApi.md#connectSlackCallback) | **POST** /oauth/connect_slack_callback | connect slack callback
-[**disconnectAccount**](OauthApi.md#disconnectAccount) | **POST** /w/{workspace}/oauth/disconnect/{account_id} | disconnect account
+[**createAccount**](OauthApi.md#createAccount) | **POST** /w/{workspace}/oauth/create_account | create OAuth account
+[**disconnectAccount**](OauthApi.md#disconnectAccount) | **POST** /w/{workspace}/oauth/disconnect/{id} | disconnect account
 [**disconnectSlack**](OauthApi.md#disconnectSlack) | **POST** /w/{workspace}/oauth/disconnect_slack | disconnect slack
 [**listOAuthConnects**](OauthApi.md#listOAuthConnects) | **GET** /oauth/list_connects | list oauth connects
 [**listOAuthLogins**](OauthApi.md#listOAuthLogins) | **GET** /oauth/list_logins | list oauth logins
+[**refreshToken**](OauthApi.md#refreshToken) | **POST** /w/{workspace}/oauth/refresh_token/{id} | refresh token
 [**setWorkspaceSlack**](OauthApi.md#setWorkspaceSlack) | **POST** /w/{workspace}/oauth/set_workspace_slack | set workspace&#39;s slack
 
 
 # **connectCallback**
-> InlineResponse2001 connectCallback(inlineObject12)
+> TokenResponse connectCallback(inlineObject12)
 
 
 ### Example
@@ -53,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**InlineResponse2001**
+**TokenResponse**
 
 ### Authorization
 
@@ -128,6 +130,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **createAccount**
+> string createAccount(inlineObject13)
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .OauthApi(configuration);
+
+let body:.OauthApiCreateAccountRequest = {
+  // string
+  workspace: "workspace_example",
+  // InlineObject13
+  inlineObject13: {
+    refreshToken: "refreshToken_example",
+    expiresIn: 1,
+    owner: "owner_example",
+    client: "client_example",
+  },
+};
+
+apiInstance.createAccount(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inlineObject13** | **InlineObject13**|  |
+ **workspace** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: text/plain
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | account set |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **disconnectAccount**
 > string disconnectAccount()
 
@@ -146,7 +209,7 @@ let body:.OauthApiDisconnectAccountRequest = {
   // string
   workspace: "workspace_example",
   // string
-  account: "account_example",
+  id: "id_example",
 };
 
 apiInstance.disconnectAccount(body).then((data:any) => {
@@ -160,7 +223,7 @@ apiInstance.disconnectAccount(body).then((data:any) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | [**string**] |  | defaults to undefined
- **account** | [**string**] |  | defaults to undefined
+ **id** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -328,6 +391,67 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | list of oauth login clients |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **refreshToken**
+> string refreshToken(inlineObject14)
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .OauthApi(configuration);
+
+let body:.OauthApiRefreshTokenRequest = {
+  // string
+  workspace: "workspace_example",
+  // string
+  id: "id_example",
+  // InlineObject14
+  inlineObject14: {
+    path: "path_example",
+  },
+};
+
+apiInstance.refreshToken(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inlineObject14** | **InlineObject14**|  |
+ **workspace** | [**string**] |  | defaults to undefined
+ **id** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: text/plain
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | token refreshed |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

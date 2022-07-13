@@ -35,6 +35,8 @@ let body:.VariableApiCreateVariableRequest = {
     value: "value_example",
     isSecret: true,
     description: "description_example",
+    account: 1,
+    isOauth: true,
   },
 };
 

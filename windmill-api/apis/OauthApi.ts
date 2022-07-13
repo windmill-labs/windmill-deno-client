@@ -10,8 +10,10 @@ import {SecurityAuthentication} from '../auth/auth.ts';
 
 import { InlineObject11 } from '../models/InlineObject11.ts';
 import { InlineObject12 } from '../models/InlineObject12.ts';
-import { InlineResponse2001 } from '../models/InlineResponse2001.ts';
+import { InlineObject13 } from '../models/InlineObject13.ts';
+import { InlineObject14 } from '../models/InlineObject14.ts';
 import { SlackToken } from '../models/SlackToken.ts';
+import { TokenResponse } from '../models/TokenResponse.ts';
 
 /**
  * no description
@@ -131,11 +133,71 @@ export class OauthApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * create OAuth account
+     * @param workspace 
+     * @param inlineObject13 
+     */
+    public async createAccount(workspace: string, inlineObject13: InlineObject13, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'workspace' is not null or undefined
+        if (workspace === null || workspace === undefined) {
+            throw new RequiredError("OauthApi", "createAccount", "workspace");
+        }
+
+
+        // verify required parameter 'inlineObject13' is not null or undefined
+        if (inlineObject13 === null || inlineObject13 === undefined) {
+            throw new RequiredError("OauthApi", "createAccount", "inlineObject13");
+        }
+
+
+        // Path Params
+        const localVarPath = '/w/{workspace}/oauth/create_account'
+            .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(inlineObject13, "InlineObject13", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["cookieAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * disconnect account
      * @param workspace 
-     * @param account 
+     * @param id 
      */
-    public async disconnectAccount(workspace: string, account: string, _options?: Configuration): Promise<RequestContext> {
+    public async disconnectAccount(workspace: string, id: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
@@ -144,16 +206,16 @@ export class OauthApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'account' is not null or undefined
-        if (account === null || account === undefined) {
-            throw new RequiredError("OauthApi", "disconnectAccount", "account");
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new RequiredError("OauthApi", "disconnectAccount", "id");
         }
 
 
         // Path Params
-        const localVarPath = '/w/{workspace}/oauth/disconnect/{account_id}'
+        const localVarPath = '/w/{workspace}/oauth/disconnect/{id}'
             .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)))
-            .replace('{' + 'account' + '}', encodeURIComponent(String(account)));
+            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
@@ -291,6 +353,74 @@ export class OauthApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * refresh token
+     * @param workspace 
+     * @param id 
+     * @param inlineObject14 
+     */
+    public async refreshToken(workspace: string, id: string, inlineObject14: InlineObject14, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'workspace' is not null or undefined
+        if (workspace === null || workspace === undefined) {
+            throw new RequiredError("OauthApi", "refreshToken", "workspace");
+        }
+
+
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new RequiredError("OauthApi", "refreshToken", "id");
+        }
+
+
+        // verify required parameter 'inlineObject14' is not null or undefined
+        if (inlineObject14 === null || inlineObject14 === undefined) {
+            throw new RequiredError("OauthApi", "refreshToken", "inlineObject14");
+        }
+
+
+        // Path Params
+        const localVarPath = '/w/{workspace}/oauth/refresh_token/{id}'
+            .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)))
+            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(inlineObject14, "InlineObject14", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["cookieAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * set workspace's slack
      * @param workspace 
      * @param slackToken 
@@ -361,22 +491,22 @@ export class OauthApiResponseProcessor {
      * @params response Response returned by the server for a request to connectCallback
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async connectCallback(response: ResponseContext): Promise<InlineResponse2001 > {
+     public async connectCallback(response: ResponseContext): Promise<TokenResponse > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: InlineResponse2001 = ObjectSerializer.deserialize(
+            const body: TokenResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "InlineResponse2001", ""
-            ) as InlineResponse2001;
+                "TokenResponse", ""
+            ) as TokenResponse;
             return body;
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: InlineResponse2001 = ObjectSerializer.deserialize(
+            const body: TokenResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "InlineResponse2001", ""
-            ) as InlineResponse2001;
+                "TokenResponse", ""
+            ) as TokenResponse;
             return body;
         }
 
@@ -406,6 +536,35 @@ export class OauthApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "SlackToken", ""
             ) as SlackToken;
+            return body;
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to createAccount
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async createAccount(response: ResponseContext): Promise<string > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
             return body;
         }
 
@@ -522,6 +681,35 @@ export class OauthApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Array<string>", ""
             ) as Array<string>;
+            return body;
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to refreshToken
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async refreshToken(response: ResponseContext): Promise<string > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
             return body;
         }
 

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **addGranularAcls**
-> string addGranularAcls(inlineObject23)
+> string addGranularAcls(inlineObject25)
 
 
 ### Example
@@ -30,8 +30,8 @@ let body:.GranularAclApiAddGranularAclsRequest = {
   path: "path_example",
   // 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow'
   kind: "script",
-  // InlineObject23
-  inlineObject23: {
+  // InlineObject25
+  inlineObject25: {
     owner: "owner_example",
     write: true,
   },
@@ -47,7 +47,7 @@ apiInstance.addGranularAcls(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject23** | **InlineObject23**|  |
+ **inlineObject25** | **InlineObject25**|  |
  **workspace** | [**string**] |  | defaults to undefined
  **path** | [**string**] |  | defaults to undefined
  **kind** | [**&#39;script&#39; | &#39;group_&#39; | &#39;resource&#39; | &#39;schedule&#39; | &#39;variable&#39; | &#39;flow&#39;**]**Array<&#39;script&#39; &#124; &#39;group_&#39; &#124; &#39;resource&#39; &#124; &#39;schedule&#39; &#124; &#39;variable&#39; &#124; &#39;flow&#39;>** |  | defaults to undefined
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **removeGranularAcls**
-> string removeGranularAcls(inlineObject24)
+> string removeGranularAcls(inlineObject26)
 
 
 ### Example
@@ -154,8 +154,8 @@ let body:.GranularAclApiRemoveGranularAclsRequest = {
   path: "path_example",
   // 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow'
   kind: "script",
-  // InlineObject24
-  inlineObject24: {
+  // InlineObject26
+  inlineObject26: {
     owner: "owner_example",
   },
 };
@@ -170,7 +170,7 @@ apiInstance.removeGranularAcls(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject24** | **InlineObject24**|  |
+ **inlineObject26** | **InlineObject26**|  |
  **workspace** | [**string**] |  | defaults to undefined
  **path** | [**string**] |  | defaults to undefined
  **kind** | [**&#39;script&#39; | &#39;group_&#39; | &#39;resource&#39; | &#39;schedule&#39; | &#39;variable&#39; | &#39;flow&#39;**]**Array<&#39;script&#39; &#124; &#39;group_&#39; &#124; &#39;resource&#39; &#124; &#39;schedule&#39; &#124; &#39;variable&#39; &#124; &#39;flow&#39;>** |  | defaults to undefined

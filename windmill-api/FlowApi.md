@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **createFlow**
-> string createFlow(inlineObject14)
+> string createFlow(inlineObject16)
 
 
 ### Example
@@ -84,8 +84,8 @@ const apiInstance = new .FlowApi(configuration);
 let body:.FlowApiCreateFlowRequest = {
   // string
   workspace: "workspace_example",
-  // InlineObject14
-  inlineObject14: {
+  // InlineObject16
+  inlineObject16: {
     path: "path_example",
     summary: "summary_example",
     description: "description_example",
@@ -139,7 +139,7 @@ apiInstance.createFlow(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject14** | **InlineObject14**|  |
+ **inlineObject16** | **InlineObject16**|  |
  **workspace** | [**string**] |  | defaults to undefined
 
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateFlow**
-> string updateFlow(inlineObject15)
+> string updateFlow(inlineObject17)
 
 
 ### Example
@@ -313,8 +313,8 @@ let body:.FlowApiUpdateFlowRequest = {
   workspace: "workspace_example",
   // string
   path: "path_example",
-  // InlineObject15
-  inlineObject15: {
+  // InlineObject17
+  inlineObject17: {
     path: "path_example",
     summary: "summary_example",
     description: "description_example",
@@ -368,7 +368,7 @@ apiInstance.updateFlow(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject15** | **InlineObject15**|  |
+ **inlineObject17** | **InlineObject17**|  |
  **workspace** | [**string**] |  | defaults to undefined
  **path** | [**string**] |  | defaults to undefined
 

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **addUserToGroup**
-> string addUserToGroup(inlineObject21)
+> string addUserToGroup(inlineObject23)
 
 
 ### Example
@@ -33,8 +33,8 @@ let body:.GroupApiAddUserToGroupRequest = {
   workspace: "workspace_example",
   // string
   name: "name_example",
-  // InlineObject21
-  inlineObject21: {
+  // InlineObject23
+  inlineObject23: {
     username: "username_example",
   },
 };
@@ -49,7 +49,7 @@ apiInstance.addUserToGroup(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject21** | **InlineObject21**|  |
+ **inlineObject23** | **InlineObject23**|  |
  **workspace** | [**string**] |  | defaults to undefined
  **name** | [**string**] |  | defaults to undefined
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **createGroup**
-> string createGroup(inlineObject19)
+> string createGroup(inlineObject21)
 
 
 ### Example
@@ -92,8 +92,8 @@ const apiInstance = new .GroupApi(configuration);
 let body:.GroupApiCreateGroupRequest = {
   // string
   workspace: "workspace_example",
-  // InlineObject19
-  inlineObject19: {
+  // InlineObject21
+  inlineObject21: {
     name: "name_example",
     summary: "summary_example",
   },
@@ -109,7 +109,7 @@ apiInstance.createGroup(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject19** | **InlineObject19**|  |
+ **inlineObject21** | **InlineObject21**|  |
  **workspace** | [**string**] |  | defaults to undefined
 
 
@@ -359,7 +359,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **removeUserToGroup**
-> string removeUserToGroup(inlineObject22)
+> string removeUserToGroup(inlineObject24)
 
 
 ### Example
@@ -377,8 +377,8 @@ let body:.GroupApiRemoveUserToGroupRequest = {
   workspace: "workspace_example",
   // string
   name: "name_example",
-  // InlineObject22
-  inlineObject22: {
+  // InlineObject24
+  inlineObject24: {
     username: "username_example",
   },
 };
@@ -393,7 +393,7 @@ apiInstance.removeUserToGroup(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject22** | **InlineObject22**|  |
+ **inlineObject24** | **InlineObject24**|  |
  **workspace** | [**string**] |  | defaults to undefined
  **name** | [**string**] |  | defaults to undefined
 
@@ -420,7 +420,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateGroup**
-> string updateGroup(inlineObject20)
+> string updateGroup(inlineObject22)
 
 
 ### Example
@@ -438,8 +438,8 @@ let body:.GroupApiUpdateGroupRequest = {
   workspace: "workspace_example",
   // string
   name: "name_example",
-  // InlineObject20
-  inlineObject20: {
+  // InlineObject22
+  inlineObject22: {
     summary: "summary_example",
   },
 };
@@ -454,7 +454,7 @@ apiInstance.updateGroup(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject20** | **InlineObject20**|  |
+ **inlineObject22** | **InlineObject22**|  |
  **workspace** | [**string**] |  | defaults to undefined
  **name** | [**string**] |  | defaults to undefined
 
