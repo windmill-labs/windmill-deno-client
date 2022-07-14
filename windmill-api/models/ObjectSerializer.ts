@@ -437,13 +437,13 @@ export class ObjectSerializer {
         }
 
         return selectedMediaType!;
-        if (mediaType === "text/plain") { return rawData }
     }
 
     /**
      * Convert data to a string according the given media type
      */
     public static stringify(data: any, mediaType: string): string {
+        if (mediaType === "text/plain") { return data }
         if (mediaType === "application/json") {
             return JSON.stringify(data);
         }
