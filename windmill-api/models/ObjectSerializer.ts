@@ -443,7 +443,6 @@ export class ObjectSerializer {
      * Convert data to a string according the given media type
      */
     public static stringify(data: any, mediaType: string): string {
-        if (mediaType === "text/plain") { return data }
         if (mediaType === "application/json") {
             return JSON.stringify(data);
         }
@@ -455,6 +454,7 @@ export class ObjectSerializer {
      * Parse data from a string according to the given media type
      */
     public static parse(rawData: string, mediaType: string | undefined) {
+        if (mediaType === "text/plain") { return rawData }
         if (mediaType === undefined) {
             throw new Error("Cannot parse content. No Content-Type defined.");
         }
