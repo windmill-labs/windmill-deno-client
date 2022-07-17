@@ -12,21 +12,35 @@
 
 import { HttpFile } from '../http/http.ts';
 
-export class InlineObject14 {
-    'path': string;
+export class FlowStatusModuleIterator {
+    'index'?: number;
+    'itered'?: Array<any>;
+    'args'?: any;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "path",
-            "baseName": "path",
-            "type": "string",
+            "name": "index",
+            "baseName": "index",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "itered",
+            "baseName": "itered",
+            "type": "Array<any>",
+            "format": ""
+        },
+        {
+            "name": "args",
+            "baseName": "args",
+            "type": "any",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return InlineObject14.attributeTypeMap;
+        return FlowStatusModuleIterator.attributeTypeMap;
     }
 
     public constructor() {

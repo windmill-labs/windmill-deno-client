@@ -15,6 +15,7 @@ export * from './FlowModuleValue.ts';
 export * from './FlowPreview.ts';
 export * from './FlowStatus.ts';
 export * from './FlowStatusModule.ts';
+export * from './FlowStatusModuleIterator.ts';
 export * from './FlowValue.ts';
 export * from './GlobalUserInfo.ts';
 export * from './Group.ts';
@@ -77,7 +78,7 @@ export * from './Workspace.ts';
 export * from './WorkspaceInvite.ts';
 
 import { AuditLog   , AuditLogOperationEnum  , AuditLogActionKindEnum     } from './AuditLog.ts';
-import { CompletedJob                  , CompletedJobJobKindEnum       , CompletedJobLanguageEnum   } from './CompletedJob.ts';
+import { CompletedJob                  , CompletedJobJobKindEnum       , CompletedJobLanguageEnum    } from './CompletedJob.ts';
 import { ContextualVariable } from './ContextualVariable.ts';
 import { CreateResource } from './CreateResource.ts';
 import { CreateVariable } from './CreateVariable.ts';
@@ -89,10 +90,11 @@ import { EditVariable } from './EditVariable.ts';
 import { EditWorkspaceUser } from './EditWorkspaceUser.ts';
 import { Flow } from './Flow.ts';
 import { FlowModule } from './FlowModule.ts';
-import { FlowModuleValue  , FlowModuleValueLanguageEnum  , FlowModuleValueTypeEnum   } from './FlowModuleValue.ts';
+import { FlowModuleValue    , FlowModuleValueLanguageEnum  , FlowModuleValueTypeEnum   } from './FlowModuleValue.ts';
 import { FlowPreview } from './FlowPreview.ts';
 import { FlowStatus } from './FlowStatus.ts';
-import { FlowStatusModule, FlowStatusModuleTypeEnum     } from './FlowStatusModule.ts';
+import { FlowStatusModule, FlowStatusModuleTypeEnum       } from './FlowStatusModule.ts';
+import { FlowStatusModuleIterator } from './FlowStatusModuleIterator.ts';
 import { FlowValue } from './FlowValue.ts';
 import { GlobalUserInfo , GlobalUserInfoLoginTypeEnum       } from './GlobalUserInfo.ts';
 import { Group } from './Group.ts';
@@ -103,7 +105,7 @@ import { InlineObject11 } from './InlineObject11.ts';
 import { InlineObject12 } from './InlineObject12.ts';
 import { InlineObject13 } from './InlineObject13.ts';
 import { InlineObject14 } from './InlineObject14.ts';
-import { InlineObject15        , InlineObject15LanguageEnum   } from './InlineObject15.ts';
+import { InlineObject15        , InlineObject15LanguageEnum    } from './InlineObject15.ts';
 import { InlineObject16 } from './InlineObject16.ts';
 import { InlineObject17 } from './InlineObject17.ts';
 import { InlineObject18 } from './InlineObject18.ts';
@@ -128,7 +130,7 @@ import { InlineResponse2001 } from './InlineResponse2001.ts';
 import { InlineResponse2002 } from './InlineResponse2002.ts';
 import { InlineResponse2003 } from './InlineResponse2003.ts';
 import { InputTransform, InputTransformTypeEnum      } from './InputTransform.ts';
-import { Job, JobTypeEnum                    , JobJobKindEnum       , JobLanguageEnum      } from './Job.ts';
+import { Job, JobTypeEnum                    , JobJobKindEnum       , JobLanguageEnum       } from './Job.ts';
 import { JobAllOf, JobAllOfTypeEnum   } from './JobAllOf.ts';
 import { ListableVariable } from './ListableVariable.ts';
 import { Login } from './Login.ts';
@@ -142,7 +144,7 @@ import { QueuedJob                 , QueuedJobJobKindEnum       , QueuedJobLangu
 import { Resource } from './Resource.ts';
 import { ResourceType } from './ResourceType.ts';
 import { Schedule } from './Schedule.ts';
-import { Script                , ScriptLanguageEnum   } from './Script.ts';
+import { Script                , ScriptLanguageEnum    } from './Script.ts';
 import { SlackToken } from './SlackToken.ts';
 import { SlackTokenBot } from './SlackTokenBot.ts';
 import { TokenResponse } from './TokenResponse.ts';
@@ -212,6 +214,7 @@ let typeMap: {[index: string]: any} = {
     "FlowPreview": FlowPreview,
     "FlowStatus": FlowStatus,
     "FlowStatusModule": FlowStatusModule,
+    "FlowStatusModuleIterator": FlowStatusModuleIterator,
     "FlowValue": FlowValue,
     "GlobalUserInfo": GlobalUserInfo,
     "Group": Group,
@@ -454,7 +457,7 @@ export class ObjectSerializer {
      * Parse data from a string according to the given media type
      */
     public static parse(rawData: string, mediaType: string | undefined) {
-        if (mediaType === "text/plain") { return rawData }
+        if (mediaType === "text/plain") { return data }
         if (mediaType === undefined) {
             throw new Error("Cannot parse content. No Content-Type defined.");
         }

@@ -160,6 +160,7 @@ let body:.ScriptApiCreateScriptRequest = {
       "lock_example",
     ],
     language: "python3",
+    triggerRecoInterval: 1,
   },
 };
 
