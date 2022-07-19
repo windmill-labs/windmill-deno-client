@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**runScriptByHash**](JobApi.md#runScriptByHash) | **POST** /w/{workspace}/jobs/run/h/{hash} | run script by hash
 [**runScriptByPath**](JobApi.md#runScriptByPath) | **POST** /w/{workspace}/jobs/run/p/{path} | run script by path
 [**runScriptPreview**](JobApi.md#runScriptPreview) | **POST** /w/{workspace}/jobs/run/preview | run script preview
+[**runWaitResultScriptByPath**](JobApi.md#runWaitResultScriptByPath) | **POST** /w/{workspace}/jobs/run_wait_result/p/{path} | run script by path
 
 
 # **cancelQueuedJob**
@@ -939,6 +940,76 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | job created |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **runWaitResultScriptByPath**
+> any runWaitResultScriptByPath(requestBody)
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .JobApi(configuration);
+
+let body:.JobApiRunWaitResultScriptByPathRequest = {
+  // string
+  workspace: "workspace_example",
+  // string
+  path: "path_example",
+  // { [key: string]: any; } | script args
+  requestBody: {
+    "key": null,
+  },
+  // Date | when to schedule this job (leave empty for immediate run) (optional)
+  scheduledFor: new Date('1970-01-01T00:00:00.00Z'),
+  // number | schedule the script to execute in the number of seconds starting now (optional)
+  scheduledInSecs: 3.14,
+  // string | The parent job that is at the origin and responsible for the execution of this script if any (optional)
+  parentJob: "parent_job_example",
+};
+
+apiInstance.runWaitResultScriptByPath(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requestBody** | **{ [key: string]: any; }**| script args |
+ **workspace** | [**string**] |  | defaults to undefined
+ **path** | [**string**] |  | defaults to undefined
+ **scheduledFor** | [**Date**] | when to schedule this job (leave empty for immediate run) | (optional) defaults to undefined
+ **scheduledInSecs** | [**number**] | schedule the script to execute in the number of seconds starting now | (optional) defaults to undefined
+ **parentJob** | [**string**] | The parent job that is at the origin and responsible for the execution of this script if any | (optional) defaults to undefined
+
+
+### Return type
+
+**any**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | job result |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**archiveFlowByPath**](FlowApi.md#archiveFlowByPath) | **POST** /w/{workspace}/flows/archive/{path} | archive flow by path
 [**createFlow**](FlowApi.md#createFlow) | **POST** /w/{workspace}/flows/create | create flow
+[**existsFlowByPath**](FlowApi.md#existsFlowByPath) | **GET** /w/{workspace}/flows/exists/{path} | exists flow by path
 [**getFlowByPath**](FlowApi.md#getFlowByPath) | **GET** /w/{workspace}/flows/get/{path} | get flow by path
 [**listFlows**](FlowApi.md#listFlows) | **GET** /w/{workspace}/flows/list | list all available flows
 [**updateFlow**](FlowApi.md#updateFlow) | **POST** /w/{workspace}/flows/update/{path} | update flow
@@ -179,6 +180,62 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | flow created |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **existsFlowByPath**
+> boolean existsFlowByPath()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .FlowApi(configuration);
+
+let body:.FlowApiExistsFlowByPathRequest = {
+  // string
+  workspace: "workspace_example",
+  // string
+  path: "path_example",
+};
+
+apiInstance.existsFlowByPath(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | [**string**] |  | defaults to undefined
+ **path** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**boolean**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | flow details |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

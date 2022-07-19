@@ -311,6 +311,30 @@ export class ObservableFlowApi {
     }
 
     /**
+     * exists flow by path
+     * @param workspace 
+     * @param path 
+     */
+    public existsFlowByPath(workspace: string, path: string, _options?: Configuration): Observable<boolean> {
+        const requestContextPromise = this.requestFactory.existsFlowByPath(workspace, path, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.existsFlowByPath(rsp)));
+            }));
+    }
+
+    /**
      * get flow by path
      * @param workspace 
      * @param path 
@@ -1068,6 +1092,34 @@ export class ObservableJobApi {
             }));
     }
 
+    /**
+     * run script by path
+     * @param workspace 
+     * @param path 
+     * @param requestBody script args
+     * @param scheduledFor when to schedule this job (leave empty for immediate run)
+     * @param scheduledInSecs schedule the script to execute in the number of seconds starting now
+     * @param parentJob The parent job that is at the origin and responsible for the execution of this script if any
+     */
+    public runWaitResultScriptByPath(workspace: string, path: string, requestBody: { [key: string]: any; }, scheduledFor?: Date, scheduledInSecs?: number, parentJob?: string, _options?: Configuration): Observable<any> {
+        const requestContextPromise = this.requestFactory.runWaitResultScriptByPath(workspace, path, requestBody, scheduledFor, scheduledInSecs, parentJob, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.runWaitResultScriptByPath(rsp)));
+            }));
+    }
+
 }
 
 import { OauthApiRequestFactory, OauthApiResponseProcessor} from "../apis/OauthApi.ts";
@@ -1412,6 +1464,54 @@ export class ObservableResourceApi {
     }
 
     /**
+     * does resource exists
+     * @param workspace 
+     * @param path 
+     */
+    public existsResource(workspace: string, path: string, _options?: Configuration): Observable<boolean> {
+        const requestContextPromise = this.requestFactory.existsResource(workspace, path, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.existsResource(rsp)));
+            }));
+    }
+
+    /**
+     * does resource_type exists
+     * @param workspace 
+     * @param path 
+     */
+    public existsResourceType(workspace: string, path: string, _options?: Configuration): Observable<boolean> {
+        const requestContextPromise = this.requestFactory.existsResourceType(workspace, path, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.existsResourceType(rsp)));
+            }));
+    }
+
+    /**
      * get resource
      * @param workspace 
      * @param path 
@@ -1620,6 +1720,30 @@ export class ObservableScheduleApi {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createSchedule(rsp)));
+            }));
+    }
+
+    /**
+     * does schedule exists
+     * @param workspace 
+     * @param path 
+     */
+    public existsSchedule(workspace: string, path: string, _options?: Configuration): Observable<boolean> {
+        const requestContextPromise = this.requestFactory.existsSchedule(workspace, path, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.existsSchedule(rsp)));
             }));
     }
 
@@ -1879,6 +2003,30 @@ export class ObservableScriptApi {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.denoToJsonschema(rsp)));
+            }));
+    }
+
+    /**
+     * exists script by path
+     * @param workspace 
+     * @param path 
+     */
+    public existsScriptByPath(workspace: string, path: string, _options?: Configuration): Observable<boolean> {
+        const requestContextPromise = this.requestFactory.existsScriptByPath(workspace, path, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.existsScriptByPath(rsp)));
             }));
     }
 
@@ -2735,6 +2883,30 @@ export class ObservableVariableApi {
     }
 
     /**
+     * does variable exists at path
+     * @param workspace 
+     * @param path 
+     */
+    public existsVariable(workspace: string, path: string, _options?: Configuration): Observable<boolean> {
+        const requestContextPromise = this.requestFactory.existsVariable(workspace, path, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.existsVariable(rsp)));
+            }));
+    }
+
+    /**
      * get variable
      * @param workspace 
      * @param path 
@@ -2985,6 +3157,52 @@ export class ObservableWorkspaceApi {
     }
 
     /**
+     * exists username
+     * @param inlineObject4 
+     */
+    public existsUsername(inlineObject4: InlineObject4, _options?: Configuration): Observable<boolean> {
+        const requestContextPromise = this.requestFactory.existsUsername(inlineObject4, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.existsUsername(rsp)));
+            }));
+    }
+
+    /**
+     * exists workspace
+     * @param inlineObject3 
+     */
+    public existsWorkspace(inlineObject3: InlineObject3, _options?: Configuration): Observable<boolean> {
+        const requestContextPromise = this.requestFactory.existsWorkspace(inlineObject3, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.existsWorkspace(rsp)));
+            }));
+    }
+
+    /**
      * get settings
      * @param workspace 
      */
@@ -3119,52 +3337,6 @@ export class ObservableWorkspaceApi {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listWorkspacesAsSuperAdmin(rsp)));
-            }));
-    }
-
-    /**
-     * validate id
-     * @param inlineObject3 
-     */
-    public validateId(inlineObject3: InlineObject3, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.validateId(inlineObject3, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (let middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (let middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.validateId(rsp)));
-            }));
-    }
-
-    /**
-     * validate username
-     * @param inlineObject4 
-     */
-    public validateUsername(inlineObject4: InlineObject4, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.validateUsername(inlineObject4, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (let middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (let middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.validateUsername(rsp)));
             }));
     }
 

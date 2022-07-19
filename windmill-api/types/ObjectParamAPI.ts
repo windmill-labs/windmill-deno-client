@@ -301,6 +301,21 @@ export interface FlowApiCreateFlowRequest {
     inlineObject16: InlineObject16
 }
 
+export interface FlowApiExistsFlowByPathRequest {
+    /**
+     * 
+     * @type string
+     * @memberof FlowApiexistsFlowByPath
+     */
+    workspace: string
+    /**
+     * 
+     * @type string
+     * @memberof FlowApiexistsFlowByPath
+     */
+    path: string
+}
+
 export interface FlowApiGetFlowByPathRequest {
     /**
      * 
@@ -409,6 +424,14 @@ export class ObjectFlowApi {
      */
     public createFlow(param: FlowApiCreateFlowRequest, options?: Configuration): Promise<string> {
         return this.api.createFlow(param.workspace, param.inlineObject16,  options).toPromise();
+    }
+
+    /**
+     * exists flow by path
+     * @param param the request object
+     */
+    public existsFlowByPath(param: FlowApiExistsFlowByPathRequest, options?: Configuration): Promise<boolean> {
+        return this.api.existsFlowByPath(param.workspace, param.path,  options).toPromise();
     }
 
     /**
@@ -1206,6 +1229,45 @@ export interface JobApiRunScriptPreviewRequest {
     preview: Preview
 }
 
+export interface JobApiRunWaitResultScriptByPathRequest {
+    /**
+     * 
+     * @type string
+     * @memberof JobApirunWaitResultScriptByPath
+     */
+    workspace: string
+    /**
+     * 
+     * @type string
+     * @memberof JobApirunWaitResultScriptByPath
+     */
+    path: string
+    /**
+     * script args
+     * @type { [key: string]: any; }
+     * @memberof JobApirunWaitResultScriptByPath
+     */
+    requestBody: { [key: string]: any; }
+    /**
+     * when to schedule this job (leave empty for immediate run)
+     * @type Date
+     * @memberof JobApirunWaitResultScriptByPath
+     */
+    scheduledFor?: Date
+    /**
+     * schedule the script to execute in the number of seconds starting now
+     * @type number
+     * @memberof JobApirunWaitResultScriptByPath
+     */
+    scheduledInSecs?: number
+    /**
+     * The parent job that is at the origin and responsible for the execution of this script if any
+     * @type string
+     * @memberof JobApirunWaitResultScriptByPath
+     */
+    parentJob?: string
+}
+
 export class ObjectJobApi {
     private api: ObservableJobApi
 
@@ -1315,6 +1377,14 @@ export class ObjectJobApi {
      */
     public runScriptPreview(param: JobApiRunScriptPreviewRequest, options?: Configuration): Promise<string> {
         return this.api.runScriptPreview(param.workspace, param.preview,  options).toPromise();
+    }
+
+    /**
+     * run script by path
+     * @param param the request object
+     */
+    public runWaitResultScriptByPath(param: JobApiRunWaitResultScriptByPathRequest, options?: Configuration): Promise<any> {
+        return this.api.runWaitResultScriptByPath(param.workspace, param.path, param.requestBody, param.scheduledFor, param.scheduledInSecs, param.parentJob,  options).toPromise();
     }
 
 }
@@ -1571,6 +1641,36 @@ export interface ResourceApiDeleteResourceTypeRequest {
     path: string
 }
 
+export interface ResourceApiExistsResourceRequest {
+    /**
+     * 
+     * @type string
+     * @memberof ResourceApiexistsResource
+     */
+    workspace: string
+    /**
+     * 
+     * @type string
+     * @memberof ResourceApiexistsResource
+     */
+    path: string
+}
+
+export interface ResourceApiExistsResourceTypeRequest {
+    /**
+     * 
+     * @type string
+     * @memberof ResourceApiexistsResourceType
+     */
+    workspace: string
+    /**
+     * 
+     * @type string
+     * @memberof ResourceApiexistsResourceType
+     */
+    path: string
+}
+
 export interface ResourceApiGetResourceRequest {
     /**
      * 
@@ -1728,6 +1828,22 @@ export class ObjectResourceApi {
     }
 
     /**
+     * does resource exists
+     * @param param the request object
+     */
+    public existsResource(param: ResourceApiExistsResourceRequest, options?: Configuration): Promise<boolean> {
+        return this.api.existsResource(param.workspace, param.path,  options).toPromise();
+    }
+
+    /**
+     * does resource_type exists
+     * @param param the request object
+     */
+    public existsResourceType(param: ResourceApiExistsResourceTypeRequest, options?: Configuration): Promise<boolean> {
+        return this.api.existsResourceType(param.workspace, param.path,  options).toPromise();
+    }
+
+    /**
      * get resource
      * @param param the request object
      */
@@ -1801,6 +1917,21 @@ export interface ScheduleApiCreateScheduleRequest {
      * @memberof ScheduleApicreateSchedule
      */
     newSchedule: NewSchedule
+}
+
+export interface ScheduleApiExistsScheduleRequest {
+    /**
+     * 
+     * @type string
+     * @memberof ScheduleApiexistsSchedule
+     */
+    workspace: string
+    /**
+     * 
+     * @type string
+     * @memberof ScheduleApiexistsSchedule
+     */
+    path: string
 }
 
 export interface ScheduleApiGetScheduleRequest {
@@ -1903,6 +2034,14 @@ export class ObjectScheduleApi {
      */
     public createSchedule(param: ScheduleApiCreateScheduleRequest, options?: Configuration): Promise<string> {
         return this.api.createSchedule(param.workspace, param.newSchedule,  options).toPromise();
+    }
+
+    /**
+     * does schedule exists
+     * @param param the request object
+     */
+    public existsSchedule(param: ScheduleApiExistsScheduleRequest, options?: Configuration): Promise<boolean> {
+        return this.api.existsSchedule(param.workspace, param.path,  options).toPromise();
     }
 
     /**
@@ -2017,6 +2156,21 @@ export interface ScriptApiDenoToJsonschemaRequest {
      * @memberof ScriptApidenoToJsonschema
      */
     body: string
+}
+
+export interface ScriptApiExistsScriptByPathRequest {
+    /**
+     * 
+     * @type string
+     * @memberof ScriptApiexistsScriptByPath
+     */
+    workspace: string
+    /**
+     * 
+     * @type string
+     * @memberof ScriptApiexistsScriptByPath
+     */
+    path: string
 }
 
 export interface ScriptApiGetHubScriptContentByPathRequest {
@@ -2205,6 +2359,14 @@ export class ObjectScriptApi {
      */
     public denoToJsonschema(param: ScriptApiDenoToJsonschemaRequest, options?: Configuration): Promise<MainArgSignature> {
         return this.api.denoToJsonschema(param.body,  options).toPromise();
+    }
+
+    /**
+     * exists script by path
+     * @param param the request object
+     */
+    public existsScriptByPath(param: ScriptApiExistsScriptByPathRequest, options?: Configuration): Promise<boolean> {
+        return this.api.existsScriptByPath(param.workspace, param.path,  options).toPromise();
     }
 
     /**
@@ -2753,6 +2915,21 @@ export interface VariableApiDeleteVariableRequest {
     path: string
 }
 
+export interface VariableApiExistsVariableRequest {
+    /**
+     * 
+     * @type string
+     * @memberof VariableApiexistsVariable
+     */
+    workspace: string
+    /**
+     * 
+     * @type string
+     * @memberof VariableApiexistsVariable
+     */
+    path: string
+}
+
 export interface VariableApiGetVariableRequest {
     /**
      * 
@@ -2834,6 +3011,14 @@ export class ObjectVariableApi {
      */
     public deleteVariable(param: VariableApiDeleteVariableRequest, options?: Configuration): Promise<string> {
         return this.api.deleteVariable(param.workspace, param.path,  options).toPromise();
+    }
+
+    /**
+     * does variable exists at path
+     * @param param the request object
+     */
+    public existsVariable(param: VariableApiExistsVariableRequest, options?: Configuration): Promise<boolean> {
+        return this.api.existsVariable(param.workspace, param.path,  options).toPromise();
     }
 
     /**
@@ -2956,6 +3141,24 @@ export interface WorkspaceApiEditSlackCommandRequest {
     inlineObject9: InlineObject9
 }
 
+export interface WorkspaceApiExistsUsernameRequest {
+    /**
+     * 
+     * @type InlineObject4
+     * @memberof WorkspaceApiexistsUsername
+     */
+    inlineObject4: InlineObject4
+}
+
+export interface WorkspaceApiExistsWorkspaceRequest {
+    /**
+     * 
+     * @type InlineObject3
+     * @memberof WorkspaceApiexistsWorkspace
+     */
+    inlineObject3: InlineObject3
+}
+
 export interface WorkspaceApiGetSettingsRequest {
     /**
      * 
@@ -3010,24 +3213,6 @@ export interface WorkspaceApiListWorkspacesAsSuperAdminRequest {
     perPage?: number
 }
 
-export interface WorkspaceApiValidateIdRequest {
-    /**
-     * 
-     * @type InlineObject3
-     * @memberof WorkspaceApivalidateId
-     */
-    inlineObject3: InlineObject3
-}
-
-export interface WorkspaceApiValidateUsernameRequest {
-    /**
-     * 
-     * @type InlineObject4
-     * @memberof WorkspaceApivalidateUsername
-     */
-    inlineObject4: InlineObject4
-}
-
 export class ObjectWorkspaceApi {
     private api: ObservableWorkspaceApi
 
@@ -3065,6 +3250,22 @@ export class ObjectWorkspaceApi {
      */
     public editSlackCommand(param: WorkspaceApiEditSlackCommandRequest, options?: Configuration): Promise<string> {
         return this.api.editSlackCommand(param.workspace, param.inlineObject9,  options).toPromise();
+    }
+
+    /**
+     * exists username
+     * @param param the request object
+     */
+    public existsUsername(param: WorkspaceApiExistsUsernameRequest, options?: Configuration): Promise<boolean> {
+        return this.api.existsUsername(param.inlineObject4,  options).toPromise();
+    }
+
+    /**
+     * exists workspace
+     * @param param the request object
+     */
+    public existsWorkspace(param: WorkspaceApiExistsWorkspaceRequest, options?: Configuration): Promise<boolean> {
+        return this.api.existsWorkspace(param.inlineObject3,  options).toPromise();
     }
 
     /**
@@ -3113,22 +3314,6 @@ export class ObjectWorkspaceApi {
      */
     public listWorkspacesAsSuperAdmin(param: WorkspaceApiListWorkspacesAsSuperAdminRequest = {}, options?: Configuration): Promise<Array<Workspace>> {
         return this.api.listWorkspacesAsSuperAdmin(param.page, param.perPage,  options).toPromise();
-    }
-
-    /**
-     * validate id
-     * @param param the request object
-     */
-    public validateId(param: WorkspaceApiValidateIdRequest, options?: Configuration): Promise<string> {
-        return this.api.validateId(param.inlineObject3,  options).toPromise();
-    }
-
-    /**
-     * validate username
-     * @param param the request object
-     */
-    public validateUsername(param: WorkspaceApiValidateUsernameRequest, options?: Configuration): Promise<string> {
-        return this.api.validateUsername(param.inlineObject4,  options).toPromise();
     }
 
 }

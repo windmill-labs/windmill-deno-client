@@ -457,7 +457,7 @@ export class ObjectSerializer {
      * Parse data from a string according to the given media type
      */
     public static parse(rawData: string, mediaType: string | undefined) {
-        if (mediaType === "text/plain") { return data }
+        if (mediaType === "text/plain") { return rawData }
         if (mediaType === undefined) {
             throw new Error("Cannot parse content. No Content-Type defined.");
         }

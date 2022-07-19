@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**createScript**](ScriptApi.md#createScript) | **POST** /w/{workspace}/scripts/create | create script
 [**deleteScriptByHash**](ScriptApi.md#deleteScriptByHash) | **POST** /w/{workspace}/scripts/delete/h/{hash} | delete script by hash (erase content but keep hash)
 [**denoToJsonschema**](ScriptApi.md#denoToJsonschema) | **POST** /scripts/deno/tojsonschema | inspect deno code to infer jsonschema of arguments
+[**existsScriptByPath**](ScriptApi.md#existsScriptByPath) | **GET** /w/{workspace}/scripts/exists/p/{path} | exists script by path
 [**getHubScriptContentByPath**](ScriptApi.md#getHubScriptContentByPath) | **GET** /scripts/hub/get/{path} | get hub script content by path
 [**getScriptByHash**](ScriptApi.md#getScriptByHash) | **GET** /w/{workspace}/scripts/get/h/{hash} | get script by hash
 [**getScriptByPath**](ScriptApi.md#getScriptByPath) | **GET** /w/{workspace}/scripts/get/p/{path} | get script by path
@@ -305,6 +306,62 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | parsed args |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **existsScriptByPath**
+> boolean existsScriptByPath()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .ScriptApi(configuration);
+
+let body:.ScriptApiExistsScriptByPathRequest = {
+  // string
+  workspace: "workspace_example",
+  // string
+  path: "path_example",
+};
+
+apiInstance.existsScriptByPath(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | [**string**] |  | defaults to undefined
+ **path** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**boolean**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | does it exists |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

@@ -5,6 +5,7 @@ All URIs are relative to */api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createSchedule**](ScheduleApi.md#createSchedule) | **POST** /w/{workspace}/schedules/create | create schedule
+[**existsSchedule**](ScheduleApi.md#existsSchedule) | **GET** /w/{workspace}/schedules/exists/{path} | does schedule exists
 [**getSchedule**](ScheduleApi.md#getSchedule) | **GET** /w/{workspace}/schedules/get/{path} | get schedule
 [**listSchedules**](ScheduleApi.md#listSchedules) | **GET** /w/{workspace}/schedules/list | list schedules
 [**previewSchedule**](ScheduleApi.md#previewSchedule) | **POST** /schedules/preview | preview schedule
@@ -74,6 +75,62 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | schedule created |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **existsSchedule**
+> boolean existsSchedule()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .ScheduleApi(configuration);
+
+let body:.ScheduleApiExistsScheduleRequest = {
+  // string
+  workspace: "workspace_example",
+  // string
+  path: "path_example",
+};
+
+apiInstance.existsSchedule(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | [**string**] |  | defaults to undefined
+ **path** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**boolean**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | schedule deleted |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

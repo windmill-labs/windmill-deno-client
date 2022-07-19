@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**createResourceType**](ResourceApi.md#createResourceType) | **POST** /w/{workspace}/resources/type/create | create resource_type
 [**deleteResource**](ResourceApi.md#deleteResource) | **DELETE** /w/{workspace}/resources/delete/{path} | delete resource
 [**deleteResourceType**](ResourceApi.md#deleteResourceType) | **DELETE** /w/{workspace}/resources/type/delete/{path} | delete resource_type
+[**existsResource**](ResourceApi.md#existsResource) | **GET** /w/{workspace}/resources/exists/{path} | does resource exists
+[**existsResourceType**](ResourceApi.md#existsResourceType) | **GET** /w/{workspace}/resources/type/exists/{path} | does resource_type exists
 [**getResource**](ResourceApi.md#getResource) | **GET** /w/{workspace}/resources/get/{path} | get resource
 [**getResourceType**](ResourceApi.md#getResourceType) | **GET** /w/{workspace}/resources/type/get/{path} | get resource_type
 [**listResource**](ResourceApi.md#listResource) | **GET** /w/{workspace}/resources/list | list resources
@@ -249,6 +251,118 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | resource_type deleted |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **existsResource**
+> boolean existsResource()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .ResourceApi(configuration);
+
+let body:.ResourceApiExistsResourceRequest = {
+  // string
+  workspace: "workspace_example",
+  // string
+  path: "path_example",
+};
+
+apiInstance.existsResource(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | [**string**] |  | defaults to undefined
+ **path** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**boolean**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | does resource exists |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **existsResourceType**
+> boolean existsResourceType()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .ResourceApi(configuration);
+
+let body:.ResourceApiExistsResourceTypeRequest = {
+  // string
+  workspace: "workspace_example",
+  // string
+  path: "path_example",
+};
+
+apiInstance.existsResourceType(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | [**string**] |  | defaults to undefined
+ **path** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**boolean**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | does resource_type exist |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

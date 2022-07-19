@@ -211,6 +211,16 @@ export class PromiseFlowApi {
     }
 
     /**
+     * exists flow by path
+     * @param workspace 
+     * @param path 
+     */
+    public existsFlowByPath(workspace: string, path: string, _options?: Configuration): Promise<boolean> {
+        const result = this.api.existsFlowByPath(workspace, path, _options);
+        return result.toPromise();
+    }
+
+    /**
      * get flow by path
      * @param workspace 
      * @param path 
@@ -593,6 +603,20 @@ export class PromiseJobApi {
         return result.toPromise();
     }
 
+    /**
+     * run script by path
+     * @param workspace 
+     * @param path 
+     * @param requestBody script args
+     * @param scheduledFor when to schedule this job (leave empty for immediate run)
+     * @param scheduledInSecs schedule the script to execute in the number of seconds starting now
+     * @param parentJob The parent job that is at the origin and responsible for the execution of this script if any
+     */
+    public runWaitResultScriptByPath(workspace: string, path: string, requestBody: { [key: string]: any; }, scheduledFor?: Date, scheduledInSecs?: number, parentJob?: string, _options?: Configuration): Promise<any> {
+        const result = this.api.runWaitResultScriptByPath(workspace, path, requestBody, scheduledFor, scheduledInSecs, parentJob, _options);
+        return result.toPromise();
+    }
+
 
 }
 
@@ -757,6 +781,26 @@ export class PromiseResourceApi {
     }
 
     /**
+     * does resource exists
+     * @param workspace 
+     * @param path 
+     */
+    public existsResource(workspace: string, path: string, _options?: Configuration): Promise<boolean> {
+        const result = this.api.existsResource(workspace, path, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * does resource_type exists
+     * @param workspace 
+     * @param path 
+     */
+    public existsResourceType(workspace: string, path: string, _options?: Configuration): Promise<boolean> {
+        const result = this.api.existsResourceType(workspace, path, _options);
+        return result.toPromise();
+    }
+
+    /**
      * get resource
      * @param workspace 
      * @param path 
@@ -854,6 +898,16 @@ export class PromiseScheduleApi {
      */
     public createSchedule(workspace: string, newSchedule: NewSchedule, _options?: Configuration): Promise<string> {
         const result = this.api.createSchedule(workspace, newSchedule, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * does schedule exists
+     * @param workspace 
+     * @param path 
+     */
+    public existsSchedule(workspace: string, path: string, _options?: Configuration): Promise<boolean> {
+        const result = this.api.existsSchedule(workspace, path, _options);
         return result.toPromise();
     }
 
@@ -974,6 +1028,16 @@ export class PromiseScriptApi {
      */
     public denoToJsonschema(body: string, _options?: Configuration): Promise<MainArgSignature> {
         const result = this.api.denoToJsonschema(body, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * exists script by path
+     * @param workspace 
+     * @param path 
+     */
+    public existsScriptByPath(workspace: string, path: string, _options?: Configuration): Promise<boolean> {
+        const result = this.api.existsScriptByPath(workspace, path, _options);
         return result.toPromise();
     }
 
@@ -1357,6 +1421,16 @@ export class PromiseVariableApi {
     }
 
     /**
+     * does variable exists at path
+     * @param workspace 
+     * @param path 
+     */
+    public existsVariable(workspace: string, path: string, _options?: Configuration): Promise<boolean> {
+        const result = this.api.existsVariable(workspace, path, _options);
+        return result.toPromise();
+    }
+
+    /**
      * get variable
      * @param workspace 
      * @param path 
@@ -1483,6 +1557,24 @@ export class PromiseWorkspaceApi {
     }
 
     /**
+     * exists username
+     * @param inlineObject4 
+     */
+    public existsUsername(inlineObject4: InlineObject4, _options?: Configuration): Promise<boolean> {
+        const result = this.api.existsUsername(inlineObject4, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * exists workspace
+     * @param inlineObject3 
+     */
+    public existsWorkspace(inlineObject3: InlineObject3, _options?: Configuration): Promise<boolean> {
+        const result = this.api.existsWorkspace(inlineObject3, _options);
+        return result.toPromise();
+    }
+
+    /**
      * get settings
      * @param workspace 
      */
@@ -1533,24 +1625,6 @@ export class PromiseWorkspaceApi {
      */
     public listWorkspacesAsSuperAdmin(page?: number, perPage?: number, _options?: Configuration): Promise<Array<Workspace>> {
         const result = this.api.listWorkspacesAsSuperAdmin(page, perPage, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * validate id
-     * @param inlineObject3 
-     */
-    public validateId(inlineObject3: InlineObject3, _options?: Configuration): Promise<string> {
-        const result = this.api.validateId(inlineObject3, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * validate username
-     * @param inlineObject4 
-     */
-    public validateUsername(inlineObject4: InlineObject4, _options?: Configuration): Promise<string> {
-        const result = this.api.validateUsername(inlineObject4, _options);
         return result.toPromise();
     }
 

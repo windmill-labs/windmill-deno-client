@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createVariable**](VariableApi.md#createVariable) | **POST** /w/{workspace}/variables/create | create variable
 [**deleteVariable**](VariableApi.md#deleteVariable) | **DELETE** /w/{workspace}/variables/delete/{path} | delete variable
+[**existsVariable**](VariableApi.md#existsVariable) | **GET** /w/{workspace}/variables/exists/{path} | does variable exists at path
 [**getVariable**](VariableApi.md#getVariable) | **GET** /w/{workspace}/variables/get/{path} | get variable
 [**listContextualVariables**](VariableApi.md#listContextualVariables) | **GET** /w/{workspace}/variables/list_contextual | list contextual variables
 [**listVariable**](VariableApi.md#listVariable) | **GET** /w/{workspace}/variables/list | list variables
@@ -128,6 +129,62 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | variable deleted |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **existsVariable**
+> boolean existsVariable()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .VariableApi(configuration);
+
+let body:.VariableApiExistsVariableRequest = {
+  // string
+  workspace: "workspace_example",
+  // string
+  path: "path_example",
+};
+
+apiInstance.existsVariable(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | [**string**] |  | defaults to undefined
+ **path** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**boolean**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | variable |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

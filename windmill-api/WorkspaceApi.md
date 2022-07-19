@@ -8,14 +8,14 @@ Method | HTTP request | Description
 [**deleteInvite**](WorkspaceApi.md#deleteInvite) | **POST** /w/{workspace}/workspaces/delete_invite | delete user invite
 [**deleteWorkspace**](WorkspaceApi.md#deleteWorkspace) | **DELETE** /w/{workspace}/workspaces/delete | delete workspace
 [**editSlackCommand**](WorkspaceApi.md#editSlackCommand) | **POST** /w/{workspace}/workspaces/edit_slack_command | edit slack command
+[**existsUsername**](WorkspaceApi.md#existsUsername) | **POST** /workspaces/exists_username | exists username
+[**existsWorkspace**](WorkspaceApi.md#existsWorkspace) | **POST** /workspaces/exists | exists workspace
 [**getSettings**](WorkspaceApi.md#getSettings) | **GET** /w/{workspace}/workspaces/get_settings | get settings
 [**inviteUser**](WorkspaceApi.md#inviteUser) | **POST** /w/{workspace}/workspaces/invite_user | invite user to workspace
 [**listPendingInvites**](WorkspaceApi.md#listPendingInvites) | **GET** /w/{workspace}/workspaces/list_pending_invites | list pending invites for a workspace
 [**listUserWorkspaces**](WorkspaceApi.md#listUserWorkspaces) | **GET** /workspaces/users | list all workspaces visible to me with user info
 [**listWorkspaces**](WorkspaceApi.md#listWorkspaces) | **GET** /workspaces/list | list all workspaces visible to me
 [**listWorkspacesAsSuperAdmin**](WorkspaceApi.md#listWorkspacesAsSuperAdmin) | **GET** /workspaces/list_as_superadmin | list all workspaces as super admin (require to be super amdin)
-[**validateId**](WorkspaceApi.md#validateId) | **POST** /workspaces/validate_id | validate id
-[**validateUsername**](WorkspaceApi.md#validateUsername) | **POST** /workspaces/validate_username | validate username
 
 
 # **createWorkspace**
@@ -228,6 +228,117 @@ Name | Type | Description  | Notes
 ### Return type
 
 **string**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: text/plain
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | status |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **existsUsername**
+> boolean existsUsername(inlineObject4)
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .WorkspaceApi(configuration);
+
+let body:.WorkspaceApiExistsUsernameRequest = {
+  // InlineObject4
+  inlineObject4: {
+    id: "id_example",
+    username: "username_example",
+  },
+};
+
+apiInstance.existsUsername(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inlineObject4** | **InlineObject4**|  |
+
+
+### Return type
+
+**boolean**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: text/plain
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | status |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **existsWorkspace**
+> boolean existsWorkspace(inlineObject3)
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .WorkspaceApi(configuration);
+
+let body:.WorkspaceApiExistsWorkspaceRequest = {
+  // InlineObject3
+  inlineObject3: {
+    id: "id_example",
+  },
+};
+
+apiInstance.existsWorkspace(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inlineObject3** | **InlineObject3**|  |
+
+
+### Return type
+
+**boolean**
 
 ### Authorization
 
@@ -558,117 +669,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | workspaces |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **validateId**
-> string validateId(inlineObject3)
-
-
-### Example
-
-
-```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .WorkspaceApi(configuration);
-
-let body:.WorkspaceApiValidateIdRequest = {
-  // InlineObject3
-  inlineObject3: {
-    id: "id_example",
-  },
-};
-
-apiInstance.validateId(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **inlineObject3** | **InlineObject3**|  |
-
-
-### Return type
-
-**string**
-
-### Authorization
-
-[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: text/plain
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | status |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **validateUsername**
-> string validateUsername(inlineObject4)
-
-
-### Example
-
-
-```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .WorkspaceApi(configuration);
-
-let body:.WorkspaceApiValidateUsernameRequest = {
-  // InlineObject4
-  inlineObject4: {
-    id: "id_example",
-    username: "username_example",
-  },
-};
-
-apiInstance.validateUsername(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **inlineObject4** | **InlineObject4**|  |
-
-
-### Return type
-
-**string**
-
-### Authorization
-
-[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: text/plain
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | status |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
