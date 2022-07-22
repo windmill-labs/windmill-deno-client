@@ -948,6 +948,12 @@ export interface JobApiListCompletedJobsRequest {
      * @memberof JobApilistCompletedJobs
      */
     jobKinds?: string
+    /**
+     * is the job skipped
+     * @type boolean
+     * @memberof JobApilistCompletedJobs
+     */
+    isSkipped?: boolean
 }
 
 export interface JobApiListJobsRequest {
@@ -1005,6 +1011,12 @@ export interface JobApiListJobsRequest {
      * @memberof JobApilistJobs
      */
     jobKinds?: string
+    /**
+     * is the job skipped
+     * @type boolean
+     * @memberof JobApilistJobs
+     */
+    isSkipped?: boolean
     /**
      * filter on successful jobs
      * @type boolean
@@ -1320,7 +1332,7 @@ export class ObjectJobApi {
      * @param param the request object
      */
     public listCompletedJobs(param: JobApiListCompletedJobsRequest, options?: Configuration): Promise<Array<CompletedJob>> {
-        return this.api.listCompletedJobs(param.workspace, param.orderDesc, param.createdBy, param.parentJob, param.scriptPathExact, param.scriptPathStart, param.scriptHash, param.createdBefore, param.createdAfter, param.success, param.jobKinds,  options).toPromise();
+        return this.api.listCompletedJobs(param.workspace, param.orderDesc, param.createdBy, param.parentJob, param.scriptPathExact, param.scriptPathStart, param.scriptHash, param.createdBefore, param.createdAfter, param.success, param.jobKinds, param.isSkipped,  options).toPromise();
     }
 
     /**
@@ -1328,7 +1340,7 @@ export class ObjectJobApi {
      * @param param the request object
      */
     public listJobs(param: JobApiListJobsRequest, options?: Configuration): Promise<Array<Job>> {
-        return this.api.listJobs(param.workspace, param.createdBy, param.parentJob, param.scriptPathExact, param.scriptPathStart, param.scriptHash, param.createdBefore, param.createdAfter, param.jobKinds, param.success,  options).toPromise();
+        return this.api.listJobs(param.workspace, param.createdBy, param.parentJob, param.scriptPathExact, param.scriptPathStart, param.scriptHash, param.createdBefore, param.createdAfter, param.jobKinds, param.isSkipped, param.success,  options).toPromise();
     }
 
     /**
@@ -1919,6 +1931,21 @@ export interface ScheduleApiCreateScheduleRequest {
     newSchedule: NewSchedule
 }
 
+export interface ScheduleApiDeleteScheduleRequest {
+    /**
+     * 
+     * @type string
+     * @memberof ScheduleApideleteSchedule
+     */
+    workspace: string
+    /**
+     * 
+     * @type string
+     * @memberof ScheduleApideleteSchedule
+     */
+    path: string
+}
+
 export interface ScheduleApiExistsScheduleRequest {
     /**
      * 
@@ -2034,6 +2061,14 @@ export class ObjectScheduleApi {
      */
     public createSchedule(param: ScheduleApiCreateScheduleRequest, options?: Configuration): Promise<string> {
         return this.api.createSchedule(param.workspace, param.newSchedule,  options).toPromise();
+    }
+
+    /**
+     * delete schedule
+     * @param param the request object
+     */
+    public deleteSchedule(param: ScheduleApiDeleteScheduleRequest, options?: Configuration): Promise<string> {
+        return this.api.deleteSchedule(param.workspace, param.path,  options).toPromise();
     }
 
     /**
@@ -2303,6 +2338,12 @@ export interface ScriptApiListScriptsRequest {
      * @memberof ScriptApilistScripts
      */
     isTemplate?: boolean
+    /**
+     * (default regardless) if true show only the trigger scripts if false show only the non trigger scripts if not defined, show all regardless of if the script is a trigger script 
+     * @type boolean
+     * @memberof ScriptApilistScripts
+     */
+    isTrigger?: boolean
 }
 
 export interface ScriptApiPythonToJsonschemaRequest {
@@ -2414,7 +2455,7 @@ export class ObjectScriptApi {
      * @param param the request object
      */
     public listScripts(param: ScriptApiListScriptsRequest, options?: Configuration): Promise<Array<Script>> {
-        return this.api.listScripts(param.workspace, param.page, param.perPage, param.orderDesc, param.createdBy, param.pathStart, param.pathExact, param.firstParentHash, param.lastParentHash, param.parentHash, param.showArchived, param.isTemplate,  options).toPromise();
+        return this.api.listScripts(param.workspace, param.page, param.perPage, param.orderDesc, param.createdBy, param.pathStart, param.pathExact, param.firstParentHash, param.lastParentHash, param.parentHash, param.showArchived, param.isTemplate, param.isTrigger,  options).toPromise();
     }
 
     /**

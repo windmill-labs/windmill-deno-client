@@ -498,9 +498,10 @@ export class PromiseJobApi {
      * @param createdAfter filter on created after (exclusive) timestamp
      * @param success filter on successful jobs
      * @param jobKinds filter on job kind (values &#39;preview&#39;, &#39;script&#39;, &#39;dependencies&#39;, &#39;flow&#39;) separated by,
+     * @param isSkipped is the job skipped
      */
-    public listCompletedJobs(workspace: string, orderDesc?: boolean, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, success?: boolean, jobKinds?: string, _options?: Configuration): Promise<Array<CompletedJob>> {
-        const result = this.api.listCompletedJobs(workspace, orderDesc, createdBy, parentJob, scriptPathExact, scriptPathStart, scriptHash, createdBefore, createdAfter, success, jobKinds, _options);
+    public listCompletedJobs(workspace: string, orderDesc?: boolean, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, success?: boolean, jobKinds?: string, isSkipped?: boolean, _options?: Configuration): Promise<Array<CompletedJob>> {
+        const result = this.api.listCompletedJobs(workspace, orderDesc, createdBy, parentJob, scriptPathExact, scriptPathStart, scriptHash, createdBefore, createdAfter, success, jobKinds, isSkipped, _options);
         return result.toPromise();
     }
 
@@ -515,10 +516,11 @@ export class PromiseJobApi {
      * @param createdBefore filter on created before (inclusive) timestamp
      * @param createdAfter filter on created after (exclusive) timestamp
      * @param jobKinds filter on job kind (values &#39;preview&#39;, &#39;script&#39;, &#39;dependencies&#39;, &#39;flow&#39;) separated by,
+     * @param isSkipped is the job skipped
      * @param success filter on successful jobs
      */
-    public listJobs(workspace: string, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, jobKinds?: string, success?: boolean, _options?: Configuration): Promise<Array<Job>> {
-        const result = this.api.listJobs(workspace, createdBy, parentJob, scriptPathExact, scriptPathStart, scriptHash, createdBefore, createdAfter, jobKinds, success, _options);
+    public listJobs(workspace: string, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, jobKinds?: string, isSkipped?: boolean, success?: boolean, _options?: Configuration): Promise<Array<Job>> {
+        const result = this.api.listJobs(workspace, createdBy, parentJob, scriptPathExact, scriptPathStart, scriptHash, createdBefore, createdAfter, jobKinds, isSkipped, success, _options);
         return result.toPromise();
     }
 
@@ -902,6 +904,16 @@ export class PromiseScheduleApi {
     }
 
     /**
+     * delete schedule
+     * @param workspace 
+     * @param path 
+     */
+    public deleteSchedule(workspace: string, path: string, _options?: Configuration): Promise<string> {
+        const result = this.api.deleteSchedule(workspace, path, _options);
+        return result.toPromise();
+    }
+
+    /**
      * does schedule exists
      * @param workspace 
      * @param path 
@@ -1102,9 +1114,10 @@ export class PromiseScriptApi {
      * @param parentHash is the hash present in the array of stored parent hashes for this script. The same warning applies than for last_parent_hash. A script only store a limited number of direct parent 
      * @param showArchived (default false) show also the archived files. when multiple archived hash share the same path, only the ones with the latest create_at are displayed. 
      * @param isTemplate (default regardless) if true show only the templates if false show only the non templates if not defined, show all regardless of if the script is a template 
+     * @param isTrigger (default regardless) if true show only the trigger scripts if false show only the non trigger scripts if not defined, show all regardless of if the script is a trigger script 
      */
-    public listScripts(workspace: string, page?: number, perPage?: number, orderDesc?: boolean, createdBy?: string, pathStart?: string, pathExact?: string, firstParentHash?: string, lastParentHash?: string, parentHash?: string, showArchived?: boolean, isTemplate?: boolean, _options?: Configuration): Promise<Array<Script>> {
-        const result = this.api.listScripts(workspace, page, perPage, orderDesc, createdBy, pathStart, pathExact, firstParentHash, lastParentHash, parentHash, showArchived, isTemplate, _options);
+    public listScripts(workspace: string, page?: number, perPage?: number, orderDesc?: boolean, createdBy?: string, pathStart?: string, pathExact?: string, firstParentHash?: string, lastParentHash?: string, parentHash?: string, showArchived?: boolean, isTemplate?: boolean, isTrigger?: boolean, _options?: Configuration): Promise<Array<Script>> {
+        const result = this.api.listScripts(workspace, page, perPage, orderDesc, createdBy, pathStart, pathExact, firstParentHash, lastParentHash, parentHash, showArchived, isTemplate, isTrigger, _options);
         return result.toPromise();
     }
 

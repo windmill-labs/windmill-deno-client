@@ -161,7 +161,7 @@ let body:.ScriptApiCreateScriptRequest = {
       "lock_example",
     ],
     language: "python3",
-    triggerRecoInterval: 1,
+    isTrigger: true,
   },
 };
 
@@ -672,6 +672,8 @@ let body:.ScriptApiListScriptsRequest = {
   showArchived: true,
   // boolean | (default regardless) if true show only the templates if false show only the non templates if not defined, show all regardless of if the script is a template  (optional)
   isTemplate: true,
+  // boolean | (default regardless) if true show only the trigger scripts if false show only the non trigger scripts if not defined, show all regardless of if the script is a trigger script  (optional)
+  isTrigger: true,
 };
 
 apiInstance.listScripts(body).then((data:any) => {
@@ -696,6 +698,7 @@ Name | Type | Description  | Notes
  **parentHash** | [**string**] | is the hash present in the array of stored parent hashes for this script. The same warning applies than for last_parent_hash. A script only store a limited number of direct parent  | (optional) defaults to undefined
  **showArchived** | [**boolean**] | (default false) show also the archived files. when multiple archived hash share the same path, only the ones with the latest create_at are displayed.  | (optional) defaults to undefined
  **isTemplate** | [**boolean**] | (default regardless) if true show only the templates if false show only the non templates if not defined, show all regardless of if the script is a template  | (optional) defaults to undefined
+ **isTrigger** | [**boolean**] | (default regardless) if true show only the trigger scripts if false show only the non trigger scripts if not defined, show all regardless of if the script is a trigger script  | (optional) defaults to undefined
 
 
 ### Return type

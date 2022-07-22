@@ -571,14 +571,16 @@ export class ScriptApiRequestFactory extends BaseAPIRequestFactory {
      * @param parentHash is the hash present in the array of stored parent hashes for this script. The same warning applies than for last_parent_hash. A script only store a limited number of direct parent 
      * @param showArchived (default false) show also the archived files. when multiple archived hash share the same path, only the ones with the latest create_at are displayed. 
      * @param isTemplate (default regardless) if true show only the templates if false show only the non templates if not defined, show all regardless of if the script is a template 
+     * @param isTrigger (default regardless) if true show only the trigger scripts if false show only the non trigger scripts if not defined, show all regardless of if the script is a trigger script 
      */
-    public async listScripts(workspace: string, page?: number, perPage?: number, orderDesc?: boolean, createdBy?: string, pathStart?: string, pathExact?: string, firstParentHash?: string, lastParentHash?: string, parentHash?: string, showArchived?: boolean, isTemplate?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async listScripts(workspace: string, page?: number, perPage?: number, orderDesc?: boolean, createdBy?: string, pathStart?: string, pathExact?: string, firstParentHash?: string, lastParentHash?: string, parentHash?: string, showArchived?: boolean, isTemplate?: boolean, isTrigger?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
         if (workspace === null || workspace === undefined) {
             throw new RequiredError("ScriptApi", "listScripts", "workspace");
         }
+
 
 
 
@@ -653,6 +655,11 @@ export class ScriptApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (isTemplate !== undefined) {
             requestContext.setQueryParam("is_template", ObjectSerializer.serialize(isTemplate, "boolean", ""));
+        }
+
+        // Query Params
+        if (isTrigger !== undefined) {
+            requestContext.setQueryParam("is_trigger", ObjectSerializer.serialize(isTrigger, "boolean", ""));
         }
 
 

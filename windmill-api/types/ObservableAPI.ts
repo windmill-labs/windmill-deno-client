@@ -875,9 +875,10 @@ export class ObservableJobApi {
      * @param createdAfter filter on created after (exclusive) timestamp
      * @param success filter on successful jobs
      * @param jobKinds filter on job kind (values &#39;preview&#39;, &#39;script&#39;, &#39;dependencies&#39;, &#39;flow&#39;) separated by,
+     * @param isSkipped is the job skipped
      */
-    public listCompletedJobs(workspace: string, orderDesc?: boolean, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, success?: boolean, jobKinds?: string, _options?: Configuration): Observable<Array<CompletedJob>> {
-        const requestContextPromise = this.requestFactory.listCompletedJobs(workspace, orderDesc, createdBy, parentJob, scriptPathExact, scriptPathStart, scriptHash, createdBefore, createdAfter, success, jobKinds, _options);
+    public listCompletedJobs(workspace: string, orderDesc?: boolean, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, success?: boolean, jobKinds?: string, isSkipped?: boolean, _options?: Configuration): Observable<Array<CompletedJob>> {
+        const requestContextPromise = this.requestFactory.listCompletedJobs(workspace, orderDesc, createdBy, parentJob, scriptPathExact, scriptPathStart, scriptHash, createdBefore, createdAfter, success, jobKinds, isSkipped, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -906,10 +907,11 @@ export class ObservableJobApi {
      * @param createdBefore filter on created before (inclusive) timestamp
      * @param createdAfter filter on created after (exclusive) timestamp
      * @param jobKinds filter on job kind (values &#39;preview&#39;, &#39;script&#39;, &#39;dependencies&#39;, &#39;flow&#39;) separated by,
+     * @param isSkipped is the job skipped
      * @param success filter on successful jobs
      */
-    public listJobs(workspace: string, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, jobKinds?: string, success?: boolean, _options?: Configuration): Observable<Array<Job>> {
-        const requestContextPromise = this.requestFactory.listJobs(workspace, createdBy, parentJob, scriptPathExact, scriptPathStart, scriptHash, createdBefore, createdAfter, jobKinds, success, _options);
+    public listJobs(workspace: string, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, jobKinds?: string, isSkipped?: boolean, success?: boolean, _options?: Configuration): Observable<Array<Job>> {
+        const requestContextPromise = this.requestFactory.listJobs(workspace, createdBy, parentJob, scriptPathExact, scriptPathStart, scriptHash, createdBefore, createdAfter, jobKinds, isSkipped, success, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -1724,6 +1726,30 @@ export class ObservableScheduleApi {
     }
 
     /**
+     * delete schedule
+     * @param workspace 
+     * @param path 
+     */
+    public deleteSchedule(workspace: string, path: string, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.deleteSchedule(workspace, path, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteSchedule(rsp)));
+            }));
+    }
+
+    /**
      * does schedule exists
      * @param workspace 
      * @param path 
@@ -2161,9 +2187,10 @@ export class ObservableScriptApi {
      * @param parentHash is the hash present in the array of stored parent hashes for this script. The same warning applies than for last_parent_hash. A script only store a limited number of direct parent 
      * @param showArchived (default false) show also the archived files. when multiple archived hash share the same path, only the ones with the latest create_at are displayed. 
      * @param isTemplate (default regardless) if true show only the templates if false show only the non templates if not defined, show all regardless of if the script is a template 
+     * @param isTrigger (default regardless) if true show only the trigger scripts if false show only the non trigger scripts if not defined, show all regardless of if the script is a trigger script 
      */
-    public listScripts(workspace: string, page?: number, perPage?: number, orderDesc?: boolean, createdBy?: string, pathStart?: string, pathExact?: string, firstParentHash?: string, lastParentHash?: string, parentHash?: string, showArchived?: boolean, isTemplate?: boolean, _options?: Configuration): Observable<Array<Script>> {
-        const requestContextPromise = this.requestFactory.listScripts(workspace, page, perPage, orderDesc, createdBy, pathStart, pathExact, firstParentHash, lastParentHash, parentHash, showArchived, isTemplate, _options);
+    public listScripts(workspace: string, page?: number, perPage?: number, orderDesc?: boolean, createdBy?: string, pathStart?: string, pathExact?: string, firstParentHash?: string, lastParentHash?: string, parentHash?: string, showArchived?: boolean, isTemplate?: boolean, isTrigger?: boolean, _options?: Configuration): Observable<Array<Script>> {
+        const requestContextPromise = this.requestFactory.listScripts(workspace, page, perPage, orderDesc, createdBy, pathStart, pathExact, firstParentHash, lastParentHash, parentHash, showArchived, isTemplate, isTrigger, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);

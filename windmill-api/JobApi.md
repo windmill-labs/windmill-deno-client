@@ -348,6 +348,8 @@ let body:.JobApiListCompletedJobsRequest = {
   success: true,
   // string | filter on job kind (values 'preview', 'script', 'dependencies', 'flow') separated by, (optional)
   jobKinds: "job_kinds_example",
+  // boolean | is the job skipped (optional)
+  isSkipped: true,
 };
 
 apiInstance.listCompletedJobs(body).then((data:any) => {
@@ -371,6 +373,7 @@ Name | Type | Description  | Notes
  **createdAfter** | [**Date**] | filter on created after (exclusive) timestamp | (optional) defaults to undefined
  **success** | [**boolean**] | filter on successful jobs | (optional) defaults to undefined
  **jobKinds** | [**string**] | filter on job kind (values &#39;preview&#39;, &#39;script&#39;, &#39;dependencies&#39;, &#39;flow&#39;) separated by, | (optional) defaults to undefined
+ **isSkipped** | [**boolean**] | is the job skipped | (optional) defaults to undefined
 
 
 ### Return type
@@ -427,6 +430,8 @@ let body:.JobApiListJobsRequest = {
   createdAfter: new Date('1970-01-01T00:00:00.00Z'),
   // string | filter on job kind (values 'preview', 'script', 'dependencies', 'flow') separated by, (optional)
   jobKinds: "job_kinds_example",
+  // boolean | is the job skipped (optional)
+  isSkipped: true,
   // boolean | filter on successful jobs (optional)
   success: true,
 };
@@ -450,6 +455,7 @@ Name | Type | Description  | Notes
  **createdBefore** | [**Date**] | filter on created before (inclusive) timestamp | (optional) defaults to undefined
  **createdAfter** | [**Date**] | filter on created after (exclusive) timestamp | (optional) defaults to undefined
  **jobKinds** | [**string**] | filter on job kind (values &#39;preview&#39;, &#39;script&#39;, &#39;dependencies&#39;, &#39;flow&#39;) separated by, | (optional) defaults to undefined
+ **isSkipped** | [**boolean**] | is the job skipped | (optional) defaults to undefined
  **success** | [**boolean**] | filter on successful jobs | (optional) defaults to undefined
 
 
