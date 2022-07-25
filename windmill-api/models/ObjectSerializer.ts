@@ -48,8 +48,12 @@ export * from './InlineObject8.ts';
 export * from './InlineObject9.ts';
 export * from './InlineResponse200.ts';
 export * from './InlineResponse2001.ts';
+export * from './InlineResponse2001Asks.ts';
 export * from './InlineResponse2002.ts';
+export * from './InlineResponse2002Flows.ts';
 export * from './InlineResponse2003.ts';
+export * from './InlineResponse2004.ts';
+export * from './InlineResponse2005.ts';
 export * from './InputTransform.ts';
 export * from './Job.ts';
 export * from './JobAllOf.ts';
@@ -60,6 +64,7 @@ export * from './MainArgSignatureArgs.ts';
 export * from './NewSchedule.ts';
 export * from './NewToken.ts';
 export * from './NewUser.ts';
+export * from './OpenFlow.ts';
 export * from './Preview.ts';
 export * from './QueuedJob.ts';
 export * from './Resource.ts';
@@ -127,8 +132,12 @@ import { InlineObject8 } from './InlineObject8.ts';
 import { InlineObject9 } from './InlineObject9.ts';
 import { InlineResponse200 } from './InlineResponse200.ts';
 import { InlineResponse2001 } from './InlineResponse2001.ts';
+import { InlineResponse2001Asks } from './InlineResponse2001Asks.ts';
 import { InlineResponse2002 } from './InlineResponse2002.ts';
+import { InlineResponse2002Flows } from './InlineResponse2002Flows.ts';
 import { InlineResponse2003 } from './InlineResponse2003.ts';
+import { InlineResponse2004 } from './InlineResponse2004.ts';
+import { InlineResponse2005 } from './InlineResponse2005.ts';
 import { InputTransform, InputTransformTypeEnum      } from './InputTransform.ts';
 import { Job, JobTypeEnum                    , JobJobKindEnum       , JobLanguageEnum       } from './Job.ts';
 import { JobAllOf, JobAllOfTypeEnum   } from './JobAllOf.ts';
@@ -139,6 +148,7 @@ import { MainArgSignatureArgs } from './MainArgSignatureArgs.ts';
 import { NewSchedule } from './NewSchedule.ts';
 import { NewToken } from './NewToken.ts';
 import { NewUser } from './NewUser.ts';
+import { OpenFlow } from './OpenFlow.ts';
 import { Preview   , PreviewLanguageEnum   } from './Preview.ts';
 import { QueuedJob                 , QueuedJobJobKindEnum       , QueuedJobLanguageEnum   } from './QueuedJob.ts';
 import { Resource } from './Resource.ts';
@@ -247,8 +257,12 @@ let typeMap: {[index: string]: any} = {
     "InlineObject9": InlineObject9,
     "InlineResponse200": InlineResponse200,
     "InlineResponse2001": InlineResponse2001,
+    "InlineResponse2001Asks": InlineResponse2001Asks,
     "InlineResponse2002": InlineResponse2002,
+    "InlineResponse2002Flows": InlineResponse2002Flows,
     "InlineResponse2003": InlineResponse2003,
+    "InlineResponse2004": InlineResponse2004,
+    "InlineResponse2005": InlineResponse2005,
     "InputTransform": InputTransform,
     "Job": Job,
     "JobAllOf": JobAllOf,
@@ -259,6 +273,7 @@ let typeMap: {[index: string]: any} = {
     "NewSchedule": NewSchedule,
     "NewToken": NewToken,
     "NewUser": NewUser,
+    "OpenFlow": OpenFlow,
     "Preview": Preview,
     "QueuedJob": QueuedJob,
     "Resource": Resource,

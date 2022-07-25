@@ -10,52 +10,30 @@
  * Do not edit the class manually.
  */
 
-import { FlowValue } from './FlowValue.ts';
 import { HttpFile } from '../http/http.ts';
 
-export class InlineObject17 {
-    'path': string;
-    'summary': string;
-    'description': string;
-    'value': FlowValue;
-    'schema'?: any;
+export class InlineResponse2004 {
+    'lock'?: string;
+    'lockErrorLogs'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "path",
-            "baseName": "path",
+            "name": "lock",
+            "baseName": "lock",
             "type": "string",
             "format": ""
         },
         {
-            "name": "summary",
-            "baseName": "summary",
+            "name": "lockErrorLogs",
+            "baseName": "lock_error_logs",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "description",
-            "baseName": "description",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "value",
-            "baseName": "value",
-            "type": "FlowValue",
-            "format": ""
-        },
-        {
-            "name": "schema",
-            "baseName": "schema",
-            "type": "any",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return InlineObject17.attributeTypeMap;
+        return InlineResponse2004.attributeTypeMap;
     }
 
     public constructor() {

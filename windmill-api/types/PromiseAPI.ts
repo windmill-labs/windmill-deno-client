@@ -52,8 +52,12 @@ import { InlineObject8 } from '../models/InlineObject8.ts';
 import { InlineObject9 } from '../models/InlineObject9.ts';
 import { InlineResponse200 } from '../models/InlineResponse200.ts';
 import { InlineResponse2001 } from '../models/InlineResponse2001.ts';
+import { InlineResponse2001Asks } from '../models/InlineResponse2001Asks.ts';
 import { InlineResponse2002 } from '../models/InlineResponse2002.ts';
+import { InlineResponse2002Flows } from '../models/InlineResponse2002Flows.ts';
 import { InlineResponse2003 } from '../models/InlineResponse2003.ts';
+import { InlineResponse2004 } from '../models/InlineResponse2004.ts';
+import { InlineResponse2005 } from '../models/InlineResponse2005.ts';
 import { InputTransform } from '../models/InputTransform.ts';
 import { Job } from '../models/Job.ts';
 import { JobAllOf } from '../models/JobAllOf.ts';
@@ -64,6 +68,7 @@ import { MainArgSignatureArgs } from '../models/MainArgSignatureArgs.ts';
 import { NewSchedule } from '../models/NewSchedule.ts';
 import { NewToken } from '../models/NewToken.ts';
 import { NewUser } from '../models/NewUser.ts';
+import { OpenFlow } from '../models/OpenFlow.ts';
 import { Preview } from '../models/Preview.ts';
 import { QueuedJob } from '../models/QueuedJob.ts';
 import { Resource } from '../models/Resource.ts';
@@ -231,6 +236,15 @@ export class PromiseFlowApi {
     }
 
     /**
+     * get hub flow by id
+     * @param id 
+     */
+    public getHubFlowById(id: number, _options?: Configuration): Promise<InlineResponse2003> {
+        const result = this.api.getHubFlowById(id, _options);
+        return result.toPromise();
+    }
+
+    /**
      * list all available flows
      * @param workspace 
      * @param page which page to return (start at 1, default 1)
@@ -243,6 +257,14 @@ export class PromiseFlowApi {
      */
     public listFlows(workspace: string, page?: number, perPage?: number, orderDesc?: boolean, createdBy?: string, pathStart?: string, pathExact?: string, showArchived?: boolean, _options?: Configuration): Promise<Array<Flow>> {
         const result = this.api.listFlows(workspace, page, perPage, orderDesc, createdBy, pathStart, pathExact, showArchived, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * list all available hub flows
+     */
+    public listHubFlows(_options?: Configuration): Promise<InlineResponse2002> {
+        const result = this.api.listHubFlows(_options);
         return result.toPromise();
     }
 
@@ -480,7 +502,7 @@ export class PromiseJobApi {
      * @param running 
      * @param logOffset 
      */
-    public getJobUpdates(workspace: string, id: string, running?: boolean, logOffset?: number, _options?: Configuration): Promise<InlineResponse2003> {
+    public getJobUpdates(workspace: string, id: string, running?: boolean, logOffset?: number, _options?: Configuration): Promise<InlineResponse2005> {
         const result = this.api.getJobUpdates(workspace, id, running, logOffset, _options);
         return result.toPromise();
     }
@@ -1087,7 +1109,7 @@ export class PromiseScriptApi {
      * @param workspace 
      * @param hash 
      */
-    public getScriptDeploymentStatus(workspace: string, hash: string, _options?: Configuration): Promise<InlineResponse2002> {
+    public getScriptDeploymentStatus(workspace: string, hash: string, _options?: Configuration): Promise<InlineResponse2004> {
         const result = this.api.getScriptDeploymentStatus(workspace, hash, _options);
         return result.toPromise();
     }
@@ -1095,7 +1117,7 @@ export class PromiseScriptApi {
     /**
      * list all available hub scripts
      */
-    public listHubScripts(_options?: Configuration): Promise<Array<InlineResponse2001>> {
+    public listHubScripts(_options?: Configuration): Promise<InlineResponse2001> {
         const result = this.api.listHubScripts(_options);
         return result.toPromise();
     }

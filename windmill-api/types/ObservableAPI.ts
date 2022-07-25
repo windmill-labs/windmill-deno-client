@@ -53,8 +53,12 @@ import { InlineObject8 } from '../models/InlineObject8.ts';
 import { InlineObject9 } from '../models/InlineObject9.ts';
 import { InlineResponse200 } from '../models/InlineResponse200.ts';
 import { InlineResponse2001 } from '../models/InlineResponse2001.ts';
+import { InlineResponse2001Asks } from '../models/InlineResponse2001Asks.ts';
 import { InlineResponse2002 } from '../models/InlineResponse2002.ts';
+import { InlineResponse2002Flows } from '../models/InlineResponse2002Flows.ts';
 import { InlineResponse2003 } from '../models/InlineResponse2003.ts';
+import { InlineResponse2004 } from '../models/InlineResponse2004.ts';
+import { InlineResponse2005 } from '../models/InlineResponse2005.ts';
 import { InputTransform } from '../models/InputTransform.ts';
 import { Job } from '../models/Job.ts';
 import { JobAllOf } from '../models/JobAllOf.ts';
@@ -65,6 +69,7 @@ import { MainArgSignatureArgs } from '../models/MainArgSignatureArgs.ts';
 import { NewSchedule } from '../models/NewSchedule.ts';
 import { NewToken } from '../models/NewToken.ts';
 import { NewUser } from '../models/NewUser.ts';
+import { OpenFlow } from '../models/OpenFlow.ts';
 import { Preview } from '../models/Preview.ts';
 import { QueuedJob } from '../models/QueuedJob.ts';
 import { Resource } from '../models/Resource.ts';
@@ -359,6 +364,29 @@ export class ObservableFlowApi {
     }
 
     /**
+     * get hub flow by id
+     * @param id 
+     */
+    public getHubFlowById(id: number, _options?: Configuration): Observable<InlineResponse2003> {
+        const requestContextPromise = this.requestFactory.getHubFlowById(id, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getHubFlowById(rsp)));
+            }));
+    }
+
+    /**
      * list all available flows
      * @param workspace 
      * @param page which page to return (start at 1, default 1)
@@ -385,6 +413,28 @@ export class ObservableFlowApi {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listFlows(rsp)));
+            }));
+    }
+
+    /**
+     * list all available hub flows
+     */
+    public listHubFlows(_options?: Configuration): Observable<InlineResponse2002> {
+        const requestContextPromise = this.requestFactory.listHubFlows(_options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listHubFlows(rsp)));
             }));
     }
 
@@ -843,7 +893,7 @@ export class ObservableJobApi {
      * @param running 
      * @param logOffset 
      */
-    public getJobUpdates(workspace: string, id: string, running?: boolean, logOffset?: number, _options?: Configuration): Observable<InlineResponse2003> {
+    public getJobUpdates(workspace: string, id: string, running?: boolean, logOffset?: number, _options?: Configuration): Observable<InlineResponse2005> {
         const requestContextPromise = this.requestFactory.getJobUpdates(workspace, id, running, logOffset, _options);
 
         // build promise chain
@@ -2132,7 +2182,7 @@ export class ObservableScriptApi {
      * @param workspace 
      * @param hash 
      */
-    public getScriptDeploymentStatus(workspace: string, hash: string, _options?: Configuration): Observable<InlineResponse2002> {
+    public getScriptDeploymentStatus(workspace: string, hash: string, _options?: Configuration): Observable<InlineResponse2004> {
         const requestContextPromise = this.requestFactory.getScriptDeploymentStatus(workspace, hash, _options);
 
         // build promise chain
@@ -2154,7 +2204,7 @@ export class ObservableScriptApi {
     /**
      * list all available hub scripts
      */
-    public listHubScripts(_options?: Configuration): Observable<Array<InlineResponse2001>> {
+    public listHubScripts(_options?: Configuration): Observable<InlineResponse2001> {
         const requestContextPromise = this.requestFactory.listHubScripts(_options);
 
         // build promise chain

@@ -8,7 +8,9 @@ Method | HTTP request | Description
 [**createFlow**](FlowApi.md#createFlow) | **POST** /w/{workspace}/flows/create | create flow
 [**existsFlowByPath**](FlowApi.md#existsFlowByPath) | **GET** /w/{workspace}/flows/exists/{path} | exists flow by path
 [**getFlowByPath**](FlowApi.md#getFlowByPath) | **GET** /w/{workspace}/flows/get/{path} | get flow by path
+[**getHubFlowById**](FlowApi.md#getHubFlowById) | **GET** /flows/hub/get/{id} | get hub flow by id
 [**listFlows**](FlowApi.md#listFlows) | **GET** /w/{workspace}/flows/list | list all available flows
+[**listHubFlows**](FlowApi.md#listHubFlows) | **GET** /flows/hub/list | list all available hub flows
 [**updateFlow**](FlowApi.md#updateFlow) | **POST** /w/{workspace}/flows/update/{path} | update flow
 
 
@@ -295,6 +297,59 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getHubFlowById**
+> InlineResponse2003 getHubFlowById()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .FlowApi(configuration);
+
+let body:.FlowApiGetHubFlowByIdRequest = {
+  // number
+  id: 1,
+};
+
+apiInstance.getHubFlowById(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**InlineResponse2003**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | flow |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **listFlows**
 > Array<Flow> listFlows()
 
@@ -366,6 +421,53 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | All available flow |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listHubFlows**
+> InlineResponse2002 listHubFlows()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .FlowApi(configuration);
+
+let body:any = {};
+
+apiInstance.listHubFlows(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+
+### Return type
+
+**InlineResponse2002**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | hub flows list |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

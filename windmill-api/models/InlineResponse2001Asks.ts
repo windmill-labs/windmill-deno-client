@@ -10,23 +10,31 @@
  * Do not edit the class manually.
  */
 
-import { FlowValue } from './FlowValue.ts';
 import { HttpFile } from '../http/http.ts';
 
-export class InlineObject17 {
-    'path': string;
+export class InlineResponse2001Asks {
+    'id': number;
+    'askId': number;
     'summary': string;
-    'description': string;
-    'value': FlowValue;
-    'schema'?: any;
+    'app': string;
+    'approved': boolean;
+    'isTrigger': boolean;
+    'votes': number;
+    'views': number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "path",
-            "baseName": "path",
-            "type": "string",
+            "name": "id",
+            "baseName": "id",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "askId",
+            "baseName": "ask_id",
+            "type": "number",
             "format": ""
         },
         {
@@ -36,26 +44,38 @@ export class InlineObject17 {
             "format": ""
         },
         {
-            "name": "description",
-            "baseName": "description",
+            "name": "app",
+            "baseName": "app",
             "type": "string",
             "format": ""
         },
         {
-            "name": "value",
-            "baseName": "value",
-            "type": "FlowValue",
+            "name": "approved",
+            "baseName": "approved",
+            "type": "boolean",
             "format": ""
         },
         {
-            "name": "schema",
-            "baseName": "schema",
-            "type": "any",
+            "name": "isTrigger",
+            "baseName": "is_trigger",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "votes",
+            "baseName": "votes",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "views",
+            "baseName": "views",
+            "type": "number",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return InlineObject17.attributeTypeMap;
+        return InlineResponse2001Asks.attributeTypeMap;
     }
 
     public constructor() {

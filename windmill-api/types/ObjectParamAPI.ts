@@ -52,8 +52,12 @@ import { InlineObject8 } from '../models/InlineObject8.ts';
 import { InlineObject9 } from '../models/InlineObject9.ts';
 import { InlineResponse200 } from '../models/InlineResponse200.ts';
 import { InlineResponse2001 } from '../models/InlineResponse2001.ts';
+import { InlineResponse2001Asks } from '../models/InlineResponse2001Asks.ts';
 import { InlineResponse2002 } from '../models/InlineResponse2002.ts';
+import { InlineResponse2002Flows } from '../models/InlineResponse2002Flows.ts';
 import { InlineResponse2003 } from '../models/InlineResponse2003.ts';
+import { InlineResponse2004 } from '../models/InlineResponse2004.ts';
+import { InlineResponse2005 } from '../models/InlineResponse2005.ts';
 import { InputTransform } from '../models/InputTransform.ts';
 import { Job } from '../models/Job.ts';
 import { JobAllOf } from '../models/JobAllOf.ts';
@@ -64,6 +68,7 @@ import { MainArgSignatureArgs } from '../models/MainArgSignatureArgs.ts';
 import { NewSchedule } from '../models/NewSchedule.ts';
 import { NewToken } from '../models/NewToken.ts';
 import { NewUser } from '../models/NewUser.ts';
+import { OpenFlow } from '../models/OpenFlow.ts';
 import { Preview } from '../models/Preview.ts';
 import { QueuedJob } from '../models/QueuedJob.ts';
 import { Resource } from '../models/Resource.ts';
@@ -331,6 +336,15 @@ export interface FlowApiGetFlowByPathRequest {
     path: string
 }
 
+export interface FlowApiGetHubFlowByIdRequest {
+    /**
+     * 
+     * @type number
+     * @memberof FlowApigetHubFlowById
+     */
+    id: number
+}
+
 export interface FlowApiListFlowsRequest {
     /**
      * 
@@ -380,6 +394,9 @@ export interface FlowApiListFlowsRequest {
      * @memberof FlowApilistFlows
      */
     showArchived?: boolean
+}
+
+export interface FlowApiListHubFlowsRequest {
 }
 
 export interface FlowApiUpdateFlowRequest {
@@ -443,11 +460,27 @@ export class ObjectFlowApi {
     }
 
     /**
+     * get hub flow by id
+     * @param param the request object
+     */
+    public getHubFlowById(param: FlowApiGetHubFlowByIdRequest, options?: Configuration): Promise<InlineResponse2003> {
+        return this.api.getHubFlowById(param.id,  options).toPromise();
+    }
+
+    /**
      * list all available flows
      * @param param the request object
      */
     public listFlows(param: FlowApiListFlowsRequest, options?: Configuration): Promise<Array<Flow>> {
         return this.api.listFlows(param.workspace, param.page, param.perPage, param.orderDesc, param.createdBy, param.pathStart, param.pathExact, param.showArchived,  options).toPromise();
+    }
+
+    /**
+     * list all available hub flows
+     * @param param the request object
+     */
+    public listHubFlows(param: FlowApiListHubFlowsRequest = {}, options?: Configuration): Promise<InlineResponse2002> {
+        return this.api.listHubFlows( options).toPromise();
     }
 
     /**
@@ -1323,7 +1356,7 @@ export class ObjectJobApi {
      * get job updates
      * @param param the request object
      */
-    public getJobUpdates(param: JobApiGetJobUpdatesRequest, options?: Configuration): Promise<InlineResponse2003> {
+    public getJobUpdates(param: JobApiGetJobUpdatesRequest, options?: Configuration): Promise<InlineResponse2005> {
         return this.api.getJobUpdates(param.workspace, param.id, param.running, param.logOffset,  options).toPromise();
     }
 
@@ -2438,7 +2471,7 @@ export class ObjectScriptApi {
      * get script deployment status
      * @param param the request object
      */
-    public getScriptDeploymentStatus(param: ScriptApiGetScriptDeploymentStatusRequest, options?: Configuration): Promise<InlineResponse2002> {
+    public getScriptDeploymentStatus(param: ScriptApiGetScriptDeploymentStatusRequest, options?: Configuration): Promise<InlineResponse2004> {
         return this.api.getScriptDeploymentStatus(param.workspace, param.hash,  options).toPromise();
     }
 
@@ -2446,7 +2479,7 @@ export class ObjectScriptApi {
      * list all available hub scripts
      * @param param the request object
      */
-    public listHubScripts(param: ScriptApiListHubScriptsRequest = {}, options?: Configuration): Promise<Array<InlineResponse2001>> {
+    public listHubScripts(param: ScriptApiListHubScriptsRequest = {}, options?: Configuration): Promise<InlineResponse2001> {
         return this.api.listHubScripts( options).toPromise();
     }
 

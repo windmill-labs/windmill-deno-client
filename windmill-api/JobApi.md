@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **getJobUpdates**
-> InlineResponse2003 getJobUpdates()
+> InlineResponse2005 getJobUpdates()
 
 
 ### Example
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**InlineResponse2003**
+**InlineResponse2005**
 
 ### Authorization
 

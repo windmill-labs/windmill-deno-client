@@ -13,22 +13,15 @@
 import { FlowValue } from './FlowValue.ts';
 import { HttpFile } from '../http/http.ts';
 
-export class InlineObject17 {
-    'path': string;
+export class OpenFlow {
     'summary': string;
-    'description': string;
+    'description'?: string;
     'value': FlowValue;
     'schema'?: any;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "path",
-            "baseName": "path",
-            "type": "string",
-            "format": ""
-        },
         {
             "name": "summary",
             "baseName": "summary",
@@ -55,7 +48,7 @@ export class InlineObject17 {
         }    ];
 
     static getAttributeTypeMap() {
-        return InlineObject17.attributeTypeMap;
+        return OpenFlow.attributeTypeMap;
     }
 
     public constructor() {

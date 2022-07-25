@@ -10,23 +10,29 @@
  * Do not edit the class manually.
  */
 
-import { FlowValue } from './FlowValue.ts';
 import { HttpFile } from '../http/http.ts';
 
-export class InlineObject17 {
-    'path': string;
+export class InlineResponse2002Flows {
+    'id': number;
+    'flowId': number;
     'summary': string;
-    'description': string;
-    'value': FlowValue;
-    'schema'?: any;
+    'apps': Array<string>;
+    'approved': boolean;
+    'votes': number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "path",
-            "baseName": "path",
-            "type": "string",
+            "name": "id",
+            "baseName": "id",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "flowId",
+            "baseName": "flow_id",
+            "type": "number",
             "format": ""
         },
         {
@@ -36,26 +42,26 @@ export class InlineObject17 {
             "format": ""
         },
         {
-            "name": "description",
-            "baseName": "description",
-            "type": "string",
+            "name": "apps",
+            "baseName": "apps",
+            "type": "Array<string>",
             "format": ""
         },
         {
-            "name": "value",
-            "baseName": "value",
-            "type": "FlowValue",
+            "name": "approved",
+            "baseName": "approved",
+            "type": "boolean",
             "format": ""
         },
         {
-            "name": "schema",
-            "baseName": "schema",
-            "type": "any",
+            "name": "votes",
+            "baseName": "votes",
+            "type": "number",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return InlineObject17.attributeTypeMap;
+        return InlineResponse2002Flows.attributeTypeMap;
     }
 
     public constructor() {

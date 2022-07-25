@@ -89,8 +89,12 @@ models/InlineObject8.ts
 models/InlineObject9.ts
 models/InlineResponse200.ts
 models/InlineResponse2001.ts
+models/InlineResponse2001Asks.ts
 models/InlineResponse2002.ts
+models/InlineResponse2002Flows.ts
 models/InlineResponse2003.ts
+models/InlineResponse2004.ts
+models/InlineResponse2005.ts
 models/InputTransform.ts
 models/Job.ts
 models/JobAllOf.ts
@@ -102,6 +106,7 @@ models/NewSchedule.ts
 models/NewToken.ts
 models/NewUser.ts
 models/ObjectSerializer.ts
+models/OpenFlow.ts
 models/Preview.ts
 models/QueuedJob.ts
 models/Resource.ts
