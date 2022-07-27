@@ -41,6 +41,7 @@ let body:.ScheduleApiCreateScheduleRequest = {
     args: {
       "key": null,
     },
+    enabled: true,
   },
 };
 
