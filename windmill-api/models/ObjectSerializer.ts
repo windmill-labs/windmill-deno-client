@@ -75,6 +75,7 @@ export * from './SlackToken.ts';
 export * from './SlackTokenBot.ts';
 export * from './TokenResponse.ts';
 export * from './TruncatedToken.ts';
+export * from './Usage.ts';
 export * from './User.ts';
 export * from './UserWorkspaceList.ts';
 export * from './UserWorkspaceListWorkspaces.ts';
@@ -159,6 +160,7 @@ import { SlackToken } from './SlackToken.ts';
 import { SlackTokenBot } from './SlackTokenBot.ts';
 import { TokenResponse } from './TokenResponse.ts';
 import { TruncatedToken } from './TruncatedToken.ts';
+import { Usage } from './Usage.ts';
 import { User } from './User.ts';
 import { UserWorkspaceList } from './UserWorkspaceList.ts';
 import { UserWorkspaceListWorkspaces } from './UserWorkspaceListWorkspaces.ts';
@@ -284,6 +286,7 @@ let typeMap: {[index: string]: any} = {
     "SlackTokenBot": SlackTokenBot,
     "TokenResponse": TokenResponse,
     "TruncatedToken": TruncatedToken,
+    "Usage": Usage,
     "User": User,
     "UserWorkspaceList": UserWorkspaceList,
     "UserWorkspaceListWorkspaces": UserWorkspaceListWorkspaces,

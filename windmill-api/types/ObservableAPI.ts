@@ -80,6 +80,7 @@ import { SlackToken } from '../models/SlackToken.ts';
 import { SlackTokenBot } from '../models/SlackTokenBot.ts';
 import { TokenResponse } from '../models/TokenResponse.ts';
 import { TruncatedToken } from '../models/TruncatedToken.ts';
+import { Usage } from '../models/Usage.ts';
 import { User } from '../models/User.ts';
 import { UserWorkspaceList } from '../models/UserWorkspaceList.ts';
 import { UserWorkspaceListWorkspaces } from '../models/UserWorkspaceListWorkspaces.ts';

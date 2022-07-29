@@ -117,6 +117,7 @@ models/SlackToken.ts
 models/SlackTokenBot.ts
 models/TokenResponse.ts
 models/TruncatedToken.ts
+models/Usage.ts
 models/User.ts
 models/UserWorkspaceList.ts
 models/UserWorkspaceListWorkspaces.ts

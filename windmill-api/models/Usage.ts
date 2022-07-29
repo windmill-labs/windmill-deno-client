@@ -12,35 +12,35 @@
 
 import { HttpFile } from '../http/http.ts';
 
-export class NewUser {
-    'email': string;
-    'username': string;
-    'isAdmin': boolean;
+export class Usage {
+    'durationMs'?: number;
+    'jobs'?: number;
+    'flows'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "email",
-            "baseName": "email",
-            "type": "string",
+            "name": "durationMs",
+            "baseName": "duration_ms",
+            "type": "number",
             "format": ""
         },
         {
-            "name": "username",
-            "baseName": "username",
-            "type": "string",
+            "name": "jobs",
+            "baseName": "jobs",
+            "type": "number",
             "format": ""
         },
         {
-            "name": "isAdmin",
-            "baseName": "is_admin",
-            "type": "boolean",
+            "name": "flows",
+            "baseName": "flows",
+            "type": "number",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return NewUser.attributeTypeMap;
+        return Usage.attributeTypeMap;
     }
 
     public constructor() {
