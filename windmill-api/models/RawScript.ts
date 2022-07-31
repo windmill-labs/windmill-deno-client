@@ -12,45 +12,48 @@
 
 import { HttpFile } from '../http/http.ts';
 
-export class TokenResponse {
-    'accessToken': string;
-    'expiresIn'?: number;
-    'refreshToken'?: string;
-    'scope'?: Array<string>;
+export class RawScript {
+    'content': string;
+    'language': RawScriptLanguageEnum;
+    'path'?: string;
+    'type': string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "accessToken",
-            "baseName": "access_token",
+            "name": "content",
+            "baseName": "content",
             "type": "string",
             "format": ""
         },
         {
-            "name": "expiresIn",
-            "baseName": "expires_in",
-            "type": "number",
+            "name": "language",
+            "baseName": "language",
+            "type": "RawScriptLanguageEnum",
             "format": ""
         },
         {
-            "name": "refreshToken",
-            "baseName": "refresh_token",
+            "name": "path",
+            "baseName": "path",
             "type": "string",
             "format": ""
         },
         {
-            "name": "scope",
-            "baseName": "scope",
-            "type": "Array<string>",
+            "name": "type",
+            "baseName": "type",
+            "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return TokenResponse.attributeTypeMap;
+        return RawScript.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+
+export type RawScriptLanguageEnum = "deno" | "python3" ;
 

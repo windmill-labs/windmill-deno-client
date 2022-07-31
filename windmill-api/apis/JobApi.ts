@@ -10,7 +10,7 @@ import {SecurityAuthentication} from '../auth/auth.ts';
 
 import { CompletedJob } from '../models/CompletedJob.ts';
 import { FlowPreview } from '../models/FlowPreview.ts';
-import { InlineObject18 } from '../models/InlineObject18.ts';
+import { InlineObject16 } from '../models/InlineObject16.ts';
 import { InlineResponse2005 } from '../models/InlineResponse2005.ts';
 import { Job } from '../models/Job.ts';
 import { Preview } from '../models/Preview.ts';
@@ -25,9 +25,9 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
      * cancel queued job
      * @param workspace 
      * @param id 
-     * @param inlineObject18 
+     * @param inlineObject16 
      */
-    public async cancelQueuedJob(workspace: string, id: string, inlineObject18: InlineObject18, _options?: Configuration): Promise<RequestContext> {
+    public async cancelQueuedJob(workspace: string, id: string, inlineObject16: InlineObject16, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
@@ -42,9 +42,9 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'inlineObject18' is not null or undefined
-        if (inlineObject18 === null || inlineObject18 === undefined) {
-            throw new RequiredError("JobApi", "cancelQueuedJob", "inlineObject18");
+        // verify required parameter 'inlineObject16' is not null or undefined
+        if (inlineObject16 === null || inlineObject16 === undefined) {
+            throw new RequiredError("JobApi", "cancelQueuedJob", "inlineObject16");
         }
 
 
@@ -64,7 +64,7 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(inlineObject18, "InlineObject18", ""),
+            ObjectSerializer.serialize(inlineObject16, "InlineObject16", ""),
             contentType
         );
         requestContext.setBody(serializedBody);

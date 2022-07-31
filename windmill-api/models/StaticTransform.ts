@@ -12,45 +12,34 @@
 
 import { HttpFile } from '../http/http.ts';
 
-export class TokenResponse {
-    'accessToken': string;
-    'expiresIn'?: number;
-    'refreshToken'?: string;
-    'scope'?: Array<string>;
+export class StaticTransform {
+    'value'?: any;
+    'type': StaticTransformTypeEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "accessToken",
-            "baseName": "access_token",
-            "type": "string",
+            "name": "value",
+            "baseName": "value",
+            "type": "any",
             "format": ""
         },
         {
-            "name": "expiresIn",
-            "baseName": "expires_in",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "refreshToken",
-            "baseName": "refresh_token",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "scope",
-            "baseName": "scope",
-            "type": "Array<string>",
+            "name": "type",
+            "baseName": "type",
+            "type": "StaticTransformTypeEnum",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return TokenResponse.attributeTypeMap;
+        return StaticTransform.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+
+export type StaticTransformTypeEnum = "javascript" ;
 

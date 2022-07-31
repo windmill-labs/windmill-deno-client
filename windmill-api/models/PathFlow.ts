@@ -12,45 +12,34 @@
 
 import { HttpFile } from '../http/http.ts';
 
-export class TokenResponse {
-    'accessToken': string;
-    'expiresIn'?: number;
-    'refreshToken'?: string;
-    'scope'?: Array<string>;
+export class PathFlow {
+    'path'?: string;
+    'type': PathFlowTypeEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "accessToken",
-            "baseName": "access_token",
+            "name": "path",
+            "baseName": "path",
             "type": "string",
             "format": ""
         },
         {
-            "name": "expiresIn",
-            "baseName": "expires_in",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "refreshToken",
-            "baseName": "refresh_token",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "scope",
-            "baseName": "scope",
-            "type": "Array<string>",
+            "name": "type",
+            "baseName": "type",
+            "type": "PathFlowTypeEnum",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return TokenResponse.attributeTypeMap;
+        return PathFlow.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+
+export type PathFlowTypeEnum = "flow" ;
 

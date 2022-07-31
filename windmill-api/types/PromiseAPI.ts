@@ -14,6 +14,7 @@ import { EditSchedule } from '../models/EditSchedule.ts';
 import { EditVariable } from '../models/EditVariable.ts';
 import { EditWorkspaceUser } from '../models/EditWorkspaceUser.ts';
 import { Flow } from '../models/Flow.ts';
+import { FlowMetadata } from '../models/FlowMetadata.ts';
 import { FlowModule } from '../models/FlowModule.ts';
 import { FlowModuleValue } from '../models/FlowModuleValue.ts';
 import { FlowPreview } from '../models/FlowPreview.ts';
@@ -21,6 +22,7 @@ import { FlowStatus } from '../models/FlowStatus.ts';
 import { FlowStatusModule } from '../models/FlowStatusModule.ts';
 import { FlowStatusModuleIterator } from '../models/FlowStatusModuleIterator.ts';
 import { FlowValue } from '../models/FlowValue.ts';
+import { ForloopFlow } from '../models/ForloopFlow.ts';
 import { GlobalUserInfo } from '../models/GlobalUserInfo.ts';
 import { Group } from '../models/Group.ts';
 import { InlineObject } from '../models/InlineObject.ts';
@@ -41,8 +43,6 @@ import { InlineObject21 } from '../models/InlineObject21.ts';
 import { InlineObject22 } from '../models/InlineObject22.ts';
 import { InlineObject23 } from '../models/InlineObject23.ts';
 import { InlineObject24 } from '../models/InlineObject24.ts';
-import { InlineObject25 } from '../models/InlineObject25.ts';
-import { InlineObject26 } from '../models/InlineObject26.ts';
 import { InlineObject3 } from '../models/InlineObject3.ts';
 import { InlineObject4 } from '../models/InlineObject4.ts';
 import { InlineObject5 } from '../models/InlineObject5.ts';
@@ -59,6 +59,7 @@ import { InlineResponse2003 } from '../models/InlineResponse2003.ts';
 import { InlineResponse2004 } from '../models/InlineResponse2004.ts';
 import { InlineResponse2005 } from '../models/InlineResponse2005.ts';
 import { InputTransform } from '../models/InputTransform.ts';
+import { JavascriptTransform } from '../models/JavascriptTransform.ts';
 import { Job } from '../models/Job.ts';
 import { JobAllOf } from '../models/JobAllOf.ts';
 import { ListableVariable } from '../models/ListableVariable.ts';
@@ -69,14 +70,18 @@ import { NewSchedule } from '../models/NewSchedule.ts';
 import { NewToken } from '../models/NewToken.ts';
 import { NewUser } from '../models/NewUser.ts';
 import { OpenFlow } from '../models/OpenFlow.ts';
+import { PathFlow } from '../models/PathFlow.ts';
+import { PathScript } from '../models/PathScript.ts';
 import { Preview } from '../models/Preview.ts';
 import { QueuedJob } from '../models/QueuedJob.ts';
+import { RawScript } from '../models/RawScript.ts';
 import { Resource } from '../models/Resource.ts';
 import { ResourceType } from '../models/ResourceType.ts';
 import { Schedule } from '../models/Schedule.ts';
 import { Script } from '../models/Script.ts';
 import { SlackToken } from '../models/SlackToken.ts';
 import { SlackTokenBot } from '../models/SlackTokenBot.ts';
+import { StaticTransform } from '../models/StaticTransform.ts';
 import { TokenResponse } from '../models/TokenResponse.ts';
 import { TruncatedToken } from '../models/TruncatedToken.ts';
 import { Usage } from '../models/Usage.ts';
@@ -209,10 +214,10 @@ export class PromiseFlowApi {
     /**
      * create flow
      * @param workspace 
-     * @param inlineObject16 
+     * @param UNKNOWN_BASE_TYPE Partially filled flow
      */
-    public createFlow(workspace: string, inlineObject16: InlineObject16, _options?: Configuration): Promise<string> {
-        const result = this.api.createFlow(workspace, inlineObject16, _options);
+    public createFlow(workspace: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, _options?: Configuration): Promise<string> {
+        const result = this.api.createFlow(workspace, UNKNOWN_BASE_TYPE, _options);
         return result.toPromise();
     }
 
@@ -273,10 +278,10 @@ export class PromiseFlowApi {
      * update flow
      * @param workspace 
      * @param path 
-     * @param inlineObject17 
+     * @param UNKNOWN_BASE_TYPE Partially filled flow
      */
-    public updateFlow(workspace: string, path: string, inlineObject17: InlineObject17, _options?: Configuration): Promise<string> {
-        const result = this.api.updateFlow(workspace, path, inlineObject17, _options);
+    public updateFlow(workspace: string, path: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, _options?: Configuration): Promise<string> {
+        const result = this.api.updateFlow(workspace, path, UNKNOWN_BASE_TYPE, _options);
         return result.toPromise();
     }
 
@@ -304,10 +309,10 @@ export class PromiseGranularAclApi {
      * @param workspace 
      * @param path 
      * @param kind 
-     * @param inlineObject25 
+     * @param inlineObject23 
      */
-    public addGranularAcls(workspace: string, path: string, kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow', inlineObject25: InlineObject25, _options?: Configuration): Promise<string> {
-        const result = this.api.addGranularAcls(workspace, path, kind, inlineObject25, _options);
+    public addGranularAcls(workspace: string, path: string, kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow', inlineObject23: InlineObject23, _options?: Configuration): Promise<string> {
+        const result = this.api.addGranularAcls(workspace, path, kind, inlineObject23, _options);
         return result.toPromise();
     }
 
@@ -327,10 +332,10 @@ export class PromiseGranularAclApi {
      * @param workspace 
      * @param path 
      * @param kind 
-     * @param inlineObject26 
+     * @param inlineObject24 
      */
-    public removeGranularAcls(workspace: string, path: string, kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow', inlineObject26: InlineObject26, _options?: Configuration): Promise<string> {
-        const result = this.api.removeGranularAcls(workspace, path, kind, inlineObject26, _options);
+    public removeGranularAcls(workspace: string, path: string, kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow', inlineObject24: InlineObject24, _options?: Configuration): Promise<string> {
+        const result = this.api.removeGranularAcls(workspace, path, kind, inlineObject24, _options);
         return result.toPromise();
     }
 
@@ -357,20 +362,20 @@ export class PromiseGroupApi {
      * add user to group
      * @param workspace 
      * @param name 
-     * @param inlineObject23 
+     * @param inlineObject21 
      */
-    public addUserToGroup(workspace: string, name: string, inlineObject23: InlineObject23, _options?: Configuration): Promise<string> {
-        const result = this.api.addUserToGroup(workspace, name, inlineObject23, _options);
+    public addUserToGroup(workspace: string, name: string, inlineObject21: InlineObject21, _options?: Configuration): Promise<string> {
+        const result = this.api.addUserToGroup(workspace, name, inlineObject21, _options);
         return result.toPromise();
     }
 
     /**
      * create group
      * @param workspace 
-     * @param inlineObject21 
+     * @param inlineObject19 
      */
-    public createGroup(workspace: string, inlineObject21: InlineObject21, _options?: Configuration): Promise<string> {
-        const result = this.api.createGroup(workspace, inlineObject21, _options);
+    public createGroup(workspace: string, inlineObject19: InlineObject19, _options?: Configuration): Promise<string> {
+        const result = this.api.createGroup(workspace, inlineObject19, _options);
         return result.toPromise();
     }
 
@@ -418,10 +423,10 @@ export class PromiseGroupApi {
      * remove user to group
      * @param workspace 
      * @param name 
-     * @param inlineObject24 
+     * @param inlineObject22 
      */
-    public removeUserToGroup(workspace: string, name: string, inlineObject24: InlineObject24, _options?: Configuration): Promise<string> {
-        const result = this.api.removeUserToGroup(workspace, name, inlineObject24, _options);
+    public removeUserToGroup(workspace: string, name: string, inlineObject22: InlineObject22, _options?: Configuration): Promise<string> {
+        const result = this.api.removeUserToGroup(workspace, name, inlineObject22, _options);
         return result.toPromise();
     }
 
@@ -429,10 +434,10 @@ export class PromiseGroupApi {
      * update group
      * @param workspace 
      * @param name 
-     * @param inlineObject22 
+     * @param inlineObject20 
      */
-    public updateGroup(workspace: string, name: string, inlineObject22: InlineObject22, _options?: Configuration): Promise<string> {
-        const result = this.api.updateGroup(workspace, name, inlineObject22, _options);
+    public updateGroup(workspace: string, name: string, inlineObject20: InlineObject20, _options?: Configuration): Promise<string> {
+        const result = this.api.updateGroup(workspace, name, inlineObject20, _options);
         return result.toPromise();
     }
 
@@ -459,10 +464,10 @@ export class PromiseJobApi {
      * cancel queued job
      * @param workspace 
      * @param id 
-     * @param inlineObject18 
+     * @param inlineObject16 
      */
-    public cancelQueuedJob(workspace: string, id: string, inlineObject18: InlineObject18, _options?: Configuration): Promise<string> {
-        const result = this.api.cancelQueuedJob(workspace, id, inlineObject18, _options);
+    public cancelQueuedJob(workspace: string, id: string, inlineObject16: InlineObject16, _options?: Configuration): Promise<string> {
+        const result = this.api.cancelQueuedJob(workspace, id, inlineObject16, _options);
         return result.toPromise();
     }
 
@@ -969,10 +974,10 @@ export class PromiseScheduleApi {
 
     /**
      * preview schedule
-     * @param inlineObject19 
+     * @param inlineObject17 
      */
-    public previewSchedule(inlineObject19: InlineObject19, _options?: Configuration): Promise<Array<Date>> {
-        const result = this.api.previewSchedule(inlineObject19, _options);
+    public previewSchedule(inlineObject17: InlineObject17, _options?: Configuration): Promise<Array<Date>> {
+        const result = this.api.previewSchedule(inlineObject17, _options);
         return result.toPromise();
     }
 
@@ -980,10 +985,10 @@ export class PromiseScheduleApi {
      * set enabled schedule
      * @param workspace 
      * @param path 
-     * @param inlineObject20 
+     * @param inlineObject18 
      */
-    public setScheduleEnabled(workspace: string, path: string, inlineObject20: InlineObject20, _options?: Configuration): Promise<string> {
-        const result = this.api.setScheduleEnabled(workspace, path, inlineObject20, _options);
+    public setScheduleEnabled(workspace: string, path: string, inlineObject18: InlineObject18, _options?: Configuration): Promise<string> {
+        const result = this.api.setScheduleEnabled(workspace, path, inlineObject18, _options);
         return result.toPromise();
     }
 

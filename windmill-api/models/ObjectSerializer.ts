@@ -10,6 +10,7 @@ export * from './EditSchedule.ts';
 export * from './EditVariable.ts';
 export * from './EditWorkspaceUser.ts';
 export * from './Flow.ts';
+export * from './FlowMetadata.ts';
 export * from './FlowModule.ts';
 export * from './FlowModuleValue.ts';
 export * from './FlowPreview.ts';
@@ -17,6 +18,7 @@ export * from './FlowStatus.ts';
 export * from './FlowStatusModule.ts';
 export * from './FlowStatusModuleIterator.ts';
 export * from './FlowValue.ts';
+export * from './ForloopFlow.ts';
 export * from './GlobalUserInfo.ts';
 export * from './Group.ts';
 export * from './InlineObject.ts';
@@ -37,8 +39,6 @@ export * from './InlineObject21.ts';
 export * from './InlineObject22.ts';
 export * from './InlineObject23.ts';
 export * from './InlineObject24.ts';
-export * from './InlineObject25.ts';
-export * from './InlineObject26.ts';
 export * from './InlineObject3.ts';
 export * from './InlineObject4.ts';
 export * from './InlineObject5.ts';
@@ -55,6 +55,7 @@ export * from './InlineResponse2003.ts';
 export * from './InlineResponse2004.ts';
 export * from './InlineResponse2005.ts';
 export * from './InputTransform.ts';
+export * from './JavascriptTransform.ts';
 export * from './Job.ts';
 export * from './JobAllOf.ts';
 export * from './ListableVariable.ts';
@@ -65,14 +66,18 @@ export * from './NewSchedule.ts';
 export * from './NewToken.ts';
 export * from './NewUser.ts';
 export * from './OpenFlow.ts';
+export * from './PathFlow.ts';
+export * from './PathScript.ts';
 export * from './Preview.ts';
 export * from './QueuedJob.ts';
+export * from './RawScript.ts';
 export * from './Resource.ts';
 export * from './ResourceType.ts';
 export * from './Schedule.ts';
 export * from './Script.ts';
 export * from './SlackToken.ts';
 export * from './SlackTokenBot.ts';
+export * from './StaticTransform.ts';
 export * from './TokenResponse.ts';
 export * from './TruncatedToken.ts';
 export * from './Usage.ts';
@@ -95,13 +100,15 @@ import { EditSchedule } from './EditSchedule.ts';
 import { EditVariable } from './EditVariable.ts';
 import { EditWorkspaceUser } from './EditWorkspaceUser.ts';
 import { Flow } from './Flow.ts';
+import { FlowMetadata } from './FlowMetadata.ts';
 import { FlowModule } from './FlowModule.ts';
-import { FlowModuleValue     , FlowModuleValueLanguageEnum  , FlowModuleValueTypeEnum   } from './FlowModuleValue.ts';
+import { FlowModuleValue , FlowModuleValueLanguageEnum   , FlowModuleValueTypeEnum      } from './FlowModuleValue.ts';
 import { FlowPreview } from './FlowPreview.ts';
 import { FlowStatus } from './FlowStatus.ts';
 import { FlowStatusModule, FlowStatusModuleTypeEnum       } from './FlowStatusModule.ts';
 import { FlowStatusModuleIterator } from './FlowStatusModuleIterator.ts';
 import { FlowValue } from './FlowValue.ts';
+import { ForloopFlow   , ForloopFlowTypeEnum   } from './ForloopFlow.ts';
 import { GlobalUserInfo , GlobalUserInfoLoginTypeEnum       } from './GlobalUserInfo.ts';
 import { Group } from './Group.ts';
 import { InlineObject } from './InlineObject.ts';
@@ -122,8 +129,6 @@ import { InlineObject21 } from './InlineObject21.ts';
 import { InlineObject22 } from './InlineObject22.ts';
 import { InlineObject23 } from './InlineObject23.ts';
 import { InlineObject24 } from './InlineObject24.ts';
-import { InlineObject25 } from './InlineObject25.ts';
-import { InlineObject26 } from './InlineObject26.ts';
 import { InlineObject3 } from './InlineObject3.ts';
 import { InlineObject4 } from './InlineObject4.ts';
 import { InlineObject5 } from './InlineObject5.ts';
@@ -139,7 +144,8 @@ import { InlineResponse2002Flows } from './InlineResponse2002Flows.ts';
 import { InlineResponse2003 } from './InlineResponse2003.ts';
 import { InlineResponse2004 } from './InlineResponse2004.ts';
 import { InlineResponse2005 } from './InlineResponse2005.ts';
-import { InputTransform, InputTransformTypeEnum      } from './InputTransform.ts';
+import { InputTransform , InputTransformTypeEnum    } from './InputTransform.ts';
+import { JavascriptTransform , JavascriptTransformTypeEnum   } from './JavascriptTransform.ts';
 import { Job, JobTypeEnum                    , JobJobKindEnum       , JobLanguageEnum       } from './Job.ts';
 import { JobAllOf, JobAllOfTypeEnum   } from './JobAllOf.ts';
 import { ListableVariable } from './ListableVariable.ts';
@@ -150,14 +156,18 @@ import { NewSchedule } from './NewSchedule.ts';
 import { NewToken } from './NewToken.ts';
 import { NewUser } from './NewUser.ts';
 import { OpenFlow } from './OpenFlow.ts';
+import { PathFlow , PathFlowTypeEnum   } from './PathFlow.ts';
+import { PathScript , PathScriptTypeEnum   } from './PathScript.ts';
 import { Preview   , PreviewLanguageEnum   } from './Preview.ts';
 import { QueuedJob                 , QueuedJobJobKindEnum       , QueuedJobLanguageEnum   } from './QueuedJob.ts';
+import { RawScript , RawScriptLanguageEnum     } from './RawScript.ts';
 import { Resource } from './Resource.ts';
 import { ResourceType } from './ResourceType.ts';
 import { Schedule } from './Schedule.ts';
 import { Script                , ScriptLanguageEnum    } from './Script.ts';
 import { SlackToken } from './SlackToken.ts';
 import { SlackTokenBot } from './SlackTokenBot.ts';
+import { StaticTransform , StaticTransformTypeEnum   } from './StaticTransform.ts';
 import { TokenResponse } from './TokenResponse.ts';
 import { TruncatedToken } from './TruncatedToken.ts';
 import { Usage } from './Usage.ts';
@@ -195,17 +205,23 @@ let enumsMap: Set<string> = new Set<string>([
     "FlowModuleValueLanguageEnum",
     "FlowModuleValueTypeEnum",
     "FlowStatusModuleTypeEnum",
+    "ForloopFlowTypeEnum",
     "GlobalUserInfoLoginTypeEnum",
     "InlineObject15LanguageEnum",
     "InputTransformTypeEnum",
+    "JavascriptTransformTypeEnum",
     "JobTypeEnum",
     "JobJobKindEnum",
     "JobLanguageEnum",
     "JobAllOfTypeEnum",
+    "PathFlowTypeEnum",
+    "PathScriptTypeEnum",
     "PreviewLanguageEnum",
     "QueuedJobJobKindEnum",
     "QueuedJobLanguageEnum",
+    "RawScriptLanguageEnum",
     "ScriptLanguageEnum",
+    "StaticTransformTypeEnum",
 ]);
 
 let typeMap: {[index: string]: any} = {
@@ -221,6 +237,7 @@ let typeMap: {[index: string]: any} = {
     "EditVariable": EditVariable,
     "EditWorkspaceUser": EditWorkspaceUser,
     "Flow": Flow,
+    "FlowMetadata": FlowMetadata,
     "FlowModule": FlowModule,
     "FlowModuleValue": FlowModuleValue,
     "FlowPreview": FlowPreview,
@@ -228,6 +245,7 @@ let typeMap: {[index: string]: any} = {
     "FlowStatusModule": FlowStatusModule,
     "FlowStatusModuleIterator": FlowStatusModuleIterator,
     "FlowValue": FlowValue,
+    "ForloopFlow": ForloopFlow,
     "GlobalUserInfo": GlobalUserInfo,
     "Group": Group,
     "InlineObject": InlineObject,
@@ -248,8 +266,6 @@ let typeMap: {[index: string]: any} = {
     "InlineObject22": InlineObject22,
     "InlineObject23": InlineObject23,
     "InlineObject24": InlineObject24,
-    "InlineObject25": InlineObject25,
-    "InlineObject26": InlineObject26,
     "InlineObject3": InlineObject3,
     "InlineObject4": InlineObject4,
     "InlineObject5": InlineObject5,
@@ -266,6 +282,7 @@ let typeMap: {[index: string]: any} = {
     "InlineResponse2004": InlineResponse2004,
     "InlineResponse2005": InlineResponse2005,
     "InputTransform": InputTransform,
+    "JavascriptTransform": JavascriptTransform,
     "Job": Job,
     "JobAllOf": JobAllOf,
     "ListableVariable": ListableVariable,
@@ -276,14 +293,18 @@ let typeMap: {[index: string]: any} = {
     "NewToken": NewToken,
     "NewUser": NewUser,
     "OpenFlow": OpenFlow,
+    "PathFlow": PathFlow,
+    "PathScript": PathScript,
     "Preview": Preview,
     "QueuedJob": QueuedJob,
+    "RawScript": RawScript,
     "Resource": Resource,
     "ResourceType": ResourceType,
     "Schedule": Schedule,
     "Script": Script,
     "SlackToken": SlackToken,
     "SlackTokenBot": SlackTokenBot,
+    "StaticTransform": StaticTransform,
     "TokenResponse": TokenResponse,
     "TruncatedToken": TruncatedToken,
     "Usage": Usage,

@@ -10,47 +10,52 @@
  * Do not edit the class manually.
  */
 
+import { FlowValue } from './FlowValue.ts';
+import { InputTransform } from './InputTransform.ts';
 import { HttpFile } from '../http/http.ts';
 
-export class TokenResponse {
-    'accessToken': string;
-    'expiresIn'?: number;
-    'refreshToken'?: string;
-    'scope'?: Array<string>;
+export class ForloopFlow {
+    'value': FlowValue;
+    'iterator': InputTransform;
+    'skipFailures': boolean;
+    'type': ForloopFlowTypeEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "accessToken",
-            "baseName": "access_token",
-            "type": "string",
+            "name": "value",
+            "baseName": "value",
+            "type": "FlowValue",
             "format": ""
         },
         {
-            "name": "expiresIn",
-            "baseName": "expires_in",
-            "type": "number",
+            "name": "iterator",
+            "baseName": "iterator",
+            "type": "InputTransform",
             "format": ""
         },
         {
-            "name": "refreshToken",
-            "baseName": "refresh_token",
-            "type": "string",
+            "name": "skipFailures",
+            "baseName": "skip_failures",
+            "type": "boolean",
             "format": ""
         },
         {
-            "name": "scope",
-            "baseName": "scope",
-            "type": "Array<string>",
+            "name": "type",
+            "baseName": "type",
+            "type": "ForloopFlowTypeEnum",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return TokenResponse.attributeTypeMap;
+        return ForloopFlow.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+
+export type ForloopFlowTypeEnum = "forloopflow" ;
 

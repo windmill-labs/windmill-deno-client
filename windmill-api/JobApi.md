@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 
 # **cancelQueuedJob**
-> string cancelQueuedJob(inlineObject18)
+> string cancelQueuedJob(inlineObject16)
 
 
 ### Example
@@ -39,8 +39,8 @@ let body:.JobApiCancelQueuedJobRequest = {
   workspace: "workspace_example",
   // string
   id: "id_example",
-  // InlineObject18
-  inlineObject18: {
+  // InlineObject16
+  inlineObject16: {
     reason: "reason_example",
   },
 };
@@ -55,7 +55,7 @@ apiInstance.cancelQueuedJob(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject18** | **InlineObject18**|  |
+ **inlineObject16** | **InlineObject16**|  |
  **workspace** | [**string**] |  | defaults to undefined
  **id** | [**string**] |  | defaults to undefined
 
@@ -656,54 +656,18 @@ let body:.JobApiRunFlowPreviewRequest = {
       modules: [
         {
           inputTransform: {
-            "key": {
-              type: "static",
-              step: 3.14,
-              value: null,
-              expr: "expr_example",
-            },
+            "key": null,
           },
-          value: {
-            value: ,
-            iterator: {
-              type: "static",
-              step: 3.14,
-              value: null,
-              expr: "expr_example",
-            },
-            skipFailures: true,
-            path: "path_example",
-            content: "content_example",
-            language: "deno",
-            type: "script",
-          },
+          value: null,
           stopAfterIfExpr: "stopAfterIfExpr_example",
           skipIfStopped: true,
         },
       ],
       failureModule: {
         inputTransform: {
-          "key": {
-            type: "static",
-            step: 3.14,
-            value: null,
-            expr: "expr_example",
-          },
+          "key": null,
         },
-        value: {
-          value: ,
-          iterator: {
-            type: "static",
-            step: 3.14,
-            value: null,
-            expr: "expr_example",
-          },
-          skipFailures: true,
-          path: "path_example",
-          content: "content_example",
-          language: "deno",
-          type: "script",
-        },
+        value: null,
         stopAfterIfExpr: "stopAfterIfExpr_example",
         skipIfStopped: true,
       },

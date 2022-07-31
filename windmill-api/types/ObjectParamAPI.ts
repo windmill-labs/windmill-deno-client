@@ -14,6 +14,7 @@ import { EditSchedule } from '../models/EditSchedule.ts';
 import { EditVariable } from '../models/EditVariable.ts';
 import { EditWorkspaceUser } from '../models/EditWorkspaceUser.ts';
 import { Flow } from '../models/Flow.ts';
+import { FlowMetadata } from '../models/FlowMetadata.ts';
 import { FlowModule } from '../models/FlowModule.ts';
 import { FlowModuleValue } from '../models/FlowModuleValue.ts';
 import { FlowPreview } from '../models/FlowPreview.ts';
@@ -21,6 +22,7 @@ import { FlowStatus } from '../models/FlowStatus.ts';
 import { FlowStatusModule } from '../models/FlowStatusModule.ts';
 import { FlowStatusModuleIterator } from '../models/FlowStatusModuleIterator.ts';
 import { FlowValue } from '../models/FlowValue.ts';
+import { ForloopFlow } from '../models/ForloopFlow.ts';
 import { GlobalUserInfo } from '../models/GlobalUserInfo.ts';
 import { Group } from '../models/Group.ts';
 import { InlineObject } from '../models/InlineObject.ts';
@@ -41,8 +43,6 @@ import { InlineObject21 } from '../models/InlineObject21.ts';
 import { InlineObject22 } from '../models/InlineObject22.ts';
 import { InlineObject23 } from '../models/InlineObject23.ts';
 import { InlineObject24 } from '../models/InlineObject24.ts';
-import { InlineObject25 } from '../models/InlineObject25.ts';
-import { InlineObject26 } from '../models/InlineObject26.ts';
 import { InlineObject3 } from '../models/InlineObject3.ts';
 import { InlineObject4 } from '../models/InlineObject4.ts';
 import { InlineObject5 } from '../models/InlineObject5.ts';
@@ -59,6 +59,7 @@ import { InlineResponse2003 } from '../models/InlineResponse2003.ts';
 import { InlineResponse2004 } from '../models/InlineResponse2004.ts';
 import { InlineResponse2005 } from '../models/InlineResponse2005.ts';
 import { InputTransform } from '../models/InputTransform.ts';
+import { JavascriptTransform } from '../models/JavascriptTransform.ts';
 import { Job } from '../models/Job.ts';
 import { JobAllOf } from '../models/JobAllOf.ts';
 import { ListableVariable } from '../models/ListableVariable.ts';
@@ -69,14 +70,18 @@ import { NewSchedule } from '../models/NewSchedule.ts';
 import { NewToken } from '../models/NewToken.ts';
 import { NewUser } from '../models/NewUser.ts';
 import { OpenFlow } from '../models/OpenFlow.ts';
+import { PathFlow } from '../models/PathFlow.ts';
+import { PathScript } from '../models/PathScript.ts';
 import { Preview } from '../models/Preview.ts';
 import { QueuedJob } from '../models/QueuedJob.ts';
+import { RawScript } from '../models/RawScript.ts';
 import { Resource } from '../models/Resource.ts';
 import { ResourceType } from '../models/ResourceType.ts';
 import { Schedule } from '../models/Schedule.ts';
 import { Script } from '../models/Script.ts';
 import { SlackToken } from '../models/SlackToken.ts';
 import { SlackTokenBot } from '../models/SlackTokenBot.ts';
+import { StaticTransform } from '../models/StaticTransform.ts';
 import { TokenResponse } from '../models/TokenResponse.ts';
 import { TruncatedToken } from '../models/TruncatedToken.ts';
 import { Usage } from '../models/Usage.ts';
@@ -300,11 +305,11 @@ export interface FlowApiCreateFlowRequest {
      */
     workspace: string
     /**
-     * 
-     * @type InlineObject16
+     * Partially filled flow
+     * @type UNKNOWN_BASE_TYPE
      * @memberof FlowApicreateFlow
      */
-    inlineObject16: InlineObject16
+    UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE
 }
 
 export interface FlowApiExistsFlowByPathRequest {
@@ -414,11 +419,11 @@ export interface FlowApiUpdateFlowRequest {
      */
     path: string
     /**
-     * 
-     * @type InlineObject17
+     * Partially filled flow
+     * @type UNKNOWN_BASE_TYPE
      * @memberof FlowApiupdateFlow
      */
-    inlineObject17: InlineObject17
+    UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE
 }
 
 export class ObjectFlowApi {
@@ -441,7 +446,7 @@ export class ObjectFlowApi {
      * @param param the request object
      */
     public createFlow(param: FlowApiCreateFlowRequest, options?: Configuration): Promise<string> {
-        return this.api.createFlow(param.workspace, param.inlineObject16,  options).toPromise();
+        return this.api.createFlow(param.workspace, param.UNKNOWN_BASE_TYPE,  options).toPromise();
     }
 
     /**
@@ -489,7 +494,7 @@ export class ObjectFlowApi {
      * @param param the request object
      */
     public updateFlow(param: FlowApiUpdateFlowRequest, options?: Configuration): Promise<string> {
-        return this.api.updateFlow(param.workspace, param.path, param.inlineObject17,  options).toPromise();
+        return this.api.updateFlow(param.workspace, param.path, param.UNKNOWN_BASE_TYPE,  options).toPromise();
     }
 
 }
@@ -518,10 +523,10 @@ export interface GranularAclApiAddGranularAclsRequest {
     kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow'
     /**
      * 
-     * @type InlineObject25
+     * @type InlineObject23
      * @memberof GranularAclApiaddGranularAcls
      */
-    inlineObject25: InlineObject25
+    inlineObject23: InlineObject23
 }
 
 export interface GranularAclApiGetGranularAclsRequest {
@@ -566,10 +571,10 @@ export interface GranularAclApiRemoveGranularAclsRequest {
     kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow'
     /**
      * 
-     * @type InlineObject26
+     * @type InlineObject24
      * @memberof GranularAclApiremoveGranularAcls
      */
-    inlineObject26: InlineObject26
+    inlineObject24: InlineObject24
 }
 
 export class ObjectGranularAclApi {
@@ -584,7 +589,7 @@ export class ObjectGranularAclApi {
      * @param param the request object
      */
     public addGranularAcls(param: GranularAclApiAddGranularAclsRequest, options?: Configuration): Promise<string> {
-        return this.api.addGranularAcls(param.workspace, param.path, param.kind, param.inlineObject25,  options).toPromise();
+        return this.api.addGranularAcls(param.workspace, param.path, param.kind, param.inlineObject23,  options).toPromise();
     }
 
     /**
@@ -600,7 +605,7 @@ export class ObjectGranularAclApi {
      * @param param the request object
      */
     public removeGranularAcls(param: GranularAclApiRemoveGranularAclsRequest, options?: Configuration): Promise<string> {
-        return this.api.removeGranularAcls(param.workspace, param.path, param.kind, param.inlineObject26,  options).toPromise();
+        return this.api.removeGranularAcls(param.workspace, param.path, param.kind, param.inlineObject24,  options).toPromise();
     }
 
 }
@@ -623,10 +628,10 @@ export interface GroupApiAddUserToGroupRequest {
     name: string
     /**
      * 
-     * @type InlineObject23
+     * @type InlineObject21
      * @memberof GroupApiaddUserToGroup
      */
-    inlineObject23: InlineObject23
+    inlineObject21: InlineObject21
 }
 
 export interface GroupApiCreateGroupRequest {
@@ -638,10 +643,10 @@ export interface GroupApiCreateGroupRequest {
     workspace: string
     /**
      * 
-     * @type InlineObject21
+     * @type InlineObject19
      * @memberof GroupApicreateGroup
      */
-    inlineObject21: InlineObject21
+    inlineObject19: InlineObject19
 }
 
 export interface GroupApiDeleteGroupRequest {
@@ -719,10 +724,10 @@ export interface GroupApiRemoveUserToGroupRequest {
     name: string
     /**
      * 
-     * @type InlineObject24
+     * @type InlineObject22
      * @memberof GroupApiremoveUserToGroup
      */
-    inlineObject24: InlineObject24
+    inlineObject22: InlineObject22
 }
 
 export interface GroupApiUpdateGroupRequest {
@@ -740,10 +745,10 @@ export interface GroupApiUpdateGroupRequest {
     name: string
     /**
      * 
-     * @type InlineObject22
+     * @type InlineObject20
      * @memberof GroupApiupdateGroup
      */
-    inlineObject22: InlineObject22
+    inlineObject20: InlineObject20
 }
 
 export class ObjectGroupApi {
@@ -758,7 +763,7 @@ export class ObjectGroupApi {
      * @param param the request object
      */
     public addUserToGroup(param: GroupApiAddUserToGroupRequest, options?: Configuration): Promise<string> {
-        return this.api.addUserToGroup(param.workspace, param.name, param.inlineObject23,  options).toPromise();
+        return this.api.addUserToGroup(param.workspace, param.name, param.inlineObject21,  options).toPromise();
     }
 
     /**
@@ -766,7 +771,7 @@ export class ObjectGroupApi {
      * @param param the request object
      */
     public createGroup(param: GroupApiCreateGroupRequest, options?: Configuration): Promise<string> {
-        return this.api.createGroup(param.workspace, param.inlineObject21,  options).toPromise();
+        return this.api.createGroup(param.workspace, param.inlineObject19,  options).toPromise();
     }
 
     /**
@@ -806,7 +811,7 @@ export class ObjectGroupApi {
      * @param param the request object
      */
     public removeUserToGroup(param: GroupApiRemoveUserToGroupRequest, options?: Configuration): Promise<string> {
-        return this.api.removeUserToGroup(param.workspace, param.name, param.inlineObject24,  options).toPromise();
+        return this.api.removeUserToGroup(param.workspace, param.name, param.inlineObject22,  options).toPromise();
     }
 
     /**
@@ -814,7 +819,7 @@ export class ObjectGroupApi {
      * @param param the request object
      */
     public updateGroup(param: GroupApiUpdateGroupRequest, options?: Configuration): Promise<string> {
-        return this.api.updateGroup(param.workspace, param.name, param.inlineObject22,  options).toPromise();
+        return this.api.updateGroup(param.workspace, param.name, param.inlineObject20,  options).toPromise();
     }
 
 }
@@ -837,10 +842,10 @@ export interface JobApiCancelQueuedJobRequest {
     id: string
     /**
      * 
-     * @type InlineObject18
+     * @type InlineObject16
      * @memberof JobApicancelQueuedJob
      */
-    inlineObject18: InlineObject18
+    inlineObject16: InlineObject16
 }
 
 export interface JobApiDeleteCompletedJobRequest {
@@ -1326,7 +1331,7 @@ export class ObjectJobApi {
      * @param param the request object
      */
     public cancelQueuedJob(param: JobApiCancelQueuedJobRequest, options?: Configuration): Promise<string> {
-        return this.api.cancelQueuedJob(param.workspace, param.id, param.inlineObject18,  options).toPromise();
+        return this.api.cancelQueuedJob(param.workspace, param.id, param.inlineObject16,  options).toPromise();
     }
 
     /**
@@ -2034,10 +2039,10 @@ export interface ScheduleApiListSchedulesRequest {
 export interface ScheduleApiPreviewScheduleRequest {
     /**
      * 
-     * @type InlineObject19
+     * @type InlineObject17
      * @memberof ScheduleApipreviewSchedule
      */
-    inlineObject19: InlineObject19
+    inlineObject17: InlineObject17
 }
 
 export interface ScheduleApiSetScheduleEnabledRequest {
@@ -2055,10 +2060,10 @@ export interface ScheduleApiSetScheduleEnabledRequest {
     path: string
     /**
      * 
-     * @type InlineObject20
+     * @type InlineObject18
      * @memberof ScheduleApisetScheduleEnabled
      */
-    inlineObject20: InlineObject20
+    inlineObject18: InlineObject18
 }
 
 export interface ScheduleApiUpdateScheduleRequest {
@@ -2134,7 +2139,7 @@ export class ObjectScheduleApi {
      * @param param the request object
      */
     public previewSchedule(param: ScheduleApiPreviewScheduleRequest, options?: Configuration): Promise<Array<Date>> {
-        return this.api.previewSchedule(param.inlineObject19,  options).toPromise();
+        return this.api.previewSchedule(param.inlineObject17,  options).toPromise();
     }
 
     /**
@@ -2142,7 +2147,7 @@ export class ObjectScheduleApi {
      * @param param the request object
      */
     public setScheduleEnabled(param: ScheduleApiSetScheduleEnabledRequest, options?: Configuration): Promise<string> {
-        return this.api.setScheduleEnabled(param.workspace, param.path, param.inlineObject20,  options).toPromise();
+        return this.api.setScheduleEnabled(param.workspace, param.path, param.inlineObject18,  options).toPromise();
     }
 
     /**

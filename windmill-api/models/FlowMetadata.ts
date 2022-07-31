@@ -12,56 +12,63 @@
 
 import { HttpFile } from '../http/http.ts';
 
-export class InlineResponse2002Flows {
-    'id': number;
-    'flowId': number;
-    'summary': string;
-    'apps': Array<string>;
-    'approved': boolean;
-    'votes': number;
+export class FlowMetadata {
+    'workspaceId'?: string;
+    'path': string;
+    'editedBy': string;
+    'editedAt': Date;
+    'archived': boolean;
+    'extraPerms': any;
+    'additionalProperties'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "flowId",
-            "baseName": "flow_id",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "summary",
-            "baseName": "summary",
+            "name": "workspaceId",
+            "baseName": "workspace_id",
             "type": "string",
             "format": ""
         },
         {
-            "name": "apps",
-            "baseName": "apps",
-            "type": "Array<string>",
+            "name": "path",
+            "baseName": "path",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "approved",
-            "baseName": "approved",
+            "name": "editedBy",
+            "baseName": "edited_by",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "editedAt",
+            "baseName": "edited_at",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
+            "name": "archived",
+            "baseName": "archived",
             "type": "boolean",
             "format": ""
         },
         {
-            "name": "votes",
-            "baseName": "votes",
-            "type": "number",
+            "name": "extraPerms",
+            "baseName": "extra_perms",
+            "type": "any",
+            "format": ""
+        },
+        {
+            "name": "additionalProperties",
+            "baseName": "additionalProperties",
+            "type": "boolean",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return InlineResponse2002Flows.attributeTypeMap;
+        return FlowMetadata.attributeTypeMap;
     }
 
     public constructor() {

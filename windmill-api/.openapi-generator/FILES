@@ -51,6 +51,7 @@ models/EditSchedule.ts
 models/EditVariable.ts
 models/EditWorkspaceUser.ts
 models/Flow.ts
+models/FlowMetadata.ts
 models/FlowModule.ts
 models/FlowModuleValue.ts
 models/FlowPreview.ts
@@ -58,6 +59,7 @@ models/FlowStatus.ts
 models/FlowStatusModule.ts
 models/FlowStatusModuleIterator.ts
 models/FlowValue.ts
+models/ForloopFlow.ts
 models/GlobalUserInfo.ts
 models/Group.ts
 models/InlineObject.ts
@@ -78,8 +80,6 @@ models/InlineObject21.ts
 models/InlineObject22.ts
 models/InlineObject23.ts
 models/InlineObject24.ts
-models/InlineObject25.ts
-models/InlineObject26.ts
 models/InlineObject3.ts
 models/InlineObject4.ts
 models/InlineObject5.ts
@@ -96,6 +96,7 @@ models/InlineResponse2003.ts
 models/InlineResponse2004.ts
 models/InlineResponse2005.ts
 models/InputTransform.ts
+models/JavascriptTransform.ts
 models/Job.ts
 models/JobAllOf.ts
 models/ListableVariable.ts
@@ -107,14 +108,18 @@ models/NewToken.ts
 models/NewUser.ts
 models/ObjectSerializer.ts
 models/OpenFlow.ts
+models/PathFlow.ts
+models/PathScript.ts
 models/Preview.ts
 models/QueuedJob.ts
+models/RawScript.ts
 models/Resource.ts
 models/ResourceType.ts
 models/Schedule.ts
 models/Script.ts
 models/SlackToken.ts
 models/SlackTokenBot.ts
+models/StaticTransform.ts
 models/TokenResponse.ts
 models/TruncatedToken.ts
 models/Usage.ts

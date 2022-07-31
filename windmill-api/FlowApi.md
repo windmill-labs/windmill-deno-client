@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **createFlow**
-> string createFlow(inlineObject16)
+> string createFlow(UNKNOWN_BASE_TYPE)
 
 
 ### Example
@@ -87,69 +87,8 @@ const apiInstance = new .FlowApi(configuration);
 let body:.FlowApiCreateFlowRequest = {
   // string
   workspace: "workspace_example",
-  // InlineObject16
-  inlineObject16: {
-    path: "path_example",
-    summary: "summary_example",
-    description: "description_example",
-    value: {
-      modules: [
-        {
-          inputTransform: {
-            "key": {
-              type: "static",
-              step: 3.14,
-              value: null,
-              expr: "expr_example",
-            },
-          },
-          value: {
-            value: ,
-            iterator: {
-              type: "static",
-              step: 3.14,
-              value: null,
-              expr: "expr_example",
-            },
-            skipFailures: true,
-            path: "path_example",
-            content: "content_example",
-            language: "deno",
-            type: "script",
-          },
-          stopAfterIfExpr: "stopAfterIfExpr_example",
-          skipIfStopped: true,
-        },
-      ],
-      failureModule: {
-        inputTransform: {
-          "key": {
-            type: "static",
-            step: 3.14,
-            value: null,
-            expr: "expr_example",
-          },
-        },
-        value: {
-          value: ,
-          iterator: {
-            type: "static",
-            step: 3.14,
-            value: null,
-            expr: "expr_example",
-          },
-          skipFailures: true,
-          path: "path_example",
-          content: "content_example",
-          language: "deno",
-          type: "script",
-        },
-        stopAfterIfExpr: "stopAfterIfExpr_example",
-        skipIfStopped: true,
-      },
-    },
-    schema: {},
-  },
+  // UNKNOWN_BASE_TYPE | Partially filled flow
+  UNKNOWN_BASE_TYPE: null,
 };
 
 apiInstance.createFlow(body).then((data:any) => {
@@ -162,7 +101,7 @@ apiInstance.createFlow(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject16** | **InlineObject16**|  |
+ **UNKNOWN_BASE_TYPE** | **UNKNOWN_BASE_TYPE**| Partially filled flow |
  **workspace** | [**string**] |  | defaults to undefined
 
 
@@ -474,7 +413,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateFlow**
-> string updateFlow(inlineObject17)
+> string updateFlow(UNKNOWN_BASE_TYPE)
 
 
 ### Example
@@ -492,69 +431,8 @@ let body:.FlowApiUpdateFlowRequest = {
   workspace: "workspace_example",
   // string
   path: "path_example",
-  // InlineObject17
-  inlineObject17: {
-    path: "path_example",
-    summary: "summary_example",
-    description: "description_example",
-    value: {
-      modules: [
-        {
-          inputTransform: {
-            "key": {
-              type: "static",
-              step: 3.14,
-              value: null,
-              expr: "expr_example",
-            },
-          },
-          value: {
-            value: ,
-            iterator: {
-              type: "static",
-              step: 3.14,
-              value: null,
-              expr: "expr_example",
-            },
-            skipFailures: true,
-            path: "path_example",
-            content: "content_example",
-            language: "deno",
-            type: "script",
-          },
-          stopAfterIfExpr: "stopAfterIfExpr_example",
-          skipIfStopped: true,
-        },
-      ],
-      failureModule: {
-        inputTransform: {
-          "key": {
-            type: "static",
-            step: 3.14,
-            value: null,
-            expr: "expr_example",
-          },
-        },
-        value: {
-          value: ,
-          iterator: {
-            type: "static",
-            step: 3.14,
-            value: null,
-            expr: "expr_example",
-          },
-          skipFailures: true,
-          path: "path_example",
-          content: "content_example",
-          language: "deno",
-          type: "script",
-        },
-        stopAfterIfExpr: "stopAfterIfExpr_example",
-        skipIfStopped: true,
-      },
-    },
-    schema: {},
-  },
+  // UNKNOWN_BASE_TYPE | Partially filled flow
+  UNKNOWN_BASE_TYPE: null,
 };
 
 apiInstance.updateFlow(body).then((data:any) => {
@@ -567,7 +445,7 @@ apiInstance.updateFlow(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject17** | **InlineObject17**|  |
+ **UNKNOWN_BASE_TYPE** | **UNKNOWN_BASE_TYPE**| Partially filled flow |
  **workspace** | [**string**] |  | defaults to undefined
  **path** | [**string**] |  | defaults to undefined
 
