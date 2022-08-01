@@ -11,9 +11,7 @@ import {SecurityAuthentication} from '../auth/auth.ts';
 import { Flow } from '../models/Flow.ts';
 import { InlineResponse2002 } from '../models/InlineResponse2002.ts';
 import { InlineResponse2003 } from '../models/InlineResponse2003.ts';
-import { OpenFlow } from '../models/OpenFlow.ts';
-import { OpenFlow &amp; any } from '../models/OpenFlow &amp; any.ts';
-import { UNKNOWNBASETYPE } from '../models/UNKNOWN_BASE_TYPE.ts';
+import { OpenFlowWPath } from '../models/OpenFlowWPath.ts';
 
 /**
  * no description
@@ -73,9 +71,9 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * create flow
      * @param workspace 
-     * @param UNKNOWN_BASE_TYPE Partially filled flow
+     * @param openFlowWPath Partially filled flow
      */
-    public async createFlow(workspace: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, _options?: Configuration): Promise<RequestContext> {
+    public async createFlow(workspace: string, openFlowWPath: OpenFlowWPath, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
@@ -84,9 +82,9 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'UNKNOWN_BASE_TYPE' is not null or undefined
-        if (UNKNOWN_BASE_TYPE === null || UNKNOWN_BASE_TYPE === undefined) {
-            throw new RequiredError("FlowApi", "createFlow", "UNKNOWN_BASE_TYPE");
+        // verify required parameter 'openFlowWPath' is not null or undefined
+        if (openFlowWPath === null || openFlowWPath === undefined) {
+            throw new RequiredError("FlowApi", "createFlow", "openFlowWPath");
         }
 
 
@@ -105,7 +103,7 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(UNKNOWN_BASE_TYPE, "UNKNOWN_BASE_TYPE", ""),
+            ObjectSerializer.serialize(openFlowWPath, "OpenFlowWPath", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -401,9 +399,9 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
      * update flow
      * @param workspace 
      * @param path 
-     * @param UNKNOWN_BASE_TYPE Partially filled flow
+     * @param openFlowWPath Partially filled flow
      */
-    public async updateFlow(workspace: string, path: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, _options?: Configuration): Promise<RequestContext> {
+    public async updateFlow(workspace: string, path: string, openFlowWPath: OpenFlowWPath, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
@@ -418,9 +416,9 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'UNKNOWN_BASE_TYPE' is not null or undefined
-        if (UNKNOWN_BASE_TYPE === null || UNKNOWN_BASE_TYPE === undefined) {
-            throw new RequiredError("FlowApi", "updateFlow", "UNKNOWN_BASE_TYPE");
+        // verify required parameter 'openFlowWPath' is not null or undefined
+        if (openFlowWPath === null || openFlowWPath === undefined) {
+            throw new RequiredError("FlowApi", "updateFlow", "openFlowWPath");
         }
 
 
@@ -440,7 +438,7 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(UNKNOWN_BASE_TYPE, "UNKNOWN_BASE_TYPE", ""),
+            ObjectSerializer.serialize(openFlowWPath, "OpenFlowWPath", ""),
             contentType
         );
         requestContext.setBody(serializedBody);

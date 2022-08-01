@@ -108,6 +108,7 @@ models/NewToken.ts
 models/NewUser.ts
 models/ObjectSerializer.ts
 models/OpenFlow.ts
+models/OpenFlowWPath.ts
 models/PathFlow.ts
 models/PathScript.ts
 models/Preview.ts

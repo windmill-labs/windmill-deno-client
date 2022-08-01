@@ -71,6 +71,7 @@ import { NewSchedule } from '../models/NewSchedule.ts';
 import { NewToken } from '../models/NewToken.ts';
 import { NewUser } from '../models/NewUser.ts';
 import { OpenFlow } from '../models/OpenFlow.ts';
+import { OpenFlowWPath } from '../models/OpenFlowWPath.ts';
 import { PathFlow } from '../models/PathFlow.ts';
 import { PathScript } from '../models/PathScript.ts';
 import { Preview } from '../models/Preview.ts';
@@ -300,10 +301,10 @@ export class ObservableFlowApi {
     /**
      * create flow
      * @param workspace 
-     * @param UNKNOWN_BASE_TYPE Partially filled flow
+     * @param openFlowWPath Partially filled flow
      */
-    public createFlow(workspace: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.createFlow(workspace, UNKNOWN_BASE_TYPE, _options);
+    public createFlow(workspace: string, openFlowWPath: OpenFlowWPath, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.createFlow(workspace, openFlowWPath, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -448,10 +449,10 @@ export class ObservableFlowApi {
      * update flow
      * @param workspace 
      * @param path 
-     * @param UNKNOWN_BASE_TYPE Partially filled flow
+     * @param openFlowWPath Partially filled flow
      */
-    public updateFlow(workspace: string, path: string, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.updateFlow(workspace, path, UNKNOWN_BASE_TYPE, _options);
+    public updateFlow(workspace: string, path: string, openFlowWPath: OpenFlowWPath, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.updateFlow(workspace, path, openFlowWPath, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);

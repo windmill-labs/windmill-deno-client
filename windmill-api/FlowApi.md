@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **createFlow**
-> string createFlow(UNKNOWN_BASE_TYPE)
+> string createFlow(openFlowWPath)
 
 
 ### Example
@@ -87,8 +87,8 @@ const apiInstance = new .FlowApi(configuration);
 let body:.FlowApiCreateFlowRequest = {
   // string
   workspace: "workspace_example",
-  // UNKNOWN_BASE_TYPE | Partially filled flow
-  UNKNOWN_BASE_TYPE: null,
+  // OpenFlowWPath | Partially filled flow
+  openFlowWPath: null,
 };
 
 apiInstance.createFlow(body).then((data:any) => {
@@ -101,7 +101,7 @@ apiInstance.createFlow(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **UNKNOWN_BASE_TYPE** | **UNKNOWN_BASE_TYPE**| Partially filled flow |
+ **openFlowWPath** | **OpenFlowWPath**| Partially filled flow |
  **workspace** | [**string**] |  | defaults to undefined
 
 
@@ -413,7 +413,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateFlow**
-> string updateFlow(UNKNOWN_BASE_TYPE)
+> string updateFlow(openFlowWPath)
 
 
 ### Example
@@ -431,8 +431,8 @@ let body:.FlowApiUpdateFlowRequest = {
   workspace: "workspace_example",
   // string
   path: "path_example",
-  // UNKNOWN_BASE_TYPE | Partially filled flow
-  UNKNOWN_BASE_TYPE: null,
+  // OpenFlowWPath | Partially filled flow
+  openFlowWPath: null,
 };
 
 apiInstance.updateFlow(body).then((data:any) => {
@@ -445,7 +445,7 @@ apiInstance.updateFlow(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **UNKNOWN_BASE_TYPE** | **UNKNOWN_BASE_TYPE**| Partially filled flow |
+ **openFlowWPath** | **OpenFlowWPath**| Partially filled flow |
  **workspace** | [**string**] |  | defaults to undefined
  **path** | [**string**] |  | defaults to undefined
 

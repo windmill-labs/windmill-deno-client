@@ -10,35 +10,25 @@
  * Do not edit the class manually.
  */
 
+import { FlowValue } from './FlowValue.ts';
+import { InlineObject14 } from './InlineObject14.ts';
+import { OpenFlow } from './OpenFlow.ts';
 import { HttpFile } from '../http/http.ts';
 
-export class CreateVariable {
+export class OpenFlowWPath {
+    'summary': string;
+    'description'?: string;
+    'value': FlowValue;
+    'schema'?: any;
     'path': string;
-    'value': string;
-    'isSecret': boolean;
-    'description': string;
-    'account'?: number;
-    'isOauth'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "path",
-            "baseName": "path",
+            "name": "summary",
+            "baseName": "summary",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "value",
-            "baseName": "value",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "isSecret",
-            "baseName": "is_secret",
-            "type": "boolean",
             "format": ""
         },
         {
@@ -48,20 +38,26 @@ export class CreateVariable {
             "format": ""
         },
         {
-            "name": "account",
-            "baseName": "account",
-            "type": "number",
+            "name": "value",
+            "baseName": "value",
+            "type": "FlowValue",
             "format": ""
         },
         {
-            "name": "isOauth",
-            "baseName": "is_oauth",
-            "type": "boolean",
+            "name": "schema",
+            "baseName": "schema",
+            "type": "any",
+            "format": ""
+        },
+        {
+            "name": "path",
+            "baseName": "path",
+            "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return CreateVariable.attributeTypeMap;
+        return OpenFlowWPath.attributeTypeMap;
     }
 
     public constructor() {

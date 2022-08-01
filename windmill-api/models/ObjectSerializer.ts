@@ -66,6 +66,7 @@ export * from './NewSchedule.ts';
 export * from './NewToken.ts';
 export * from './NewUser.ts';
 export * from './OpenFlow.ts';
+export * from './OpenFlowWPath.ts';
 export * from './PathFlow.ts';
 export * from './PathScript.ts';
 export * from './Preview.ts';
@@ -156,6 +157,7 @@ import { NewSchedule } from './NewSchedule.ts';
 import { NewToken } from './NewToken.ts';
 import { NewUser } from './NewUser.ts';
 import { OpenFlow } from './OpenFlow.ts';
+import { OpenFlowWPath } from './OpenFlowWPath.ts';
 import { PathFlow , PathFlowTypeEnum   } from './PathFlow.ts';
 import { PathScript , PathScriptTypeEnum   } from './PathScript.ts';
 import { Preview   , PreviewLanguageEnum   } from './Preview.ts';
@@ -293,6 +295,7 @@ let typeMap: {[index: string]: any} = {
     "NewToken": NewToken,
     "NewUser": NewUser,
     "OpenFlow": OpenFlow,
+    "OpenFlowWPath": OpenFlowWPath,
     "PathFlow": PathFlow,
     "PathScript": PathScript,
     "Preview": Preview,

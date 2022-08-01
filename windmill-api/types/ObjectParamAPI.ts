@@ -70,6 +70,7 @@ import { NewSchedule } from '../models/NewSchedule.ts';
 import { NewToken } from '../models/NewToken.ts';
 import { NewUser } from '../models/NewUser.ts';
 import { OpenFlow } from '../models/OpenFlow.ts';
+import { OpenFlowWPath } from '../models/OpenFlowWPath.ts';
 import { PathFlow } from '../models/PathFlow.ts';
 import { PathScript } from '../models/PathScript.ts';
 import { Preview } from '../models/Preview.ts';
@@ -306,10 +307,10 @@ export interface FlowApiCreateFlowRequest {
     workspace: string
     /**
      * Partially filled flow
-     * @type UNKNOWN_BASE_TYPE
+     * @type OpenFlowWPath
      * @memberof FlowApicreateFlow
      */
-    UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE
+    openFlowWPath: OpenFlowWPath
 }
 
 export interface FlowApiExistsFlowByPathRequest {
@@ -420,10 +421,10 @@ export interface FlowApiUpdateFlowRequest {
     path: string
     /**
      * Partially filled flow
-     * @type UNKNOWN_BASE_TYPE
+     * @type OpenFlowWPath
      * @memberof FlowApiupdateFlow
      */
-    UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE
+    openFlowWPath: OpenFlowWPath
 }
 
 export class ObjectFlowApi {
@@ -446,7 +447,7 @@ export class ObjectFlowApi {
      * @param param the request object
      */
     public createFlow(param: FlowApiCreateFlowRequest, options?: Configuration): Promise<string> {
-        return this.api.createFlow(param.workspace, param.UNKNOWN_BASE_TYPE,  options).toPromise();
+        return this.api.createFlow(param.workspace, param.openFlowWPath,  options).toPromise();
     }
 
     /**
@@ -494,7 +495,7 @@ export class ObjectFlowApi {
      * @param param the request object
      */
     public updateFlow(param: FlowApiUpdateFlowRequest, options?: Configuration): Promise<string> {
-        return this.api.updateFlow(param.workspace, param.path, param.UNKNOWN_BASE_TYPE,  options).toPromise();
+        return this.api.updateFlow(param.workspace, param.path, param.openFlowWPath,  options).toPromise();
     }
 
 }
