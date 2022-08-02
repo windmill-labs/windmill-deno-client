@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**listPendingInvites**](WorkspaceApi.md#listPendingInvites) | **GET** /w/{workspace}/workspaces/list_pending_invites | list pending invites for a workspace
 [**listUserWorkspaces**](WorkspaceApi.md#listUserWorkspaces) | **GET** /workspaces/users | list all workspaces visible to me with user info
 [**listWorkspaces**](WorkspaceApi.md#listWorkspaces) | **GET** /workspaces/list | list all workspaces visible to me
-[**listWorkspacesAsSuperAdmin**](WorkspaceApi.md#listWorkspacesAsSuperAdmin) | **GET** /workspaces/list_as_superadmin | list all workspaces as super admin (require to be super amdin)
+[**listWorkspacesAsSuperAdmin**](WorkspaceApi.md#listWorkspacesAsSuperAdmin) | **GET** /workspaces/list_as_superadmin | list all workspaces as super admin (require to be super admin)
 
 
 # **createWorkspace**

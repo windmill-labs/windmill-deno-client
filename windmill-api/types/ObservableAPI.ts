@@ -400,7 +400,7 @@ export class ObservableFlowApi {
      * @param perPage number of items to return for a given page (default 30, max 100)
      * @param orderDesc order by desc order (default true)
      * @param createdBy mask to filter exact matching user creator
-     * @param pathStart mask to filter matching starting parh
+     * @param pathStart mask to filter matching starting path
      * @param pathExact mask to filter exact matching path
      * @param showArchived (default false) show also the archived files. when multiple archived hash share the same path, only the ones with the latest create_at are displayed. 
      */
@@ -1130,7 +1130,7 @@ export class ObservableJobApi {
     /**
      * run script preview
      * @param workspace 
-     * @param preview previw
+     * @param preview preview
      */
     public runScriptPreview(workspace: string, preview: Preview, _options?: Configuration): Observable<string> {
         const requestContextPromise = this.requestFactory.runScriptPreview(workspace, preview, _options);
@@ -2237,7 +2237,7 @@ export class ObservableScriptApi {
      * @param perPage number of items to return for a given page (default 30, max 100)
      * @param orderDesc order by desc order (default true)
      * @param createdBy mask to filter exact matching user creator
-     * @param pathStart mask to filter matching starting parh
+     * @param pathStart mask to filter matching starting path
      * @param pathExact mask to filter exact matching path
      * @param firstParentHash mask to filter scripts whom first direct parent has exact hash
      * @param lastParentHash mask to filter scripts whom last parent in the chain has exact hash.  Beware that each script stores only a limited number of parents. Hence the last parent hash for a script is not necessarily its top-most parent. To find the top-most parent you will have to jump from last to last hash  until finding the parent 
@@ -3401,7 +3401,7 @@ export class ObservableWorkspaceApi {
     }
 
     /**
-     * list all workspaces as super admin (require to be super amdin)
+     * list all workspaces as super admin (require to be super admin)
      * @param page which page to return (start at 1, default 1)
      * @param perPage number of items to return for a given page (default 30, max 100)
      */

@@ -277,7 +277,7 @@ export class FlowApiRequestFactory extends BaseAPIRequestFactory {
      * @param perPage number of items to return for a given page (default 30, max 100)
      * @param orderDesc order by desc order (default true)
      * @param createdBy mask to filter exact matching user creator
-     * @param pathStart mask to filter matching starting parh
+     * @param pathStart mask to filter matching starting path
      * @param pathExact mask to filter exact matching path
      * @param showArchived (default false) show also the archived files. when multiple archived hash share the same path, only the ones with the latest create_at are displayed. 
      */

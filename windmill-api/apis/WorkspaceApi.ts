@@ -555,7 +555,7 @@ export class WorkspaceApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * list all workspaces as super admin (require to be super amdin)
+     * list all workspaces as super admin (require to be super admin)
      * @param page which page to return (start at 1, default 1)
      * @param perPage number of items to return for a given page (default 30, max 100)
      */

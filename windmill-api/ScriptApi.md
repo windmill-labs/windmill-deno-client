@@ -658,7 +658,7 @@ let body:.ScriptApiListScriptsRequest = {
   orderDesc: true,
   // string | mask to filter exact matching user creator (optional)
   createdBy: "created_by_example",
-  // string | mask to filter matching starting parh (optional)
+  // string | mask to filter matching starting path (optional)
   pathStart: "path_start_example",
   // string | mask to filter exact matching path (optional)
   pathExact: "path_exact_example",
@@ -691,7 +691,7 @@ Name | Type | Description  | Notes
  **perPage** | [**number**] | number of items to return for a given page (default 30, max 100) | (optional) defaults to undefined
  **orderDesc** | [**boolean**] | order by desc order (default true) | (optional) defaults to undefined
  **createdBy** | [**string**] | mask to filter exact matching user creator | (optional) defaults to undefined
- **pathStart** | [**string**] | mask to filter matching starting parh | (optional) defaults to undefined
+ **pathStart** | [**string**] | mask to filter matching starting path | (optional) defaults to undefined
  **pathExact** | [**string**] | mask to filter exact matching path | (optional) defaults to undefined
  **firstParentHash** | [**string**] | mask to filter scripts whom first direct parent has exact hash | (optional) defaults to undefined
  **lastParentHash** | [**string**] | mask to filter scripts whom last parent in the chain has exact hash.  Beware that each script stores only a limited number of parents. Hence the last parent hash for a script is not necessarily its top-most parent. To find the top-most parent you will have to jump from last to last hash  until finding the parent  | (optional) defaults to undefined

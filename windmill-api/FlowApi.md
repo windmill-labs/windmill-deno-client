@@ -316,7 +316,7 @@ let body:.FlowApiListFlowsRequest = {
   orderDesc: true,
   // string | mask to filter exact matching user creator (optional)
   createdBy: "created_by_example",
-  // string | mask to filter matching starting parh (optional)
+  // string | mask to filter matching starting path (optional)
   pathStart: "path_start_example",
   // string | mask to filter exact matching path (optional)
   pathExact: "path_exact_example",
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
  **perPage** | [**number**] | number of items to return for a given page (default 30, max 100) | (optional) defaults to undefined
  **orderDesc** | [**boolean**] | order by desc order (default true) | (optional) defaults to undefined
  **createdBy** | [**string**] | mask to filter exact matching user creator | (optional) defaults to undefined
- **pathStart** | [**string**] | mask to filter matching starting parh | (optional) defaults to undefined
+ **pathStart** | [**string**] | mask to filter matching starting path | (optional) defaults to undefined
  **pathExact** | [**string**] | mask to filter exact matching path | (optional) defaults to undefined
  **showArchived** | [**boolean**] | (default false) show also the archived files. when multiple archived hash share the same path, only the ones with the latest create_at are displayed.  | (optional) defaults to undefined
 

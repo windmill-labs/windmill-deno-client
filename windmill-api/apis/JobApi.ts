@@ -976,7 +976,7 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * run script preview
      * @param workspace 
-     * @param preview previw
+     * @param preview preview
      */
     public async runScriptPreview(workspace: string, preview: Preview, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;

@@ -564,7 +564,7 @@ export class ScriptApiRequestFactory extends BaseAPIRequestFactory {
      * @param perPage number of items to return for a given page (default 30, max 100)
      * @param orderDesc order by desc order (default true)
      * @param createdBy mask to filter exact matching user creator
-     * @param pathStart mask to filter matching starting parh
+     * @param pathStart mask to filter matching starting path
      * @param pathExact mask to filter exact matching path
      * @param firstParentHash mask to filter scripts whom first direct parent has exact hash
      * @param lastParentHash mask to filter scripts whom last parent in the chain has exact hash.  Beware that each script stores only a limited number of parents. Hence the last parent hash for a script is not necessarily its top-most parent. To find the top-most parent you will have to jump from last to last hash  until finding the parent 

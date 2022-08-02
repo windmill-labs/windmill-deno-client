@@ -869,7 +869,7 @@ const apiInstance = new .JobApi(configuration);
 let body:.JobApiRunScriptPreviewRequest = {
   // string
   workspace: "workspace_example",
-  // Preview | previw
+  // Preview | preview
   preview: {
     content: "content_example",
     path: "path_example",
@@ -890,7 +890,7 @@ apiInstance.runScriptPreview(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **preview** | **Preview**| previw |
+ **preview** | **Preview**| preview |
  **workspace** | [**string**] |  | defaults to undefined
 
 

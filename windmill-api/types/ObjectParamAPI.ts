@@ -384,7 +384,7 @@ export interface FlowApiListFlowsRequest {
      */
     createdBy?: string
     /**
-     * mask to filter matching starting parh
+     * mask to filter matching starting path
      * @type string
      * @memberof FlowApilistFlows
      */
@@ -1274,7 +1274,7 @@ export interface JobApiRunScriptPreviewRequest {
      */
     workspace: string
     /**
-     * previw
+     * preview
      * @type Preview
      * @memberof JobApirunScriptPreview
      */
@@ -2337,7 +2337,7 @@ export interface ScriptApiListScriptsRequest {
      */
     createdBy?: string
     /**
-     * mask to filter matching starting parh
+     * mask to filter matching starting path
      * @type string
      * @memberof ScriptApilistScripts
      */
@@ -3390,7 +3390,7 @@ export class ObjectWorkspaceApi {
     }
 
     /**
-     * list all workspaces as super admin (require to be super amdin)
+     * list all workspaces as super admin (require to be super admin)
      * @param param the request object
      */
     public listWorkspacesAsSuperAdmin(param: WorkspaceApiListWorkspacesAsSuperAdminRequest = {}, options?: Configuration): Promise<Array<Workspace>> {
