@@ -12,6 +12,7 @@ import { InlineObject11 } from '../models/InlineObject11.ts';
 import { InlineObject12 } from '../models/InlineObject12.ts';
 import { InlineObject13 } from '../models/InlineObject13.ts';
 import { InlineObject14 } from '../models/InlineObject14.ts';
+import { InlineResponse2001 } from '../models/InlineResponse2001.ts';
 import { SlackToken } from '../models/SlackToken.ts';
 import { TokenResponse } from '../models/TokenResponse.ts';
 
@@ -636,22 +637,22 @@ export class OauthApiResponseProcessor {
      * @params response Response returned by the server for a request to listOAuthConnects
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listOAuthConnects(response: ResponseContext): Promise<{ [key: string]: Array<string>; } > {
+     public async listOAuthConnects(response: ResponseContext): Promise<{ [key: string]: InlineResponse2001; } > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: { [key: string]: Array<string>; } = ObjectSerializer.deserialize(
+            const body: { [key: string]: InlineResponse2001; } = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "{ [key: string]: Array<string>; }", ""
-            ) as { [key: string]: Array<string>; };
+                "{ [key: string]: InlineResponse2001; }", ""
+            ) as { [key: string]: InlineResponse2001; };
             return body;
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: { [key: string]: Array<string>; } = ObjectSerializer.deserialize(
+            const body: { [key: string]: InlineResponse2001; } = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "{ [key: string]: Array<string>; }", ""
-            ) as { [key: string]: Array<string>; };
+                "{ [key: string]: InlineResponse2001; }", ""
+            ) as { [key: string]: InlineResponse2001; };
             return body;
         }
 

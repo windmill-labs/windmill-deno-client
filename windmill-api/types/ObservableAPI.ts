@@ -53,12 +53,13 @@ import { InlineObject8 } from '../models/InlineObject8.ts';
 import { InlineObject9 } from '../models/InlineObject9.ts';
 import { InlineResponse200 } from '../models/InlineResponse200.ts';
 import { InlineResponse2001 } from '../models/InlineResponse2001.ts';
-import { InlineResponse2001Asks } from '../models/InlineResponse2001Asks.ts';
 import { InlineResponse2002 } from '../models/InlineResponse2002.ts';
-import { InlineResponse2002Flows } from '../models/InlineResponse2002Flows.ts';
+import { InlineResponse2002Asks } from '../models/InlineResponse2002Asks.ts';
 import { InlineResponse2003 } from '../models/InlineResponse2003.ts';
+import { InlineResponse2003Flows } from '../models/InlineResponse2003Flows.ts';
 import { InlineResponse2004 } from '../models/InlineResponse2004.ts';
 import { InlineResponse2005 } from '../models/InlineResponse2005.ts';
+import { InlineResponse2006 } from '../models/InlineResponse2006.ts';
 import { InputTransform } from '../models/InputTransform.ts';
 import { JavascriptTransform } from '../models/JavascriptTransform.ts';
 import { Job } from '../models/Job.ts';
@@ -374,7 +375,7 @@ export class ObservableFlowApi {
      * get hub flow by id
      * @param id 
      */
-    public getHubFlowById(id: number, _options?: Configuration): Observable<InlineResponse2003> {
+    public getHubFlowById(id: number, _options?: Configuration): Observable<InlineResponse2004> {
         const requestContextPromise = this.requestFactory.getHubFlowById(id, _options);
 
         // build promise chain
@@ -426,7 +427,7 @@ export class ObservableFlowApi {
     /**
      * list all available hub flows
      */
-    public listHubFlows(_options?: Configuration): Observable<InlineResponse2002> {
+    public listHubFlows(_options?: Configuration): Observable<InlineResponse2003> {
         const requestContextPromise = this.requestFactory.listHubFlows(_options);
 
         // build promise chain
@@ -900,7 +901,7 @@ export class ObservableJobApi {
      * @param running 
      * @param logOffset 
      */
-    public getJobUpdates(workspace: string, id: string, running?: boolean, logOffset?: number, _options?: Configuration): Observable<InlineResponse2005> {
+    public getJobUpdates(workspace: string, id: string, running?: boolean, logOffset?: number, _options?: Configuration): Observable<InlineResponse2006> {
         const requestContextPromise = this.requestFactory.getJobUpdates(workspace, id, running, logOffset, _options);
 
         // build promise chain
@@ -1318,7 +1319,7 @@ export class ObservableOauthApi {
     /**
      * list oauth connects
      */
-    public listOAuthConnects(_options?: Configuration): Observable<{ [key: string]: Array<string>; }> {
+    public listOAuthConnects(_options?: Configuration): Observable<{ [key: string]: InlineResponse2001; }> {
         const requestContextPromise = this.requestFactory.listOAuthConnects(_options);
 
         // build promise chain
@@ -2189,7 +2190,7 @@ export class ObservableScriptApi {
      * @param workspace 
      * @param hash 
      */
-    public getScriptDeploymentStatus(workspace: string, hash: string, _options?: Configuration): Observable<InlineResponse2004> {
+    public getScriptDeploymentStatus(workspace: string, hash: string, _options?: Configuration): Observable<InlineResponse2005> {
         const requestContextPromise = this.requestFactory.getScriptDeploymentStatus(workspace, hash, _options);
 
         // build promise chain
@@ -2211,7 +2212,7 @@ export class ObservableScriptApi {
     /**
      * list all available hub scripts
      */
-    public listHubScripts(_options?: Configuration): Observable<InlineResponse2001> {
+    public listHubScripts(_options?: Configuration): Observable<InlineResponse2002> {
         const requestContextPromise = this.requestFactory.listHubScripts(_options);
 
         // build promise chain

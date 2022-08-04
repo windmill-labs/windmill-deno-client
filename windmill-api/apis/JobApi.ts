@@ -11,7 +11,7 @@ import {SecurityAuthentication} from '../auth/auth.ts';
 import { CompletedJob } from '../models/CompletedJob.ts';
 import { FlowPreview } from '../models/FlowPreview.ts';
 import { InlineObject16 } from '../models/InlineObject16.ts';
-import { InlineResponse2005 } from '../models/InlineResponse2005.ts';
+import { InlineResponse2006 } from '../models/InlineResponse2006.ts';
 import { Job } from '../models/Job.ts';
 import { Preview } from '../models/Preview.ts';
 import { QueuedJob } from '../models/QueuedJob.ts';
@@ -1249,22 +1249,22 @@ export class JobApiResponseProcessor {
      * @params response Response returned by the server for a request to getJobUpdates
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getJobUpdates(response: ResponseContext): Promise<InlineResponse2005 > {
+     public async getJobUpdates(response: ResponseContext): Promise<InlineResponse2006 > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: InlineResponse2005 = ObjectSerializer.deserialize(
+            const body: InlineResponse2006 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "InlineResponse2005", ""
-            ) as InlineResponse2005;
+                "InlineResponse2006", ""
+            ) as InlineResponse2006;
             return body;
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: InlineResponse2005 = ObjectSerializer.deserialize(
+            const body: InlineResponse2006 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "InlineResponse2005", ""
-            ) as InlineResponse2005;
+                "InlineResponse2006", ""
+            ) as InlineResponse2006;
             return body;
         }
 

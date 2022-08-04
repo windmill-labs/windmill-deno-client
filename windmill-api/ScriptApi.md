@@ -531,7 +531,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **getScriptDeploymentStatus**
-> InlineResponse2004 getScriptDeploymentStatus()
+> InlineResponse2005 getScriptDeploymentStatus()
 
 
 ### Example
@@ -567,7 +567,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**InlineResponse2004**
+**InlineResponse2005**
 
 ### Authorization
 
@@ -587,7 +587,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **listHubScripts**
-> InlineResponse2001 listHubScripts()
+> InlineResponse2002 listHubScripts()
 
 
 ### Example
@@ -614,7 +614,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**InlineResponse2001**
+**InlineResponse2002**
 
 ### Authorization
 

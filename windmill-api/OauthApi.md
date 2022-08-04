@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **listOAuthConnects**
-> { [key: string]: Array<string>; } listOAuthConnects()
+> { [key: string]: InlineResponse2001; } listOAuthConnects()
 
 
 ### Example
@@ -328,7 +328,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**{ [key: string]: Array<string>; }**
+**{ [key: string]: InlineResponse2001; }**
 
 ### Authorization
 

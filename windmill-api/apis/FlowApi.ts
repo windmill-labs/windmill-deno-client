@@ -9,8 +9,8 @@ import {SecurityAuthentication} from '../auth/auth.ts';
 
 
 import { Flow } from '../models/Flow.ts';
-import { InlineResponse2002 } from '../models/InlineResponse2002.ts';
 import { InlineResponse2003 } from '../models/InlineResponse2003.ts';
+import { InlineResponse2004 } from '../models/InlineResponse2004.ts';
 import { OpenFlowWPath } from '../models/OpenFlowWPath.ts';
 
 /**
@@ -590,22 +590,22 @@ export class FlowApiResponseProcessor {
      * @params response Response returned by the server for a request to getHubFlowById
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getHubFlowById(response: ResponseContext): Promise<InlineResponse2003 > {
+     public async getHubFlowById(response: ResponseContext): Promise<InlineResponse2004 > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: InlineResponse2003 = ObjectSerializer.deserialize(
+            const body: InlineResponse2004 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "InlineResponse2003", ""
-            ) as InlineResponse2003;
+                "InlineResponse2004", ""
+            ) as InlineResponse2004;
             return body;
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: InlineResponse2003 = ObjectSerializer.deserialize(
+            const body: InlineResponse2004 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "InlineResponse2003", ""
-            ) as InlineResponse2003;
+                "InlineResponse2004", ""
+            ) as InlineResponse2004;
             return body;
         }
 
@@ -648,22 +648,22 @@ export class FlowApiResponseProcessor {
      * @params response Response returned by the server for a request to listHubFlows
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listHubFlows(response: ResponseContext): Promise<InlineResponse2002 > {
+     public async listHubFlows(response: ResponseContext): Promise<InlineResponse2003 > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: InlineResponse2002 = ObjectSerializer.deserialize(
+            const body: InlineResponse2003 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "InlineResponse2002", ""
-            ) as InlineResponse2002;
+                "InlineResponse2003", ""
+            ) as InlineResponse2003;
             return body;
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: InlineResponse2002 = ObjectSerializer.deserialize(
+            const body: InlineResponse2003 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "InlineResponse2002", ""
-            ) as InlineResponse2002;
+                "InlineResponse2003", ""
+            ) as InlineResponse2003;
             return body;
         }
 

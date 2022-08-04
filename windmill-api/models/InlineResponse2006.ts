@@ -12,28 +12,35 @@
 
 import { HttpFile } from '../http/http.ts';
 
-export class InlineObject23 {
-    'owner': string;
-    'write'?: boolean;
+export class InlineResponse2006 {
+    'running'?: boolean;
+    'completed'?: boolean;
+    'newLogs'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "owner",
-            "baseName": "owner",
-            "type": "string",
+            "name": "running",
+            "baseName": "running",
+            "type": "boolean",
             "format": ""
         },
         {
-            "name": "write",
-            "baseName": "write",
+            "name": "completed",
+            "baseName": "completed",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "newLogs",
+            "baseName": "new_logs",
+            "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return InlineObject23.attributeTypeMap;
+        return InlineResponse2006.attributeTypeMap;
     }
 
     public constructor() {

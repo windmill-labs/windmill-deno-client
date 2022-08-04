@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **getHubFlowById**
-> InlineResponse2003 getHubFlowById()
+> InlineResponse2004 getHubFlowById()
 
 
 ### Example
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**InlineResponse2003**
+**InlineResponse2004**
 
 ### Authorization
 
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **listHubFlows**
-> InlineResponse2002 listHubFlows()
+> InlineResponse2003 listHubFlows()
 
 
 ### Example
@@ -393,7 +393,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**InlineResponse2002**
+**InlineResponse2003**
 
 ### Authorization
 

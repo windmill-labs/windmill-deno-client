@@ -52,12 +52,13 @@ import { InlineObject8 } from '../models/InlineObject8.ts';
 import { InlineObject9 } from '../models/InlineObject9.ts';
 import { InlineResponse200 } from '../models/InlineResponse200.ts';
 import { InlineResponse2001 } from '../models/InlineResponse2001.ts';
-import { InlineResponse2001Asks } from '../models/InlineResponse2001Asks.ts';
 import { InlineResponse2002 } from '../models/InlineResponse2002.ts';
-import { InlineResponse2002Flows } from '../models/InlineResponse2002Flows.ts';
+import { InlineResponse2002Asks } from '../models/InlineResponse2002Asks.ts';
 import { InlineResponse2003 } from '../models/InlineResponse2003.ts';
+import { InlineResponse2003Flows } from '../models/InlineResponse2003Flows.ts';
 import { InlineResponse2004 } from '../models/InlineResponse2004.ts';
 import { InlineResponse2005 } from '../models/InlineResponse2005.ts';
+import { InlineResponse2006 } from '../models/InlineResponse2006.ts';
 import { InputTransform } from '../models/InputTransform.ts';
 import { JavascriptTransform } from '../models/JavascriptTransform.ts';
 import { Job } from '../models/Job.ts';
@@ -470,7 +471,7 @@ export class ObjectFlowApi {
      * get hub flow by id
      * @param param the request object
      */
-    public getHubFlowById(param: FlowApiGetHubFlowByIdRequest, options?: Configuration): Promise<InlineResponse2003> {
+    public getHubFlowById(param: FlowApiGetHubFlowByIdRequest, options?: Configuration): Promise<InlineResponse2004> {
         return this.api.getHubFlowById(param.id,  options).toPromise();
     }
 
@@ -486,7 +487,7 @@ export class ObjectFlowApi {
      * list all available hub flows
      * @param param the request object
      */
-    public listHubFlows(param: FlowApiListHubFlowsRequest = {}, options?: Configuration): Promise<InlineResponse2002> {
+    public listHubFlows(param: FlowApiListHubFlowsRequest = {}, options?: Configuration): Promise<InlineResponse2003> {
         return this.api.listHubFlows( options).toPromise();
     }
 
@@ -1363,7 +1364,7 @@ export class ObjectJobApi {
      * get job updates
      * @param param the request object
      */
-    public getJobUpdates(param: JobApiGetJobUpdatesRequest, options?: Configuration): Promise<InlineResponse2005> {
+    public getJobUpdates(param: JobApiGetJobUpdatesRequest, options?: Configuration): Promise<InlineResponse2006> {
         return this.api.getJobUpdates(param.workspace, param.id, param.running, param.logOffset,  options).toPromise();
     }
 
@@ -1600,7 +1601,7 @@ export class ObjectOauthApi {
      * list oauth connects
      * @param param the request object
      */
-    public listOAuthConnects(param: OauthApiListOAuthConnectsRequest = {}, options?: Configuration): Promise<{ [key: string]: Array<string>; }> {
+    public listOAuthConnects(param: OauthApiListOAuthConnectsRequest = {}, options?: Configuration): Promise<{ [key: string]: InlineResponse2001; }> {
         return this.api.listOAuthConnects( options).toPromise();
     }
 
@@ -2478,7 +2479,7 @@ export class ObjectScriptApi {
      * get script deployment status
      * @param param the request object
      */
-    public getScriptDeploymentStatus(param: ScriptApiGetScriptDeploymentStatusRequest, options?: Configuration): Promise<InlineResponse2004> {
+    public getScriptDeploymentStatus(param: ScriptApiGetScriptDeploymentStatusRequest, options?: Configuration): Promise<InlineResponse2005> {
         return this.api.getScriptDeploymentStatus(param.workspace, param.hash,  options).toPromise();
     }
 
@@ -2486,7 +2487,7 @@ export class ObjectScriptApi {
      * list all available hub scripts
      * @param param the request object
      */
-    public listHubScripts(param: ScriptApiListHubScriptsRequest = {}, options?: Configuration): Promise<InlineResponse2001> {
+    public listHubScripts(param: ScriptApiListHubScriptsRequest = {}, options?: Configuration): Promise<InlineResponse2002> {
         return this.api.listHubScripts( options).toPromise();
     }
 
