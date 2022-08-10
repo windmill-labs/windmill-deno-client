@@ -661,6 +661,7 @@ let body:.JobApiRunFlowPreviewRequest = {
           value: null,
           stopAfterIfExpr: "stopAfterIfExpr_example",
           skipIfStopped: true,
+          summary: "summary_example",
         },
       ],
       failureModule: {
@@ -670,6 +671,7 @@ let body:.JobApiRunFlowPreviewRequest = {
         value: null,
         stopAfterIfExpr: "stopAfterIfExpr_example",
         skipIfStopped: true,
+        summary: "summary_example",
       },
     },
     path: "path_example",
