@@ -1160,6 +1160,26 @@ export class PromiseScriptApi {
         return result.toPromise();
     }
 
+    /**
+     * raw script by hash
+     * @param workspace 
+     * @param path 
+     */
+    public rawScriptByHash(workspace: string, path: string, _options?: Configuration): Promise<string> {
+        const result = this.api.rawScriptByHash(workspace, path, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * raw script by path
+     * @param workspace 
+     * @param path 
+     */
+    public rawScriptByPath(workspace: string, path: string, _options?: Configuration): Promise<string> {
+        const result = this.api.rawScriptByPath(workspace, path, _options);
+        return result.toPromise();
+    }
+
 
 }
 

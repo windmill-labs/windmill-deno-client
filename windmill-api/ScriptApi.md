@@ -17,6 +17,8 @@ Method | HTTP request | Description
 [**listHubScripts**](ScriptApi.md#listHubScripts) | **GET** /scripts/hub/list | list all available hub scripts
 [**listScripts**](ScriptApi.md#listScripts) | **GET** /w/{workspace}/scripts/list | list all available scripts
 [**pythonToJsonschema**](ScriptApi.md#pythonToJsonschema) | **POST** /scripts/python/tojsonschema | inspect python code to infer jsonschema of arguments
+[**rawScriptByHash**](ScriptApi.md#rawScriptByHash) | **GET** /w/{workspace}/scripts/raw/h/{path} | raw script by hash
+[**rawScriptByPath**](ScriptApi.md#rawScriptByPath) | **GET** /w/{workspace}/scripts/raw/p/{path} | raw script by path
 
 
 # **archiveScriptByHash**
@@ -772,6 +774,118 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | parsed args |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **rawScriptByHash**
+> string rawScriptByHash()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .ScriptApi(configuration);
+
+let body:.ScriptApiRawScriptByHashRequest = {
+  // string
+  workspace: "workspace_example",
+  // string
+  path: "path_example",
+};
+
+apiInstance.rawScriptByHash(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | [**string**] |  | defaults to undefined
+ **path** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | script content |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **rawScriptByPath**
+> string rawScriptByPath()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .ScriptApi(configuration);
+
+let body:.ScriptApiRawScriptByPathRequest = {
+  // string
+  workspace: "workspace_example",
+  // string
+  path: "path_example",
+};
+
+apiInstance.rawScriptByPath(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | [**string**] |  | defaults to undefined
+ **path** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | script content |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

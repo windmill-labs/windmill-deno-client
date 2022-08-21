@@ -2396,6 +2396,36 @@ export interface ScriptApiPythonToJsonschemaRequest {
     body: string
 }
 
+export interface ScriptApiRawScriptByHashRequest {
+    /**
+     * 
+     * @type string
+     * @memberof ScriptApirawScriptByHash
+     */
+    workspace: string
+    /**
+     * 
+     * @type string
+     * @memberof ScriptApirawScriptByHash
+     */
+    path: string
+}
+
+export interface ScriptApiRawScriptByPathRequest {
+    /**
+     * 
+     * @type string
+     * @memberof ScriptApirawScriptByPath
+     */
+    workspace: string
+    /**
+     * 
+     * @type string
+     * @memberof ScriptApirawScriptByPath
+     */
+    path: string
+}
+
 export class ObjectScriptApi {
     private api: ObservableScriptApi
 
@@ -2505,6 +2535,22 @@ export class ObjectScriptApi {
      */
     public pythonToJsonschema(param: ScriptApiPythonToJsonschemaRequest, options?: Configuration): Promise<MainArgSignature> {
         return this.api.pythonToJsonschema(param.body,  options).toPromise();
+    }
+
+    /**
+     * raw script by hash
+     * @param param the request object
+     */
+    public rawScriptByHash(param: ScriptApiRawScriptByHashRequest, options?: Configuration): Promise<string> {
+        return this.api.rawScriptByHash(param.workspace, param.path,  options).toPromise();
+    }
+
+    /**
+     * raw script by path
+     * @param param the request object
+     */
+    public rawScriptByPath(param: ScriptApiRawScriptByPathRequest, options?: Configuration): Promise<string> {
+        return this.api.rawScriptByPath(param.workspace, param.path,  options).toPromise();
     }
 
 }

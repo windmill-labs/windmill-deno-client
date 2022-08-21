@@ -2289,6 +2289,54 @@ export class ObservableScriptApi {
             }));
     }
 
+    /**
+     * raw script by hash
+     * @param workspace 
+     * @param path 
+     */
+    public rawScriptByHash(workspace: string, path: string, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.rawScriptByHash(workspace, path, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.rawScriptByHash(rsp)));
+            }));
+    }
+
+    /**
+     * raw script by path
+     * @param workspace 
+     * @param path 
+     */
+    public rawScriptByPath(workspace: string, path: string, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.rawScriptByPath(workspace, path, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.rawScriptByPath(rsp)));
+            }));
+    }
+
 }
 
 import { SettingsApiRequestFactory, SettingsApiResponseProcessor} from "../apis/SettingsApi.ts";
