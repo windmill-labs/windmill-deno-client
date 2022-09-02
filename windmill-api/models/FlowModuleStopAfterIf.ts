@@ -12,28 +12,28 @@
 
 import { HttpFile } from '../http/http.ts';
 
-export class NewToken {
-    'label'?: string;
-    'expiration'?: Date;
+export class FlowModuleStopAfterIf {
+    'skipIfStopped'?: boolean;
+    'expr': string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "label",
-            "baseName": "label",
-            "type": "string",
+            "name": "skipIfStopped",
+            "baseName": "skip_if_stopped",
+            "type": "boolean",
             "format": ""
         },
         {
-            "name": "expiration",
-            "baseName": "expiration",
-            "type": "Date",
-            "format": "date-time"
+            "name": "expr",
+            "baseName": "expr",
+            "type": "string",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return NewToken.attributeTypeMap;
+        return FlowModuleStopAfterIf.attributeTypeMap;
     }
 
     public constructor() {

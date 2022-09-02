@@ -350,6 +350,8 @@ let body:.JobApiListCompletedJobsRequest = {
   jobKinds: "job_kinds_example",
   // boolean | is the job skipped (optional)
   isSkipped: true,
+  // boolean | is the job a flow step (optional)
+  isFlowStep: true,
 };
 
 apiInstance.listCompletedJobs(body).then((data:any) => {
@@ -374,6 +376,7 @@ Name | Type | Description  | Notes
  **success** | [**boolean**] | filter on successful jobs | (optional) defaults to undefined
  **jobKinds** | [**string**] | filter on job kind (values &#39;preview&#39;, &#39;script&#39;, &#39;dependencies&#39;, &#39;flow&#39;) separated by, | (optional) defaults to undefined
  **isSkipped** | [**boolean**] | is the job skipped | (optional) defaults to undefined
+ **isFlowStep** | [**boolean**] | is the job a flow step | (optional) defaults to undefined
 
 
 ### Return type
@@ -432,6 +435,8 @@ let body:.JobApiListJobsRequest = {
   jobKinds: "job_kinds_example",
   // boolean | is the job skipped (optional)
   isSkipped: true,
+  // boolean | is the job a flow step (optional)
+  isFlowStep: true,
   // boolean | filter on successful jobs (optional)
   success: true,
 };
@@ -456,6 +461,7 @@ Name | Type | Description  | Notes
  **createdAfter** | [**Date**] | filter on created after (exclusive) timestamp | (optional) defaults to undefined
  **jobKinds** | [**string**] | filter on job kind (values &#39;preview&#39;, &#39;script&#39;, &#39;dependencies&#39;, &#39;flow&#39;) separated by, | (optional) defaults to undefined
  **isSkipped** | [**boolean**] | is the job skipped | (optional) defaults to undefined
+ **isFlowStep** | [**boolean**] | is the job a flow step | (optional) defaults to undefined
  **success** | [**boolean**] | filter on successful jobs | (optional) defaults to undefined
 
 
@@ -655,22 +661,26 @@ let body:.JobApiRunFlowPreviewRequest = {
     value: {
       modules: [
         {
-          inputTransform: {
+          inputTransforms: {
             "key": null,
           },
           value: null,
-          stopAfterIfExpr: "stopAfterIfExpr_example",
-          skipIfStopped: true,
+          stopAfterIf: {
+            skipIfStopped: true,
+            expr: "expr_example",
+          },
           summary: "summary_example",
         },
       ],
       failureModule: {
-        inputTransform: {
+        inputTransforms: {
           "key": null,
         },
         value: null,
-        stopAfterIfExpr: "stopAfterIfExpr_example",
-        skipIfStopped: true,
+        stopAfterIf: {
+          skipIfStopped: true,
+          expr: "expr_example",
+        },
         summary: "summary_example",
       },
     },

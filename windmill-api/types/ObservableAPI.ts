@@ -17,6 +17,7 @@ import { EditWorkspaceUser } from '../models/EditWorkspaceUser.ts';
 import { Flow } from '../models/Flow.ts';
 import { FlowMetadata } from '../models/FlowMetadata.ts';
 import { FlowModule } from '../models/FlowModule.ts';
+import { FlowModuleStopAfterIf } from '../models/FlowModuleStopAfterIf.ts';
 import { FlowModuleValue } from '../models/FlowModuleValue.ts';
 import { FlowPreview } from '../models/FlowPreview.ts';
 import { FlowStatus } from '../models/FlowStatus.ts';
@@ -934,9 +935,10 @@ export class ObservableJobApi {
      * @param success filter on successful jobs
      * @param jobKinds filter on job kind (values &#39;preview&#39;, &#39;script&#39;, &#39;dependencies&#39;, &#39;flow&#39;) separated by,
      * @param isSkipped is the job skipped
+     * @param isFlowStep is the job a flow step
      */
-    public listCompletedJobs(workspace: string, orderDesc?: boolean, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, success?: boolean, jobKinds?: string, isSkipped?: boolean, _options?: Configuration): Observable<Array<CompletedJob>> {
-        const requestContextPromise = this.requestFactory.listCompletedJobs(workspace, orderDesc, createdBy, parentJob, scriptPathExact, scriptPathStart, scriptHash, createdBefore, createdAfter, success, jobKinds, isSkipped, _options);
+    public listCompletedJobs(workspace: string, orderDesc?: boolean, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, success?: boolean, jobKinds?: string, isSkipped?: boolean, isFlowStep?: boolean, _options?: Configuration): Observable<Array<CompletedJob>> {
+        const requestContextPromise = this.requestFactory.listCompletedJobs(workspace, orderDesc, createdBy, parentJob, scriptPathExact, scriptPathStart, scriptHash, createdBefore, createdAfter, success, jobKinds, isSkipped, isFlowStep, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -966,10 +968,11 @@ export class ObservableJobApi {
      * @param createdAfter filter on created after (exclusive) timestamp
      * @param jobKinds filter on job kind (values &#39;preview&#39;, &#39;script&#39;, &#39;dependencies&#39;, &#39;flow&#39;) separated by,
      * @param isSkipped is the job skipped
+     * @param isFlowStep is the job a flow step
      * @param success filter on successful jobs
      */
-    public listJobs(workspace: string, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, jobKinds?: string, isSkipped?: boolean, success?: boolean, _options?: Configuration): Observable<Array<Job>> {
-        const requestContextPromise = this.requestFactory.listJobs(workspace, createdBy, parentJob, scriptPathExact, scriptPathStart, scriptHash, createdBefore, createdAfter, jobKinds, isSkipped, success, _options);
+    public listJobs(workspace: string, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, jobKinds?: string, isSkipped?: boolean, isFlowStep?: boolean, success?: boolean, _options?: Configuration): Observable<Array<Job>> {
+        const requestContextPromise = this.requestFactory.listJobs(workspace, createdBy, parentJob, scriptPathExact, scriptPathStart, scriptHash, createdBefore, createdAfter, jobKinds, isSkipped, isFlowStep, success, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);

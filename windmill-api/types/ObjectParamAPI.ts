@@ -16,6 +16,7 @@ import { EditWorkspaceUser } from '../models/EditWorkspaceUser.ts';
 import { Flow } from '../models/Flow.ts';
 import { FlowMetadata } from '../models/FlowMetadata.ts';
 import { FlowModule } from '../models/FlowModule.ts';
+import { FlowModuleStopAfterIf } from '../models/FlowModuleStopAfterIf.ts';
 import { FlowModuleValue } from '../models/FlowModuleValue.ts';
 import { FlowPreview } from '../models/FlowPreview.ts';
 import { FlowStatus } from '../models/FlowStatus.ts';
@@ -995,6 +996,12 @@ export interface JobApiListCompletedJobsRequest {
      * @memberof JobApilistCompletedJobs
      */
     isSkipped?: boolean
+    /**
+     * is the job a flow step
+     * @type boolean
+     * @memberof JobApilistCompletedJobs
+     */
+    isFlowStep?: boolean
 }
 
 export interface JobApiListJobsRequest {
@@ -1058,6 +1065,12 @@ export interface JobApiListJobsRequest {
      * @memberof JobApilistJobs
      */
     isSkipped?: boolean
+    /**
+     * is the job a flow step
+     * @type boolean
+     * @memberof JobApilistJobs
+     */
+    isFlowStep?: boolean
     /**
      * filter on successful jobs
      * @type boolean
@@ -1373,7 +1386,7 @@ export class ObjectJobApi {
      * @param param the request object
      */
     public listCompletedJobs(param: JobApiListCompletedJobsRequest, options?: Configuration): Promise<Array<CompletedJob>> {
-        return this.api.listCompletedJobs(param.workspace, param.orderDesc, param.createdBy, param.parentJob, param.scriptPathExact, param.scriptPathStart, param.scriptHash, param.createdBefore, param.createdAfter, param.success, param.jobKinds, param.isSkipped,  options).toPromise();
+        return this.api.listCompletedJobs(param.workspace, param.orderDesc, param.createdBy, param.parentJob, param.scriptPathExact, param.scriptPathStart, param.scriptHash, param.createdBefore, param.createdAfter, param.success, param.jobKinds, param.isSkipped, param.isFlowStep,  options).toPromise();
     }
 
     /**
@@ -1381,7 +1394,7 @@ export class ObjectJobApi {
      * @param param the request object
      */
     public listJobs(param: JobApiListJobsRequest, options?: Configuration): Promise<Array<Job>> {
-        return this.api.listJobs(param.workspace, param.createdBy, param.parentJob, param.scriptPathExact, param.scriptPathStart, param.scriptHash, param.createdBefore, param.createdAfter, param.jobKinds, param.isSkipped, param.success,  options).toPromise();
+        return this.api.listJobs(param.workspace, param.createdBy, param.parentJob, param.scriptPathExact, param.scriptPathStart, param.scriptHash, param.createdBefore, param.createdAfter, param.jobKinds, param.isSkipped, param.isFlowStep, param.success,  options).toPromise();
     }
 
     /**

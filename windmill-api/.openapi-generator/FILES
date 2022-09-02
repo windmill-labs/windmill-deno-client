@@ -53,6 +53,7 @@ models/EditWorkspaceUser.ts
 models/Flow.ts
 models/FlowMetadata.ts
 models/FlowModule.ts
+models/FlowModuleStopAfterIf.ts
 models/FlowModuleValue.ts
 models/FlowPreview.ts
 models/FlowStatus.ts

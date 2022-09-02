@@ -317,14 +317,16 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
      * @param success filter on successful jobs
      * @param jobKinds filter on job kind (values &#39;preview&#39;, &#39;script&#39;, &#39;dependencies&#39;, &#39;flow&#39;) separated by,
      * @param isSkipped is the job skipped
+     * @param isFlowStep is the job a flow step
      */
-    public async listCompletedJobs(workspace: string, orderDesc?: boolean, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, success?: boolean, jobKinds?: string, isSkipped?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async listCompletedJobs(workspace: string, orderDesc?: boolean, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, success?: boolean, jobKinds?: string, isSkipped?: boolean, isFlowStep?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
         if (workspace === null || workspace === undefined) {
             throw new RequiredError("JobApi", "listCompletedJobs", "workspace");
         }
+
 
 
 
@@ -401,6 +403,11 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
             requestContext.setQueryParam("is_skipped", ObjectSerializer.serialize(isSkipped, "boolean", ""));
         }
 
+        // Query Params
+        if (isFlowStep !== undefined) {
+            requestContext.setQueryParam("is_flow_step", ObjectSerializer.serialize(isFlowStep, "boolean", ""));
+        }
+
 
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
@@ -434,15 +441,17 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
      * @param createdAfter filter on created after (exclusive) timestamp
      * @param jobKinds filter on job kind (values &#39;preview&#39;, &#39;script&#39;, &#39;dependencies&#39;, &#39;flow&#39;) separated by,
      * @param isSkipped is the job skipped
+     * @param isFlowStep is the job a flow step
      * @param success filter on successful jobs
      */
-    public async listJobs(workspace: string, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, jobKinds?: string, isSkipped?: boolean, success?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async listJobs(workspace: string, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, jobKinds?: string, isSkipped?: boolean, isFlowStep?: boolean, success?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
         if (workspace === null || workspace === undefined) {
             throw new RequiredError("JobApi", "listJobs", "workspace");
         }
+
 
 
 
@@ -506,6 +515,11 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (isSkipped !== undefined) {
             requestContext.setQueryParam("is_skipped", ObjectSerializer.serialize(isSkipped, "boolean", ""));
+        }
+
+        // Query Params
+        if (isFlowStep !== undefined) {
+            requestContext.setQueryParam("is_flow_step", ObjectSerializer.serialize(isFlowStep, "boolean", ""));
         }
 
         // Query Params

@@ -12,6 +12,7 @@ export * from './EditWorkspaceUser.ts';
 export * from './Flow.ts';
 export * from './FlowMetadata.ts';
 export * from './FlowModule.ts';
+export * from './FlowModuleStopAfterIf.ts';
 export * from './FlowModuleValue.ts';
 export * from './FlowPreview.ts';
 export * from './FlowStatus.ts';
@@ -104,6 +105,7 @@ import { EditWorkspaceUser } from './EditWorkspaceUser.ts';
 import { Flow } from './Flow.ts';
 import { FlowMetadata } from './FlowMetadata.ts';
 import { FlowModule } from './FlowModule.ts';
+import { FlowModuleStopAfterIf } from './FlowModuleStopAfterIf.ts';
 import { FlowModuleValue , FlowModuleValueLanguageEnum   , FlowModuleValueTypeEnum      } from './FlowModuleValue.ts';
 import { FlowPreview } from './FlowPreview.ts';
 import { FlowStatus } from './FlowStatus.ts';
@@ -243,6 +245,7 @@ let typeMap: {[index: string]: any} = {
     "Flow": Flow,
     "FlowMetadata": FlowMetadata,
     "FlowModule": FlowModule,
+    "FlowModuleStopAfterIf": FlowModuleStopAfterIf,
     "FlowModuleValue": FlowModuleValue,
     "FlowPreview": FlowPreview,
     "FlowStatus": FlowStatus,
