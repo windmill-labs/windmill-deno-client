@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**getScriptByHash**](ScriptApi.md#getScriptByHash) | **GET** /w/{workspace}/scripts/get/h/{hash} | get script by hash
 [**getScriptByPath**](ScriptApi.md#getScriptByPath) | **GET** /w/{workspace}/scripts/get/p/{path} | get script by path
 [**getScriptDeploymentStatus**](ScriptApi.md#getScriptDeploymentStatus) | **GET** /w/{workspace}/scripts/deployment_status/h/{hash} | get script deployment status
+[**goToJsonschema**](ScriptApi.md#goToJsonschema) | **POST** /scripts/go/tojsonschema | inspect go code to infer jsonschema of arguments
 [**listHubScripts**](ScriptApi.md#listHubScripts) | **GET** /scripts/hub/list | list all available hub scripts
 [**listScripts**](ScriptApi.md#listScripts) | **GET** /w/{workspace}/scripts/list | list all available scripts
 [**pythonToJsonschema**](ScriptApi.md#pythonToJsonschema) | **POST** /scripts/python/tojsonschema | inspect python code to infer jsonschema of arguments
@@ -163,7 +164,7 @@ let body:.ScriptApiCreateScriptRequest = {
       "lock_example",
     ],
     language: "python3",
-    isTrigger: true,
+    kind: "script",
   },
 };
 
@@ -588,6 +589,59 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **goToJsonschema**
+> MainArgSignature goToJsonschema(body)
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .ScriptApi(configuration);
+
+let body:.ScriptApiGoToJsonschemaRequest = {
+  // string | go code with the main function
+  body: "body_example",
+};
+
+apiInstance.goToJsonschema(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **string**| go code with the main function |
+
+
+### Return type
+
+**MainArgSignature**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | parsed args |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **listHubScripts**
 > InlineResponse2002 listHubScripts()
 
@@ -674,8 +728,8 @@ let body:.ScriptApiListScriptsRequest = {
   showArchived: true,
   // boolean | (default regardless) if true show only the templates if false show only the non templates if not defined, show all regardless of if the script is a template  (optional)
   isTemplate: true,
-  // boolean | (default regardless) if true show only the trigger scripts if false show only the non trigger scripts if not defined, show all regardless of if the script is a trigger script  (optional)
-  isTrigger: true,
+  // string | (default regardless) script kind  (optional)
+  kind: "kind_example",
 };
 
 apiInstance.listScripts(body).then((data:any) => {
@@ -700,7 +754,7 @@ Name | Type | Description  | Notes
  **parentHash** | [**string**] | is the hash present in the array of stored parent hashes for this script. The same warning applies than for last_parent_hash. A script only store a limited number of direct parent  | (optional) defaults to undefined
  **showArchived** | [**boolean**] | (default false) show also the archived files. when multiple archived hash share the same path, only the ones with the latest create_at are displayed.  | (optional) defaults to undefined
  **isTemplate** | [**boolean**] | (default regardless) if true show only the templates if false show only the non templates if not defined, show all regardless of if the script is a template  | (optional) defaults to undefined
- **isTrigger** | [**boolean**] | (default regardless) if true show only the trigger scripts if false show only the non trigger scripts if not defined, show all regardless of if the script is a trigger script  | (optional) defaults to undefined
+ **kind** | [**string**] | (default regardless) script kind  | (optional) defaults to undefined
 
 
 ### Return type

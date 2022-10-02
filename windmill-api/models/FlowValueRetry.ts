@@ -10,44 +10,32 @@
  * Do not edit the class manually.
  */
 
+import { FlowValueRetryConstant } from './FlowValueRetryConstant.ts';
+import { FlowValueRetryExponential } from './FlowValueRetryExponential.ts';
 import { HttpFile } from '../http/http.ts';
 
-export class EditSchedule {
-    'schedule': string;
-    'scriptPath': string;
-    'isFlow': boolean;
-    'args': { [key: string]: any; };
+export class FlowValueRetry {
+    'constant'?: FlowValueRetryConstant;
+    'exponential'?: FlowValueRetryExponential;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "schedule",
-            "baseName": "schedule",
-            "type": "string",
+            "name": "constant",
+            "baseName": "constant",
+            "type": "FlowValueRetryConstant",
             "format": ""
         },
         {
-            "name": "scriptPath",
-            "baseName": "script_path",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "isFlow",
-            "baseName": "is_flow",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "args",
-            "baseName": "args",
-            "type": "{ [key: string]: any; }",
+            "name": "exponential",
+            "baseName": "exponential",
+            "type": "FlowValueRetryExponential",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return EditSchedule.attributeTypeMap;
+        return FlowValueRetry.attributeTypeMap;
     }
 
     public constructor() {

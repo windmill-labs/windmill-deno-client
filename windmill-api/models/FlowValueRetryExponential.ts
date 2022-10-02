@@ -12,42 +12,35 @@
 
 import { HttpFile } from '../http/http.ts';
 
-export class EditSchedule {
-    'schedule': string;
-    'scriptPath': string;
-    'isFlow': boolean;
-    'args': { [key: string]: any; };
+export class FlowValueRetryExponential {
+    'attempts'?: number;
+    'multiplier'?: number;
+    'seconds'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "schedule",
-            "baseName": "schedule",
-            "type": "string",
+            "name": "attempts",
+            "baseName": "attempts",
+            "type": "number",
             "format": ""
         },
         {
-            "name": "scriptPath",
-            "baseName": "script_path",
-            "type": "string",
+            "name": "multiplier",
+            "baseName": "multiplier",
+            "type": "number",
             "format": ""
         },
         {
-            "name": "isFlow",
-            "baseName": "is_flow",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "args",
-            "baseName": "args",
-            "type": "{ [key: string]: any; }",
+            "name": "seconds",
+            "baseName": "seconds",
+            "type": "number",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return EditSchedule.attributeTypeMap;
+        return FlowValueRetryExponential.attributeTypeMap;
     }
 
     public constructor() {

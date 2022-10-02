@@ -18,7 +18,11 @@ export * from './FlowPreview.ts';
 export * from './FlowStatus.ts';
 export * from './FlowStatusModule.ts';
 export * from './FlowStatusModuleIterator.ts';
+export * from './FlowStatusRetry.ts';
 export * from './FlowValue.ts';
+export * from './FlowValueRetry.ts';
+export * from './FlowValueRetryConstant.ts';
+export * from './FlowValueRetryExponential.ts';
 export * from './ForloopFlow.ts';
 export * from './GlobalUserInfo.ts';
 export * from './Group.ts';
@@ -111,7 +115,11 @@ import { FlowPreview } from './FlowPreview.ts';
 import { FlowStatus } from './FlowStatus.ts';
 import { FlowStatusModule, FlowStatusModuleTypeEnum       } from './FlowStatusModule.ts';
 import { FlowStatusModuleIterator } from './FlowStatusModuleIterator.ts';
+import { FlowStatusRetry } from './FlowStatusRetry.ts';
 import { FlowValue } from './FlowValue.ts';
+import { FlowValueRetry } from './FlowValueRetry.ts';
+import { FlowValueRetryConstant } from './FlowValueRetryConstant.ts';
+import { FlowValueRetryExponential } from './FlowValueRetryExponential.ts';
 import { ForloopFlow   , ForloopFlowTypeEnum   } from './ForloopFlow.ts';
 import { GlobalUserInfo , GlobalUserInfoLoginTypeEnum       } from './GlobalUserInfo.ts';
 import { Group } from './Group.ts';
@@ -122,7 +130,7 @@ import { InlineObject11 } from './InlineObject11.ts';
 import { InlineObject12 } from './InlineObject12.ts';
 import { InlineObject13 } from './InlineObject13.ts';
 import { InlineObject14 } from './InlineObject14.ts';
-import { InlineObject15        , InlineObject15LanguageEnum    } from './InlineObject15.ts';
+import { InlineObject15        , InlineObject15LanguageEnum  , InlineObject15KindEnum   } from './InlineObject15.ts';
 import { InlineObject16 } from './InlineObject16.ts';
 import { InlineObject17 } from './InlineObject17.ts';
 import { InlineObject18 } from './InlineObject18.ts';
@@ -143,7 +151,7 @@ import { InlineObject9 } from './InlineObject9.ts';
 import { InlineResponse200 } from './InlineResponse200.ts';
 import { InlineResponse2001 } from './InlineResponse2001.ts';
 import { InlineResponse2002 } from './InlineResponse2002.ts';
-import { InlineResponse2002Asks } from './InlineResponse2002Asks.ts';
+import { InlineResponse2002Asks     , InlineResponse2002AsksKindEnum     } from './InlineResponse2002Asks.ts';
 import { InlineResponse2003 } from './InlineResponse2003.ts';
 import { InlineResponse2003Flows } from './InlineResponse2003Flows.ts';
 import { InlineResponse2004 } from './InlineResponse2004.ts';
@@ -170,7 +178,7 @@ import { RawScript , RawScriptLanguageEnum     } from './RawScript.ts';
 import { Resource } from './Resource.ts';
 import { ResourceType } from './ResourceType.ts';
 import { Schedule } from './Schedule.ts';
-import { Script                , ScriptLanguageEnum    } from './Script.ts';
+import { Script                , ScriptLanguageEnum  , ScriptKindEnum   } from './Script.ts';
 import { SlackToken } from './SlackToken.ts';
 import { SlackTokenBot } from './SlackTokenBot.ts';
 import { StaticTransform , StaticTransformTypeEnum   } from './StaticTransform.ts';
@@ -214,6 +222,8 @@ let enumsMap: Set<string> = new Set<string>([
     "ForloopFlowTypeEnum",
     "GlobalUserInfoLoginTypeEnum",
     "InlineObject15LanguageEnum",
+    "InlineObject15KindEnum",
+    "InlineResponse2002AsksKindEnum",
     "InputTransformTypeEnum",
     "JavascriptTransformTypeEnum",
     "JobTypeEnum",
@@ -227,6 +237,7 @@ let enumsMap: Set<string> = new Set<string>([
     "QueuedJobLanguageEnum",
     "RawScriptLanguageEnum",
     "ScriptLanguageEnum",
+    "ScriptKindEnum",
     "StaticTransformTypeEnum",
 ]);
 
@@ -251,7 +262,11 @@ let typeMap: {[index: string]: any} = {
     "FlowStatus": FlowStatus,
     "FlowStatusModule": FlowStatusModule,
     "FlowStatusModuleIterator": FlowStatusModuleIterator,
+    "FlowStatusRetry": FlowStatusRetry,
     "FlowValue": FlowValue,
+    "FlowValueRetry": FlowValueRetry,
+    "FlowValueRetryConstant": FlowValueRetryConstant,
+    "FlowValueRetryExponential": FlowValueRetryExponential,
     "ForloopFlow": ForloopFlow,
     "GlobalUserInfo": GlobalUserInfo,
     "Group": Group,

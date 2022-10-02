@@ -22,7 +22,11 @@ import { FlowPreview } from '../models/FlowPreview.ts';
 import { FlowStatus } from '../models/FlowStatus.ts';
 import { FlowStatusModule } from '../models/FlowStatusModule.ts';
 import { FlowStatusModuleIterator } from '../models/FlowStatusModuleIterator.ts';
+import { FlowStatusRetry } from '../models/FlowStatusRetry.ts';
 import { FlowValue } from '../models/FlowValue.ts';
+import { FlowValueRetry } from '../models/FlowValueRetry.ts';
+import { FlowValueRetryConstant } from '../models/FlowValueRetryConstant.ts';
+import { FlowValueRetryExponential } from '../models/FlowValueRetryExponential.ts';
 import { ForloopFlow } from '../models/ForloopFlow.ts';
 import { GlobalUserInfo } from '../models/GlobalUserInfo.ts';
 import { Group } from '../models/Group.ts';
@@ -475,6 +479,28 @@ export class PromiseJobApi {
     }
 
     /**
+     * cancel a job for a suspended flow
+     * @param workspace 
+     * @param id 
+     * @param payload 
+     */
+    public cancelSuspendedJob(workspace: string, id: string, payload?: any, _options?: Configuration): Promise<void> {
+        const result = this.api.cancelSuspendedJob(workspace, id, payload, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * cancel a job for a suspended flow
+     * @param workspace 
+     * @param id 
+     * @param body 
+     */
+    public cancelSuspendedJob_1(workspace: string, id: string, body?: any, _options?: Configuration): Promise<void> {
+        const result = this.api.cancelSuspendedJob_1(workspace, id, body, _options);
+        return result.toPromise();
+    }
+
+    /**
      * delete completed job (erase content but keep run id)
      * @param workspace 
      * @param id 
@@ -573,6 +599,28 @@ export class PromiseJobApi {
      */
     public listQueue(workspace: string, orderDesc?: boolean, createdBy?: string, parentJob?: string, scriptPathExact?: string, scriptPathStart?: string, scriptHash?: string, createdBefore?: Date, createdAfter?: Date, success?: boolean, jobKinds?: string, _options?: Configuration): Promise<Array<QueuedJob>> {
         const result = this.api.listQueue(workspace, orderDesc, createdBy, parentJob, scriptPathExact, scriptPathStart, scriptHash, createdBefore, createdAfter, success, jobKinds, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * resume a job for a suspended flow
+     * @param workspace 
+     * @param id 
+     * @param payload 
+     */
+    public resumeSuspendedJob(workspace: string, id: string, payload?: any, _options?: Configuration): Promise<void> {
+        const result = this.api.resumeSuspendedJob(workspace, id, payload, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * resume a job for a suspended flow
+     * @param workspace 
+     * @param id 
+     * @param body 
+     */
+    public resumeSuspendedJob_2(workspace: string, id: string, body?: any, _options?: Configuration): Promise<void> {
+        const result = this.api.resumeSuspendedJob_2(workspace, id, body, _options);
         return result.toPromise();
     }
 
@@ -1126,6 +1174,15 @@ export class PromiseScriptApi {
     }
 
     /**
+     * inspect go code to infer jsonschema of arguments
+     * @param body go code with the main function
+     */
+    public goToJsonschema(body: string, _options?: Configuration): Promise<MainArgSignature> {
+        const result = this.api.goToJsonschema(body, _options);
+        return result.toPromise();
+    }
+
+    /**
      * list all available hub scripts
      */
     public listHubScripts(_options?: Configuration): Promise<InlineResponse2002> {
@@ -1147,10 +1204,10 @@ export class PromiseScriptApi {
      * @param parentHash is the hash present in the array of stored parent hashes for this script. The same warning applies than for last_parent_hash. A script only store a limited number of direct parent 
      * @param showArchived (default false) show also the archived files. when multiple archived hash share the same path, only the ones with the latest create_at are displayed. 
      * @param isTemplate (default regardless) if true show only the templates if false show only the non templates if not defined, show all regardless of if the script is a template 
-     * @param isTrigger (default regardless) if true show only the trigger scripts if false show only the non trigger scripts if not defined, show all regardless of if the script is a trigger script 
+     * @param kind (default regardless) script kind 
      */
-    public listScripts(workspace: string, page?: number, perPage?: number, orderDesc?: boolean, createdBy?: string, pathStart?: string, pathExact?: string, firstParentHash?: string, lastParentHash?: string, parentHash?: string, showArchived?: boolean, isTemplate?: boolean, isTrigger?: boolean, _options?: Configuration): Promise<Array<Script>> {
-        const result = this.api.listScripts(workspace, page, perPage, orderDesc, createdBy, pathStart, pathExact, firstParentHash, lastParentHash, parentHash, showArchived, isTemplate, isTrigger, _options);
+    public listScripts(workspace: string, page?: number, perPage?: number, orderDesc?: boolean, createdBy?: string, pathStart?: string, pathExact?: string, firstParentHash?: string, lastParentHash?: string, parentHash?: string, showArchived?: boolean, isTemplate?: boolean, kind?: string, _options?: Configuration): Promise<Array<Script>> {
+        const result = this.api.listScripts(workspace, page, perPage, orderDesc, createdBy, pathStart, pathExact, firstParentHash, lastParentHash, parentHash, showArchived, isTemplate, kind, _options);
         return result.toPromise();
     }
 

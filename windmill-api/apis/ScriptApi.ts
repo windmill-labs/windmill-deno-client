@@ -524,6 +524,58 @@ export class ScriptApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * inspect go code to infer jsonschema of arguments
+     * @param body go code with the main function
+     */
+    public async goToJsonschema(body: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'body' is not null or undefined
+        if (body === null || body === undefined) {
+            throw new RequiredError("ScriptApi", "goToJsonschema", "body");
+        }
+
+
+        // Path Params
+        const localVarPath = '/scripts/go/tojsonschema';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(body, "string", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["cookieAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * list all available hub scripts
      */
     public async listHubScripts(_options?: Configuration): Promise<RequestContext> {
@@ -571,9 +623,9 @@ export class ScriptApiRequestFactory extends BaseAPIRequestFactory {
      * @param parentHash is the hash present in the array of stored parent hashes for this script. The same warning applies than for last_parent_hash. A script only store a limited number of direct parent 
      * @param showArchived (default false) show also the archived files. when multiple archived hash share the same path, only the ones with the latest create_at are displayed. 
      * @param isTemplate (default regardless) if true show only the templates if false show only the non templates if not defined, show all regardless of if the script is a template 
-     * @param isTrigger (default regardless) if true show only the trigger scripts if false show only the non trigger scripts if not defined, show all regardless of if the script is a trigger script 
+     * @param kind (default regardless) script kind 
      */
-    public async listScripts(workspace: string, page?: number, perPage?: number, orderDesc?: boolean, createdBy?: string, pathStart?: string, pathExact?: string, firstParentHash?: string, lastParentHash?: string, parentHash?: string, showArchived?: boolean, isTemplate?: boolean, isTrigger?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async listScripts(workspace: string, page?: number, perPage?: number, orderDesc?: boolean, createdBy?: string, pathStart?: string, pathExact?: string, firstParentHash?: string, lastParentHash?: string, parentHash?: string, showArchived?: boolean, isTemplate?: boolean, kind?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
@@ -658,8 +710,8 @@ export class ScriptApiRequestFactory extends BaseAPIRequestFactory {
         }
 
         // Query Params
-        if (isTrigger !== undefined) {
-            requestContext.setQueryParam("is_trigger", ObjectSerializer.serialize(isTrigger, "boolean", ""));
+        if (kind !== undefined) {
+            requestContext.setQueryParam("kind", ObjectSerializer.serialize(kind, "string", ""));
         }
 
 
@@ -1123,6 +1175,35 @@ export class ScriptApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "InlineResponse2005", ""
             ) as InlineResponse2005;
+            return body;
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to goToJsonschema
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async goToJsonschema(response: ResponseContext): Promise<MainArgSignature > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: MainArgSignature = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "MainArgSignature", ""
+            ) as MainArgSignature;
+            return body;
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: MainArgSignature = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "MainArgSignature", ""
+            ) as MainArgSignature;
             return body;
         }
 

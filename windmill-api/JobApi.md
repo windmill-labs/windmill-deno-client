@@ -5,6 +5,8 @@ All URIs are relative to */api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**cancelQueuedJob**](JobApi.md#cancelQueuedJob) | **POST** /w/{workspace}/jobs/queue/cancel/{id} | cancel queued job
+[**cancelSuspendedJob**](JobApi.md#cancelSuspendedJob) | **GET** /w/{workspace}/jobs/cancel/{id} | cancel a job for a suspended flow
+[**cancelSuspendedJob_0**](JobApi.md#cancelSuspendedJob_0) | **POST** /w/{workspace}/jobs/cancel/{id} | cancel a job for a suspended flow
 [**deleteCompletedJob**](JobApi.md#deleteCompletedJob) | **POST** /w/{workspace}/jobs/completed/delete/{id} | delete completed job (erase content but keep run id)
 [**getCompletedJob**](JobApi.md#getCompletedJob) | **GET** /w/{workspace}/jobs/completed/get/{id} | get completed job
 [**getJob**](JobApi.md#getJob) | **GET** /w/{workspace}/jobs/get/{id} | get job
@@ -12,6 +14,8 @@ Method | HTTP request | Description
 [**listCompletedJobs**](JobApi.md#listCompletedJobs) | **GET** /w/{workspace}/jobs/completed/list | list all available completed jobs
 [**listJobs**](JobApi.md#listJobs) | **GET** /w/{workspace}/jobs/list | list all available jobs
 [**listQueue**](JobApi.md#listQueue) | **GET** /w/{workspace}/jobs/queue/list | list all available queued jobs
+[**resumeSuspendedJob**](JobApi.md#resumeSuspendedJob) | **GET** /w/{workspace}/jobs/resume/{id} | resume a job for a suspended flow
+[**resumeSuspendedJob_0**](JobApi.md#resumeSuspendedJob_0) | **POST** /w/{workspace}/jobs/resume/{id} | resume a job for a suspended flow
 [**runFlowByPath**](JobApi.md#runFlowByPath) | **POST** /w/{workspace}/jobs/run/f/{path} | run flow by path
 [**runFlowPreview**](JobApi.md#runFlowPreview) | **POST** /w/{workspace}/jobs/run/preview_flow | run flow preview
 [**runScriptByHash**](JobApi.md#runScriptByHash) | **POST** /w/{workspace}/jobs/run/h/{hash} | run script by hash
@@ -78,6 +82,114 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | job canceled |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **cancelSuspendedJob**
+> cancelSuspendedJob()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .JobApi(configuration);
+
+let body:.JobApiCancelSuspendedJobRequest = {
+  // string
+  workspace: "workspace_example",
+  // string
+  id: "id_example",
+  // any (optional)
+  payload: {},
+};
+
+apiInstance.cancelSuspendedJob(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | [**string**] |  | defaults to undefined
+ **id** | [**string**] |  | defaults to undefined
+ **payload** | **any** |  | (optional) defaults to undefined
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **cancelSuspendedJob_0**
+> cancelSuspendedJob_0()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .JobApi(configuration);
+
+let body:.JobApiCancelSuspendedJob0Request = {
+  // string
+  workspace: "workspace_example",
+  // string
+  id: "id_example",
+  // any (optional)
+  body: {},
+};
+
+apiInstance.cancelSuspendedJob_0(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **any**|  |
+ **workspace** | [**string**] |  | defaults to undefined
+ **id** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -569,6 +681,114 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **resumeSuspendedJob**
+> resumeSuspendedJob()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .JobApi(configuration);
+
+let body:.JobApiResumeSuspendedJobRequest = {
+  // string
+  workspace: "workspace_example",
+  // string
+  id: "id_example",
+  // any (optional)
+  payload: {},
+};
+
+apiInstance.resumeSuspendedJob(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | [**string**] |  | defaults to undefined
+ **id** | [**string**] |  | defaults to undefined
+ **payload** | **any** |  | (optional) defaults to undefined
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **resumeSuspendedJob_0**
+> resumeSuspendedJob_0()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .JobApi(configuration);
+
+let body:.JobApiResumeSuspendedJob0Request = {
+  // string
+  workspace: "workspace_example",
+  // string
+  id: "id_example",
+  // any (optional)
+  body: {},
+};
+
+apiInstance.resumeSuspendedJob_0(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **any**|  |
+ **workspace** | [**string**] |  | defaults to undefined
+ **id** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **runFlowByPath**
 > string runFlowByPath(requestBody)
 
@@ -670,6 +890,7 @@ let body:.JobApiRunFlowPreviewRequest = {
             expr: "expr_example",
           },
           summary: "summary_example",
+          suspend: 1,
         },
       ],
       failureModule: {
@@ -682,6 +903,18 @@ let body:.JobApiRunFlowPreviewRequest = {
           expr: "expr_example",
         },
         summary: "summary_example",
+        suspend: 1,
+      },
+      retry: {
+        constant: {
+          attempts: 1,
+          seconds: 1,
+        },
+        exponential: {
+          attempts: 1,
+          multiplier: 1,
+          seconds: 1,
+        },
       },
     },
     path: "path_example",

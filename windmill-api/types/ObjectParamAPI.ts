@@ -22,7 +22,11 @@ import { FlowPreview } from '../models/FlowPreview.ts';
 import { FlowStatus } from '../models/FlowStatus.ts';
 import { FlowStatusModule } from '../models/FlowStatusModule.ts';
 import { FlowStatusModuleIterator } from '../models/FlowStatusModuleIterator.ts';
+import { FlowStatusRetry } from '../models/FlowStatusRetry.ts';
 import { FlowValue } from '../models/FlowValue.ts';
+import { FlowValueRetry } from '../models/FlowValueRetry.ts';
+import { FlowValueRetryConstant } from '../models/FlowValueRetryConstant.ts';
+import { FlowValueRetryExponential } from '../models/FlowValueRetryExponential.ts';
 import { ForloopFlow } from '../models/ForloopFlow.ts';
 import { GlobalUserInfo } from '../models/GlobalUserInfo.ts';
 import { Group } from '../models/Group.ts';
@@ -851,6 +855,48 @@ export interface JobApiCancelQueuedJobRequest {
     inlineObject16: InlineObject16
 }
 
+export interface JobApiCancelSuspendedJobRequest {
+    /**
+     * 
+     * @type string
+     * @memberof JobApicancelSuspendedJob
+     */
+    workspace: string
+    /**
+     * 
+     * @type string
+     * @memberof JobApicancelSuspendedJob
+     */
+    id: string
+    /**
+     * 
+     * @type any
+     * @memberof JobApicancelSuspendedJob
+     */
+    payload?: any
+}
+
+export interface JobApiCancelSuspendedJob0Request {
+    /**
+     * 
+     * @type string
+     * @memberof JobApicancelSuspendedJob_1
+     */
+    workspace: string
+    /**
+     * 
+     * @type string
+     * @memberof JobApicancelSuspendedJob_1
+     */
+    id: string
+    /**
+     * 
+     * @type any
+     * @memberof JobApicancelSuspendedJob_1
+     */
+    body?: any
+}
+
 export interface JobApiDeleteCompletedJobRequest {
     /**
      * 
@@ -1148,6 +1194,48 @@ export interface JobApiListQueueRequest {
     jobKinds?: string
 }
 
+export interface JobApiResumeSuspendedJobRequest {
+    /**
+     * 
+     * @type string
+     * @memberof JobApiresumeSuspendedJob
+     */
+    workspace: string
+    /**
+     * 
+     * @type string
+     * @memberof JobApiresumeSuspendedJob
+     */
+    id: string
+    /**
+     * 
+     * @type any
+     * @memberof JobApiresumeSuspendedJob
+     */
+    payload?: any
+}
+
+export interface JobApiResumeSuspendedJob0Request {
+    /**
+     * 
+     * @type string
+     * @memberof JobApiresumeSuspendedJob_2
+     */
+    workspace: string
+    /**
+     * 
+     * @type string
+     * @memberof JobApiresumeSuspendedJob_2
+     */
+    id: string
+    /**
+     * 
+     * @type any
+     * @memberof JobApiresumeSuspendedJob_2
+     */
+    body?: any
+}
+
 export interface JobApiRunFlowByPathRequest {
     /**
      * 
@@ -1350,6 +1438,22 @@ export class ObjectJobApi {
     }
 
     /**
+     * cancel a job for a suspended flow
+     * @param param the request object
+     */
+    public cancelSuspendedJob(param: JobApiCancelSuspendedJobRequest, options?: Configuration): Promise<void> {
+        return this.api.cancelSuspendedJob(param.workspace, param.id, param.payload,  options).toPromise();
+    }
+
+    /**
+     * cancel a job for a suspended flow
+     * @param param the request object
+     */
+    public cancelSuspendedJob_1(param: JobApiCancelSuspendedJob0Request, options?: Configuration): Promise<void> {
+        return this.api.cancelSuspendedJob_1(param.workspace, param.id, param.body,  options).toPromise();
+    }
+
+    /**
      * delete completed job (erase content but keep run id)
      * @param param the request object
      */
@@ -1403,6 +1507,22 @@ export class ObjectJobApi {
      */
     public listQueue(param: JobApiListQueueRequest, options?: Configuration): Promise<Array<QueuedJob>> {
         return this.api.listQueue(param.workspace, param.orderDesc, param.createdBy, param.parentJob, param.scriptPathExact, param.scriptPathStart, param.scriptHash, param.createdBefore, param.createdAfter, param.success, param.jobKinds,  options).toPromise();
+    }
+
+    /**
+     * resume a job for a suspended flow
+     * @param param the request object
+     */
+    public resumeSuspendedJob(param: JobApiResumeSuspendedJobRequest, options?: Configuration): Promise<void> {
+        return this.api.resumeSuspendedJob(param.workspace, param.id, param.payload,  options).toPromise();
+    }
+
+    /**
+     * resume a job for a suspended flow
+     * @param param the request object
+     */
+    public resumeSuspendedJob_2(param: JobApiResumeSuspendedJob0Request, options?: Configuration): Promise<void> {
+        return this.api.resumeSuspendedJob_2(param.workspace, param.id, param.body,  options).toPromise();
     }
 
     /**
@@ -2316,6 +2436,15 @@ export interface ScriptApiGetScriptDeploymentStatusRequest {
     hash: string
 }
 
+export interface ScriptApiGoToJsonschemaRequest {
+    /**
+     * go code with the main function
+     * @type string
+     * @memberof ScriptApigoToJsonschema
+     */
+    body: string
+}
+
 export interface ScriptApiListHubScriptsRequest {
 }
 
@@ -2393,11 +2522,11 @@ export interface ScriptApiListScriptsRequest {
      */
     isTemplate?: boolean
     /**
-     * (default regardless) if true show only the trigger scripts if false show only the non trigger scripts if not defined, show all regardless of if the script is a trigger script 
-     * @type boolean
+     * (default regardless) script kind 
+     * @type string
      * @memberof ScriptApilistScripts
      */
-    isTrigger?: boolean
+    kind?: string
 }
 
 export interface ScriptApiPythonToJsonschemaRequest {
@@ -2527,6 +2656,14 @@ export class ObjectScriptApi {
     }
 
     /**
+     * inspect go code to infer jsonschema of arguments
+     * @param param the request object
+     */
+    public goToJsonschema(param: ScriptApiGoToJsonschemaRequest, options?: Configuration): Promise<MainArgSignature> {
+        return this.api.goToJsonschema(param.body,  options).toPromise();
+    }
+
+    /**
      * list all available hub scripts
      * @param param the request object
      */
@@ -2539,7 +2676,7 @@ export class ObjectScriptApi {
      * @param param the request object
      */
     public listScripts(param: ScriptApiListScriptsRequest, options?: Configuration): Promise<Array<Script>> {
-        return this.api.listScripts(param.workspace, param.page, param.perPage, param.orderDesc, param.createdBy, param.pathStart, param.pathExact, param.firstParentHash, param.lastParentHash, param.parentHash, param.showArchived, param.isTemplate, param.isTrigger,  options).toPromise();
+        return this.api.listScripts(param.workspace, param.page, param.perPage, param.orderDesc, param.createdBy, param.pathStart, param.pathExact, param.firstParentHash, param.lastParentHash, param.parentHash, param.showArchived, param.isTemplate, param.kind,  options).toPromise();
     }
 
     /**
