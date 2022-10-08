@@ -25,9 +25,6 @@ import { FlowStatusModule } from '../models/FlowStatusModule.ts';
 import { FlowStatusModuleIterator } from '../models/FlowStatusModuleIterator.ts';
 import { FlowStatusRetry } from '../models/FlowStatusRetry.ts';
 import { FlowValue } from '../models/FlowValue.ts';
-import { FlowValueRetry } from '../models/FlowValueRetry.ts';
-import { FlowValueRetryConstant } from '../models/FlowValueRetryConstant.ts';
-import { FlowValueRetryExponential } from '../models/FlowValueRetryExponential.ts';
 import { ForloopFlow } from '../models/ForloopFlow.ts';
 import { GlobalUserInfo } from '../models/GlobalUserInfo.ts';
 import { Group } from '../models/Group.ts';
@@ -85,6 +82,9 @@ import { QueuedJob } from '../models/QueuedJob.ts';
 import { RawScript } from '../models/RawScript.ts';
 import { Resource } from '../models/Resource.ts';
 import { ResourceType } from '../models/ResourceType.ts';
+import { Retry } from '../models/Retry.ts';
+import { RetryConstant } from '../models/RetryConstant.ts';
+import { RetryExponential } from '../models/RetryExponential.ts';
 import { Schedule } from '../models/Schedule.ts';
 import { Script } from '../models/Script.ts';
 import { SlackToken } from '../models/SlackToken.ts';
@@ -833,7 +833,7 @@ export class ObservableJobApi {
      * @param id 
      * @param payload 
      */
-    public cancelSuspendedJob(workspace: string, id: string, payload?: any, _options?: Configuration): Observable<void> {
+    public cancelSuspendedJob(workspace: string, id: string, payload?: any, _options?: Configuration): Observable<string> {
         const requestContextPromise = this.requestFactory.cancelSuspendedJob(workspace, id, payload, _options);
 
         // build promise chain
@@ -858,7 +858,7 @@ export class ObservableJobApi {
      * @param id 
      * @param body 
      */
-    public cancelSuspendedJob_1(workspace: string, id: string, body?: any, _options?: Configuration): Observable<void> {
+    public cancelSuspendedJob_1(workspace: string, id: string, body?: any, _options?: Configuration): Observable<string> {
         const requestContextPromise = this.requestFactory.cancelSuspendedJob_1(workspace, id, body, _options);
 
         // build promise chain
@@ -1083,7 +1083,7 @@ export class ObservableJobApi {
      * @param id 
      * @param payload 
      */
-    public resumeSuspendedJob(workspace: string, id: string, payload?: any, _options?: Configuration): Observable<void> {
+    public resumeSuspendedJob(workspace: string, id: string, payload?: any, _options?: Configuration): Observable<string> {
         const requestContextPromise = this.requestFactory.resumeSuspendedJob(workspace, id, payload, _options);
 
         // build promise chain
@@ -1108,7 +1108,7 @@ export class ObservableJobApi {
      * @param id 
      * @param body 
      */
-    public resumeSuspendedJob_2(workspace: string, id: string, body?: any, _options?: Configuration): Observable<void> {
+    public resumeSuspendedJob_2(workspace: string, id: string, body?: any, _options?: Configuration): Observable<string> {
         const requestContextPromise = this.requestFactory.resumeSuspendedJob_2(workspace, id, body, _options);
 
         // build promise chain

@@ -1416,12 +1416,23 @@ export class JobApiResponseProcessor {
      * @params response Response returned by the server for a request to cancelSuspendedJob
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async cancelSuspendedJob(response: ResponseContext): Promise< void> {
+     public async cancelSuspendedJob(response: ResponseContext): Promise<string > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            return;
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
         }
 
         throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
@@ -1434,12 +1445,23 @@ export class JobApiResponseProcessor {
      * @params response Response returned by the server for a request to cancelSuspendedJob_1
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async cancelSuspendedJob_1(response: ResponseContext): Promise< void> {
+     public async cancelSuspendedJob_1(response: ResponseContext): Promise<string > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            return;
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
         }
 
         throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
@@ -1655,12 +1677,23 @@ export class JobApiResponseProcessor {
      * @params response Response returned by the server for a request to resumeSuspendedJob
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async resumeSuspendedJob(response: ResponseContext): Promise< void> {
+     public async resumeSuspendedJob(response: ResponseContext): Promise<string > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            return;
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
         }
 
         throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
@@ -1673,12 +1706,23 @@ export class JobApiResponseProcessor {
      * @params response Response returned by the server for a request to resumeSuspendedJob_2
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async resumeSuspendedJob_2(response: ResponseContext): Promise< void> {
+     public async resumeSuspendedJob_2(response: ResponseContext): Promise<string > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            return;
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
         }
 
         throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);

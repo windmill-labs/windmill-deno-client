@@ -61,9 +61,6 @@ models/FlowStatusModule.ts
 models/FlowStatusModuleIterator.ts
 models/FlowStatusRetry.ts
 models/FlowValue.ts
-models/FlowValueRetry.ts
-models/FlowValueRetryConstant.ts
-models/FlowValueRetryExponential.ts
 models/ForloopFlow.ts
 models/GlobalUserInfo.ts
 models/Group.ts
@@ -122,6 +119,9 @@ models/QueuedJob.ts
 models/RawScript.ts
 models/Resource.ts
 models/ResourceType.ts
+models/Retry.ts
+models/RetryConstant.ts
+models/RetryExponential.ts
 models/Schedule.ts
 models/Script.ts
 models/SlackToken.ts

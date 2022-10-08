@@ -20,9 +20,6 @@ export * from './FlowStatusModule.ts';
 export * from './FlowStatusModuleIterator.ts';
 export * from './FlowStatusRetry.ts';
 export * from './FlowValue.ts';
-export * from './FlowValueRetry.ts';
-export * from './FlowValueRetryConstant.ts';
-export * from './FlowValueRetryExponential.ts';
 export * from './ForloopFlow.ts';
 export * from './GlobalUserInfo.ts';
 export * from './Group.ts';
@@ -80,6 +77,9 @@ export * from './QueuedJob.ts';
 export * from './RawScript.ts';
 export * from './Resource.ts';
 export * from './ResourceType.ts';
+export * from './Retry.ts';
+export * from './RetryConstant.ts';
+export * from './RetryExponential.ts';
 export * from './Schedule.ts';
 export * from './Script.ts';
 export * from './SlackToken.ts';
@@ -117,9 +117,6 @@ import { FlowStatusModule, FlowStatusModuleTypeEnum       } from './FlowStatusMo
 import { FlowStatusModuleIterator } from './FlowStatusModuleIterator.ts';
 import { FlowStatusRetry } from './FlowStatusRetry.ts';
 import { FlowValue } from './FlowValue.ts';
-import { FlowValueRetry } from './FlowValueRetry.ts';
-import { FlowValueRetryConstant } from './FlowValueRetryConstant.ts';
-import { FlowValueRetryExponential } from './FlowValueRetryExponential.ts';
 import { ForloopFlow   , ForloopFlowTypeEnum   } from './ForloopFlow.ts';
 import { GlobalUserInfo , GlobalUserInfoLoginTypeEnum       } from './GlobalUserInfo.ts';
 import { Group } from './Group.ts';
@@ -177,6 +174,9 @@ import { QueuedJob                 , QueuedJobJobKindEnum       , QueuedJobLangu
 import { RawScript , RawScriptLanguageEnum     } from './RawScript.ts';
 import { Resource } from './Resource.ts';
 import { ResourceType } from './ResourceType.ts';
+import { Retry } from './Retry.ts';
+import { RetryConstant } from './RetryConstant.ts';
+import { RetryExponential } from './RetryExponential.ts';
 import { Schedule } from './Schedule.ts';
 import { Script                , ScriptLanguageEnum  , ScriptKindEnum   } from './Script.ts';
 import { SlackToken } from './SlackToken.ts';
@@ -264,9 +264,6 @@ let typeMap: {[index: string]: any} = {
     "FlowStatusModuleIterator": FlowStatusModuleIterator,
     "FlowStatusRetry": FlowStatusRetry,
     "FlowValue": FlowValue,
-    "FlowValueRetry": FlowValueRetry,
-    "FlowValueRetryConstant": FlowValueRetryConstant,
-    "FlowValueRetryExponential": FlowValueRetryExponential,
     "ForloopFlow": ForloopFlow,
     "GlobalUserInfo": GlobalUserInfo,
     "Group": Group,
@@ -324,6 +321,9 @@ let typeMap: {[index: string]: any} = {
     "RawScript": RawScript,
     "Resource": Resource,
     "ResourceType": ResourceType,
+    "Retry": Retry,
+    "RetryConstant": RetryConstant,
+    "RetryExponential": RetryExponential,
     "Schedule": Schedule,
     "Script": Script,
     "SlackToken": SlackToken,

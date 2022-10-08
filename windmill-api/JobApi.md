@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **cancelSuspendedJob**
-> cancelSuspendedJob()
+> string cancelSuspendedJob()
 
 
 ### Example
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -134,13 +134,18 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: text/plain
 
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | job resumed |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **cancelSuspendedJob_0**
-> cancelSuspendedJob_0()
+> string cancelSuspendedJob_0()
 
 
 ### Example
@@ -179,7 +184,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -188,8 +193,13 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: text/plain
 
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | job resumed |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -682,7 +692,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **resumeSuspendedJob**
-> resumeSuspendedJob()
+> string resumeSuspendedJob()
 
 
 ### Example
@@ -721,7 +731,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -730,13 +740,18 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: text/plain
 
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | job resumed |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **resumeSuspendedJob_0**
-> resumeSuspendedJob_0()
+> string resumeSuspendedJob_0()
 
 
 ### Example
@@ -775,7 +790,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -784,8 +799,13 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: text/plain
 
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | job resumed |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -889,8 +909,20 @@ let body:.JobApiRunFlowPreviewRequest = {
             skipIfStopped: true,
             expr: "expr_example",
           },
+          sleep: null,
           summary: "summary_example",
           suspend: 1,
+          retry: {
+            constant: {
+              attempts: 1,
+              seconds: 1,
+            },
+            exponential: {
+              attempts: 1,
+              multiplier: 1,
+              seconds: 1,
+            },
+          },
         },
       ],
       failureModule: {
@@ -902,20 +934,22 @@ let body:.JobApiRunFlowPreviewRequest = {
           skipIfStopped: true,
           expr: "expr_example",
         },
+        sleep: null,
         summary: "summary_example",
         suspend: 1,
-      },
-      retry: {
-        constant: {
-          attempts: 1,
-          seconds: 1,
+        retry: {
+          constant: {
+            attempts: 1,
+            seconds: 1,
+          },
+          exponential: {
+            attempts: 1,
+            multiplier: 1,
+            seconds: 1,
+          },
         },
-        exponential: {
-          attempts: 1,
-          multiplier: 1,
-          seconds: 1,
-        },
       },
+      sameWorker: true,
     },
     path: "path_example",
     args: {

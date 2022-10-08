@@ -24,9 +24,6 @@ import { FlowStatusModule } from '../models/FlowStatusModule.ts';
 import { FlowStatusModuleIterator } from '../models/FlowStatusModuleIterator.ts';
 import { FlowStatusRetry } from '../models/FlowStatusRetry.ts';
 import { FlowValue } from '../models/FlowValue.ts';
-import { FlowValueRetry } from '../models/FlowValueRetry.ts';
-import { FlowValueRetryConstant } from '../models/FlowValueRetryConstant.ts';
-import { FlowValueRetryExponential } from '../models/FlowValueRetryExponential.ts';
 import { ForloopFlow } from '../models/ForloopFlow.ts';
 import { GlobalUserInfo } from '../models/GlobalUserInfo.ts';
 import { Group } from '../models/Group.ts';
@@ -84,6 +81,9 @@ import { QueuedJob } from '../models/QueuedJob.ts';
 import { RawScript } from '../models/RawScript.ts';
 import { Resource } from '../models/Resource.ts';
 import { ResourceType } from '../models/ResourceType.ts';
+import { Retry } from '../models/Retry.ts';
+import { RetryConstant } from '../models/RetryConstant.ts';
+import { RetryExponential } from '../models/RetryExponential.ts';
 import { Schedule } from '../models/Schedule.ts';
 import { Script } from '../models/Script.ts';
 import { SlackToken } from '../models/SlackToken.ts';
@@ -1441,7 +1441,7 @@ export class ObjectJobApi {
      * cancel a job for a suspended flow
      * @param param the request object
      */
-    public cancelSuspendedJob(param: JobApiCancelSuspendedJobRequest, options?: Configuration): Promise<void> {
+    public cancelSuspendedJob(param: JobApiCancelSuspendedJobRequest, options?: Configuration): Promise<string> {
         return this.api.cancelSuspendedJob(param.workspace, param.id, param.payload,  options).toPromise();
     }
 
@@ -1449,7 +1449,7 @@ export class ObjectJobApi {
      * cancel a job for a suspended flow
      * @param param the request object
      */
-    public cancelSuspendedJob_1(param: JobApiCancelSuspendedJob0Request, options?: Configuration): Promise<void> {
+    public cancelSuspendedJob_1(param: JobApiCancelSuspendedJob0Request, options?: Configuration): Promise<string> {
         return this.api.cancelSuspendedJob_1(param.workspace, param.id, param.body,  options).toPromise();
     }
 
@@ -1513,7 +1513,7 @@ export class ObjectJobApi {
      * resume a job for a suspended flow
      * @param param the request object
      */
-    public resumeSuspendedJob(param: JobApiResumeSuspendedJobRequest, options?: Configuration): Promise<void> {
+    public resumeSuspendedJob(param: JobApiResumeSuspendedJobRequest, options?: Configuration): Promise<string> {
         return this.api.resumeSuspendedJob(param.workspace, param.id, param.payload,  options).toPromise();
     }
 
@@ -1521,7 +1521,7 @@ export class ObjectJobApi {
      * resume a job for a suspended flow
      * @param param the request object
      */
-    public resumeSuspendedJob_2(param: JobApiResumeSuspendedJob0Request, options?: Configuration): Promise<void> {
+    public resumeSuspendedJob_2(param: JobApiResumeSuspendedJob0Request, options?: Configuration): Promise<string> {
         return this.api.resumeSuspendedJob_2(param.workspace, param.id, param.body,  options).toPromise();
     }
 
