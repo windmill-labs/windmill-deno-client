@@ -3,6 +3,10 @@ import * as models from '../models/all.ts';
 import { Configuration} from '../configuration.ts'
 
 import { AuditLog } from '../models/AuditLog.ts';
+import { BranchAll } from '../models/BranchAll.ts';
+import { BranchAllBranches } from '../models/BranchAllBranches.ts';
+import { BranchOne } from '../models/BranchOne.ts';
+import { BranchOneBranches } from '../models/BranchOneBranches.ts';
 import { CompletedJob } from '../models/CompletedJob.ts';
 import { ContextualVariable } from '../models/ContextualVariable.ts';
 import { CreateResource } from '../models/CreateResource.ts';
@@ -17,10 +21,12 @@ import { Flow } from '../models/Flow.ts';
 import { FlowMetadata } from '../models/FlowMetadata.ts';
 import { FlowModule } from '../models/FlowModule.ts';
 import { FlowModuleStopAfterIf } from '../models/FlowModuleStopAfterIf.ts';
+import { FlowModuleSuspend } from '../models/FlowModuleSuspend.ts';
 import { FlowModuleValue } from '../models/FlowModuleValue.ts';
 import { FlowPreview } from '../models/FlowPreview.ts';
 import { FlowStatus } from '../models/FlowStatus.ts';
 import { FlowStatusModule } from '../models/FlowStatusModule.ts';
+import { FlowStatusModuleBranchChosen } from '../models/FlowStatusModuleBranchChosen.ts';
 import { FlowStatusModuleIterator } from '../models/FlowStatusModuleIterator.ts';
 import { FlowStatusRetry } from '../models/FlowStatusRetry.ts';
 import { FlowValue } from '../models/FlowValue.ts';
@@ -74,7 +80,6 @@ import { NewToken } from '../models/NewToken.ts';
 import { NewUser } from '../models/NewUser.ts';
 import { OpenFlow } from '../models/OpenFlow.ts';
 import { OpenFlowWPath } from '../models/OpenFlowWPath.ts';
-import { PathFlow } from '../models/PathFlow.ts';
 import { PathScript } from '../models/PathScript.ts';
 import { Preview } from '../models/Preview.ts';
 import { QueuedJob } from '../models/QueuedJob.ts';
@@ -482,10 +487,12 @@ export class PromiseJobApi {
      * cancel a job for a suspended flow
      * @param workspace 
      * @param id 
+     * @param resumeId 
+     * @param signature 
      * @param payload 
      */
-    public cancelSuspendedJob(workspace: string, id: string, payload?: any, _options?: Configuration): Promise<string> {
-        const result = this.api.cancelSuspendedJob(workspace, id, payload, _options);
+    public cancelSuspendedJobGet(workspace: string, id: string, resumeId: number, signature: string, payload?: any, _options?: Configuration): Promise<string> {
+        const result = this.api.cancelSuspendedJobGet(workspace, id, resumeId, signature, payload, _options);
         return result.toPromise();
     }
 
@@ -493,10 +500,23 @@ export class PromiseJobApi {
      * cancel a job for a suspended flow
      * @param workspace 
      * @param id 
+     * @param resumeId 
+     * @param signature 
      * @param body 
      */
-    public cancelSuspendedJob_1(workspace: string, id: string, body?: any, _options?: Configuration): Promise<string> {
-        const result = this.api.cancelSuspendedJob_1(workspace, id, body, _options);
+    public cancelSuspendedJobPost(workspace: string, id: string, resumeId: number, signature: string, body?: any, _options?: Configuration): Promise<string> {
+        const result = this.api.cancelSuspendedJobPost(workspace, id, resumeId, signature, body, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * create an HMac signature given a job id and a resume id
+     * @param workspace 
+     * @param id 
+     * @param resumeId 
+     */
+    public createJobSignature(workspace: string, id: string, resumeId: number, _options?: Configuration): Promise<string> {
+        const result = this.api.createJobSignature(workspace, id, resumeId, _options);
         return result.toPromise();
     }
 
@@ -606,10 +626,12 @@ export class PromiseJobApi {
      * resume a job for a suspended flow
      * @param workspace 
      * @param id 
+     * @param resumeId 
+     * @param signature 
      * @param payload 
      */
-    public resumeSuspendedJob(workspace: string, id: string, payload?: any, _options?: Configuration): Promise<string> {
-        const result = this.api.resumeSuspendedJob(workspace, id, payload, _options);
+    public resumeSuspendedJobGet(workspace: string, id: string, resumeId: number, signature: string, payload?: any, _options?: Configuration): Promise<string> {
+        const result = this.api.resumeSuspendedJobGet(workspace, id, resumeId, signature, payload, _options);
         return result.toPromise();
     }
 
@@ -617,10 +639,12 @@ export class PromiseJobApi {
      * resume a job for a suspended flow
      * @param workspace 
      * @param id 
+     * @param resumeId 
+     * @param signature 
      * @param body 
      */
-    public resumeSuspendedJob_2(workspace: string, id: string, body?: any, _options?: Configuration): Promise<string> {
-        const result = this.api.resumeSuspendedJob_2(workspace, id, body, _options);
+    public resumeSuspendedJobPost(workspace: string, id: string, resumeId: number, signature: string, body?: any, _options?: Configuration): Promise<string> {
+        const result = this.api.resumeSuspendedJobPost(workspace, id, resumeId, signature, body, _options);
         return result.toPromise();
     }
 

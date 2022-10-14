@@ -34,12 +34,12 @@ export class WorkerApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (page !== undefined) {
-            requestContext.setQueryParam("page", ObjectSerializer.serialize(page, "number", "int32"));
+            requestContext.setQueryParam("page", ObjectSerializer.serialize(page, "number", ""));
         }
 
         // Query Params
         if (perPage !== undefined) {
-            requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", "int32"));
+            requestContext.setQueryParam("per_page", ObjectSerializer.serialize(perPage, "number", ""));
         }
 
 

@@ -10,23 +10,31 @@
  * Do not edit the class manually.
  */
 
+import { FlowModule } from './FlowModule.ts';
 import { HttpFile } from '../http/http.ts';
 
-export class InlineObject22 {
-    'username'?: string;
+export class BranchAllBranches {
+    'summary'?: string;
+    'modules': Array<FlowModule>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "username",
-            "baseName": "username",
+            "name": "summary",
+            "baseName": "summary",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "modules",
+            "baseName": "modules",
+            "type": "Array<FlowModule>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return InlineObject22.attributeTypeMap;
+        return BranchAllBranches.attributeTypeMap;
     }
 
     public constructor() {

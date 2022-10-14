@@ -1,4 +1,8 @@
 export * from './AuditLog.ts';
+export * from './BranchAll.ts';
+export * from './BranchAllBranches.ts';
+export * from './BranchOne.ts';
+export * from './BranchOneBranches.ts';
 export * from './CompletedJob.ts';
 export * from './ContextualVariable.ts';
 export * from './CreateResource.ts';
@@ -13,10 +17,12 @@ export * from './Flow.ts';
 export * from './FlowMetadata.ts';
 export * from './FlowModule.ts';
 export * from './FlowModuleStopAfterIf.ts';
+export * from './FlowModuleSuspend.ts';
 export * from './FlowModuleValue.ts';
 export * from './FlowPreview.ts';
 export * from './FlowStatus.ts';
 export * from './FlowStatusModule.ts';
+export * from './FlowStatusModuleBranchChosen.ts';
 export * from './FlowStatusModuleIterator.ts';
 export * from './FlowStatusRetry.ts';
 export * from './FlowValue.ts';
@@ -70,7 +76,6 @@ export * from './NewToken.ts';
 export * from './NewUser.ts';
 export * from './OpenFlow.ts';
 export * from './OpenFlowWPath.ts';
-export * from './PathFlow.ts';
 export * from './PathScript.ts';
 export * from './Preview.ts';
 export * from './QueuedJob.ts';
@@ -96,6 +101,10 @@ export * from './Workspace.ts';
 export * from './WorkspaceInvite.ts';
 
 import { AuditLog   , AuditLogOperationEnum  , AuditLogActionKindEnum     } from './AuditLog.ts';
+import { BranchAll , BranchAllTypeEnum   } from './BranchAll.ts';
+import { BranchAllBranches } from './BranchAllBranches.ts';
+import { BranchOne  , BranchOneTypeEnum   } from './BranchOne.ts';
+import { BranchOneBranches } from './BranchOneBranches.ts';
 import { CompletedJob                  , CompletedJobJobKindEnum       , CompletedJobLanguageEnum    } from './CompletedJob.ts';
 import { ContextualVariable } from './ContextualVariable.ts';
 import { CreateResource } from './CreateResource.ts';
@@ -110,10 +119,12 @@ import { Flow } from './Flow.ts';
 import { FlowMetadata } from './FlowMetadata.ts';
 import { FlowModule } from './FlowModule.ts';
 import { FlowModuleStopAfterIf } from './FlowModuleStopAfterIf.ts';
-import { FlowModuleValue , FlowModuleValueLanguageEnum   , FlowModuleValueTypeEnum      } from './FlowModuleValue.ts';
+import { FlowModuleSuspend } from './FlowModuleSuspend.ts';
+import { FlowModuleValue , FlowModuleValueLanguageEnum   , FlowModuleValueTypeEnum        } from './FlowModuleValue.ts';
 import { FlowPreview } from './FlowPreview.ts';
 import { FlowStatus } from './FlowStatus.ts';
-import { FlowStatusModule, FlowStatusModuleTypeEnum       } from './FlowStatusModule.ts';
+import { FlowStatusModule, FlowStatusModuleTypeEnum        } from './FlowStatusModule.ts';
+import { FlowStatusModuleBranchChosen, FlowStatusModuleBranchChosenTypeEnum    } from './FlowStatusModuleBranchChosen.ts';
 import { FlowStatusModuleIterator } from './FlowStatusModuleIterator.ts';
 import { FlowStatusRetry } from './FlowStatusRetry.ts';
 import { FlowValue } from './FlowValue.ts';
@@ -167,7 +178,6 @@ import { NewToken } from './NewToken.ts';
 import { NewUser } from './NewUser.ts';
 import { OpenFlow } from './OpenFlow.ts';
 import { OpenFlowWPath } from './OpenFlowWPath.ts';
-import { PathFlow , PathFlowTypeEnum   } from './PathFlow.ts';
 import { PathScript , PathScriptTypeEnum   } from './PathScript.ts';
 import { Preview   , PreviewLanguageEnum   } from './Preview.ts';
 import { QueuedJob                 , QueuedJobJobKindEnum       , QueuedJobLanguageEnum   } from './QueuedJob.ts';
@@ -214,11 +224,14 @@ const supportedMediaTypes: { [mediaType: string]: number } = {
 let enumsMap: Set<string> = new Set<string>([
     "AuditLogOperationEnum",
     "AuditLogActionKindEnum",
+    "BranchAllTypeEnum",
+    "BranchOneTypeEnum",
     "CompletedJobJobKindEnum",
     "CompletedJobLanguageEnum",
     "FlowModuleValueLanguageEnum",
     "FlowModuleValueTypeEnum",
     "FlowStatusModuleTypeEnum",
+    "FlowStatusModuleBranchChosenTypeEnum",
     "ForloopFlowTypeEnum",
     "GlobalUserInfoLoginTypeEnum",
     "InlineObject15LanguageEnum",
@@ -230,7 +243,6 @@ let enumsMap: Set<string> = new Set<string>([
     "JobJobKindEnum",
     "JobLanguageEnum",
     "JobAllOfTypeEnum",
-    "PathFlowTypeEnum",
     "PathScriptTypeEnum",
     "PreviewLanguageEnum",
     "QueuedJobJobKindEnum",
@@ -243,6 +255,10 @@ let enumsMap: Set<string> = new Set<string>([
 
 let typeMap: {[index: string]: any} = {
     "AuditLog": AuditLog,
+    "BranchAll": BranchAll,
+    "BranchAllBranches": BranchAllBranches,
+    "BranchOne": BranchOne,
+    "BranchOneBranches": BranchOneBranches,
     "CompletedJob": CompletedJob,
     "ContextualVariable": ContextualVariable,
     "CreateResource": CreateResource,
@@ -257,10 +273,12 @@ let typeMap: {[index: string]: any} = {
     "FlowMetadata": FlowMetadata,
     "FlowModule": FlowModule,
     "FlowModuleStopAfterIf": FlowModuleStopAfterIf,
+    "FlowModuleSuspend": FlowModuleSuspend,
     "FlowModuleValue": FlowModuleValue,
     "FlowPreview": FlowPreview,
     "FlowStatus": FlowStatus,
     "FlowStatusModule": FlowStatusModule,
+    "FlowStatusModuleBranchChosen": FlowStatusModuleBranchChosen,
     "FlowStatusModuleIterator": FlowStatusModuleIterator,
     "FlowStatusRetry": FlowStatusRetry,
     "FlowValue": FlowValue,
@@ -314,7 +332,6 @@ let typeMap: {[index: string]: any} = {
     "NewUser": NewUser,
     "OpenFlow": OpenFlow,
     "OpenFlowWPath": OpenFlowWPath,
-    "PathFlow": PathFlow,
     "PathScript": PathScript,
     "Preview": Preview,
     "QueuedJob": QueuedJob,

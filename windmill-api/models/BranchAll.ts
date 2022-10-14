@@ -10,26 +10,37 @@
  * Do not edit the class manually.
  */
 
+import { BranchAllBranches } from './BranchAllBranches.ts';
 import { HttpFile } from '../http/http.ts';
 
-export class InlineObject22 {
-    'username'?: string;
+export class BranchAll {
+    'branches': Array<BranchAllBranches>;
+    'type': BranchAllTypeEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "username",
-            "baseName": "username",
-            "type": "string",
+            "name": "branches",
+            "baseName": "branches",
+            "type": "Array<BranchAllBranches>",
+            "format": ""
+        },
+        {
+            "name": "type",
+            "baseName": "type",
+            "type": "BranchAllTypeEnum",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return InlineObject22.attributeTypeMap;
+        return BranchAll.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+
+export type BranchAllTypeEnum = "branchall" ;
 

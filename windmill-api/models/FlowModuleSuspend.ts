@@ -12,21 +12,28 @@
 
 import { HttpFile } from '../http/http.ts';
 
-export class InlineObject22 {
-    'username'?: string;
+export class FlowModuleSuspend {
+    'requiredEvents'?: number;
+    'timeout'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "username",
-            "baseName": "username",
-            "type": "string",
+            "name": "requiredEvents",
+            "baseName": "required_events",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "timeout",
+            "baseName": "timeout",
+            "type": "number",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return InlineObject22.attributeTypeMap;
+        return FlowModuleSuspend.attributeTypeMap;
     }
 
     public constructor() {

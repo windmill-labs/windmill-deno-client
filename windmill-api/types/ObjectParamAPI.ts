@@ -3,6 +3,10 @@ import * as models from '../models/all.ts';
 import { Configuration} from '../configuration.ts'
 
 import { AuditLog } from '../models/AuditLog.ts';
+import { BranchAll } from '../models/BranchAll.ts';
+import { BranchAllBranches } from '../models/BranchAllBranches.ts';
+import { BranchOne } from '../models/BranchOne.ts';
+import { BranchOneBranches } from '../models/BranchOneBranches.ts';
 import { CompletedJob } from '../models/CompletedJob.ts';
 import { ContextualVariable } from '../models/ContextualVariable.ts';
 import { CreateResource } from '../models/CreateResource.ts';
@@ -17,10 +21,12 @@ import { Flow } from '../models/Flow.ts';
 import { FlowMetadata } from '../models/FlowMetadata.ts';
 import { FlowModule } from '../models/FlowModule.ts';
 import { FlowModuleStopAfterIf } from '../models/FlowModuleStopAfterIf.ts';
+import { FlowModuleSuspend } from '../models/FlowModuleSuspend.ts';
 import { FlowModuleValue } from '../models/FlowModuleValue.ts';
 import { FlowPreview } from '../models/FlowPreview.ts';
 import { FlowStatus } from '../models/FlowStatus.ts';
 import { FlowStatusModule } from '../models/FlowStatusModule.ts';
+import { FlowStatusModuleBranchChosen } from '../models/FlowStatusModuleBranchChosen.ts';
 import { FlowStatusModuleIterator } from '../models/FlowStatusModuleIterator.ts';
 import { FlowStatusRetry } from '../models/FlowStatusRetry.ts';
 import { FlowValue } from '../models/FlowValue.ts';
@@ -74,7 +80,6 @@ import { NewToken } from '../models/NewToken.ts';
 import { NewUser } from '../models/NewUser.ts';
 import { OpenFlow } from '../models/OpenFlow.ts';
 import { OpenFlowWPath } from '../models/OpenFlowWPath.ts';
-import { PathFlow } from '../models/PathFlow.ts';
 import { PathScript } from '../models/PathScript.ts';
 import { Preview } from '../models/Preview.ts';
 import { QueuedJob } from '../models/QueuedJob.ts';
@@ -855,46 +860,91 @@ export interface JobApiCancelQueuedJobRequest {
     inlineObject16: InlineObject16
 }
 
-export interface JobApiCancelSuspendedJobRequest {
+export interface JobApiCancelSuspendedJobGetRequest {
     /**
      * 
      * @type string
-     * @memberof JobApicancelSuspendedJob
+     * @memberof JobApicancelSuspendedJobGet
      */
     workspace: string
     /**
      * 
      * @type string
-     * @memberof JobApicancelSuspendedJob
+     * @memberof JobApicancelSuspendedJobGet
      */
     id: string
     /**
      * 
+     * @type number
+     * @memberof JobApicancelSuspendedJobGet
+     */
+    resumeId: number
+    /**
+     * 
+     * @type string
+     * @memberof JobApicancelSuspendedJobGet
+     */
+    signature: string
+    /**
+     * 
      * @type any
-     * @memberof JobApicancelSuspendedJob
+     * @memberof JobApicancelSuspendedJobGet
      */
     payload?: any
 }
 
-export interface JobApiCancelSuspendedJob0Request {
+export interface JobApiCancelSuspendedJobPostRequest {
     /**
      * 
      * @type string
-     * @memberof JobApicancelSuspendedJob_1
+     * @memberof JobApicancelSuspendedJobPost
      */
     workspace: string
     /**
      * 
      * @type string
-     * @memberof JobApicancelSuspendedJob_1
+     * @memberof JobApicancelSuspendedJobPost
      */
     id: string
     /**
      * 
+     * @type number
+     * @memberof JobApicancelSuspendedJobPost
+     */
+    resumeId: number
+    /**
+     * 
+     * @type string
+     * @memberof JobApicancelSuspendedJobPost
+     */
+    signature: string
+    /**
+     * 
      * @type any
-     * @memberof JobApicancelSuspendedJob_1
+     * @memberof JobApicancelSuspendedJobPost
      */
     body?: any
+}
+
+export interface JobApiCreateJobSignatureRequest {
+    /**
+     * 
+     * @type string
+     * @memberof JobApicreateJobSignature
+     */
+    workspace: string
+    /**
+     * 
+     * @type string
+     * @memberof JobApicreateJobSignature
+     */
+    id: string
+    /**
+     * 
+     * @type number
+     * @memberof JobApicreateJobSignature
+     */
+    resumeId: number
 }
 
 export interface JobApiDeleteCompletedJobRequest {
@@ -1194,44 +1244,68 @@ export interface JobApiListQueueRequest {
     jobKinds?: string
 }
 
-export interface JobApiResumeSuspendedJobRequest {
+export interface JobApiResumeSuspendedJobGetRequest {
     /**
      * 
      * @type string
-     * @memberof JobApiresumeSuspendedJob
+     * @memberof JobApiresumeSuspendedJobGet
      */
     workspace: string
     /**
      * 
      * @type string
-     * @memberof JobApiresumeSuspendedJob
+     * @memberof JobApiresumeSuspendedJobGet
      */
     id: string
     /**
      * 
+     * @type number
+     * @memberof JobApiresumeSuspendedJobGet
+     */
+    resumeId: number
+    /**
+     * 
+     * @type string
+     * @memberof JobApiresumeSuspendedJobGet
+     */
+    signature: string
+    /**
+     * 
      * @type any
-     * @memberof JobApiresumeSuspendedJob
+     * @memberof JobApiresumeSuspendedJobGet
      */
     payload?: any
 }
 
-export interface JobApiResumeSuspendedJob0Request {
+export interface JobApiResumeSuspendedJobPostRequest {
     /**
      * 
      * @type string
-     * @memberof JobApiresumeSuspendedJob_2
+     * @memberof JobApiresumeSuspendedJobPost
      */
     workspace: string
     /**
      * 
      * @type string
-     * @memberof JobApiresumeSuspendedJob_2
+     * @memberof JobApiresumeSuspendedJobPost
      */
     id: string
     /**
      * 
+     * @type number
+     * @memberof JobApiresumeSuspendedJobPost
+     */
+    resumeId: number
+    /**
+     * 
+     * @type string
+     * @memberof JobApiresumeSuspendedJobPost
+     */
+    signature: string
+    /**
+     * 
      * @type any
-     * @memberof JobApiresumeSuspendedJob_2
+     * @memberof JobApiresumeSuspendedJobPost
      */
     body?: any
 }
@@ -1441,16 +1515,24 @@ export class ObjectJobApi {
      * cancel a job for a suspended flow
      * @param param the request object
      */
-    public cancelSuspendedJob(param: JobApiCancelSuspendedJobRequest, options?: Configuration): Promise<string> {
-        return this.api.cancelSuspendedJob(param.workspace, param.id, param.payload,  options).toPromise();
+    public cancelSuspendedJobGet(param: JobApiCancelSuspendedJobGetRequest, options?: Configuration): Promise<string> {
+        return this.api.cancelSuspendedJobGet(param.workspace, param.id, param.resumeId, param.signature, param.payload,  options).toPromise();
     }
 
     /**
      * cancel a job for a suspended flow
      * @param param the request object
      */
-    public cancelSuspendedJob_1(param: JobApiCancelSuspendedJob0Request, options?: Configuration): Promise<string> {
-        return this.api.cancelSuspendedJob_1(param.workspace, param.id, param.body,  options).toPromise();
+    public cancelSuspendedJobPost(param: JobApiCancelSuspendedJobPostRequest, options?: Configuration): Promise<string> {
+        return this.api.cancelSuspendedJobPost(param.workspace, param.id, param.resumeId, param.signature, param.body,  options).toPromise();
+    }
+
+    /**
+     * create an HMac signature given a job id and a resume id
+     * @param param the request object
+     */
+    public createJobSignature(param: JobApiCreateJobSignatureRequest, options?: Configuration): Promise<string> {
+        return this.api.createJobSignature(param.workspace, param.id, param.resumeId,  options).toPromise();
     }
 
     /**
@@ -1513,16 +1595,16 @@ export class ObjectJobApi {
      * resume a job for a suspended flow
      * @param param the request object
      */
-    public resumeSuspendedJob(param: JobApiResumeSuspendedJobRequest, options?: Configuration): Promise<string> {
-        return this.api.resumeSuspendedJob(param.workspace, param.id, param.payload,  options).toPromise();
+    public resumeSuspendedJobGet(param: JobApiResumeSuspendedJobGetRequest, options?: Configuration): Promise<string> {
+        return this.api.resumeSuspendedJobGet(param.workspace, param.id, param.resumeId, param.signature, param.payload,  options).toPromise();
     }
 
     /**
      * resume a job for a suspended flow
      * @param param the request object
      */
-    public resumeSuspendedJob_2(param: JobApiResumeSuspendedJob0Request, options?: Configuration): Promise<string> {
-        return this.api.resumeSuspendedJob_2(param.workspace, param.id, param.body,  options).toPromise();
+    public resumeSuspendedJobPost(param: JobApiResumeSuspendedJobPostRequest, options?: Configuration): Promise<string> {
+        return this.api.resumeSuspendedJobPost(param.workspace, param.id, param.resumeId, param.signature, param.body,  options).toPromise();
     }
 
     /**

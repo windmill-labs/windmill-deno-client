@@ -93,28 +93,44 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
      * cancel a job for a suspended flow
      * @param workspace 
      * @param id 
+     * @param resumeId 
+     * @param signature 
      * @param payload 
      */
-    public async cancelSuspendedJob(workspace: string, id: string, payload?: any, _options?: Configuration): Promise<RequestContext> {
+    public async cancelSuspendedJobGet(workspace: string, id: string, resumeId: number, signature: string, payload?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
         if (workspace === null || workspace === undefined) {
-            throw new RequiredError("JobApi", "cancelSuspendedJob", "workspace");
+            throw new RequiredError("JobApi", "cancelSuspendedJobGet", "workspace");
         }
 
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("JobApi", "cancelSuspendedJob", "id");
+            throw new RequiredError("JobApi", "cancelSuspendedJobGet", "id");
+        }
+
+
+        // verify required parameter 'resumeId' is not null or undefined
+        if (resumeId === null || resumeId === undefined) {
+            throw new RequiredError("JobApi", "cancelSuspendedJobGet", "resumeId");
+        }
+
+
+        // verify required parameter 'signature' is not null or undefined
+        if (signature === null || signature === undefined) {
+            throw new RequiredError("JobApi", "cancelSuspendedJobGet", "signature");
         }
 
 
 
         // Path Params
-        const localVarPath = '/w/{workspace}/jobs/cancel/{id}'
+        const localVarPath = '/w/{workspace}/jobs/cancel/{id}/{resume_id}/{signature}'
             .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)))
-            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+            .replace('{' + 'id' + '}', encodeURIComponent(String(id)))
+            .replace('{' + 'resume_id' + '}', encodeURIComponent(String(resumeId)))
+            .replace('{' + 'signature' + '}', encodeURIComponent(String(signature)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -150,28 +166,44 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
      * cancel a job for a suspended flow
      * @param workspace 
      * @param id 
+     * @param resumeId 
+     * @param signature 
      * @param body 
      */
-    public async cancelSuspendedJob_1(workspace: string, id: string, body?: any, _options?: Configuration): Promise<RequestContext> {
+    public async cancelSuspendedJobPost(workspace: string, id: string, resumeId: number, signature: string, body?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
         if (workspace === null || workspace === undefined) {
-            throw new RequiredError("JobApi", "cancelSuspendedJob_1", "workspace");
+            throw new RequiredError("JobApi", "cancelSuspendedJobPost", "workspace");
         }
 
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("JobApi", "cancelSuspendedJob_1", "id");
+            throw new RequiredError("JobApi", "cancelSuspendedJobPost", "id");
+        }
+
+
+        // verify required parameter 'resumeId' is not null or undefined
+        if (resumeId === null || resumeId === undefined) {
+            throw new RequiredError("JobApi", "cancelSuspendedJobPost", "resumeId");
+        }
+
+
+        // verify required parameter 'signature' is not null or undefined
+        if (signature === null || signature === undefined) {
+            throw new RequiredError("JobApi", "cancelSuspendedJobPost", "signature");
         }
 
 
 
         // Path Params
-        const localVarPath = '/w/{workspace}/jobs/cancel/{id}'
+        const localVarPath = '/w/{workspace}/jobs/cancel/{id}/{resume_id}/{signature}'
             .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)))
-            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+            .replace('{' + 'id' + '}', encodeURIComponent(String(id)))
+            .replace('{' + 'resume_id' + '}', encodeURIComponent(String(resumeId)))
+            .replace('{' + 'signature' + '}', encodeURIComponent(String(signature)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
@@ -188,6 +220,64 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["cookieAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * create an HMac signature given a job id and a resume id
+     * @param workspace 
+     * @param id 
+     * @param resumeId 
+     */
+    public async createJobSignature(workspace: string, id: string, resumeId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'workspace' is not null or undefined
+        if (workspace === null || workspace === undefined) {
+            throw new RequiredError("JobApi", "createJobSignature", "workspace");
+        }
+
+
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new RequiredError("JobApi", "createJobSignature", "id");
+        }
+
+
+        // verify required parameter 'resumeId' is not null or undefined
+        if (resumeId === null || resumeId === undefined) {
+            throw new RequiredError("JobApi", "createJobSignature", "resumeId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/w/{workspace}/jobs/job_signature/{id}/{resume_id}'
+            .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)))
+            .replace('{' + 'id' + '}', encodeURIComponent(String(id)))
+            .replace('{' + 'resume_id' + '}', encodeURIComponent(String(resumeId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
 
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
@@ -399,7 +489,7 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (logOffset !== undefined) {
-            requestContext.setQueryParam("log_offset", ObjectSerializer.serialize(logOffset, "number", "i32"));
+            requestContext.setQueryParam("log_offset", ObjectSerializer.serialize(logOffset, "number", ""));
         }
 
 
@@ -784,28 +874,44 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
      * resume a job for a suspended flow
      * @param workspace 
      * @param id 
+     * @param resumeId 
+     * @param signature 
      * @param payload 
      */
-    public async resumeSuspendedJob(workspace: string, id: string, payload?: any, _options?: Configuration): Promise<RequestContext> {
+    public async resumeSuspendedJobGet(workspace: string, id: string, resumeId: number, signature: string, payload?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
         if (workspace === null || workspace === undefined) {
-            throw new RequiredError("JobApi", "resumeSuspendedJob", "workspace");
+            throw new RequiredError("JobApi", "resumeSuspendedJobGet", "workspace");
         }
 
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("JobApi", "resumeSuspendedJob", "id");
+            throw new RequiredError("JobApi", "resumeSuspendedJobGet", "id");
+        }
+
+
+        // verify required parameter 'resumeId' is not null or undefined
+        if (resumeId === null || resumeId === undefined) {
+            throw new RequiredError("JobApi", "resumeSuspendedJobGet", "resumeId");
+        }
+
+
+        // verify required parameter 'signature' is not null or undefined
+        if (signature === null || signature === undefined) {
+            throw new RequiredError("JobApi", "resumeSuspendedJobGet", "signature");
         }
 
 
 
         // Path Params
-        const localVarPath = '/w/{workspace}/jobs/resume/{id}'
+        const localVarPath = '/w/{workspace}/jobs/resume/{id}/{resume_id}/{signature}'
             .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)))
-            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+            .replace('{' + 'id' + '}', encodeURIComponent(String(id)))
+            .replace('{' + 'resume_id' + '}', encodeURIComponent(String(resumeId)))
+            .replace('{' + 'signature' + '}', encodeURIComponent(String(signature)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -841,28 +947,44 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
      * resume a job for a suspended flow
      * @param workspace 
      * @param id 
+     * @param resumeId 
+     * @param signature 
      * @param body 
      */
-    public async resumeSuspendedJob_2(workspace: string, id: string, body?: any, _options?: Configuration): Promise<RequestContext> {
+    public async resumeSuspendedJobPost(workspace: string, id: string, resumeId: number, signature: string, body?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'workspace' is not null or undefined
         if (workspace === null || workspace === undefined) {
-            throw new RequiredError("JobApi", "resumeSuspendedJob_2", "workspace");
+            throw new RequiredError("JobApi", "resumeSuspendedJobPost", "workspace");
         }
 
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("JobApi", "resumeSuspendedJob_2", "id");
+            throw new RequiredError("JobApi", "resumeSuspendedJobPost", "id");
+        }
+
+
+        // verify required parameter 'resumeId' is not null or undefined
+        if (resumeId === null || resumeId === undefined) {
+            throw new RequiredError("JobApi", "resumeSuspendedJobPost", "resumeId");
+        }
+
+
+        // verify required parameter 'signature' is not null or undefined
+        if (signature === null || signature === undefined) {
+            throw new RequiredError("JobApi", "resumeSuspendedJobPost", "signature");
         }
 
 
 
         // Path Params
-        const localVarPath = '/w/{workspace}/jobs/resume/{id}'
+        const localVarPath = '/w/{workspace}/jobs/resume/{id}/{resume_id}/{signature}'
             .replace('{' + 'workspace' + '}', encodeURIComponent(String(workspace)))
-            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+            .replace('{' + 'id' + '}', encodeURIComponent(String(id)))
+            .replace('{' + 'resume_id' + '}', encodeURIComponent(String(resumeId)))
+            .replace('{' + 'signature' + '}', encodeURIComponent(String(signature)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
@@ -949,7 +1071,7 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (scheduledInSecs !== undefined) {
-            requestContext.setQueryParam("scheduled_in_secs", ObjectSerializer.serialize(scheduledInSecs, "number", "int64"));
+            requestContext.setQueryParam("scheduled_in_secs", ObjectSerializer.serialize(scheduledInSecs, "number", ""));
         }
 
         // Query Params
@@ -1098,7 +1220,7 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (scheduledInSecs !== undefined) {
-            requestContext.setQueryParam("scheduled_in_secs", ObjectSerializer.serialize(scheduledInSecs, "number", "int64"));
+            requestContext.setQueryParam("scheduled_in_secs", ObjectSerializer.serialize(scheduledInSecs, "number", ""));
         }
 
         // Query Params
@@ -1187,7 +1309,7 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (scheduledInSecs !== undefined) {
-            requestContext.setQueryParam("scheduled_in_secs", ObjectSerializer.serialize(scheduledInSecs, "number", "int64"));
+            requestContext.setQueryParam("scheduled_in_secs", ObjectSerializer.serialize(scheduledInSecs, "number", ""));
         }
 
         // Query Params
@@ -1336,7 +1458,7 @@ export class JobApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (scheduledInSecs !== undefined) {
-            requestContext.setQueryParam("scheduled_in_secs", ObjectSerializer.serialize(scheduledInSecs, "number", "int64"));
+            requestContext.setQueryParam("scheduled_in_secs", ObjectSerializer.serialize(scheduledInSecs, "number", ""));
         }
 
         // Query Params
@@ -1413,10 +1535,10 @@ export class JobApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to cancelSuspendedJob
+     * @params response Response returned by the server for a request to cancelSuspendedJobGet
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async cancelSuspendedJob(response: ResponseContext): Promise<string > {
+     public async cancelSuspendedJobGet(response: ResponseContext): Promise<string > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: string = ObjectSerializer.deserialize(
@@ -1442,12 +1564,41 @@ export class JobApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to cancelSuspendedJob_1
+     * @params response Response returned by the server for a request to cancelSuspendedJobPost
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async cancelSuspendedJob_1(response: ResponseContext): Promise<string > {
+     public async cancelSuspendedJobPost(response: ResponseContext): Promise<string > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", ""
+            ) as string;
+            return body;
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to createJobSignature
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async createJobSignature(response: ResponseContext): Promise<string > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
             const body: string = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "string", ""
@@ -1674,10 +1825,10 @@ export class JobApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to resumeSuspendedJob
+     * @params response Response returned by the server for a request to resumeSuspendedJobGet
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async resumeSuspendedJob(response: ResponseContext): Promise<string > {
+     public async resumeSuspendedJobGet(response: ResponseContext): Promise<string > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: string = ObjectSerializer.deserialize(
@@ -1703,10 +1854,10 @@ export class JobApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to resumeSuspendedJob_2
+     * @params response Response returned by the server for a request to resumeSuspendedJobPost
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async resumeSuspendedJob_2(response: ResponseContext): Promise<string > {
+     public async resumeSuspendedJobPost(response: ResponseContext): Promise<string > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: string = ObjectSerializer.deserialize(

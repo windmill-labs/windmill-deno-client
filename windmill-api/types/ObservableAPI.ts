@@ -4,6 +4,10 @@ import { Configuration} from '../configuration.ts'
 import { Observable, of, from } from '../rxjsStub.ts';
 import {mergeMap, map} from  '../rxjsStub.ts';
 import { AuditLog } from '../models/AuditLog.ts';
+import { BranchAll } from '../models/BranchAll.ts';
+import { BranchAllBranches } from '../models/BranchAllBranches.ts';
+import { BranchOne } from '../models/BranchOne.ts';
+import { BranchOneBranches } from '../models/BranchOneBranches.ts';
 import { CompletedJob } from '../models/CompletedJob.ts';
 import { ContextualVariable } from '../models/ContextualVariable.ts';
 import { CreateResource } from '../models/CreateResource.ts';
@@ -18,10 +22,12 @@ import { Flow } from '../models/Flow.ts';
 import { FlowMetadata } from '../models/FlowMetadata.ts';
 import { FlowModule } from '../models/FlowModule.ts';
 import { FlowModuleStopAfterIf } from '../models/FlowModuleStopAfterIf.ts';
+import { FlowModuleSuspend } from '../models/FlowModuleSuspend.ts';
 import { FlowModuleValue } from '../models/FlowModuleValue.ts';
 import { FlowPreview } from '../models/FlowPreview.ts';
 import { FlowStatus } from '../models/FlowStatus.ts';
 import { FlowStatusModule } from '../models/FlowStatusModule.ts';
+import { FlowStatusModuleBranchChosen } from '../models/FlowStatusModuleBranchChosen.ts';
 import { FlowStatusModuleIterator } from '../models/FlowStatusModuleIterator.ts';
 import { FlowStatusRetry } from '../models/FlowStatusRetry.ts';
 import { FlowValue } from '../models/FlowValue.ts';
@@ -75,7 +81,6 @@ import { NewToken } from '../models/NewToken.ts';
 import { NewUser } from '../models/NewUser.ts';
 import { OpenFlow } from '../models/OpenFlow.ts';
 import { OpenFlowWPath } from '../models/OpenFlowWPath.ts';
-import { PathFlow } from '../models/PathFlow.ts';
 import { PathScript } from '../models/PathScript.ts';
 import { Preview } from '../models/Preview.ts';
 import { QueuedJob } from '../models/QueuedJob.ts';
@@ -831,10 +836,12 @@ export class ObservableJobApi {
      * cancel a job for a suspended flow
      * @param workspace 
      * @param id 
+     * @param resumeId 
+     * @param signature 
      * @param payload 
      */
-    public cancelSuspendedJob(workspace: string, id: string, payload?: any, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.cancelSuspendedJob(workspace, id, payload, _options);
+    public cancelSuspendedJobGet(workspace: string, id: string, resumeId: number, signature: string, payload?: any, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.cancelSuspendedJobGet(workspace, id, resumeId, signature, payload, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -848,7 +855,7 @@ export class ObservableJobApi {
                 for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.cancelSuspendedJob(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.cancelSuspendedJobGet(rsp)));
             }));
     }
 
@@ -856,10 +863,12 @@ export class ObservableJobApi {
      * cancel a job for a suspended flow
      * @param workspace 
      * @param id 
+     * @param resumeId 
+     * @param signature 
      * @param body 
      */
-    public cancelSuspendedJob_1(workspace: string, id: string, body?: any, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.cancelSuspendedJob_1(workspace, id, body, _options);
+    public cancelSuspendedJobPost(workspace: string, id: string, resumeId: number, signature: string, body?: any, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.cancelSuspendedJobPost(workspace, id, resumeId, signature, body, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -873,7 +882,32 @@ export class ObservableJobApi {
                 for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.cancelSuspendedJob_1(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.cancelSuspendedJobPost(rsp)));
+            }));
+    }
+
+    /**
+     * create an HMac signature given a job id and a resume id
+     * @param workspace 
+     * @param id 
+     * @param resumeId 
+     */
+    public createJobSignature(workspace: string, id: string, resumeId: number, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.createJobSignature(workspace, id, resumeId, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createJobSignature(rsp)));
             }));
     }
 
@@ -1081,10 +1115,12 @@ export class ObservableJobApi {
      * resume a job for a suspended flow
      * @param workspace 
      * @param id 
+     * @param resumeId 
+     * @param signature 
      * @param payload 
      */
-    public resumeSuspendedJob(workspace: string, id: string, payload?: any, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.resumeSuspendedJob(workspace, id, payload, _options);
+    public resumeSuspendedJobGet(workspace: string, id: string, resumeId: number, signature: string, payload?: any, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.resumeSuspendedJobGet(workspace, id, resumeId, signature, payload, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -1098,7 +1134,7 @@ export class ObservableJobApi {
                 for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.resumeSuspendedJob(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.resumeSuspendedJobGet(rsp)));
             }));
     }
 
@@ -1106,10 +1142,12 @@ export class ObservableJobApi {
      * resume a job for a suspended flow
      * @param workspace 
      * @param id 
+     * @param resumeId 
+     * @param signature 
      * @param body 
      */
-    public resumeSuspendedJob_2(workspace: string, id: string, body?: any, _options?: Configuration): Observable<string> {
-        const requestContextPromise = this.requestFactory.resumeSuspendedJob_2(workspace, id, body, _options);
+    public resumeSuspendedJobPost(workspace: string, id: string, resumeId: number, signature: string, body?: any, _options?: Configuration): Observable<string> {
+        const requestContextPromise = this.requestFactory.resumeSuspendedJobPost(workspace, id, resumeId, signature, body, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -1123,7 +1161,7 @@ export class ObservableJobApi {
                 for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.resumeSuspendedJob_2(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.resumeSuspendedJobPost(rsp)));
             }));
     }
 

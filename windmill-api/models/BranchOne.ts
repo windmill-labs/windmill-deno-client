@@ -10,33 +10,45 @@
  * Do not edit the class manually.
  */
 
+import { BranchOneBranches } from './BranchOneBranches.ts';
+import { FlowModule } from './FlowModule.ts';
 import { HttpFile } from '../http/http.ts';
 
-export class NewToken {
-    'label'?: string;
-    'expiration'?: Date;
+export class BranchOne {
+    'branches': Array<BranchOneBranches>;
+    '_default': Array<FlowModule>;
+    'type': BranchOneTypeEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "label",
-            "baseName": "label",
-            "type": "string",
+            "name": "branches",
+            "baseName": "branches",
+            "type": "Array<BranchOneBranches>",
             "format": ""
         },
         {
-            "name": "expiration",
-            "baseName": "expiration",
-            "type": "Date",
-            "format": "date-time"
+            "name": "_default",
+            "baseName": "default",
+            "type": "Array<FlowModule>",
+            "format": ""
+        },
+        {
+            "name": "type",
+            "baseName": "type",
+            "type": "BranchOneTypeEnum",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return NewToken.attributeTypeMap;
+        return BranchOne.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+
+export type BranchOneTypeEnum = "branchone" ;
 

@@ -40,6 +40,10 @@ http/isomorphic-fetch.ts
 index.ts
 middleware.ts
 models/AuditLog.ts
+models/BranchAll.ts
+models/BranchAllBranches.ts
+models/BranchOne.ts
+models/BranchOneBranches.ts
 models/CompletedJob.ts
 models/ContextualVariable.ts
 models/CreateResource.ts
@@ -54,10 +58,12 @@ models/Flow.ts
 models/FlowMetadata.ts
 models/FlowModule.ts
 models/FlowModuleStopAfterIf.ts
+models/FlowModuleSuspend.ts
 models/FlowModuleValue.ts
 models/FlowPreview.ts
 models/FlowStatus.ts
 models/FlowStatusModule.ts
+models/FlowStatusModuleBranchChosen.ts
 models/FlowStatusModuleIterator.ts
 models/FlowStatusRetry.ts
 models/FlowValue.ts
@@ -112,7 +118,6 @@ models/NewUser.ts
 models/ObjectSerializer.ts
 models/OpenFlow.ts
 models/OpenFlowWPath.ts
-models/PathFlow.ts
 models/PathScript.ts
 models/Preview.ts
 models/QueuedJob.ts

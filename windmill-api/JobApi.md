@@ -5,8 +5,9 @@ All URIs are relative to */api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**cancelQueuedJob**](JobApi.md#cancelQueuedJob) | **POST** /w/{workspace}/jobs/queue/cancel/{id} | cancel queued job
-[**cancelSuspendedJob**](JobApi.md#cancelSuspendedJob) | **GET** /w/{workspace}/jobs/cancel/{id} | cancel a job for a suspended flow
-[**cancelSuspendedJob_0**](JobApi.md#cancelSuspendedJob_0) | **POST** /w/{workspace}/jobs/cancel/{id} | cancel a job for a suspended flow
+[**cancelSuspendedJobGet**](JobApi.md#cancelSuspendedJobGet) | **GET** /w/{workspace}/jobs/cancel/{id}/{resume_id}/{signature} | cancel a job for a suspended flow
+[**cancelSuspendedJobPost**](JobApi.md#cancelSuspendedJobPost) | **POST** /w/{workspace}/jobs/cancel/{id}/{resume_id}/{signature} | cancel a job for a suspended flow
+[**createJobSignature**](JobApi.md#createJobSignature) | **GET** /w/{workspace}/jobs/job_signature/{id}/{resume_id} | create an HMac signature given a job id and a resume id
 [**deleteCompletedJob**](JobApi.md#deleteCompletedJob) | **POST** /w/{workspace}/jobs/completed/delete/{id} | delete completed job (erase content but keep run id)
 [**getCompletedJob**](JobApi.md#getCompletedJob) | **GET** /w/{workspace}/jobs/completed/get/{id} | get completed job
 [**getJob**](JobApi.md#getJob) | **GET** /w/{workspace}/jobs/get/{id} | get job
@@ -14,8 +15,8 @@ Method | HTTP request | Description
 [**listCompletedJobs**](JobApi.md#listCompletedJobs) | **GET** /w/{workspace}/jobs/completed/list | list all available completed jobs
 [**listJobs**](JobApi.md#listJobs) | **GET** /w/{workspace}/jobs/list | list all available jobs
 [**listQueue**](JobApi.md#listQueue) | **GET** /w/{workspace}/jobs/queue/list | list all available queued jobs
-[**resumeSuspendedJob**](JobApi.md#resumeSuspendedJob) | **GET** /w/{workspace}/jobs/resume/{id} | resume a job for a suspended flow
-[**resumeSuspendedJob_0**](JobApi.md#resumeSuspendedJob_0) | **POST** /w/{workspace}/jobs/resume/{id} | resume a job for a suspended flow
+[**resumeSuspendedJobGet**](JobApi.md#resumeSuspendedJobGet) | **GET** /w/{workspace}/jobs/resume/{id}/{resume_id}/{signature} | resume a job for a suspended flow
+[**resumeSuspendedJobPost**](JobApi.md#resumeSuspendedJobPost) | **POST** /w/{workspace}/jobs/resume/{id}/{resume_id}/{signature} | resume a job for a suspended flow
 [**runFlowByPath**](JobApi.md#runFlowByPath) | **POST** /w/{workspace}/jobs/run/f/{path} | run flow by path
 [**runFlowPreview**](JobApi.md#runFlowPreview) | **POST** /w/{workspace}/jobs/run/preview_flow | run flow preview
 [**runScriptByHash**](JobApi.md#runScriptByHash) | **POST** /w/{workspace}/jobs/run/h/{hash} | run script by hash
@@ -85,8 +86,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **cancelSuspendedJob**
-> string cancelSuspendedJob()
+# **cancelSuspendedJobGet**
+> string cancelSuspendedJobGet()
 
 
 ### Example
@@ -99,16 +100,20 @@ import * as fs from 'fs';
 const configuration = .createConfiguration();
 const apiInstance = new .JobApi(configuration);
 
-let body:.JobApiCancelSuspendedJobRequest = {
+let body:.JobApiCancelSuspendedJobGetRequest = {
   // string
   workspace: "workspace_example",
   // string
   id: "id_example",
+  // number
+  resumeId: 1,
+  // string
+  signature: "signature_example",
   // any (optional)
   payload: {},
 };
 
-apiInstance.cancelSuspendedJob(body).then((data:any) => {
+apiInstance.cancelSuspendedJobGet(body).then((data:any) => {
   console.log('API called successfully. Returned data: ' + data);
 }).catch((error:any) => console.error(error));
 ```
@@ -120,6 +125,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | [**string**] |  | defaults to undefined
  **id** | [**string**] |  | defaults to undefined
+ **resumeId** | [**number**] |  | defaults to undefined
+ **signature** | [**string**] |  | defaults to undefined
  **payload** | **any** |  | (optional) defaults to undefined
 
 
@@ -144,8 +151,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **cancelSuspendedJob_0**
-> string cancelSuspendedJob_0()
+# **cancelSuspendedJobPost**
+> string cancelSuspendedJobPost()
 
 
 ### Example
@@ -158,16 +165,20 @@ import * as fs from 'fs';
 const configuration = .createConfiguration();
 const apiInstance = new .JobApi(configuration);
 
-let body:.JobApiCancelSuspendedJob0Request = {
+let body:.JobApiCancelSuspendedJobPostRequest = {
   // string
   workspace: "workspace_example",
   // string
   id: "id_example",
+  // number
+  resumeId: 1,
+  // string
+  signature: "signature_example",
   // any (optional)
   body: {},
 };
 
-apiInstance.cancelSuspendedJob_0(body).then((data:any) => {
+apiInstance.cancelSuspendedJobPost(body).then((data:any) => {
   console.log('API called successfully. Returned data: ' + data);
 }).catch((error:any) => console.error(error));
 ```
@@ -180,6 +191,8 @@ Name | Type | Description  | Notes
  **body** | **any**|  |
  **workspace** | [**string**] |  | defaults to undefined
  **id** | [**string**] |  | defaults to undefined
+ **resumeId** | [**number**] |  | defaults to undefined
+ **signature** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -200,6 +213,65 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | job resumed |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **createJobSignature**
+> string createJobSignature()
+
+
+### Example
+
+
+```typescript
+import {  } from '';
+import * as fs from 'fs';
+
+const configuration = .createConfiguration();
+const apiInstance = new .JobApi(configuration);
+
+let body:.JobApiCreateJobSignatureRequest = {
+  // string
+  workspace: "workspace_example",
+  // string
+  id: "id_example",
+  // number
+  resumeId: 1,
+};
+
+apiInstance.createJobSignature(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | [**string**] |  | defaults to undefined
+ **id** | [**string**] |  | defaults to undefined
+ **resumeId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](README.md#bearerAuth), [cookieAuth](README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | job signature |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -393,7 +465,7 @@ let body:.JobApiGetJobUpdatesRequest = {
   // boolean (optional)
   running: true,
   // number (optional)
-  logOffset: 3.14,
+  logOffset: 1,
 };
 
 apiInstance.getJobUpdates(body).then((data:any) => {
@@ -691,8 +763,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **resumeSuspendedJob**
-> string resumeSuspendedJob()
+# **resumeSuspendedJobGet**
+> string resumeSuspendedJobGet()
 
 
 ### Example
@@ -705,16 +777,20 @@ import * as fs from 'fs';
 const configuration = .createConfiguration();
 const apiInstance = new .JobApi(configuration);
 
-let body:.JobApiResumeSuspendedJobRequest = {
+let body:.JobApiResumeSuspendedJobGetRequest = {
   // string
   workspace: "workspace_example",
   // string
   id: "id_example",
+  // number
+  resumeId: 1,
+  // string
+  signature: "signature_example",
   // any (optional)
   payload: {},
 };
 
-apiInstance.resumeSuspendedJob(body).then((data:any) => {
+apiInstance.resumeSuspendedJobGet(body).then((data:any) => {
   console.log('API called successfully. Returned data: ' + data);
 }).catch((error:any) => console.error(error));
 ```
@@ -726,6 +802,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | [**string**] |  | defaults to undefined
  **id** | [**string**] |  | defaults to undefined
+ **resumeId** | [**number**] |  | defaults to undefined
+ **signature** | [**string**] |  | defaults to undefined
  **payload** | **any** |  | (optional) defaults to undefined
 
 
@@ -750,8 +828,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **resumeSuspendedJob_0**
-> string resumeSuspendedJob_0()
+# **resumeSuspendedJobPost**
+> string resumeSuspendedJobPost()
 
 
 ### Example
@@ -764,16 +842,20 @@ import * as fs from 'fs';
 const configuration = .createConfiguration();
 const apiInstance = new .JobApi(configuration);
 
-let body:.JobApiResumeSuspendedJob0Request = {
+let body:.JobApiResumeSuspendedJobPostRequest = {
   // string
   workspace: "workspace_example",
   // string
   id: "id_example",
+  // number
+  resumeId: 1,
+  // string
+  signature: "signature_example",
   // any (optional)
   body: {},
 };
 
-apiInstance.resumeSuspendedJob_0(body).then((data:any) => {
+apiInstance.resumeSuspendedJobPost(body).then((data:any) => {
   console.log('API called successfully. Returned data: ' + data);
 }).catch((error:any) => console.error(error));
 ```
@@ -786,6 +868,8 @@ Name | Type | Description  | Notes
  **body** | **any**|  |
  **workspace** | [**string**] |  | defaults to undefined
  **id** | [**string**] |  | defaults to undefined
+ **resumeId** | [**number**] |  | defaults to undefined
+ **signature** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -835,7 +919,7 @@ let body:.JobApiRunFlowByPathRequest = {
   // Date | when to schedule this job (leave empty for immediate run) (optional)
   scheduledFor: new Date('1970-01-01T00:00:00.00Z'),
   // number | schedule the script to execute in the number of seconds starting now (optional)
-  scheduledInSecs: 3.14,
+  scheduledInSecs: 1,
   // string | The parent job that is at the origin and responsible for the execution of this script if any (optional)
   parentJob: "parent_job_example",
 };
@@ -911,7 +995,10 @@ let body:.JobApiRunFlowPreviewRequest = {
           },
           sleep: null,
           summary: "summary_example",
-          suspend: 1,
+          suspend: {
+            requiredEvents: 1,
+            timeout: 1,
+          },
           retry: {
             constant: {
               attempts: 1,
@@ -936,7 +1023,10 @@ let body:.JobApiRunFlowPreviewRequest = {
         },
         sleep: null,
         summary: "summary_example",
-        suspend: 1,
+        suspend: {
+          requiredEvents: 1,
+          timeout: 1,
+        },
         retry: {
           constant: {
             attempts: 1,
@@ -1017,7 +1107,7 @@ let body:.JobApiRunScriptByHashRequest = {
   // Date | when to schedule this job (leave empty for immediate run) (optional)
   scheduledFor: new Date('1970-01-01T00:00:00.00Z'),
   // number | schedule the script to execute in the number of seconds starting now (optional)
-  scheduledInSecs: 3.14,
+  scheduledInSecs: 1,
   // string | The parent job that is at the origin and responsible for the execution of this script if any (optional)
   parentJob: "parent_job_example",
 };
@@ -1087,7 +1177,7 @@ let body:.JobApiRunScriptByPathRequest = {
   // Date | when to schedule this job (leave empty for immediate run) (optional)
   scheduledFor: new Date('1970-01-01T00:00:00.00Z'),
   // number | schedule the script to execute in the number of seconds starting now (optional)
-  scheduledInSecs: 3.14,
+  scheduledInSecs: 1,
   // string | The parent job that is at the origin and responsible for the execution of this script if any (optional)
   parentJob: "parent_job_example",
 };
@@ -1220,7 +1310,7 @@ let body:.JobApiRunWaitResultScriptByPathRequest = {
   // Date | when to schedule this job (leave empty for immediate run) (optional)
   scheduledFor: new Date('1970-01-01T00:00:00.00Z'),
   // number | schedule the script to execute in the number of seconds starting now (optional)
-  scheduledInSecs: 3.14,
+  scheduledInSecs: 1,
   // string | The parent job that is at the origin and responsible for the execution of this script if any (optional)
   parentJob: "parent_job_example",
 };
