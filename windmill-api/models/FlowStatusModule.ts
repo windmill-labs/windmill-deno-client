@@ -4,6 +4,7 @@
 
 export type FlowStatusModule = {
     type: FlowStatusModule.type;
+    id?: string;
     job?: string;
     count?: number;
     iterator?: {
@@ -11,10 +12,14 @@ export type FlowStatusModule = {
         itered?: Array<any>;
         args?: any;
     };
-    forloop_jobs?: Array<string>;
+    flow_jobs?: Array<string>;
     branch_chosen?: {
-        type?: FlowStatusModule.type;
+        type: FlowStatusModule.type;
         branch?: number;
+    };
+    branchall?: {
+        branch: number;
+        len: number;
     };
 };
 

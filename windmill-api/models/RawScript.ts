@@ -2,7 +2,10 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { InputTransform } from './InputTransform.ts';
+
 export type RawScript = {
+    input_transforms?: Record<string, InputTransform>;
     content: string;
     language: RawScript.language;
     path?: string;
