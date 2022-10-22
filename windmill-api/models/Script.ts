@@ -40,6 +40,7 @@ export namespace Script {
         FAILURE = 'failure',
         TRIGGER = 'trigger',
         COMMAND = 'command',
+        APPROVAL = 'approval',
     }
 
 

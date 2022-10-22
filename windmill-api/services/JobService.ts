@@ -728,7 +728,7 @@ export class JobService {
         id: string,
         resumeId: number,
         signature: string,
-        requestBody?: any,
+        requestBody: any,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -793,7 +793,7 @@ export class JobService {
         id: string,
         resumeId: number,
         signature: string,
-        requestBody?: any,
+        requestBody: any,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -806,6 +806,34 @@ export class JobService {
             },
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * get parent flow job of suspended job
+     * @returns Job parent flow details
+     * @throws ApiError
+     */
+    public static getSuspendedJobFlow({
+        workspace,
+        id,
+        resumeId,
+        signature,
+    }: {
+        workspace: string,
+        id: string,
+        resumeId: number,
+        signature: string,
+    }): CancelablePromise<Job> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/jobs/get_flow/{id}/{resume_id}/{signature}',
+            path: {
+                'workspace': workspace,
+                'id': id,
+                'resume_id': resumeId,
+                'signature': signature,
+            },
         });
     }
 

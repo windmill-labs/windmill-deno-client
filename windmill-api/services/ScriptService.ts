@@ -22,7 +22,7 @@ export class ScriptService {
             summary: string;
             app: string;
             approved: boolean;
-            kind: 'script' | 'failure' | 'trigger' | 'command';
+            kind: 'script' | 'failure' | 'trigger' | 'command' | 'approval';
             votes: number;
             views: number;
         }>;
@@ -46,6 +46,30 @@ export class ScriptService {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/scripts/hub/get/{path}',
+            path: {
+                'path': path,
+            },
+        });
+    }
+
+    /**
+     * get full hub script by path
+     * @returns any script details
+     * @throws ApiError
+     */
+    public static getHubScriptByPath({
+        path,
+    }: {
+        path: string,
+    }): CancelablePromise<{
+        content: string;
+        lockfile?: string;
+        schema?: any;
+        language: 'deno' | 'python3' | 'go';
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/scripts/hub/get_full/{path}',
             path: {
                 'path': path,
             },
@@ -186,7 +210,7 @@ export class ScriptService {
             is_template?: boolean;
             lock?: Array<string>;
             language: 'python3' | 'deno' | 'go';
-            kind?: 'script' | 'failure' | 'trigger' | 'command';
+            kind?: 'script' | 'failure' | 'trigger' | 'command' | 'approval';
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
