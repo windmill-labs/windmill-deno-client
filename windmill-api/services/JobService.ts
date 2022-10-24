@@ -663,10 +663,12 @@ export class JobService {
         workspace,
         id,
         resumeId,
+        approver,
     }: {
         workspace: string,
         id: string,
         resumeId: number,
+        approver?: string,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -675,6 +677,9 @@ export class JobService {
                 'workspace': workspace,
                 'id': id,
                 'resume_id': resumeId,
+            },
+            query: {
+                'approver': approver,
             },
         });
     }
@@ -690,12 +695,14 @@ export class JobService {
         resumeId,
         signature,
         payload,
+        approver,
     }: {
         workspace: string,
         id: string,
         resumeId: number,
         signature: string,
         payload?: any,
+        approver?: string,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -708,6 +715,7 @@ export class JobService {
             },
             query: {
                 'payload': payload,
+                'approver': approver,
             },
         });
     }
@@ -723,12 +731,14 @@ export class JobService {
         resumeId,
         signature,
         requestBody,
+        approver,
     }: {
         workspace: string,
         id: string,
         resumeId: number,
         signature: string,
         requestBody: any,
+        approver?: string,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -738,6 +748,9 @@ export class JobService {
                 'id': id,
                 'resume_id': resumeId,
                 'signature': signature,
+            },
+            query: {
+                'approver': approver,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -755,12 +768,14 @@ export class JobService {
         resumeId,
         signature,
         payload,
+        approver,
     }: {
         workspace: string,
         id: string,
         resumeId: number,
         signature: string,
         payload?: any,
+        approver?: string,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -773,6 +788,7 @@ export class JobService {
             },
             query: {
                 'payload': payload,
+                'approver': approver,
             },
         });
     }
@@ -788,12 +804,14 @@ export class JobService {
         resumeId,
         signature,
         requestBody,
+        approver,
     }: {
         workspace: string,
         id: string,
         resumeId: number,
         signature: string,
         requestBody: any,
+        approver?: string,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -804,6 +822,9 @@ export class JobService {
                 'resume_id': resumeId,
                 'signature': signature,
             },
+            query: {
+                'approver': approver,
+            },
             body: requestBody,
             mediaType: 'application/json',
         });
@@ -811,7 +832,7 @@ export class JobService {
 
     /**
      * get parent flow job of suspended job
-     * @returns Job parent flow details
+     * @returns any parent flow details
      * @throws ApiError
      */
     public static getSuspendedJobFlow({
@@ -819,12 +840,17 @@ export class JobService {
         id,
         resumeId,
         signature,
+        approver,
     }: {
         workspace: string,
         id: string,
         resumeId: number,
         signature: string,
-    }): CancelablePromise<Job> {
+        approver?: string,
+    }): CancelablePromise<{
+        job: Job;
+        approvers: Array<string>;
+    }> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/w/{workspace}/jobs/get_flow/{id}/{resume_id}/{signature}',
@@ -833,6 +859,9 @@ export class JobService {
                 'id': id,
                 'resume_id': resumeId,
                 'signature': signature,
+            },
+            query: {
+                'approver': approver,
             },
         });
     }
