@@ -92,7 +92,7 @@ export class ResourceService {
 
     /**
      * get resource
-     * @returns Resource resource deleted
+     * @returns Resource resource
      * @throws ApiError
      */
     public static getResource({
@@ -105,6 +105,28 @@ export class ResourceService {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/w/{workspace}/resources/get/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
+     * get resource value
+     * @returns any resource value
+     * @throws ApiError
+     */
+    public static getResourceValue({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/resources/get_value/{path}',
             path: {
                 'workspace': workspace,
                 'path': path,

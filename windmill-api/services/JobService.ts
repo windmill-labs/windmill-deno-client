@@ -113,6 +113,39 @@ export class JobService {
     }
 
     /**
+     * get job result by id
+     * @returns any job result
+     * @throws ApiError
+     */
+    public static resultById({
+        workspace,
+        flowJobId,
+        nodeId,
+        skipDirect,
+    }: {
+        workspace: string,
+        flowJobId: string,
+        nodeId: string,
+        /**
+         * Skip checking that the node is part of the given flow.
+         */
+        skipDirect?: boolean,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/jobs/result_by_id/{flow_job_id}/{node_id}',
+            path: {
+                'workspace': workspace,
+                'flow_job_id': flowJobId,
+                'node_id': nodeId,
+            },
+            query: {
+                'skip_direct': skipDirect,
+            },
+        });
+    }
+
+    /**
      * run flow by path
      * @returns string job created
      * @throws ApiError
@@ -694,14 +727,12 @@ export class JobService {
         id,
         resumeId,
         signature,
-        payload,
         approver,
     }: {
         workspace: string,
         id: string,
         resumeId: number,
         signature: string,
-        payload?: any,
         approver?: string,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
@@ -714,7 +745,6 @@ export class JobService {
                 'signature': signature,
             },
             query: {
-                'payload': payload,
                 'approver': approver,
             },
         });
@@ -767,14 +797,12 @@ export class JobService {
         id,
         resumeId,
         signature,
-        payload,
         approver,
     }: {
         workspace: string,
         id: string,
         resumeId: number,
         signature: string,
-        payload?: any,
         approver?: string,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
@@ -787,7 +815,6 @@ export class JobService {
                 'signature': signature,
             },
             query: {
-                'payload': payload,
                 'approver': approver,
             },
         });
@@ -849,7 +876,10 @@ export class JobService {
         approver?: string,
     }): CancelablePromise<{
         job: Job;
-        approvers: Array<string>;
+        approvers: Array<{
+            resume_id: number;
+            approver: string;
+        }>;
     }> {
         return __request(OpenAPI, {
             method: 'GET',

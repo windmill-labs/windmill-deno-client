@@ -21,7 +21,10 @@ export type FlowStatusModule = {
         branch: number;
         len: number;
     };
-    approvers?: Array<string>;
+    approvers?: Array<{
+        resume_id: number;
+        approver: string;
+    }>;
 };
 
 export namespace FlowStatusModule {

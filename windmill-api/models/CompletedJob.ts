@@ -49,6 +49,7 @@ export namespace CompletedJob {
         FLOW = 'flow',
         FLOWPREVIEW = 'flowpreview',
         SCRIPT_HUB = 'script_hub',
+        IDENTITY = 'identity',
     }
 
     export enum language {

@@ -5,7 +5,7 @@
 import type { InputTransform } from './InputTransform.ts';
 
 export type PathScript = {
-    input_transforms?: Record<string, InputTransform>;
+    input_transforms: Record<string, InputTransform>;
     path: string;
     type: 'script';
 };

@@ -30,6 +30,7 @@ export type { FlowValue } from './models/FlowValue.ts';
 export type { ForloopFlow } from './models/ForloopFlow.ts';
 export { GlobalUserInfo } from './models/GlobalUserInfo.ts';
 export type { Group } from './models/Group.ts';
+export type { Identity } from './models/Identity.ts';
 export type { InputTransform } from './models/InputTransform.ts';
 export type { JavascriptTransform } from './models/JavascriptTransform.ts';
 export { Job } from './models/Job.ts';
@@ -64,6 +65,7 @@ export type { WorkspaceInvite } from './models/WorkspaceInvite.ts';
 
 export { AdminService } from './services/AdminService.ts';
 export { AuditService } from './services/AuditService.ts';
+export { CaptureService } from './services/CaptureService.ts';
 export { FlowService } from './services/FlowService.ts';
 export { GranularAclService } from './services/GranularAclService.ts';
 export { GroupService } from './services/GroupService.ts';
