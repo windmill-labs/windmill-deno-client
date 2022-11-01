@@ -66,6 +66,7 @@ export class ScriptService {
         lockfile?: string;
         schema?: any;
         language: 'deno' | 'python3' | 'go';
+        summary?: string;
     }> {
         return __request(OpenAPI, {
             method: 'GET',

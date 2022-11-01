@@ -11,5 +11,6 @@ export type BranchAll = {
         modules: Array<FlowModule>;
     }>;
     type: 'branchall';
+    parallel?: boolean;
 };
 

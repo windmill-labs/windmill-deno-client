@@ -105,7 +105,7 @@ export class OauthService {
         requestBody,
     }: {
         workspace: string,
-        id: string,
+        id: number,
         /**
          * variable path
          */
@@ -135,7 +135,7 @@ export class OauthService {
         id,
     }: {
         workspace: string,
-        id: string,
+        id: number,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',

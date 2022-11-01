@@ -10,5 +10,6 @@ export type ForloopFlow = {
     iterator: InputTransform;
     skip_failures: boolean;
     type: 'forloopflow';
+    parallel?: boolean;
 };
 

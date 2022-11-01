@@ -8,7 +8,7 @@ export type ListableVariable = {
     value?: string;
     is_secret: boolean;
     description?: string;
-    account?: string;
+    account?: number;
     is_oauth?: boolean;
     extra_perms: Record<string, boolean>;
 };
