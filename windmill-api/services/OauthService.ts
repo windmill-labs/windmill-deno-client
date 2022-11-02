@@ -1,7 +1,6 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { SlackToken } from '../models/SlackToken.ts';
 import type { TokenResponse } from '../models/TokenResponse.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
@@ -12,12 +11,14 @@ export class OauthService {
 
     /**
      * connect slack callback
-     * @returns SlackToken slack token
+     * @returns string slack token
      * @throws ApiError
      */
     public static connectSlackCallback({
+        workspace,
         requestBody,
     }: {
+        workspace: string,
         /**
          * code endpoint
          */
@@ -25,10 +26,13 @@ export class OauthService {
             code: string;
             state: string;
         },
-    }): CancelablePromise<SlackToken> {
+    }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/oauth/connect_slack_callback',
+            url: '/w/{workspace}/oauth/connect_slack_callback',
+            path: {
+                'workspace': workspace,
+            },
             body: requestBody,
             mediaType: 'application/json',
         });
@@ -163,29 +167,6 @@ export class OauthService {
             path: {
                 'workspace': workspace,
             },
-        });
-    }
-
-    /**
-     * set workspace's slack
-     * @returns string workspace slack is set
-     * @throws ApiError
-     */
-    public static setWorkspaceSlack({
-        workspace,
-        requestBody,
-    }: {
-        workspace: string,
-        requestBody: SlackToken,
-    }): CancelablePromise<string> {
-        return __request(OpenAPI, {
-            method: 'POST',
-            url: '/w/{workspace}/oauth/set_workspace_slack',
-            path: {
-                'workspace': workspace,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
         });
     }
 
