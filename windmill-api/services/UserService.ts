@@ -39,6 +39,18 @@ export class UserService {
     }
 
     /**
+     * logout
+     * @returns string clear cookies and clear token (if applicable)
+     * @throws ApiError
+     */
+    public static logout(): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/auth/logout',
+        });
+    }
+
+    /**
      * create user (require admin privilege)
      * @returns string user created
      * @throws ApiError
@@ -172,6 +184,25 @@ export class UserService {
     }
 
     /**
+     * global delete user (require super admin)
+     * @returns string user deleted
+     * @throws ApiError
+     */
+    public static globalUserDelete({
+        email,
+    }: {
+        email: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/users/delete/{email}',
+            path: {
+                'email': email,
+            },
+        });
+    }
+
+    /**
      * delete user (require admin privilege)
      * @returns string delete user
      * @throws ApiError
@@ -190,18 +221,6 @@ export class UserService {
                 'workspace': workspace,
                 'username': username,
             },
-        });
-    }
-
-    /**
-     * logout
-     * @returns string logout
-     * @throws ApiError
-     */
-    public static logout(): CancelablePromise<string> {
-        return __request(OpenAPI, {
-            method: 'POST',
-            url: '/users/logout',
         });
     }
 

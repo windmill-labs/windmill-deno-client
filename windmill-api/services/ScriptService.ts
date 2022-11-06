@@ -65,7 +65,7 @@ export class ScriptService {
         content: string;
         lockfile?: string;
         schema?: any;
-        language: 'deno' | 'python3' | 'go';
+        language: 'deno' | 'python3' | 'go' | 'bash';
         summary?: string;
     }> {
         return __request(OpenAPI, {
@@ -210,7 +210,7 @@ export class ScriptService {
             schema?: any;
             is_template?: boolean;
             lock?: Array<string>;
-            language: 'python3' | 'deno' | 'go';
+            language: 'python3' | 'deno' | 'go' | 'bash';
             kind?: 'script' | 'failure' | 'trigger' | 'command' | 'approval';
         },
     }): CancelablePromise<string> {
@@ -262,6 +262,27 @@ export class ScriptService {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/scripts/deno/tojsonschema',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * inspect bash code to infer jsonschema of arguments
+     * @returns MainArgSignature parsed args
+     * @throws ApiError
+     */
+    public static bashToJsonschema({
+        requestBody,
+    }: {
+        /**
+         * bash code with the main function
+         */
+        requestBody: string,
+    }): CancelablePromise<MainArgSignature> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/scripts/bash/tojsonschema',
             body: requestBody,
             mediaType: 'application/json',
         });

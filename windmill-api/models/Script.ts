@@ -33,6 +33,7 @@ export namespace Script {
         PYTHON3 = 'python3',
         DENO = 'deno',
         GO = 'go',
+        BASH = 'bash',
     }
 
     export enum kind {

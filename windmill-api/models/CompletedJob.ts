@@ -56,6 +56,7 @@ export namespace CompletedJob {
         PYTHON3 = 'python3',
         DENO = 'deno',
         GO = 'go',
+        BASH = 'bash',
     }
 
 

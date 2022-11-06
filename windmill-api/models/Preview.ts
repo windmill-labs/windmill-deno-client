@@ -17,6 +17,7 @@ export namespace Preview {
         PYTHON3 = 'python3',
         DENO = 'deno',
         GO = 'go',
+        BASH = 'bash',
     }
 
 
