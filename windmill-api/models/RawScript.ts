@@ -18,6 +18,7 @@ export namespace RawScript {
         DENO = 'deno',
         PYTHON3 = 'python3',
         GO = 'go',
+        BASH = 'bash',
     }
 
 
