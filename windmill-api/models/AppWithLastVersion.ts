@@ -5,17 +5,17 @@
 import type { Policy } from './Policy.ts';
 
 export type AppWithLastVersion = {
-    id?: number;
-    workspace_id?: string;
-    path?: string;
-    summary?: string;
-    versions?: Array<number>;
-    created_by?: string;
-    created_at?: string;
-    value?: any;
-    policy?: Policy;
-    execution_mode?: AppWithLastVersion.execution_mode;
-    extra_perms?: Record<string, boolean>;
+    id: number;
+    workspace_id: string;
+    path: string;
+    summary: string;
+    versions: Array<number>;
+    created_by: string;
+    created_at: string;
+    value: any;
+    policy: Policy;
+    execution_mode: AppWithLastVersion.execution_mode;
+    extra_perms: Record<string, boolean>;
 };
 
 export namespace AppWithLastVersion {

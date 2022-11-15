@@ -222,6 +222,7 @@ export class AppService {
                 language: string;
                 path?: string;
             };
+            force_viewer_static_fields?: any;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {

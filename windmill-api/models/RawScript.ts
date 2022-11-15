@@ -9,6 +9,7 @@ export type RawScript = {
     content: string;
     language: RawScript.language;
     path?: string;
+    lock?: string;
     type: 'rawscript';
 };
 
