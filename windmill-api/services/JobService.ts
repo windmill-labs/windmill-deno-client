@@ -718,6 +718,40 @@ export class JobService {
     }
 
     /**
+     * get resume urls given a job_id, resume_id and a nonce to resume a flow
+     * @returns any url endpoints
+     * @throws ApiError
+     */
+    public static getResumeUrls({
+        workspace,
+        id,
+        resumeId,
+        approver,
+    }: {
+        workspace: string,
+        id: string,
+        resumeId: number,
+        approver?: string,
+    }): CancelablePromise<{
+        approvalPage: string;
+        resume: string;
+        cancel: string;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/jobs/resume_urls/{id}/{resume_id}',
+            path: {
+                'workspace': workspace,
+                'id': id,
+                'resume_id': resumeId,
+            },
+            query: {
+                'approver': approver,
+            },
+        });
+    }
+
+    /**
      * resume a job for a suspended flow
      * @returns string job resumed
      * @throws ApiError

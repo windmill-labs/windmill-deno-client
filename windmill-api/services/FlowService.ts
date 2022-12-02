@@ -67,6 +67,7 @@ export class FlowService {
         pathStart,
         pathExact,
         showArchived,
+        starredOnly,
     }: {
         workspace: string,
         /**
@@ -101,6 +102,12 @@ export class FlowService {
          *
          */
         showArchived?: boolean,
+        /**
+         * (default false)
+         * show only the starred items
+         *
+         */
+        starredOnly?: boolean,
     }): CancelablePromise<Array<Flow>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -116,6 +123,7 @@ export class FlowService {
                 'path_start': pathStart,
                 'path_exact': pathExact,
                 'show_archived': showArchived,
+                'starred_only': starredOnly,
             },
         });
     }

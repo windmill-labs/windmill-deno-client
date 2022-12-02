@@ -4,6 +4,7 @@
 import type { CreateResource } from '../models/CreateResource.ts';
 import type { EditResource } from '../models/EditResource.ts';
 import type { EditResourceType } from '../models/EditResourceType.ts';
+import type { ListableResource } from '../models/ListableResource.ts';
 import type { Resource } from '../models/Resource.ts';
 import type { ResourceType } from '../models/ResourceType.ts';
 
@@ -158,7 +159,7 @@ export class ResourceService {
 
     /**
      * list resources
-     * @returns Resource resource list
+     * @returns ListableResource resource list
      * @throws ApiError
      */
     public static listResource({
@@ -180,7 +181,7 @@ export class ResourceService {
          * resource_type to list from
          */
         resourceType?: string,
-    }): CancelablePromise<Array<Resource>> {
+    }): CancelablePromise<Array<ListableResource>> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/w/{workspace}/resources/list',

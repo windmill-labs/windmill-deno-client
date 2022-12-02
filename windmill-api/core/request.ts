@@ -1,4 +1,4 @@
-import { Buffer } from "https://deno.land/std@0.166.0/node/buffer.ts";
+import { Buffer } from "https://deno.land/std@0.167.0/node/buffer.ts";
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */

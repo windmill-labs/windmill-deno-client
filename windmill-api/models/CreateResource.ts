@@ -7,6 +7,5 @@ export type CreateResource = {
     value: any;
     description?: string;
     resource_type: string;
-    is_oauth?: boolean;
 };
 

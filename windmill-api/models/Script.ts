@@ -25,6 +25,7 @@ export type Script = {
     lock_error_logs?: string;
     language: Script.language;
     kind: Script.kind;
+    starred: boolean;
 };
 
 export namespace Script {

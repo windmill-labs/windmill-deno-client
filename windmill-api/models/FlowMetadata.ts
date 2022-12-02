@@ -10,5 +10,6 @@ export type FlowMetadata = {
     archived: boolean;
     extra_perms: any;
     additionalProperties?: boolean;
+    starred?: boolean;
 };
 

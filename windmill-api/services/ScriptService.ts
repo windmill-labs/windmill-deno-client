@@ -96,6 +96,7 @@ export class ScriptService {
         showArchived,
         isTemplate,
         kind,
+        starredOnly,
     }: {
         workspace: string,
         /**
@@ -164,6 +165,12 @@ export class ScriptService {
          *
          */
         kind?: string,
+        /**
+         * (default false)
+         * show only the starred items
+         *
+         */
+        starredOnly?: boolean,
     }): CancelablePromise<Array<Script>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -184,6 +191,7 @@ export class ScriptService {
                 'show_archived': showArchived,
                 'is_template': isTemplate,
                 'kind': kind,
+                'starred_only': starredOnly,
             },
         });
     }
