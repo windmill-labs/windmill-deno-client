@@ -31,7 +31,7 @@ export namespace FlowStatusModule {
 
     export enum type {
         WAITING_FOR_PRIOR_STEPS = 'WaitingForPriorSteps',
-        WAITING_FOR_EVENT = 'WaitingForEvent',
+        WAITING_FOR_EVENTS = 'WaitingForEvents',
         WAITING_FOR_EXECUTOR = 'WaitingForExecutor',
         IN_PROGRESS = 'InProgress',
         SUCCESS = 'Success',

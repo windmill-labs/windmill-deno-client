@@ -24,6 +24,7 @@ export class AppService {
         createdBy,
         pathStart,
         pathExact,
+        starredOnly,
     }: {
         workspace: string,
         /**
@@ -50,6 +51,12 @@ export class AppService {
          * mask to filter exact matching path
          */
         pathExact?: string,
+        /**
+         * (default false)
+         * show only the starred items
+         *
+         */
+        starredOnly?: boolean,
     }): CancelablePromise<Array<ListableApp>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -64,6 +71,29 @@ export class AppService {
                 'created_by': createdBy,
                 'path_start': pathStart,
                 'path_exact': pathExact,
+                'starred_only': starredOnly,
+            },
+        });
+    }
+
+    /**
+     * does an app exisst at path
+     * @returns boolean app exists
+     * @throws ApiError
+     */
+    public static existsApp({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<boolean> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/apps/exists/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
             },
         });
     }

@@ -167,7 +167,7 @@ export class ScheduleService {
 
     /**
      * does schedule exists
-     * @returns boolean schedule deleted
+     * @returns boolean schedule exists
      * @throws ApiError
      */
     public static existsSchedule({
