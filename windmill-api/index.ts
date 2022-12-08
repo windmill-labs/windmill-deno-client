@@ -45,6 +45,7 @@ export type { NewToken } from './models/NewToken.ts';
 export type { NewUser } from './models/NewUser.ts';
 export type { OpenFlow } from './models/OpenFlow.ts';
 export type { OpenFlowWPath } from './models/OpenFlowWPath.ts';
+export type { PathFlow } from './models/PathFlow.ts';
 export type { PathScript } from './models/PathScript.ts';
 export { Policy } from './models/Policy.ts';
 export { Preview } from './models/Preview.ts';

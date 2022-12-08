@@ -4,10 +4,9 @@
 
 import type { InputTransform } from './InputTransform.ts';
 
-export type PathScript = {
+export type PathFlow = {
     input_transforms: Record<string, InputTransform>;
     path: string;
-    hash?: string;
-    type: 'script';
+    type: 'flow';
 };
 

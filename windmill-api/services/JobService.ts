@@ -75,6 +75,7 @@ export class JobService {
         scheduledFor,
         scheduledInSecs,
         parentJob,
+        includeHeader,
     }: {
         workspace: string,
         path: string,
@@ -94,6 +95,12 @@ export class JobService {
          * The parent job that is at the origin and responsible for the execution of this script if any
          */
         parentJob?: string,
+        /**
+         * List of headers's keys (separated with ',') whove value are added to the args
+         * Header's key lowercased and '-'' replaced to '_' such that 'Content-Type' becomes the 'content_type' arg key
+         *
+         */
+        includeHeader?: string,
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -106,6 +113,7 @@ export class JobService {
                 'scheduled_for': scheduledFor,
                 'scheduled_in_secs': scheduledInSecs,
                 'parent_job': parentJob,
+                'include_header': includeHeader,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -157,6 +165,7 @@ export class JobService {
         scheduledFor,
         scheduledInSecs,
         parentJob,
+        includeHeader,
     }: {
         workspace: string,
         path: string,
@@ -176,6 +185,12 @@ export class JobService {
          * The parent job that is at the origin and responsible for the execution of this script if any
          */
         parentJob?: string,
+        /**
+         * List of headers's keys (separated with ',') whove value are added to the args
+         * Header's key lowercased and '-'' replaced to '_' such that 'Content-Type' becomes the 'content_type' arg key
+         *
+         */
+        includeHeader?: string,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -188,6 +203,7 @@ export class JobService {
                 'scheduled_for': scheduledFor,
                 'scheduled_in_secs': scheduledInSecs,
                 'parent_job': parentJob,
+                'include_header': includeHeader,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -206,6 +222,7 @@ export class JobService {
         scheduledFor,
         scheduledInSecs,
         parentJob,
+        includeHeader,
     }: {
         workspace: string,
         hash: string,
@@ -225,6 +242,12 @@ export class JobService {
          * The parent job that is at the origin and responsible for the execution of this script if any
          */
         parentJob?: string,
+        /**
+         * List of headers's keys (separated with ',') whove value are added to the args
+         * Header's key lowercased and '-'' replaced to '_' such that 'Content-Type' becomes the 'content_type' arg key
+         *
+         */
+        includeHeader?: string,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -237,6 +260,7 @@ export class JobService {
                 'scheduled_for': scheduledFor,
                 'scheduled_in_secs': scheduledInSecs,
                 'parent_job': parentJob,
+                'include_header': includeHeader,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -251,18 +275,28 @@ export class JobService {
     public static runScriptPreview({
         workspace,
         requestBody,
+        includeHeader,
     }: {
         workspace: string,
         /**
          * preview
          */
         requestBody: Preview,
+        /**
+         * List of headers's keys (separated with ',') whove value are added to the args
+         * Header's key lowercased and '-'' replaced to '_' such that 'Content-Type' becomes the 'content_type' arg key
+         *
+         */
+        includeHeader?: string,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/w/{workspace}/jobs/run/preview',
             path: {
                 'workspace': workspace,
+            },
+            query: {
+                'include_header': includeHeader,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -277,18 +311,28 @@ export class JobService {
     public static runFlowPreview({
         workspace,
         requestBody,
+        includeHeader,
     }: {
         workspace: string,
         /**
          * preview
          */
         requestBody: FlowPreview,
+        /**
+         * List of headers's keys (separated with ',') whove value are added to the args
+         * Header's key lowercased and '-'' replaced to '_' such that 'Content-Type' becomes the 'content_type' arg key
+         *
+         */
+        includeHeader?: string,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/w/{workspace}/jobs/run/preview_flow',
             path: {
                 'workspace': workspace,
+            },
+            query: {
+                'include_header': includeHeader,
             },
             body: requestBody,
             mediaType: 'application/json',

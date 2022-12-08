@@ -4,5 +4,6 @@
 
 export type Identity = {
     type: 'identity';
+    flow?: boolean;
 };
 
