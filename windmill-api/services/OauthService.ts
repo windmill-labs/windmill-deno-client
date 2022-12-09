@@ -81,7 +81,7 @@ export class OauthService {
          * code endpoint
          */
         requestBody: {
-            refresh_token: string;
+            refresh_token?: string;
             expires_in: number;
             owner: string;
             client: string;
