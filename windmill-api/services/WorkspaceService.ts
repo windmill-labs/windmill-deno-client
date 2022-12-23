@@ -25,6 +25,18 @@ export class WorkspaceService {
     }
 
     /**
+     * is domain allowed for auto invi
+     * @returns boolean domain allowed or not
+     * @throws ApiError
+     */
+    public static isDomainAllowed(): CancelablePromise<boolean> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/workspaces/allowed_domain_auto_invite',
+        });
+    }
+
+    /**
      * list all workspaces visible to me with user info
      * @returns UserWorkspaceList workspace with associated username
      * @throws ApiError
@@ -145,6 +157,7 @@ export class WorkspaceService {
         requestBody: {
             email: string;
             is_admin: boolean;
+            operator: boolean;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
@@ -174,6 +187,7 @@ export class WorkspaceService {
         requestBody: {
             email: string;
             is_admin: boolean;
+            operator: boolean;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
@@ -239,10 +253,34 @@ export class WorkspaceService {
         slack_name?: string;
         slack_team_id?: string;
         slack_command_script?: string;
+        auto_invite_domain?: string;
+        auto_invite_operator?: boolean;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/w/{workspace}/workspaces/get_settings',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
+     * get premium info
+     * @returns any status
+     * @throws ApiError
+     */
+    public static getPremiumInfo({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<{
+        premium: boolean;
+        usage?: number;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/workspaces/premium_info',
             path: {
                 'workspace': workspace,
             },
@@ -269,6 +307,34 @@ export class WorkspaceService {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/w/{workspace}/workspaces/edit_slack_command',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * edit auto invite
+     * @returns string status
+     * @throws ApiError
+     */
+    public static editAutoInvite({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * WorkspaceInvite
+         */
+        requestBody: {
+            operator?: boolean;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/edit_auto_invite',
             path: {
                 'workspace': workspace,
             },

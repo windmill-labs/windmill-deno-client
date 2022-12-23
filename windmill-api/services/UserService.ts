@@ -106,6 +106,28 @@ export class UserService {
     }
 
     /**
+     * is owner of path
+     * @returns boolean is owner
+     * @throws ApiError
+     */
+    public static isOwnerOfPath({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<boolean> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/users/is_owner/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
      * set password
      * @returns string password set
      * @throws ApiError
@@ -233,6 +255,18 @@ export class UserService {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/users/email',
+        });
+    }
+
+    /**
+     * get current usage outside of premium workspaces
+     * @returns number free usage
+     * @throws ApiError
+     */
+    public static getUsage(): CancelablePromise<number> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/users/usage',
         });
     }
 

@@ -15,5 +15,7 @@ export type Schedule = {
     is_flow: boolean;
     args?: ScriptArgs;
     extra_perms: Record<string, boolean>;
+    email: string;
+    error?: string;
 };
 

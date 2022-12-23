@@ -13,6 +13,7 @@ export type User = {
     operator: boolean;
     disabled: boolean;
     groups?: Array<string>;
+    folders: Array<string>;
     usage?: Usage;
 };
 

@@ -147,7 +147,8 @@ export class ScriptService {
          * (default false)
          * show also the archived files.
          * when multiple archived hash share the same path, only the ones with the latest create_at
-         * are displayed.
+         * are
+         * ed.
          *
          */
         showArchived?: boolean,

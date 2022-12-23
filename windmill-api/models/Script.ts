@@ -12,7 +12,7 @@ export type Script = {
      */
     parent_hashes?: Array<string>;
     summary: string;
-    description?: string;
+    description: string;
     content: string;
     created_by: string;
     created_at: string;

@@ -4,5 +4,7 @@
 
 export type EditWorkspaceUser = {
     is_admin?: boolean;
+    operator?: boolean;
+    disabled?: boolean;
 };
 

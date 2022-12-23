@@ -1,20 +1,20 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { Group } from '../models/Group.ts';
+import type { Folder } from '../models/Folder.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
 import { OpenAPI } from '../core/OpenAPI.ts';
 import { request as __request } from '../core/request.ts';
 
-export class GroupService {
+export class FolderService {
 
     /**
-     * list groups
-     * @returns Group group list
+     * list folders
+     * @returns Folder folder list
      * @throws ApiError
      */
-    public static listGroups({
+    public static listFolders({
         workspace,
         page,
         perPage,
@@ -28,10 +28,10 @@ export class GroupService {
          * number of items to return for a given page (default 30, max 100)
          */
         perPage?: number,
-    }): CancelablePromise<Array<Group>> {
+    }): CancelablePromise<Array<Folder>> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/groups/list',
+            url: '/w/{workspace}/folders/list',
             path: {
                 'workspace': workspace,
             },
@@ -43,23 +43,23 @@ export class GroupService {
     }
 
     /**
-     * list group names
-     * @returns string group list
+     * list folder names
+     * @returns string folder list
      * @throws ApiError
      */
-    public static listGroupNames({
+    public static listFolderNames({
         workspace,
         onlyMemberOf,
     }: {
         workspace: string,
         /**
-         * only list the groups the user is member of (default false)
+         * only list the folders the user is member of (default false)
          */
         onlyMemberOf?: boolean,
     }): CancelablePromise<Array<string>> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/groups/listnames',
+            url: '/w/{workspace}/folders/listnames',
             path: {
                 'workspace': workspace,
             },
@@ -70,26 +70,27 @@ export class GroupService {
     }
 
     /**
-     * create group
-     * @returns string group created
+     * create folder
+     * @returns string folder created
      * @throws ApiError
      */
-    public static createGroup({
+    public static createFolder({
         workspace,
         requestBody,
     }: {
         workspace: string,
         /**
-         * create group
+         * create folder
          */
         requestBody: {
             name: string;
-            summary?: string;
+            owners?: Array<string>;
+            extra_perms?: any;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/w/{workspace}/groups/create',
+            url: '/w/{workspace}/folders/create',
             path: {
                 'workspace': workspace,
             },
@@ -99,11 +100,11 @@ export class GroupService {
     }
 
     /**
-     * update group
-     * @returns string group updated
+     * update folder
+     * @returns string folder updated
      * @throws ApiError
      */
-    public static updateGroup({
+    public static updateFolder({
         workspace,
         name,
         requestBody,
@@ -111,15 +112,16 @@ export class GroupService {
         workspace: string,
         name: string,
         /**
-         * updated group
+         * update folder
          */
         requestBody: {
-            summary?: string;
+            owners?: Array<string>;
+            extra_perms?: any;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/w/{workspace}/groups/update/{name}',
+            url: '/w/{workspace}/folders/update/{name}',
             path: {
                 'workspace': workspace,
                 'name': name,
@@ -130,11 +132,11 @@ export class GroupService {
     }
 
     /**
-     * delete group
-     * @returns string group deleted
+     * delete folder
+     * @returns string folder deleted
      * @throws ApiError
      */
-    public static deleteGroup({
+    public static deleteFolder({
         workspace,
         name,
     }: {
@@ -143,7 +145,7 @@ export class GroupService {
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'DELETE',
-            url: '/w/{workspace}/groups/delete/{name}',
+            url: '/w/{workspace}/folders/delete/{name}',
             path: {
                 'workspace': workspace,
                 'name': name,
@@ -152,20 +154,20 @@ export class GroupService {
     }
 
     /**
-     * get group
-     * @returns Group group
+     * get folder
+     * @returns Folder folder
      * @throws ApiError
      */
-    public static getGroup({
+    public static getFolder({
         workspace,
         name,
     }: {
         workspace: string,
         name: string,
-    }): CancelablePromise<Group> {
+    }): CancelablePromise<Folder> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/groups/get/{name}',
+            url: '/w/{workspace}/folders/get/{name}',
             path: {
                 'workspace': workspace,
                 'name': name,
@@ -174,11 +176,40 @@ export class GroupService {
     }
 
     /**
-     * add user to group
-     * @returns string user added to group
+     * get folder usage
+     * @returns any folder
      * @throws ApiError
      */
-    public static addUserToGroup({
+    public static getFolderUsage({
+        workspace,
+        name,
+    }: {
+        workspace: string,
+        name: string,
+    }): CancelablePromise<{
+        scripts: number;
+        flows: number;
+        apps: number;
+        resources: number;
+        variables: number;
+        schedules: number;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/folders/getusage/{name}',
+            path: {
+                'workspace': workspace,
+                'name': name,
+            },
+        });
+    }
+
+    /**
+     * add owner to folder
+     * @returns string owner added to folder
+     * @throws ApiError
+     */
+    public static addOwnerToFolder({
         workspace,
         name,
         requestBody,
@@ -186,15 +217,15 @@ export class GroupService {
         workspace: string,
         name: string,
         /**
-         * added user to group
+         * owner user to folder
          */
         requestBody: {
-            username?: string;
+            owner?: string;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/w/{workspace}/groups/adduser/{name}',
+            url: '/w/{workspace}/folders/addowner/{name}',
             path: {
                 'workspace': workspace,
                 'name': name,
@@ -205,11 +236,11 @@ export class GroupService {
     }
 
     /**
-     * remove user to group
-     * @returns string user removed from group
+     * remove owner to folder
+     * @returns string owner removed from folder
      * @throws ApiError
      */
-    public static removeUserToGroup({
+    public static removeOwnerToFolder({
         workspace,
         name,
         requestBody,
@@ -217,15 +248,15 @@ export class GroupService {
         workspace: string,
         name: string,
         /**
-         * added user to group
+         * added owner to folder
          */
         requestBody: {
-            username?: string;
+            owner?: string;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/w/{workspace}/groups/removeuser/{name}',
+            url: '/w/{workspace}/folders/removeowner/{name}',
             path: {
                 'workspace': workspace,
                 'name': name,

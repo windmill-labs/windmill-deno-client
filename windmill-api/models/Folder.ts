@@ -2,9 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type CreateWorkspace = {
-    id: string;
+export type Folder = {
     name: string;
-    username: string;
+    owners: Array<string>;
+    extra_perms: Record<string, boolean>;
 };
 

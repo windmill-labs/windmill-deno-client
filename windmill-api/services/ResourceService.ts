@@ -167,6 +167,7 @@ export class ResourceService {
         page,
         perPage,
         resourceType,
+        resourceTypeExclude,
     }: {
         workspace: string,
         /**
@@ -178,9 +179,13 @@ export class ResourceService {
          */
         perPage?: number,
         /**
-         * resource_type to list from
+         * resource_types to list from, separated by ',',
          */
         resourceType?: string,
+        /**
+         * resource_types to not list from, separated by ',',
+         */
+        resourceTypeExclude?: string,
     }): CancelablePromise<Array<ListableResource>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -192,6 +197,7 @@ export class ResourceService {
                 'page': page,
                 'per_page': perPage,
                 'resource_type': resourceType,
+                'resource_type_exclude': resourceTypeExclude,
             },
         });
     }

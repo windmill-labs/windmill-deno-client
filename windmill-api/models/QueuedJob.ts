@@ -36,6 +36,8 @@ export type QueuedJob = {
     raw_flow?: FlowValue;
     is_flow_step: boolean;
     language?: QueuedJob.language;
+    email: string;
+    visible_to_owner: boolean;
 };
 
 export namespace QueuedJob {

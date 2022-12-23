@@ -26,6 +26,7 @@ export class JobService {
         scheduledFor,
         scheduledInSecs,
         parentJob,
+        invisibleToOwner,
     }: {
         workspace: string,
         path: string,
@@ -45,6 +46,10 @@ export class JobService {
          * The parent job that is at the origin and responsible for the execution of this script if any
          */
         parentJob?: string,
+        /**
+         * make the run invisible to the the script owner (default false)
+         */
+        invisibleToOwner?: boolean,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -57,6 +62,7 @@ export class JobService {
                 'scheduled_for': scheduledFor,
                 'scheduled_in_secs': scheduledInSecs,
                 'parent_job': parentJob,
+                'invisible_to_owner': invisibleToOwner,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -166,6 +172,7 @@ export class JobService {
         scheduledInSecs,
         parentJob,
         includeHeader,
+        invisibleToOwner,
     }: {
         workspace: string,
         path: string,
@@ -191,6 +198,10 @@ export class JobService {
          *
          */
         includeHeader?: string,
+        /**
+         * make the run invisible to the the flow owner (default false)
+         */
+        invisibleToOwner?: boolean,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -204,6 +215,7 @@ export class JobService {
                 'scheduled_in_secs': scheduledInSecs,
                 'parent_job': parentJob,
                 'include_header': includeHeader,
+                'invisible_to_owner': invisibleToOwner,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -223,6 +235,7 @@ export class JobService {
         scheduledInSecs,
         parentJob,
         includeHeader,
+        invisibleToOwner,
     }: {
         workspace: string,
         hash: string,
@@ -248,6 +261,10 @@ export class JobService {
          *
          */
         includeHeader?: string,
+        /**
+         * make the run invisible to the the script owner (default false)
+         */
+        invisibleToOwner?: boolean,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -261,6 +278,7 @@ export class JobService {
                 'scheduled_in_secs': scheduledInSecs,
                 'parent_job': parentJob,
                 'include_header': includeHeader,
+                'invisible_to_owner': invisibleToOwner,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -276,6 +294,7 @@ export class JobService {
         workspace,
         requestBody,
         includeHeader,
+        invisibleToOwner,
     }: {
         workspace: string,
         /**
@@ -288,6 +307,10 @@ export class JobService {
          *
          */
         includeHeader?: string,
+        /**
+         * make the run invisible to the the script owner (default false)
+         */
+        invisibleToOwner?: boolean,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -297,6 +320,7 @@ export class JobService {
             },
             query: {
                 'include_header': includeHeader,
+                'invisible_to_owner': invisibleToOwner,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -312,6 +336,7 @@ export class JobService {
         workspace,
         requestBody,
         includeHeader,
+        invisibleToOwner,
     }: {
         workspace: string,
         /**
@@ -324,6 +349,10 @@ export class JobService {
          *
          */
         includeHeader?: string,
+        /**
+         * make the run invisible to the the script owner (default false)
+         */
+        invisibleToOwner?: boolean,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -333,6 +362,7 @@ export class JobService {
             },
             query: {
                 'include_header': includeHeader,
+                'invisible_to_owner': invisibleToOwner,
             },
             body: requestBody,
             mediaType: 'application/json',

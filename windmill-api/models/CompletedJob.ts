@@ -38,6 +38,8 @@ export type CompletedJob = {
     is_flow_step: boolean;
     language?: CompletedJob.language;
     is_skipped: boolean;
+    email: string;
+    visible_to_owner: boolean;
 };
 
 export namespace CompletedJob {
