@@ -92,6 +92,35 @@ export class ResourceService {
     }
 
     /**
+     * update resource value
+     * @returns string resource value updated
+     * @throws ApiError
+     */
+    public static updateResourceValue({
+        workspace,
+        path,
+        requestBody,
+    }: {
+        workspace: string,
+        path: string,
+        /**
+         * updated resource
+         */
+        requestBody: any,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/resources/update_value/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * get resource
      * @returns Resource resource
      * @throws ApiError

@@ -121,6 +121,50 @@ export class AppService {
     }
 
     /**
+     * get public app by secret
+     * @returns AppWithLastVersion app details
+     * @throws ApiError
+     */
+    public static getPublicAppBySecret({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<AppWithLastVersion> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/apps/public_app/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
+     * get public secret of app
+     * @returns string app secret
+     * @throws ApiError
+     */
+    public static getPublicSecretOfApp({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/apps/secret_of/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
      * get app by version
      * @returns AppWithLastVersion app details
      * @throws ApiError

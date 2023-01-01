@@ -896,6 +896,32 @@ export class JobService {
     }
 
     /**
+     * resume a job for a suspended flow as an owner
+     * @returns string job resumed
+     * @throws ApiError
+     */
+    public static resumeSuspendedFlowAsOwner({
+        workspace,
+        id,
+        requestBody,
+    }: {
+        workspace: string,
+        id: string,
+        requestBody: any,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/jobs/flow/resume/{id}',
+            path: {
+                'workspace': workspace,
+                'id': id,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * cancel a job for a suspended flow
      * @returns string job resumed
      * @throws ApiError
