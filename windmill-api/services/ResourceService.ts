@@ -106,7 +106,9 @@ export class ResourceService {
         /**
          * updated resource
          */
-        requestBody: any,
+        requestBody: {
+            value?: any;
+        },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
