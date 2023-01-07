@@ -202,7 +202,45 @@ export class WorkspaceService {
     }
 
     /**
-     * delete workspace
+     * archive workspace
+     * @returns string status
+     * @throws ApiError
+     */
+    public static archiveWorkspace({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/archive',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
+     * unarchive workspace
+     * @returns string status
+     * @throws ApiError
+     */
+    public static unarchiveWorkspace({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/workspaces/unarchive/{workspace}',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
+     * delete workspace (require super admin)
      * @returns string status
      * @throws ApiError
      */
@@ -213,7 +251,7 @@ export class WorkspaceService {
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'DELETE',
-            url: '/w/{workspace}/workspaces/delete',
+            url: '/workspaces/delete/{workspace}',
             path: {
                 'workspace': workspace,
             },

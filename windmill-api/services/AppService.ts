@@ -12,6 +12,51 @@ import { request as __request } from '../core/request.ts';
 export class AppService {
 
     /**
+     * list all available hub apps
+     * @returns any hub apps list
+     * @throws ApiError
+     */
+    public static listHubApps(): CancelablePromise<{
+        apps?: Array<{
+            id: number;
+            app_id: number;
+            summary: string;
+            apps: Array<string>;
+            approved: boolean;
+            votes: number;
+        }>;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/apps/hub/list',
+        });
+    }
+
+    /**
+     * get hub app by id
+     * @returns any app
+     * @throws ApiError
+     */
+    public static getHubAppById({
+        id,
+    }: {
+        id: number,
+    }): CancelablePromise<{
+        app: {
+            summary: string;
+            value: any;
+        };
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/apps/hub/get/{id}',
+            path: {
+                'id': id,
+            },
+        });
+    }
+
+    /**
      * list all available apps
      * @returns ListableApp All available apps
      * @throws ApiError
