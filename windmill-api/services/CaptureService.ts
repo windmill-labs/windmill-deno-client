@@ -8,28 +8,6 @@ import { request as __request } from '../core/request.ts';
 export class CaptureService {
 
     /**
-     * create flow preview capture
-     * @returns any flow preview capture created
-     * @throws ApiError
-     */
-    public static createCapture({
-        workspace,
-        path,
-    }: {
-        workspace: string,
-        path: string,
-    }): CancelablePromise<any> {
-        return __request(OpenAPI, {
-            method: 'PUT',
-            url: '/w/{workspace}/capture/{path}',
-            path: {
-                'workspace': workspace,
-                'path': path,
-            },
-        });
-    }
-
-    /**
      * update flow preview capture
      * @returns void
      * @throws ApiError
@@ -43,6 +21,28 @@ export class CaptureService {
     }): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'POST',
+            url: '/w/{workspace}/capture_u/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
+     * create flow preview capture
+     * @returns any flow preview capture created
+     * @throws ApiError
+     */
+    public static createCapture({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'PUT',
             url: '/w/{workspace}/capture/{path}',
             path: {
                 'workspace': workspace,

@@ -386,6 +386,8 @@ export class JobService {
         createdAfter,
         success,
         jobKinds,
+        suspended,
+        running,
     }: {
         workspace: string,
         /**
@@ -428,6 +430,14 @@ export class JobService {
          * filter on job kind (values 'preview', 'script', 'dependencies', 'flow') separated by,
          */
         jobKinds?: string,
+        /**
+         * filter on suspended jobs
+         */
+        suspended?: boolean,
+        /**
+         * filter on running jobs
+         */
+        running?: boolean,
     }): CancelablePromise<Array<QueuedJob>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -446,6 +456,8 @@ export class JobService {
                 'created_after': createdAfter,
                 'success': success,
                 'job_kinds': jobKinds,
+                'suspended': suspended,
+                'running': running,
             },
         });
     }
@@ -644,7 +656,7 @@ export class JobService {
     }): CancelablePromise<Job> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/jobs/get/{id}',
+            url: '/w/{workspace}/jobs_u/get/{id}',
             path: {
                 'workspace': workspace,
                 'id': id,
@@ -674,7 +686,7 @@ export class JobService {
     }> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/jobs/getupdate/{id}',
+            url: '/w/{workspace}/jobs_u/getupdate/{id}',
             path: {
                 'workspace': workspace,
                 'id': id,
@@ -845,7 +857,7 @@ export class JobService {
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/jobs/resume/{id}/{resume_id}/{signature}',
+            url: '/w/{workspace}/jobs_u/resume/{id}/{resume_id}/{signature}',
             path: {
                 'workspace': workspace,
                 'id': id,
@@ -880,7 +892,7 @@ export class JobService {
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/w/{workspace}/jobs/resume/{id}/{resume_id}/{signature}',
+            url: '/w/{workspace}/jobs_u/resume/{id}/{resume_id}/{signature}',
             path: {
                 'workspace': workspace,
                 'id': id,
@@ -941,7 +953,7 @@ export class JobService {
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/jobs/cancel/{id}/{resume_id}/{signature}',
+            url: '/w/{workspace}/jobs_u/cancel/{id}/{resume_id}/{signature}',
             path: {
                 'workspace': workspace,
                 'id': id,
@@ -976,7 +988,7 @@ export class JobService {
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/w/{workspace}/jobs/cancel/{id}/{resume_id}/{signature}',
+            url: '/w/{workspace}/jobs_u/cancel/{id}/{resume_id}/{signature}',
             path: {
                 'workspace': workspace,
                 'id': id,
@@ -1017,7 +1029,7 @@ export class JobService {
     }> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/jobs/get_flow/{id}/{resume_id}/{signature}',
+            url: '/w/{workspace}/jobs_u/get_flow/{id}/{resume_id}/{signature}',
             path: {
                 'workspace': workspace,
                 'id': id,

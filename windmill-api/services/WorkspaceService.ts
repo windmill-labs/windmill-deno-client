@@ -172,6 +172,37 @@ export class WorkspaceService {
     }
 
     /**
+     * add user to workspace
+     * @returns string status
+     * @throws ApiError
+     */
+    public static addUser({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * WorkspaceInvite
+         */
+        requestBody: {
+            email: string;
+            is_admin: boolean;
+            username: string;
+            operator: boolean;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/add_user',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * delete user invite
      * @returns string status
      * @throws ApiError

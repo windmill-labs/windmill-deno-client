@@ -198,6 +198,25 @@ export class ScriptService {
     }
 
     /**
+     * list all available scripts paths
+     * @returns string list of script paths
+     * @throws ApiError
+     */
+    public static listScriptPaths({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<Array<string>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/scripts/list_paths',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
      * create script
      * @returns string script created
      * @throws ApiError

@@ -179,7 +179,7 @@ export class AppService {
     }): CancelablePromise<AppWithLastVersion> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/apps/public_app/{path}',
+            url: '/w/{workspace}/apps_u/public_app/{path}',
             path: {
                 'workspace': workspace,
                 'path': path,
@@ -346,7 +346,7 @@ export class AppService {
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/w/{workspace}/apps/execute_component/{path}',
+            url: '/w/{workspace}/apps_u/execute_component/{path}',
             path: {
                 'workspace': workspace,
                 'path': path,
