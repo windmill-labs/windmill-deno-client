@@ -82,6 +82,7 @@ export class JobService {
         scheduledInSecs,
         parentJob,
         includeHeader,
+        queueLimit,
     }: {
         workspace: string,
         path: string,
@@ -107,6 +108,11 @@ export class JobService {
          *
          */
         includeHeader?: string,
+        /**
+         * The maximum size of the queue for which the request would get rejected if that job would push it above that limit
+         *
+         */
+        queueLimit?: string,
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -120,6 +126,65 @@ export class JobService {
                 'scheduled_in_secs': scheduledInSecs,
                 'parent_job': parentJob,
                 'include_header': includeHeader,
+                'queue_limit': queueLimit,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * run flow by path and wait until completion
+     * @returns any job result
+     * @throws ApiError
+     */
+    public static runWaitResultFlowByPath({
+        workspace,
+        path,
+        requestBody,
+        scheduledFor,
+        scheduledInSecs,
+        includeHeader,
+        queueLimit,
+    }: {
+        workspace: string,
+        path: string,
+        /**
+         * script args
+         */
+        requestBody: ScriptArgs,
+        /**
+         * when to schedule this job (leave empty for immediate run)
+         */
+        scheduledFor?: string,
+        /**
+         * schedule the script to execute in the number of seconds starting now
+         */
+        scheduledInSecs?: number,
+        /**
+         * List of headers's keys (separated with ',') whove value are added to the args
+         * Header's key lowercased and '-'' replaced to '_' such that 'Content-Type' becomes the 'content_type' arg key
+         *
+         */
+        includeHeader?: string,
+        /**
+         * The maximum size of the queue for which the request would get rejected if that job would push it above that limit
+         *
+         */
+        queueLimit?: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/jobs/run_wait_result/f/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+            query: {
+                'scheduled_for': scheduledFor,
+                'scheduled_in_secs': scheduledInSecs,
+                'include_header': includeHeader,
+                'queue_limit': queueLimit,
             },
             body: requestBody,
             mediaType: 'application/json',

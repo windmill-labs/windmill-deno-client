@@ -324,6 +324,8 @@ export class WorkspaceService {
         slack_command_script?: string;
         auto_invite_domain?: string;
         auto_invite_operator?: boolean;
+        plan?: string;
+        customer_id?: string;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
