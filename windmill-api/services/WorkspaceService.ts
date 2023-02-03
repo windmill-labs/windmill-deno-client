@@ -326,6 +326,7 @@ export class WorkspaceService {
         auto_invite_operator?: boolean;
         plan?: string;
         customer_id?: string;
+        webhook?: string;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -406,6 +407,34 @@ export class WorkspaceService {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/w/{workspace}/workspaces/edit_auto_invite',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * edit webhook
+     * @returns string status
+     * @throws ApiError
+     */
+    public static editWebhook({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * WorkspaceWebhook
+         */
+        requestBody: {
+            webhook?: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/edit_webhook',
             path: {
                 'workspace': workspace,
             },
