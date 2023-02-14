@@ -748,6 +748,7 @@ export class JobService {
         running?: boolean;
         completed?: boolean;
         new_logs?: string;
+        mem_peak?: number;
     }> {
         return __request(OpenAPI, {
             method: 'GET',

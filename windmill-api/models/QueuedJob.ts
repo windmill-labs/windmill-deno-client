@@ -38,6 +38,7 @@ export type QueuedJob = {
     language?: QueuedJob.language;
     email: string;
     visible_to_owner: boolean;
+    mem_peak?: number;
 };
 
 export namespace QueuedJob {

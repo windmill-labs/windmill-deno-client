@@ -40,6 +40,7 @@ export type CompletedJob = {
     is_skipped: boolean;
     email: string;
     visible_to_owner: boolean;
+    mem_peak?: number;
 };
 
 export namespace CompletedJob {
