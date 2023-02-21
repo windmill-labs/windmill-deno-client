@@ -20,18 +20,23 @@ export class VariableService {
     public static createVariable({
         workspace,
         requestBody,
+        alreadyEncrypted,
     }: {
         workspace: string,
         /**
          * new variable
          */
         requestBody: CreateVariable,
+        alreadyEncrypted?: boolean,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/w/{workspace}/variables/create',
             path: {
                 'workspace': workspace,
+            },
+            query: {
+                'already_encrypted': alreadyEncrypted,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -69,6 +74,7 @@ export class VariableService {
         workspace,
         path,
         requestBody,
+        alreadyEncrypted,
     }: {
         workspace: string,
         path: string,
@@ -76,6 +82,7 @@ export class VariableService {
          * updated variable
          */
         requestBody: EditVariable,
+        alreadyEncrypted?: boolean,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -83,6 +90,9 @@ export class VariableService {
             path: {
                 'workspace': workspace,
                 'path': path,
+            },
+            query: {
+                'already_encrypted': alreadyEncrypted,
             },
             body: requestBody,
             mediaType: 'application/json',
