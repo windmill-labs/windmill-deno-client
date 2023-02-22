@@ -268,4 +268,26 @@ export class FlowService {
         });
     }
 
+    /**
+     * delete flow by path
+     * @returns string flow delete
+     * @throws ApiError
+     */
+    public static deleteFlowByPath({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/w/{workspace}/flows/delete/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
 }
