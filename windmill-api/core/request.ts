@@ -1,4 +1,4 @@
-import { Buffer } from "https://deno.land/std@0.177.0/node/buffer.ts";
+import { Buffer } from "buffer DENOIFY: UNKNOWN NODE BUILTIN";
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
