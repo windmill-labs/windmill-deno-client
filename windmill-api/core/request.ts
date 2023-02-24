@@ -1,4 +1,4 @@
-import { Buffer } from "buffer DENOIFY: UNKNOWN NODE BUILTIN";
+import { Buffer } from "node:buffer";
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
