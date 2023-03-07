@@ -200,15 +200,10 @@ export class JobService {
         workspace,
         flowJobId,
         nodeId,
-        skipDirect,
     }: {
         workspace: string,
         flowJobId: string,
         nodeId: string,
-        /**
-         * Skip checking that the node is part of the given flow.
-         */
-        skipDirect?: boolean,
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -217,9 +212,6 @@ export class JobService {
                 'workspace': workspace,
                 'flow_job_id': flowJobId,
                 'node_id': nodeId,
-            },
-            query: {
-                'skip_direct': skipDirect,
             },
         });
     }
