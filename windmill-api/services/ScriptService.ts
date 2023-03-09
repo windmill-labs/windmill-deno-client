@@ -382,7 +382,7 @@ export class ScriptService {
     }
 
     /**
-     * delete script by hash (erase content but keep hash)
+     * delete script by hash (erase content but keep hash, require admin)
      * @returns Script script details
      * @throws ApiError
      */
@@ -399,6 +399,28 @@ export class ScriptService {
             path: {
                 'workspace': workspace,
                 'hash': hash,
+            },
+        });
+    }
+
+    /**
+     * delete all scripts at a given path (require admin)
+     * @returns string script path
+     * @throws ApiError
+     */
+    public static deleteScriptByPath({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/scripts/delete/p/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
             },
         });
     }
