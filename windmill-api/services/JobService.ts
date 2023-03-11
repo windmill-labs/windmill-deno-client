@@ -439,12 +439,14 @@ export class JobService {
         scriptPathExact,
         scriptPathStart,
         scriptHash,
-        createdBefore,
-        createdAfter,
+        startedBefore,
+        startedAfter,
         success,
         jobKinds,
         suspended,
         running,
+        args,
+        result,
     }: {
         workspace: string,
         /**
@@ -474,11 +476,11 @@ export class JobService {
         /**
          * filter on created before (inclusive) timestamp
          */
-        createdBefore?: string,
+        startedBefore?: string,
         /**
          * filter on created after (exclusive) timestamp
          */
-        createdAfter?: string,
+        startedAfter?: string,
         /**
          * filter on successful jobs
          */
@@ -495,6 +497,14 @@ export class JobService {
          * filter on running jobs
          */
         running?: boolean,
+        /**
+         * filter on jobs containing those args as a json subset (@> in postgres)
+         */
+        args?: string,
+        /**
+         * filter on jobs containing those result as a json subset (@> in postgres)
+         */
+        result?: string,
     }): CancelablePromise<Array<QueuedJob>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -509,12 +519,14 @@ export class JobService {
                 'script_path_exact': scriptPathExact,
                 'script_path_start': scriptPathStart,
                 'script_hash': scriptHash,
-                'created_before': createdBefore,
-                'created_after': createdAfter,
+                'started_before': startedBefore,
+                'started_after': startedAfter,
                 'success': success,
                 'job_kinds': jobKinds,
                 'suspended': suspended,
                 'running': running,
+                'args': args,
+                'result': result,
             },
         });
     }
@@ -532,10 +544,12 @@ export class JobService {
         scriptPathExact,
         scriptPathStart,
         scriptHash,
-        createdBefore,
-        createdAfter,
+        startedBefore,
+        startedAfter,
         success,
         jobKinds,
+        args,
+        result,
         isSkipped,
         isFlowStep,
     }: {
@@ -567,11 +581,11 @@ export class JobService {
         /**
          * filter on created before (inclusive) timestamp
          */
-        createdBefore?: string,
+        startedBefore?: string,
         /**
          * filter on created after (exclusive) timestamp
          */
-        createdAfter?: string,
+        startedAfter?: string,
         /**
          * filter on successful jobs
          */
@@ -580,6 +594,14 @@ export class JobService {
          * filter on job kind (values 'preview', 'script', 'dependencies', 'flow') separated by,
          */
         jobKinds?: string,
+        /**
+         * filter on jobs containing those args as a json subset (@> in postgres)
+         */
+        args?: string,
+        /**
+         * filter on jobs containing those result as a json subset (@> in postgres)
+         */
+        result?: string,
         /**
          * is the job skipped
          */
@@ -602,10 +624,12 @@ export class JobService {
                 'script_path_exact': scriptPathExact,
                 'script_path_start': scriptPathStart,
                 'script_hash': scriptHash,
-                'created_before': createdBefore,
-                'created_after': createdAfter,
+                'started_before': startedBefore,
+                'started_after': startedAfter,
                 'success': success,
                 'job_kinds': jobKinds,
+                'args': args,
+                'result': result,
                 'is_skipped': isSkipped,
                 'is_flow_step': isFlowStep,
             },
@@ -624,9 +648,11 @@ export class JobService {
         scriptPathExact,
         scriptPathStart,
         scriptHash,
-        createdBefore,
-        createdAfter,
+        startedBefore,
+        startedAfter,
         jobKinds,
+        args,
+        result,
         isSkipped,
         isFlowStep,
         success,
@@ -655,15 +681,23 @@ export class JobService {
         /**
          * filter on created before (inclusive) timestamp
          */
-        createdBefore?: string,
+        startedBefore?: string,
         /**
          * filter on created after (exclusive) timestamp
          */
-        createdAfter?: string,
+        startedAfter?: string,
         /**
          * filter on job kind (values 'preview', 'script', 'dependencies', 'flow') separated by,
          */
         jobKinds?: string,
+        /**
+         * filter on jobs containing those args as a json subset (@> in postgres)
+         */
+        args?: string,
+        /**
+         * filter on jobs containing those result as a json subset (@> in postgres)
+         */
+        result?: string,
         /**
          * is the job skipped
          */
@@ -689,9 +723,11 @@ export class JobService {
                 'script_path_exact': scriptPathExact,
                 'script_path_start': scriptPathStart,
                 'script_hash': scriptHash,
-                'created_before': createdBefore,
-                'created_after': createdAfter,
+                'started_before': startedBefore,
+                'started_after': startedAfter,
                 'job_kinds': jobKinds,
+                'args': args,
+                'result': result,
                 'is_skipped': isSkipped,
                 'is_flow_step': isFlowStep,
                 'success': success,
