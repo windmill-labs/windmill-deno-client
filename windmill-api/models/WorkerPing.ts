@@ -5,7 +5,7 @@
 export type WorkerPing = {
     worker: string;
     worker_instance: string;
-    ping_at: string;
+    last_ping?: number;
     started_at: string;
     ip: string;
     jobs_executed: number;
