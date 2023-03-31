@@ -879,7 +879,38 @@ export class JobService {
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/w/{workspace}/jobs/queue/cancel/{id}',
+            url: '/w/{workspace}/jobs_u/queue/cancel/{id}',
+            path: {
+                'workspace': workspace,
+                'id': id,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * force cancel queued job
+     * @returns string job canceled
+     * @throws ApiError
+     */
+    public static forceCancelQueuedJob({
+        workspace,
+        id,
+        requestBody,
+    }: {
+        workspace: string,
+        id: string,
+        /**
+         * reason
+         */
+        requestBody: {
+            reason?: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/jobs_u/queue/force_cancel/{id}',
             path: {
                 'workspace': workspace,
                 'id': id,

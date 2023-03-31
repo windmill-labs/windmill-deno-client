@@ -8,7 +8,6 @@ import type { Retry } from './Retry.ts';
 
 export type FlowModule = {
     id: string;
-    input_transforms?: Record<string, InputTransform>;
     value: FlowModuleValue;
     stop_after_if?: {
         skip_if_stopped?: boolean;
