@@ -40,7 +40,7 @@ export { ListableApp } from './models/ListableApp.ts';
 export type { ListableResource } from './models/ListableResource.ts';
 export type { ListableVariable } from './models/ListableVariable.ts';
 export type { Login } from './models/Login.ts';
-export type { MainArgSignature } from './models/MainArgSignature.ts';
+export { MainArgSignature } from './models/MainArgSignature.ts';
 export type { NewSchedule } from './models/NewSchedule.ts';
 export type { NewToken } from './models/NewToken.ts';
 export type { NewUser } from './models/NewUser.ts';

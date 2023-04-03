@@ -3,6 +3,8 @@
 /* eslint-disable */
 
 export type MainArgSignature = {
+    type: MainArgSignature.type;
+    error: string;
     star_args: boolean;
     star_kwargs?: boolean;
     args: Array<{
@@ -27,4 +29,14 @@ export type MainArgSignature = {
         default?: any;
     }>;
 };
+
+export namespace MainArgSignature {
+
+    export enum type {
+        VALID = 'Valid',
+        INVALID = 'Invalid',
+    }
+
+
+}
 
