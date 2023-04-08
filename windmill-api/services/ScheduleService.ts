@@ -13,7 +13,7 @@ export class ScheduleService {
 
     /**
      * preview schedule
-     * @returns string the preview of the next 10 time this schedule would apply to
+     * @returns string List of 5 estimated upcoming execution events (in UTC)
      * @throws ApiError
      */
     public static previewSchedule({
@@ -24,7 +24,7 @@ export class ScheduleService {
          */
         requestBody: {
             schedule: string;
-            offset?: number;
+            timezone: string;
         },
     }): CancelablePromise<Array<string>> {
         return __request(OpenAPI, {

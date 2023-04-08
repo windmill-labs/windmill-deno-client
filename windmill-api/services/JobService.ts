@@ -78,8 +78,6 @@ export class JobService {
         workspace,
         path,
         requestBody,
-        scheduledFor,
-        scheduledInSecs,
         parentJob,
         includeHeader,
         queueLimit,
@@ -90,14 +88,6 @@ export class JobService {
          * script args
          */
         requestBody: ScriptArgs,
-        /**
-         * when to schedule this job (leave empty for immediate run)
-         */
-        scheduledFor?: string,
-        /**
-         * schedule the script to execute in the number of seconds starting now
-         */
-        scheduledInSecs?: number,
         /**
          * The parent job that is at the origin and responsible for the execution of this script if any
          */
@@ -122,14 +112,65 @@ export class JobService {
                 'path': path,
             },
             query: {
-                'scheduled_for': scheduledFor,
-                'scheduled_in_secs': scheduledInSecs,
                 'parent_job': parentJob,
                 'include_header': includeHeader,
                 'queue_limit': queueLimit,
             },
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * run script by path with get
+     * @returns any job result
+     * @throws ApiError
+     */
+    public static runWaitResultScriptByPathGet({
+        workspace,
+        path,
+        parentJob,
+        includeHeader,
+        queueLimit,
+        payload,
+    }: {
+        workspace: string,
+        path: string,
+        /**
+         * The parent job that is at the origin and responsible for the execution of this script if any
+         */
+        parentJob?: string,
+        /**
+         * List of headers's keys (separated with ',') whove value are added to the args
+         * Header's key lowercased and '-'' replaced to '_' such that 'Content-Type' becomes the 'content_type' arg key
+         *
+         */
+        includeHeader?: string,
+        /**
+         * The maximum size of the queue for which the request would get rejected if that job would push it above that limit
+         *
+         */
+        queueLimit?: string,
+        /**
+         * The base64 encoded payload that has been encoded as a JSON. e.g how to encode such payload encodeURIComponent
+         * `encodeURIComponent(btoa(JSON.stringify({a: 2})))`
+         *
+         */
+        payload?: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/jobs/run_wait_result/p/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+            query: {
+                'parent_job': parentJob,
+                'include_header': includeHeader,
+                'queue_limit': queueLimit,
+                'payload': payload,
+            },
         });
     }
 
@@ -142,8 +183,6 @@ export class JobService {
         workspace,
         path,
         requestBody,
-        scheduledFor,
-        scheduledInSecs,
         includeHeader,
         queueLimit,
     }: {
@@ -153,14 +192,6 @@ export class JobService {
          * script args
          */
         requestBody: ScriptArgs,
-        /**
-         * when to schedule this job (leave empty for immediate run)
-         */
-        scheduledFor?: string,
-        /**
-         * schedule the script to execute in the number of seconds starting now
-         */
-        scheduledInSecs?: number,
         /**
          * List of headers's keys (separated with ',') whove value are added to the args
          * Header's key lowercased and '-'' replaced to '_' such that 'Content-Type' becomes the 'content_type' arg key
@@ -181,8 +212,6 @@ export class JobService {
                 'path': path,
             },
             query: {
-                'scheduled_for': scheduledFor,
-                'scheduled_in_secs': scheduledInSecs,
                 'include_header': includeHeader,
                 'queue_limit': queueLimit,
             },
@@ -994,12 +1023,19 @@ export class JobService {
         id,
         resumeId,
         signature,
+        payload,
         approver,
     }: {
         workspace: string,
         id: string,
         resumeId: number,
         signature: string,
+        /**
+         * The base64 encoded payload that has been encoded as a JSON. e.g how to encode such payload encodeURIComponent
+         * `encodeURIComponent(btoa(JSON.stringify({a: 2})))`
+         *
+         */
+        payload?: string,
         approver?: string,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
@@ -1012,6 +1048,7 @@ export class JobService {
                 'signature': signature,
             },
             query: {
+                'payload': payload,
                 'approver': approver,
             },
         });

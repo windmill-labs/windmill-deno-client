@@ -470,6 +470,31 @@ export class ScriptService {
     }
 
     /**
+     * raw script by path with a token (mostly used by lsp to be used with import maps to resolve scripts)
+     * @returns string script content
+     * @throws ApiError
+     */
+    public static rawScriptByPathTokened({
+        workspace,
+        token,
+        path,
+    }: {
+        workspace: string,
+        token: string,
+        path: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/scripts_u/tokened_raw/{workspace}/{token}/{path}',
+            path: {
+                'workspace': workspace,
+                'token': token,
+                'path': path,
+            },
+        });
+    }
+
+    /**
      * exists script by path
      * @returns boolean does it exists
      * @throws ApiError

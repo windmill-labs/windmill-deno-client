@@ -5,6 +5,7 @@ import type { EditWorkspaceUser } from '../models/EditWorkspaceUser.ts';
 import type { GlobalUserInfo } from '../models/GlobalUserInfo.ts';
 import type { Login } from '../models/Login.ts';
 import type { NewToken } from '../models/NewToken.ts';
+import type { NewTokenImpersonate } from '../models/NewTokenImpersonate.ts';
 import type { NewUser } from '../models/NewUser.ts';
 import type { TruncatedToken } from '../models/TruncatedToken.ts';
 import type { User } from '../models/User.ts';
@@ -483,6 +484,27 @@ export class UserService {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/users/tokens/create',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * create token to impersonate a user (require superadmin)
+     * @returns string token created
+     * @throws ApiError
+     */
+    public static createTokenImpersonate({
+        requestBody,
+    }: {
+        /**
+         * new token
+         */
+        requestBody: NewTokenImpersonate,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/users/tokens/impersonate',
             body: requestBody,
             mediaType: 'application/json',
         });

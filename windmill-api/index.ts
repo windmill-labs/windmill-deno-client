@@ -43,6 +43,7 @@ export type { Login } from './models/Login.ts';
 export { MainArgSignature } from './models/MainArgSignature.ts';
 export type { NewSchedule } from './models/NewSchedule.ts';
 export type { NewToken } from './models/NewToken.ts';
+export type { NewTokenImpersonate } from './models/NewTokenImpersonate.ts';
 export type { NewUser } from './models/NewUser.ts';
 export type { OpenFlow } from './models/OpenFlow.ts';
 export type { OpenFlowWPath } from './models/OpenFlowWPath.ts';

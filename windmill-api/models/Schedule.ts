@@ -9,7 +9,7 @@ export type Schedule = {
     edited_by: string;
     edited_at: string;
     schedule: string;
-    offset_: number;
+    timezone: string;
     enabled: boolean;
     script_path: string;
     is_flow: boolean;

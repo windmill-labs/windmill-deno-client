@@ -7,7 +7,7 @@ import type { ScriptArgs } from './ScriptArgs.ts';
 export type NewSchedule = {
     path: string;
     schedule: string;
-    offset?: number;
+    timezone: string;
     script_path: string;
     is_flow: boolean;
     args: ScriptArgs;
