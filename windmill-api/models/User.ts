@@ -14,6 +14,7 @@ export type User = {
     disabled: boolean;
     groups?: Array<string>;
     folders: Array<string>;
+    folders_owners: Array<string>;
     usage?: Usage;
 };
 

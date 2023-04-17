@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { Flow } from '../models/Flow.ts';
+import type { Input } from '../models/Input.ts';
 import type { OpenFlow } from '../models/OpenFlow.ts';
 import type { OpenFlowWPath } from '../models/OpenFlowWPath.ts';
 
@@ -254,9 +255,16 @@ export class FlowService {
     public static archiveFlowByPath({
         workspace,
         path,
+        requestBody,
     }: {
         workspace: string,
         path: string,
+        /**
+         * archiveFlow
+         */
+        requestBody: {
+            archived?: boolean;
+        },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -265,6 +273,8 @@ export class FlowService {
                 'workspace': workspace,
                 'path': path,
             },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
 
@@ -286,6 +296,42 @@ export class FlowService {
             path: {
                 'workspace': workspace,
                 'path': path,
+            },
+        });
+    }
+
+    /**
+     * list inputs for previous completed flow jobs
+     * @returns Input input history for completed jobs with this flow path
+     * @throws ApiError
+     */
+    public static getFlowInputHistoryByPath({
+        workspace,
+        path,
+        page,
+        perPage,
+    }: {
+        workspace: string,
+        path: string,
+        /**
+         * which page to return (start at 1, default 1)
+         */
+        page?: number,
+        /**
+         * number of items to return for a given page (default 30, max 100)
+         */
+        perPage?: number,
+    }): CancelablePromise<Array<Input>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/flows/input_history/p/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+            query: {
+                'page': page,
+                'per_page': perPage,
             },
         });
     }
