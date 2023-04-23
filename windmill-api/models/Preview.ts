@@ -9,6 +9,7 @@ export type Preview = {
     path?: string;
     args: ScriptArgs;
     language: Preview.language;
+    tag?: string;
 };
 
 export namespace Preview {

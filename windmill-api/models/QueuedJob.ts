@@ -39,6 +39,7 @@ export type QueuedJob = {
     email: string;
     visible_to_owner: boolean;
     mem_peak?: number;
+    tag: string;
 };
 
 export namespace QueuedJob {

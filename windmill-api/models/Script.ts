@@ -26,6 +26,7 @@ export type Script = {
     language: Script.language;
     kind: Script.kind;
     starred: boolean;
+    tag?: string;
 };
 
 export namespace Script {

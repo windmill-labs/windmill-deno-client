@@ -240,6 +240,7 @@ export class ScriptService {
             lock?: Array<string>;
             language: 'python3' | 'deno' | 'go' | 'bash';
             kind?: 'script' | 'failure' | 'trigger' | 'command' | 'approval';
+            tag?: string;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {

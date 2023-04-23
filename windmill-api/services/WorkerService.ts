@@ -10,6 +10,18 @@ import { request as __request } from '../core/request.ts';
 export class WorkerService {
 
     /**
+     * get all instance custom tags (tags are used to dispatch jobs to different worker groups)
+     * @returns string list of custom tags
+     * @throws ApiError
+     */
+    public static getCustomTags(): CancelablePromise<Array<string>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/workers/custom_tags',
+        });
+    }
+
+    /**
      * list workers
      * @returns WorkerPing a list of workers
      * @throws ApiError

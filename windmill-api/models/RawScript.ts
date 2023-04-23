@@ -11,6 +11,7 @@ export type RawScript = {
     path?: string;
     lock?: string;
     type: 'rawscript';
+    tag?: string;
 };
 
 export namespace RawScript {
