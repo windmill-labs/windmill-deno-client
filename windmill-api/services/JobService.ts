@@ -476,6 +476,7 @@ export class JobService {
         running,
         args,
         result,
+        tag,
     }: {
         workspace: string,
         /**
@@ -534,6 +535,10 @@ export class JobService {
          * filter on jobs containing those result as a json subset (@> in postgres)
          */
         result?: string,
+        /**
+         * filter on jobs with a given tag/worker group
+         */
+        tag?: string,
     }): CancelablePromise<Array<QueuedJob>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -556,6 +561,7 @@ export class JobService {
                 'running': running,
                 'args': args,
                 'result': result,
+                'tag': tag,
             },
         });
     }
@@ -579,6 +585,7 @@ export class JobService {
         jobKinds,
         args,
         result,
+        tag,
         isSkipped,
         isFlowStep,
     }: {
@@ -632,6 +639,10 @@ export class JobService {
          */
         result?: string,
         /**
+         * filter on jobs with a given tag/worker group
+         */
+        tag?: string,
+        /**
          * is the job skipped
          */
         isSkipped?: boolean,
@@ -659,6 +670,7 @@ export class JobService {
                 'job_kinds': jobKinds,
                 'args': args,
                 'result': result,
+                'tag': tag,
                 'is_skipped': isSkipped,
                 'is_flow_step': isFlowStep,
             },
@@ -681,6 +693,7 @@ export class JobService {
         startedAfter,
         jobKinds,
         args,
+        tag,
         result,
         isSkipped,
         isFlowStep,
@@ -724,6 +737,10 @@ export class JobService {
          */
         args?: string,
         /**
+         * filter on jobs with a given tag/worker group
+         */
+        tag?: string,
+        /**
          * filter on jobs containing those result as a json subset (@> in postgres)
          */
         result?: string,
@@ -756,6 +773,7 @@ export class JobService {
                 'started_after': startedAfter,
                 'job_kinds': jobKinds,
                 'args': args,
+                'tag': tag,
                 'result': result,
                 'is_skipped': isSkipped,
                 'is_flow_step': isFlowStep,
