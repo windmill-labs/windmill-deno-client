@@ -27,6 +27,8 @@ export type Script = {
     kind: Script.kind;
     starred: boolean;
     tag?: string;
+    has_draft?: boolean;
+    draft_only?: boolean;
 };
 
 export namespace Script {

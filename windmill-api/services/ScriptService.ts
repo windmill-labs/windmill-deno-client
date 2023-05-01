@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { MainArgSignature } from '../models/MainArgSignature.ts';
+import type { NewScript } from '../models/NewScript.ts';
 import type { Script } from '../models/Script.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
@@ -229,19 +230,7 @@ export class ScriptService {
         /**
          * Partially filled script
          */
-        requestBody: {
-            path: string;
-            parent_hash?: string;
-            summary: string;
-            description: string;
-            content: string;
-            schema?: any;
-            is_template?: boolean;
-            lock?: Array<string>;
-            language: 'python3' | 'deno' | 'go' | 'bash';
-            kind?: 'script' | 'failure' | 'trigger' | 'command' | 'approval';
-            tag?: string;
-        },
+        requestBody: NewScript,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -441,6 +430,31 @@ export class ScriptService {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/w/{workspace}/scripts/get/p/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
+     * get script by path with draft
+     * @returns any script details
+     * @throws ApiError
+     */
+    public static getScriptByPathWithDraft({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<(NewScript & {
+        draft?: NewScript;
+        hash: string;
+    })> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/scripts/get/draft/{path}',
             path: {
                 'workspace': workspace,
                 'path': path,

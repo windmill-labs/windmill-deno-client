@@ -166,6 +166,31 @@ export class AppService {
     }
 
     /**
+     * get app by path with draft
+     * @returns any app details with draft
+     * @throws ApiError
+     */
+    public static getAppByPathWithDraft({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<(AppWithLastVersion & {
+        draft_only?: boolean;
+        draft?: any;
+    })> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/apps/get/draft/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
      * get public app by secret
      * @returns AppWithLastVersion app details
      * @throws ApiError
@@ -249,6 +274,7 @@ export class AppService {
             value: any;
             summary: string;
             policy: Policy;
+            draft_only?: boolean;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {

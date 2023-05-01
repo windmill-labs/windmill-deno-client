@@ -11,5 +11,6 @@ export type FlowMetadata = {
     extra_perms: any;
     additionalProperties?: boolean;
     starred?: boolean;
+    draft_only?: boolean;
 };
 

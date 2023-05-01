@@ -75,7 +75,7 @@ export class FlowService {
 
     /**
      * list all available flows
-     * @returns Flow All available flow
+     * @returns any All available flow
      * @throws ApiError
      */
     public static listFlows({
@@ -128,7 +128,10 @@ export class FlowService {
          *
          */
         starredOnly?: boolean,
-    }): CancelablePromise<Array<Flow>> {
+    }): CancelablePromise<Array<(Flow & {
+        has_draft?: boolean;
+        draft_only?: boolean;
+    })>> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/w/{workspace}/flows/list',
@@ -171,6 +174,30 @@ export class FlowService {
     }
 
     /**
+     * get flow by path with draft
+     * @returns any flow details with draft
+     * @throws ApiError
+     */
+    public static getFlowByPathWithDraft({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<(Flow & {
+        draft?: Flow;
+    })> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/flows/get/draft/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
      * exists flow by path
      * @returns boolean flow details
      * @throws ApiError
@@ -205,7 +232,9 @@ export class FlowService {
         /**
          * Partially filled flow
          */
-        requestBody: OpenFlowWPath,
+        requestBody: (OpenFlowWPath & {
+            draft_only?: boolean;
+        }),
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
