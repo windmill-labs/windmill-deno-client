@@ -3,6 +3,7 @@
 /* eslint-disable */
 import type { MainArgSignature } from '../models/MainArgSignature.ts';
 import type { NewScript } from '../models/NewScript.ts';
+import type { NewScriptWithDraft } from '../models/NewScriptWithDraft.ts';
 import type { Script } from '../models/Script.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
@@ -439,7 +440,7 @@ export class ScriptService {
 
     /**
      * get script by path with draft
-     * @returns any script details
+     * @returns NewScriptWithDraft script details
      * @throws ApiError
      */
     public static getScriptByPathWithDraft({
@@ -448,10 +449,7 @@ export class ScriptService {
     }: {
         workspace: string,
         path: string,
-    }): CancelablePromise<(NewScript & {
-        draft?: NewScript;
-        hash: string;
-    })> {
+    }): CancelablePromise<NewScriptWithDraft> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/w/{workspace}/scripts/get/draft/{path}',

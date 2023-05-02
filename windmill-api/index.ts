@@ -46,6 +46,7 @@ export type { Login } from './models/Login.ts';
 export { MainArgSignature } from './models/MainArgSignature.ts';
 export type { NewSchedule } from './models/NewSchedule.ts';
 export { NewScript } from './models/NewScript.ts';
+export type { NewScriptWithDraft } from './models/NewScriptWithDraft.ts';
 export type { NewToken } from './models/NewToken.ts';
 export type { NewTokenImpersonate } from './models/NewTokenImpersonate.ts';
 export type { NewUser } from './models/NewUser.ts';
