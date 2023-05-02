@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { AppWithLastVersion } from '../models/AppWithLastVersion.ts';
+import type { AppWithLastVersionWDraft } from '../models/AppWithLastVersionWDraft.ts';
 import type { ListableApp } from '../models/ListableApp.ts';
 import type { Policy } from '../models/Policy.ts';
 
@@ -167,7 +168,7 @@ export class AppService {
 
     /**
      * get app by path with draft
-     * @returns any app details with draft
+     * @returns AppWithLastVersionWDraft app details with draft
      * @throws ApiError
      */
     public static getAppByPathWithDraft({
@@ -176,10 +177,7 @@ export class AppService {
     }: {
         workspace: string,
         path: string,
-    }): CancelablePromise<(AppWithLastVersion & {
-        draft_only?: boolean;
-        draft?: any;
-    })> {
+    }): CancelablePromise<AppWithLastVersionWDraft> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/w/{workspace}/apps/get/draft/{path}',

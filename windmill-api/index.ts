@@ -7,6 +7,7 @@ export { OpenAPI } from './core/OpenAPI.ts';
 export type { OpenAPIConfig } from './core/OpenAPI.ts';
 
 export { AppWithLastVersion } from './models/AppWithLastVersion.ts';
+export type { AppWithLastVersionWDraft } from './models/AppWithLastVersionWDraft.ts';
 export { AuditLog } from './models/AuditLog.ts';
 export type { BranchAll } from './models/BranchAll.ts';
 export type { BranchOne } from './models/BranchOne.ts';
