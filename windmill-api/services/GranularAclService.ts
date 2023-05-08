@@ -19,7 +19,7 @@ export class GranularAclService {
     }: {
         workspace: string,
         path: string,
-        kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow' | 'folder' | 'app',
+        kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow' | 'folder' | 'app' | 'raw_app',
     }): CancelablePromise<Record<string, boolean>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -45,7 +45,7 @@ export class GranularAclService {
     }: {
         workspace: string,
         path: string,
-        kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow' | 'folder' | 'app',
+        kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow' | 'folder' | 'app' | 'raw_app',
         /**
          * acl to add
          */
@@ -80,7 +80,7 @@ export class GranularAclService {
     }: {
         workspace: string,
         path: string,
-        kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow' | 'folder' | 'app',
+        kind: 'script' | 'group_' | 'resource' | 'schedule' | 'variable' | 'flow' | 'folder' | 'app' | 'raw_app',
         /**
          * acl to add
          */

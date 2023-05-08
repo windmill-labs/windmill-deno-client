@@ -19,7 +19,7 @@ export class FavoriteService {
         workspace: string,
         requestBody?: {
             path?: string;
-            favorite_kind?: 'flow' | 'app' | 'script';
+            favorite_kind?: 'flow' | 'app' | 'script' | 'raw_app';
         },
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
@@ -45,7 +45,7 @@ export class FavoriteService {
         workspace: string,
         requestBody?: {
             path?: string;
-            favorite_kind?: 'flow' | 'app' | 'script';
+            favorite_kind?: 'flow' | 'app' | 'script' | 'raw_app';
         },
     }): CancelablePromise<any> {
         return __request(OpenAPI, {

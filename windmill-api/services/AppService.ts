@@ -123,6 +123,38 @@ export class AppService {
     }
 
     /**
+     * create app
+     * @returns string app created
+     * @throws ApiError
+     */
+    public static createApp({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * new app
+         */
+        requestBody: {
+            path: string;
+            value: any;
+            summary: string;
+            policy: Policy;
+            draft_only?: boolean;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/apps/create',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * does an app exisst at path
      * @returns boolean app exists
      * @throws ApiError
@@ -251,38 +283,6 @@ export class AppService {
                 'workspace': workspace,
                 'id': id,
             },
-        });
-    }
-
-    /**
-     * create app
-     * @returns string app created
-     * @throws ApiError
-     */
-    public static createApp({
-        workspace,
-        requestBody,
-    }: {
-        workspace: string,
-        /**
-         * new app
-         */
-        requestBody: {
-            path: string;
-            value: any;
-            summary: string;
-            policy: Policy;
-            draft_only?: boolean;
-        },
-    }): CancelablePromise<string> {
-        return __request(OpenAPI, {
-            method: 'POST',
-            url: '/w/{workspace}/apps/create',
-            path: {
-                'workspace': workspace,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
         });
     }
 
