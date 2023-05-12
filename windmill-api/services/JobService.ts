@@ -884,6 +884,31 @@ export class JobService {
     }
 
     /**
+     * get completed job result if job is completed
+     * @returns any result
+     * @throws ApiError
+     */
+    public static getCompletedJobResultMaybe({
+        workspace,
+        id,
+    }: {
+        workspace: string,
+        id: string,
+    }): CancelablePromise<{
+        completed: boolean;
+        result: any;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/jobs/completed/get_result_maybe/{id}',
+            path: {
+                'workspace': workspace,
+                'id': id,
+            },
+        });
+    }
+
+    /**
      * delete completed job (erase content but keep run id)
      * @returns CompletedJob job details
      * @throws ApiError
