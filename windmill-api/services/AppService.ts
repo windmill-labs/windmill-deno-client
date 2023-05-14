@@ -358,6 +358,7 @@ export class AppService {
          * update app
          */
         requestBody: {
+            component: string;
             path?: string;
             args: any;
             raw_code?: {
