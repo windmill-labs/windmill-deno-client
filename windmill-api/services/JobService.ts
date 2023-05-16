@@ -901,7 +901,7 @@ export class JobService {
     }): CancelablePromise<CompletedJob> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/jobs/completed/get/{id}',
+            url: '/w/{workspace}/jobs_u/completed/get/{id}',
             path: {
                 'workspace': workspace,
                 'id': id,
@@ -923,7 +923,7 @@ export class JobService {
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/jobs/completed/get_result/{id}',
+            url: '/w/{workspace}/jobs_u/completed/get_result/{id}',
             path: {
                 'workspace': workspace,
                 'id': id,
@@ -948,7 +948,7 @@ export class JobService {
     }> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/jobs/completed/get_result_maybe/{id}',
+            url: '/w/{workspace}/jobs_u/completed/get_result_maybe/{id}',
             path: {
                 'workspace': workspace,
                 'id': id,
