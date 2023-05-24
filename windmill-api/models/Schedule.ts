@@ -17,5 +17,6 @@ export type Schedule = {
     extra_perms: Record<string, boolean>;
     email: string;
     error?: string;
+    on_failure?: string;
 };
 

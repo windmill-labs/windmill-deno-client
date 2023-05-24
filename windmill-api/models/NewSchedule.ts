@@ -12,5 +12,6 @@ export type NewSchedule = {
     is_flow: boolean;
     args: ScriptArgs;
     enabled?: boolean;
+    on_failure?: string;
 };
 

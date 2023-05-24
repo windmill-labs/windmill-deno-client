@@ -8,5 +8,6 @@ export type EditSchedule = {
     schedule: string;
     timezone: string;
     args: ScriptArgs;
+    on_failure?: string;
 };
 

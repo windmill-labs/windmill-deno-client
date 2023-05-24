@@ -20,6 +20,18 @@ export class SettingsService {
     }
 
     /**
+     * get license id
+     * @returns string get license id (empty if not ee)
+     * @throws ApiError
+     */
+    public static getLicenseId(): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/ee_license',
+        });
+    }
+
+    /**
      * get openapi yaml spec
      * @returns string openapi yaml file content
      * @throws ApiError
