@@ -272,6 +272,25 @@ export class UserService {
     }
 
     /**
+     * get all runnables in every workspace
+     * @returns any free all runnables
+     * @throws ApiError
+     */
+    public static getRunnable(): CancelablePromise<{
+        workspace: string;
+        endpoint_async: string;
+        endpoint_sync: string;
+        summary: string;
+        description?: string;
+        kind: 'script' | 'flow';
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/users/all_runnables',
+        });
+    }
+
+    /**
      * get current global whoami (if logged in)
      * @returns GlobalUserInfo user email
      * @throws ApiError

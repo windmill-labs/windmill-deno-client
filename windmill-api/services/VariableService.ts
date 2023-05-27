@@ -44,6 +44,32 @@ export class VariableService {
     }
 
     /**
+     * encrypt value
+     * @returns string encrypted value
+     * @throws ApiError
+     */
+    public static encryptValue({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * new variable
+         */
+        requestBody: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/variables/encrypt',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * delete variable
      * @returns string variable deleted
      * @throws ApiError
