@@ -282,7 +282,7 @@ export class UserService {
         endpoint_sync: string;
         summary: string;
         description?: string;
-        kind: 'script' | 'flow';
+        kind: string;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
