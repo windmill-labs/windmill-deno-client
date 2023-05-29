@@ -5,5 +5,6 @@
 export type NewToken = {
     label?: string;
     expiration?: string;
+    scopes?: Array<string>;
 };
 

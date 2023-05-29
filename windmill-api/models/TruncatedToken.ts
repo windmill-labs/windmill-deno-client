@@ -8,5 +8,6 @@ export type TruncatedToken = {
     token_prefix: string;
     created_at: string;
     last_used_at: string;
+    scopes?: Array<string>;
 };
 
