@@ -280,6 +280,7 @@ export class UserService {
         workspace: string;
         endpoint_async: string;
         endpoint_sync: string;
+        endpoint_openai_sync: string;
         summary: string;
         description?: string;
         kind: string;

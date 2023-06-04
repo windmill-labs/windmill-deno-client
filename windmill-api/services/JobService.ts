@@ -76,6 +76,64 @@ export class JobService {
     }
 
     /**
+     * run script by path in openai format
+     * @returns any job result
+     * @throws ApiError
+     */
+    public static openaiSyncScriptByPath({
+        workspace,
+        path,
+        requestBody,
+        parentJob,
+        jobId,
+        includeHeader,
+        queueLimit,
+    }: {
+        workspace: string,
+        path: string,
+        /**
+         * script args
+         */
+        requestBody: ScriptArgs,
+        /**
+         * The parent job that is at the origin and responsible for the execution of this script if any
+         */
+        parentJob?: string,
+        /**
+         * The job id to assign to the created job. if missing, job is chosen randomly using the ULID scheme. If a job id already exists in the queue or as a completed job, the request to create one will fail (Bad Request)
+         */
+        jobId?: string,
+        /**
+         * List of headers's keys (separated with ',') whove value are added to the args
+         * Header's key lowercased and '-'' replaced to '_' such that 'Content-Type' becomes the 'content_type' arg key
+         *
+         */
+        includeHeader?: string,
+        /**
+         * The maximum size of the queue for which the request would get rejected if that job would push it above that limit
+         *
+         */
+        queueLimit?: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/jobs/openai_sync/p/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+            query: {
+                'parent_job': parentJob,
+                'job_id': jobId,
+                'include_header': includeHeader,
+                'queue_limit': queueLimit,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * run script by path
      * @returns any job result
      * @throws ApiError
@@ -189,6 +247,58 @@ export class JobService {
                 'queue_limit': queueLimit,
                 'payload': payload,
             },
+        });
+    }
+
+    /**
+     * run flow by path and wait until completion in openai format
+     * @returns any job result
+     * @throws ApiError
+     */
+    public static openaiSyncFlowByPath({
+        workspace,
+        path,
+        requestBody,
+        includeHeader,
+        queueLimit,
+        jobId,
+    }: {
+        workspace: string,
+        path: string,
+        /**
+         * script args
+         */
+        requestBody: ScriptArgs,
+        /**
+         * List of headers's keys (separated with ',') whove value are added to the args
+         * Header's key lowercased and '-'' replaced to '_' such that 'Content-Type' becomes the 'content_type' arg key
+         *
+         */
+        includeHeader?: string,
+        /**
+         * The maximum size of the queue for which the request would get rejected if that job would push it above that limit
+         *
+         */
+        queueLimit?: string,
+        /**
+         * The job id to assign to the created job. if missing, job is chosen randomly using the ULID scheme. If a job id already exists in the queue or as a completed job, the request to create one will fail (Bad Request)
+         */
+        jobId?: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/jobs/openai_sync/f/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+            query: {
+                'include_header': includeHeader,
+                'queue_limit': queueLimit,
+                'job_id': jobId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
 
