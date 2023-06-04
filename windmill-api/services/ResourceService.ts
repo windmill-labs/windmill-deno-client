@@ -22,18 +22,23 @@ export class ResourceService {
     public static createResource({
         workspace,
         requestBody,
+        updateIfExists,
     }: {
         workspace: string,
         /**
          * new resource
          */
         requestBody: CreateResource,
+        updateIfExists?: boolean,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/w/{workspace}/resources/create',
             path: {
                 'workspace': workspace,
+            },
+            query: {
+                'update_if_exists': updateIfExists,
             },
             body: requestBody,
             mediaType: 'application/json',

@@ -14,6 +14,7 @@ export type FlowModule = {
         expr: string;
     };
     sleep?: InputTransform;
+    cache_ttl?: number;
     summary?: string;
     suspend?: {
         required_events?: number;
