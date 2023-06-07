@@ -15,6 +15,7 @@ export type NewScript = {
     kind?: NewScript.kind;
     tag?: string;
     draft_only?: boolean;
+    envs?: Array<string>;
 };
 
 export namespace NewScript {

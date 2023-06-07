@@ -1,7 +1,6 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { MainArgSignature } from '../models/MainArgSignature.ts';
 import type { NewScript } from '../models/NewScript.ts';
 import type { NewScriptWithDraft } from '../models/NewScriptWithDraft.ts';
 import type { Script } from '../models/Script.ts';
@@ -239,90 +238,6 @@ export class ScriptService {
             path: {
                 'workspace': workspace,
             },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-
-    /**
-     * inspect python code to infer jsonschema of arguments
-     * @returns MainArgSignature parsed args
-     * @throws ApiError
-     */
-    public static pythonToJsonschema({
-        requestBody,
-    }: {
-        /**
-         * python code with the main function
-         */
-        requestBody: string,
-    }): CancelablePromise<MainArgSignature> {
-        return __request(OpenAPI, {
-            method: 'POST',
-            url: '/scripts/python/tojsonschema',
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-
-    /**
-     * inspect deno code to infer jsonschema of arguments
-     * @returns MainArgSignature parsed args
-     * @throws ApiError
-     */
-    public static denoToJsonschema({
-        requestBody,
-    }: {
-        /**
-         * deno code with the main function
-         */
-        requestBody: string,
-    }): CancelablePromise<MainArgSignature> {
-        return __request(OpenAPI, {
-            method: 'POST',
-            url: '/scripts/deno/tojsonschema',
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-
-    /**
-     * inspect bash code to infer jsonschema of arguments
-     * @returns MainArgSignature parsed args
-     * @throws ApiError
-     */
-    public static bashToJsonschema({
-        requestBody,
-    }: {
-        /**
-         * bash code with the main function
-         */
-        requestBody: string,
-    }): CancelablePromise<MainArgSignature> {
-        return __request(OpenAPI, {
-            method: 'POST',
-            url: '/scripts/bash/tojsonschema',
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-
-    /**
-     * inspect go code to infer jsonschema of arguments
-     * @returns MainArgSignature parsed args
-     * @throws ApiError
-     */
-    public static goToJsonschema({
-        requestBody,
-    }: {
-        /**
-         * go code with the main function
-         */
-        requestBody: string,
-    }): CancelablePromise<MainArgSignature> {
-        return __request(OpenAPI, {
-            method: 'POST',
-            url: '/scripts/go/tojsonschema',
             body: requestBody,
             mediaType: 'application/json',
         });

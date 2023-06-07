@@ -29,6 +29,7 @@ export type Script = {
     tag?: string;
     has_draft?: boolean;
     draft_only?: boolean;
+    envs?: Array<string>;
 };
 
 export namespace Script {
