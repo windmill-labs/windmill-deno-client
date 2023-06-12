@@ -4,6 +4,7 @@
 import type { EditSchedule } from '../models/EditSchedule.ts';
 import type { NewSchedule } from '../models/NewSchedule.ts';
 import type { Schedule } from '../models/Schedule.ts';
+import type { ScheduleWJobs } from '../models/ScheduleWJobs.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
 import { OpenAPI } from '../core/OpenAPI.ts';
@@ -210,6 +211,39 @@ export class ScheduleService {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/w/{workspace}/schedules/list',
+            path: {
+                'workspace': workspace,
+            },
+            query: {
+                'page': page,
+                'per_page': perPage,
+            },
+        });
+    }
+
+    /**
+     * list schedules with last 20 jobs
+     * @returns ScheduleWJobs schedule list
+     * @throws ApiError
+     */
+    public static listSchedulesWithJobs({
+        workspace,
+        page,
+        perPage,
+    }: {
+        workspace: string,
+        /**
+         * which page to return (start at 1, default 1)
+         */
+        page?: number,
+        /**
+         * number of items to return for a given page (default 30, max 100)
+         */
+        perPage?: number,
+    }): CancelablePromise<Array<ScheduleWJobs>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/schedules/list_with_jobs',
             path: {
                 'workspace': workspace,
             },

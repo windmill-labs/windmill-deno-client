@@ -64,6 +64,7 @@ export type { ResourceType } from './models/ResourceType.ts';
 export type { Retry } from './models/Retry.ts';
 export { RunnableType } from './models/RunnableType.ts';
 export type { Schedule } from './models/Schedule.ts';
+export type { ScheduleWJobs } from './models/ScheduleWJobs.ts';
 export { Script } from './models/Script.ts';
 export type { ScriptArgs } from './models/ScriptArgs.ts';
 export type { SlackToken } from './models/SlackToken.ts';

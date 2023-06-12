@@ -625,6 +625,7 @@ export class JobService {
         parentJob,
         scriptPathExact,
         scriptPathStart,
+        schedulePath,
         scriptHash,
         startedBefore,
         startedAfter,
@@ -657,6 +658,10 @@ export class JobService {
          * mask to filter matching starting path
          */
         scriptPathStart?: string,
+        /**
+         * mask to filter by schedule path
+         */
+        schedulePath?: string,
         /**
          * mask to filter exact matching path
          */
@@ -710,6 +715,7 @@ export class JobService {
                 'parent_job': parentJob,
                 'script_path_exact': scriptPathExact,
                 'script_path_start': scriptPathStart,
+                'schedule_path': schedulePath,
                 'script_hash': scriptHash,
                 'started_before': startedBefore,
                 'started_after': startedAfter,
@@ -736,6 +742,7 @@ export class JobService {
         parentJob,
         scriptPathExact,
         scriptPathStart,
+        schedulePath,
         scriptHash,
         startedBefore,
         startedAfter,
@@ -768,6 +775,10 @@ export class JobService {
          * mask to filter matching starting path
          */
         scriptPathStart?: string,
+        /**
+         * mask to filter by schedule path
+         */
+        schedulePath?: string,
         /**
          * mask to filter exact matching path
          */
@@ -821,6 +832,7 @@ export class JobService {
                 'parent_job': parentJob,
                 'script_path_exact': scriptPathExact,
                 'script_path_start': scriptPathStart,
+                'schedule_path': schedulePath,
                 'script_hash': scriptHash,
                 'started_before': startedBefore,
                 'started_after': startedAfter,
@@ -846,6 +858,7 @@ export class JobService {
         parentJob,
         scriptPathExact,
         scriptPathStart,
+        schedulePath,
         scriptHash,
         startedBefore,
         startedAfter,
@@ -874,6 +887,10 @@ export class JobService {
          * mask to filter matching starting path
          */
         scriptPathStart?: string,
+        /**
+         * mask to filter by schedule path
+         */
+        schedulePath?: string,
         /**
          * mask to filter exact matching path
          */
@@ -926,6 +943,7 @@ export class JobService {
                 'parent_job': parentJob,
                 'script_path_exact': scriptPathExact,
                 'script_path_start': scriptPathStart,
+                'schedule_path': schedulePath,
                 'script_hash': scriptHash,
                 'started_before': startedBefore,
                 'started_after': startedAfter,
