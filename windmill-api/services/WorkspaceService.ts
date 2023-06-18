@@ -327,10 +327,32 @@ export class WorkspaceService {
         plan?: string;
         customer_id?: string;
         webhook?: string;
+        deploy_to?: string;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/w/{workspace}/workspaces/get_settings',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
+     * get deploy to
+     * @returns any status
+     * @throws ApiError
+     */
+    public static getDeployTo({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<{
+        deploy_to?: string;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/workspaces/get_deploy_to',
             path: {
                 'workspace': workspace,
             },
@@ -379,6 +401,31 @@ export class WorkspaceService {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/w/{workspace}/workspaces/edit_slack_command',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * edit deploy to
+     * @returns string status
+     * @throws ApiError
+     */
+    public static editDeployTo({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        requestBody: {
+            deploy_to?: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/edit_deploy_to',
             path: {
                 'workspace': workspace,
             },
