@@ -34,4 +34,29 @@ export class DraftService {
         });
     }
 
+    /**
+     * delete draft
+     * @returns string draft deleted
+     * @throws ApiError
+     */
+    public static deleteDraft({
+        workspace,
+        kind,
+        path,
+    }: {
+        workspace: string,
+        kind: 'script' | 'flow' | 'app',
+        path: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/w/{workspace}/drafts/delete/{kind}/{path}',
+            path: {
+                'workspace': workspace,
+                'kind': kind,
+                'path': path,
+            },
+        });
+    }
+
 }
