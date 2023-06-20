@@ -19,6 +19,9 @@ export type FlowModule = {
     suspend?: {
         required_events?: number;
         timeout?: number;
+        resume_form?: {
+            schema?: any;
+        };
     };
     retry?: Retry;
 };
