@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 export type EditResourceType = {
-    schema?: string;
+    schema?: any;
     description?: string;
 };
 
