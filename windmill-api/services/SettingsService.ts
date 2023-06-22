@@ -20,6 +20,18 @@ export class SettingsService {
     }
 
     /**
+     * is backend up to date
+     * @returns string is backend up to date
+     * @throws ApiError
+     */
+    public static backendUptodate(): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/uptodate',
+        });
+    }
+
+    /**
      * get license id
      * @returns string get license id (empty if not ee)
      * @throws ApiError
