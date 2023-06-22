@@ -981,6 +981,28 @@ export class JobService {
     }
 
     /**
+     * get job logs
+     * @returns string job details
+     * @throws ApiError
+     */
+    public static getJobLogs({
+        workspace,
+        id,
+    }: {
+        workspace: string,
+        id: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/jobs_u/get_logs/{id}',
+            path: {
+                'workspace': workspace,
+                'id': id,
+            },
+        });
+    }
+
+    /**
      * get job updates
      * @returns any job details
      * @throws ApiError
