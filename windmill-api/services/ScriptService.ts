@@ -66,7 +66,7 @@ export class ScriptService {
         content: string;
         lockfile?: string;
         schema?: any;
-        language: 'deno' | 'python3' | 'go' | 'bash' | 'postgresql';
+        language: string;
         summary?: string;
     }> {
         return __request(OpenAPI, {
