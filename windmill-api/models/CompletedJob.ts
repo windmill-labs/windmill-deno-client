@@ -54,6 +54,9 @@ export namespace CompletedJob {
         FLOWPREVIEW = 'flowpreview',
         SCRIPT_HUB = 'script_hub',
         IDENTITY = 'identity',
+        HTTP = 'http',
+        GRAPHQL = 'graphql',
+        POSTGRESQL = 'postgresql',
     }
 
     export enum language {
@@ -61,6 +64,7 @@ export namespace CompletedJob {
         DENO = 'deno',
         GO = 'go',
         BASH = 'bash',
+        POSTGRESQL = 'postgresql',
     }
 
 

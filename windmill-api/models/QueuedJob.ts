@@ -53,7 +53,6 @@ export namespace QueuedJob {
         SCRIPT_HUB = 'script_hub',
         IDENTITY = 'identity',
         HTTP = 'http',
-        POSTGRESQL = 'postgresql',
         GRAPHQL = 'graphql',
     }
 
@@ -62,6 +61,7 @@ export namespace QueuedJob {
         DENO = 'deno',
         GO = 'go',
         BASH = 'bash',
+        POSTGRESQL = 'postgresql',
     }
 
 

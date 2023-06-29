@@ -10,8 +10,7 @@ import type { Http } from './Http.ts';
 import type { Identity } from './Identity.ts';
 import type { PathFlow } from './PathFlow.ts';
 import type { PathScript } from './PathScript.ts';
-import type { Postgresql } from './Postgresql.ts';
 import type { RawScript } from './RawScript.ts';
 
-export type FlowModuleValue = (RawScript | PathScript | PathFlow | ForloopFlow | BranchOne | BranchAll | Identity | Postgresql | Http | Graphql);
+export type FlowModuleValue = (RawScript | PathScript | PathFlow | ForloopFlow | BranchOne | BranchAll | Identity | Http | Graphql);
 

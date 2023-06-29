@@ -423,6 +423,25 @@ export class UserService {
     }
 
     /**
+     * exists email
+     * @returns boolean user
+     * @throws ApiError
+     */
+    public static existsEmail({
+        email,
+    }: {
+        email: string,
+    }): CancelablePromise<boolean> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/users/exists/{email}',
+            path: {
+                'email': email,
+            },
+        });
+    }
+
+    /**
      * list all users as super admin (require to be super amdin)
      * @returns GlobalUserInfo user
      * @throws ApiError

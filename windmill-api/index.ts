@@ -58,7 +58,6 @@ export type { OpenFlowWPath } from './models/OpenFlowWPath.ts';
 export type { PathFlow } from './models/PathFlow.ts';
 export type { PathScript } from './models/PathScript.ts';
 export { Policy } from './models/Policy.ts';
-export type { Postgresql } from './models/Postgresql.ts';
 export { Preview } from './models/Preview.ts';
 export { QueuedJob } from './models/QueuedJob.ts';
 export { RawScript } from './models/RawScript.ts';

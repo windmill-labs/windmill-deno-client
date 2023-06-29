@@ -25,6 +25,7 @@ export namespace NewScript {
         DENO = 'deno',
         GO = 'go',
         BASH = 'bash',
+        POSTGRESQL = 'postgresql',
     }
 
     export enum kind {

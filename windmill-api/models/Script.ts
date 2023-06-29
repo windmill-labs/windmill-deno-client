@@ -39,6 +39,7 @@ export namespace Script {
         DENO = 'deno',
         GO = 'go',
         BASH = 'bash',
+        POSTGRESQL = 'postgresql',
     }
 
     export enum kind {
