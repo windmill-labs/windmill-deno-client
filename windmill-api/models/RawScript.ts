@@ -21,6 +21,8 @@ export namespace RawScript {
         PYTHON3 = 'python3',
         GO = 'go',
         BASH = 'bash',
+        POSTGRESQL = 'postgresql',
+        NATIVETS = 'nativets',
     }
 
 

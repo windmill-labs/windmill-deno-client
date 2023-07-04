@@ -40,6 +40,7 @@ export namespace Script {
         GO = 'go',
         BASH = 'bash',
         POSTGRESQL = 'postgresql',
+        NATIVETS = 'nativets',
     }
 
     export enum kind {

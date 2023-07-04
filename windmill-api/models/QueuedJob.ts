@@ -53,7 +53,6 @@ export namespace QueuedJob {
         SCRIPT_HUB = 'script_hub',
         IDENTITY = 'identity',
         HTTP = 'http',
-        GRAPHQL = 'graphql',
     }
 
     export enum language {
@@ -62,6 +61,7 @@ export namespace QueuedJob {
         GO = 'go',
         BASH = 'bash',
         POSTGRESQL = 'postgresql',
+        NATIVETS = 'nativets',
     }
 
 

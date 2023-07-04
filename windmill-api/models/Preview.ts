@@ -21,12 +21,12 @@ export namespace Preview {
         GO = 'go',
         BASH = 'bash',
         POSTGRESQL = 'postgresql',
+        NATIVETS = 'nativets',
     }
 
     export enum kind {
         CODE = 'code',
         IDENTITY = 'identity',
-        GRAPHQL = 'graphql',
         HTTP = 'http',
     }
 

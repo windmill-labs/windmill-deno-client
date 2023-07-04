@@ -55,8 +55,6 @@ export namespace CompletedJob {
         SCRIPT_HUB = 'script_hub',
         IDENTITY = 'identity',
         HTTP = 'http',
-        GRAPHQL = 'graphql',
-        POSTGRESQL = 'postgresql',
     }
 
     export enum language {
@@ -65,6 +63,7 @@ export namespace CompletedJob {
         GO = 'go',
         BASH = 'bash',
         POSTGRESQL = 'postgresql',
+        NATIVETS = 'nativets',
     }
 
 
