@@ -41,6 +41,7 @@ export namespace Script {
         BASH = 'bash',
         POSTGRESQL = 'postgresql',
         NATIVETS = 'nativets',
+        BUN = 'bun',
     }
 
     export enum kind {

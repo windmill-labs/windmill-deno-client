@@ -22,6 +22,7 @@ export namespace Preview {
         BASH = 'bash',
         POSTGRESQL = 'postgresql',
         NATIVETS = 'nativets',
+        BUN = 'bun',
     }
 
     export enum kind {

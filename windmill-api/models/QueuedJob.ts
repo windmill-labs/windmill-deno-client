@@ -62,6 +62,7 @@ export namespace QueuedJob {
         BASH = 'bash',
         POSTGRESQL = 'postgresql',
         NATIVETS = 'nativets',
+        BUN = 'bun',
     }
 
 

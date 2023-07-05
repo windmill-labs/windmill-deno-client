@@ -64,6 +64,7 @@ export namespace CompletedJob {
         BASH = 'bash',
         POSTGRESQL = 'postgresql',
         NATIVETS = 'nativets',
+        BUN = 'bun',
     }
 
 
