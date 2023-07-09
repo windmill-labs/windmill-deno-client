@@ -328,6 +328,7 @@ export class WorkspaceService {
         customer_id?: string;
         webhook?: string;
         deploy_to?: string;
+        error_handler?: string;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -482,6 +483,34 @@ export class WorkspaceService {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/w/{workspace}/workspaces/edit_webhook',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * edit error handler
+     * @returns string status
+     * @throws ApiError
+     */
+    public static editErrorHandler({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * WorkspaceErrorHandler
+         */
+        requestBody: {
+            error_handler?: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/edit_error_handler',
             path: {
                 'workspace': workspace,
             },

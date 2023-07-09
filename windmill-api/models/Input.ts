@@ -9,5 +9,6 @@ export type Input = {
     created_by: string;
     created_at: string;
     is_public: boolean;
+    success?: boolean;
 };
 

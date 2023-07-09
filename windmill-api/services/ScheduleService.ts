@@ -197,6 +197,8 @@ export class ScheduleService {
         workspace,
         page,
         perPage,
+        path,
+        isFlow,
     }: {
         workspace: string,
         /**
@@ -207,6 +209,11 @@ export class ScheduleService {
          * number of items to return for a given page (default 30, max 100)
          */
         perPage?: number,
+        /**
+         * filter by path
+         */
+        path?: string,
+        isFlow?: boolean,
     }): CancelablePromise<Array<Schedule>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -217,6 +224,8 @@ export class ScheduleService {
             query: {
                 'page': page,
                 'per_page': perPage,
+                'path': path,
+                'is_flow': isFlow,
             },
         });
     }
