@@ -26,6 +26,8 @@ export namespace NewScript {
         GO = 'go',
         BASH = 'bash',
         POSTGRESQL = 'postgresql',
+        MYSQL = 'mysql',
+        GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
         BUN = 'bun',
     }

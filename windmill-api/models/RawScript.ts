@@ -22,6 +22,8 @@ export namespace RawScript {
         GO = 'go',
         BASH = 'bash',
         POSTGRESQL = 'postgresql',
+        MYSQL = 'mysql',
+        GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
     }
 

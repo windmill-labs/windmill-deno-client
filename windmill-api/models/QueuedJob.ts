@@ -61,6 +61,8 @@ export namespace QueuedJob {
         GO = 'go',
         BASH = 'bash',
         POSTGRESQL = 'postgresql',
+        MYSQL = 'mysql',
+        GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
         BUN = 'bun',
     }
