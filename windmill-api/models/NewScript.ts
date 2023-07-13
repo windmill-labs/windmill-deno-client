@@ -16,6 +16,8 @@ export type NewScript = {
     tag?: string;
     draft_only?: boolean;
     envs?: Array<string>;
+    concurrent_limit?: Array<number>;
+    concurrency_time_window_s?: Array<number>;
 };
 
 export namespace NewScript {

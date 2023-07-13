@@ -12,6 +12,8 @@ export type RawScript = {
     lock?: string;
     type: 'rawscript';
     tag?: string;
+    concurrent_limit?: number;
+    concurrency_time_window_s?: number;
 };
 
 export namespace RawScript {
