@@ -172,10 +172,13 @@ export class OauthService {
 
     /**
      * list oauth logins
-     * @returns string list of oauth login clients
+     * @returns any list of oauth and saml login clients
      * @throws ApiError
      */
-    public static listOAuthLogins(): CancelablePromise<Array<string>> {
+    public static listOAuthLogins(): CancelablePromise<{
+        oauth: Array<string>;
+        saml?: string;
+    }> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/oauth/list_logins',
