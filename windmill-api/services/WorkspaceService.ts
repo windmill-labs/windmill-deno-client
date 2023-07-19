@@ -328,7 +328,7 @@ export class WorkspaceService {
         customer_id?: string;
         webhook?: string;
         deploy_to?: string;
-        openai_key?: string;
+        openai_resource_path?: string;
         error_handler?: string;
     }> {
         return __request(OpenAPI, {
@@ -493,25 +493,25 @@ export class WorkspaceService {
     }
 
     /**
-     * edit OpenAI key
+     * edit OpenAI resource path
      * @returns string status
      * @throws ApiError
      */
-    public static editOpenaiKey({
+    public static editOpenaiResourcePath({
         workspace,
         requestBody,
     }: {
         workspace: string,
         /**
-         * WorkspaceOpenAIKey
+         * WorkspaceOpenaiResourcePath
          */
         requestBody: {
-            openai_key?: string;
+            openai_resource_path?: string;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/w/{workspace}/workspaces/edit_openai_key',
+            url: '/w/{workspace}/workspaces/edit_openai_resource_path',
             path: {
                 'workspace': workspace,
             },
@@ -521,18 +521,18 @@ export class WorkspaceService {
     }
 
     /**
-     * OpenAI key exists
+     * OpenAI resource path exists
      * @returns boolean status
      * @throws ApiError
      */
-    public static existsOpenaiKey({
+    public static existsOpenaiResourcePath({
         workspace,
     }: {
         workspace: string,
     }): CancelablePromise<boolean> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/workspaces/exists_openai_key',
+            url: '/w/{workspace}/workspaces/exists_openai_resource_path',
             path: {
                 'workspace': workspace,
             },
