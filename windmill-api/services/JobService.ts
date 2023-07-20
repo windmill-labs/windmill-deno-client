@@ -1360,7 +1360,7 @@ export class JobService {
 
     /**
      * cancel a job for a suspended flow
-     * @returns string job resumed
+     * @returns string job canceled
      * @throws ApiError
      */
     public static cancelSuspendedJobGet({
@@ -1393,7 +1393,7 @@ export class JobService {
 
     /**
      * cancel a job for a suspended flow
-     * @returns string job resumed
+     * @returns string job canceled
      * @throws ApiError
      */
     public static cancelSuspendedJobPost({
