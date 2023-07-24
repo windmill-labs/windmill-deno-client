@@ -2,12 +2,44 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { Group } from '../models/Group.ts';
+import type { InstanceGroup } from '../models/InstanceGroup.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
 import { OpenAPI } from '../core/OpenAPI.ts';
 import { request as __request } from '../core/request.ts';
 
 export class GroupService {
+
+    /**
+     * list instance groups
+     * @returns InstanceGroup instance group list
+     * @throws ApiError
+     */
+    public static listInstanceGroups(): CancelablePromise<Array<InstanceGroup>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/groups/list',
+        });
+    }
+
+    /**
+     * get instance group
+     * @returns InstanceGroup instance group
+     * @throws ApiError
+     */
+    public static getInstanceGroup({
+        name,
+    }: {
+        name: string,
+    }): CancelablePromise<InstanceGroup> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/groups/get/{name}',
+            path: {
+                'name': name,
+            },
+        });
+    }
 
     /**
      * list groups

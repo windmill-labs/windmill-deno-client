@@ -39,6 +39,7 @@ export type { Http } from './models/Http.ts';
 export type { Identity } from './models/Identity.ts';
 export type { Input } from './models/Input.ts';
 export type { InputTransform } from './models/InputTransform.ts';
+export type { InstanceGroup } from './models/InstanceGroup.ts';
 export type { JavascriptTransform } from './models/JavascriptTransform.ts';
 export { Job } from './models/Job.ts';
 export { ListableApp } from './models/ListableApp.ts';
