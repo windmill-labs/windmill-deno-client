@@ -9,5 +9,6 @@ export type FlowPreview = {
     value: FlowValue;
     path?: string;
     args: ScriptArgs;
+    tag?: string;
 };
 

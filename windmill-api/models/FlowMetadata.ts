@@ -12,5 +12,6 @@ export type FlowMetadata = {
     additionalProperties?: boolean;
     starred?: boolean;
     draft_only?: boolean;
+    tag?: string;
 };
 
