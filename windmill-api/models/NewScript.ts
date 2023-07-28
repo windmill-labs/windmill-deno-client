@@ -29,6 +29,7 @@ export namespace NewScript {
         BASH = 'bash',
         POSTGRESQL = 'postgresql',
         MYSQL = 'mysql',
+        BIGQUERY = 'bigquery',
         GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
         BUN = 'bun',

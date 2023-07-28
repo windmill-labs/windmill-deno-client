@@ -43,6 +43,7 @@ export namespace Script {
         BASH = 'bash',
         POSTGRESQL = 'postgresql',
         MYSQL = 'mysql',
+        BIGQUERY = 'bigquery',
         GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
         BUN = 'bun',
