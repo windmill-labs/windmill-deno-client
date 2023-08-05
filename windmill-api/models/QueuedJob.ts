@@ -52,7 +52,6 @@ export namespace QueuedJob {
         FLOWPREVIEW = 'flowpreview',
         SCRIPT_HUB = 'script_hub',
         IDENTITY = 'identity',
-        HTTP = 'http',
     }
 
     export enum language {
@@ -63,6 +62,7 @@ export namespace QueuedJob {
         POSTGRESQL = 'postgresql',
         MYSQL = 'mysql',
         BIGQUERY = 'bigquery',
+        SNOWFLAKE = 'snowflake',
         GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
         BUN = 'bun',

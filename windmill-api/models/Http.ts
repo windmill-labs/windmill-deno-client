@@ -3,6 +3,15 @@
 /* eslint-disable */
 
 export type Http = {
-    type: 'http';
+    type: Http.type;
 };
+
+export namespace Http {
+
+    export enum type {
+        HTTP = 'http',
+    }
+
+
+}
 

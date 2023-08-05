@@ -44,6 +44,7 @@ export namespace Script {
         POSTGRESQL = 'postgresql',
         MYSQL = 'mysql',
         BIGQUERY = 'bigquery',
+        SNOWFLAKE = 'snowflake',
         GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
         BUN = 'bun',

@@ -54,7 +54,6 @@ export namespace CompletedJob {
         FLOWPREVIEW = 'flowpreview',
         SCRIPT_HUB = 'script_hub',
         IDENTITY = 'identity',
-        HTTP = 'http',
     }
 
     export enum language {
@@ -65,6 +64,7 @@ export namespace CompletedJob {
         POSTGRESQL = 'postgresql',
         MYSQL = 'mysql',
         BIGQUERY = 'bigquery',
+        SNOWFLAKE = 'snowflake',
         GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
         BUN = 'bun',
