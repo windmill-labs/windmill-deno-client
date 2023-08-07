@@ -260,6 +260,18 @@ export class UserService {
     }
 
     /**
+     * refresh the current token
+     * @returns string free usage
+     * @throws ApiError
+     */
+    public static refreshUserToken(): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/users/refresh_token',
+        });
+    }
+
+    /**
      * get current usage outside of premium workspaces
      * @returns number free usage
      * @throws ApiError
