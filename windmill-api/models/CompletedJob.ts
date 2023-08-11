@@ -61,6 +61,7 @@ export namespace CompletedJob {
         DENO = 'deno',
         GO = 'go',
         BASH = 'bash',
+        POWERSHELL = 'powershell',
         POSTGRESQL = 'postgresql',
         MYSQL = 'mysql',
         BIGQUERY = 'bigquery',

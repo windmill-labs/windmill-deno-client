@@ -23,6 +23,7 @@ export namespace RawScript {
         PYTHON3 = 'python3',
         GO = 'go',
         BASH = 'bash',
+        POWERSHELL = 'powershell',
         POSTGRESQL = 'postgresql',
         MYSQL = 'mysql',
         BIGQUERY = 'bigquery',
