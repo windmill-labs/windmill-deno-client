@@ -20,6 +20,7 @@ export namespace RawScript {
 
     export enum language {
         DENO = 'deno',
+        BUN = 'bun',
         PYTHON3 = 'python3',
         GO = 'go',
         BASH = 'bash',
