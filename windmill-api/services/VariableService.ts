@@ -158,6 +158,28 @@ export class VariableService {
     }
 
     /**
+     * get variable value
+     * @returns string variable
+     * @throws ApiError
+     */
+    public static getVariableValue({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/variables/get_value/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
      * does variable exists at path
      * @returns boolean variable
      * @throws ApiError

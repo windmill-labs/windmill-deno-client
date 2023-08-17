@@ -150,6 +150,28 @@ export class ResourceService {
     }
 
     /**
+     * get resource interpolated (variables and resources are fully unrolled)
+     * @returns any resource value
+     * @throws ApiError
+     */
+    public static getResourceValueInterpolated({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/resources/get_value_interpolated/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
      * get resource value
      * @returns any resource value
      * @throws ApiError
