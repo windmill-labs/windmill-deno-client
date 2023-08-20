@@ -48,6 +48,7 @@ export namespace QueuedJob {
         SCRIPT = 'script',
         PREVIEW = 'preview',
         DEPENDENCIES = 'dependencies',
+        FLOWDEPENDENCIES = 'flowdependencies',
         FLOW = 'flow',
         FLOWPREVIEW = 'flowpreview',
         SCRIPT_HUB = 'script_hub',

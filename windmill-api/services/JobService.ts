@@ -667,11 +667,11 @@ export class JobService {
          */
         scriptHash?: string,
         /**
-         * filter on created before (inclusive) timestamp
+         * filter on started before (inclusive) timestamp
          */
         startedBefore?: string,
         /**
-         * filter on created after (exclusive) timestamp
+         * filter on started after (exclusive) timestamp
          */
         startedAfter?: string,
         /**
@@ -731,6 +731,46 @@ export class JobService {
     }
 
     /**
+     * get queue count
+     * @returns any queue count
+     * @throws ApiError
+     */
+    public static getQueueCount({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<{
+        database_length: number;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/jobs/queue/count',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
+     * cancel all jobs
+     * @returns string uuids of canceled jobs
+     * @throws ApiError
+     */
+    public static cancelAll({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<Array<string>> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/jobs/queue/cancel_all',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
      * list all available completed jobs
      * @returns CompletedJob All available completed jobs
      * @throws ApiError
@@ -784,11 +824,11 @@ export class JobService {
          */
         scriptHash?: string,
         /**
-         * filter on created before (inclusive) timestamp
+         * filter on started before (inclusive) timestamp
          */
         startedBefore?: string,
         /**
-         * filter on created after (exclusive) timestamp
+         * filter on started after (exclusive) timestamp
          */
         startedAfter?: string,
         /**
@@ -862,6 +902,8 @@ export class JobService {
         scriptHash,
         startedBefore,
         startedAfter,
+        createdOrStartedBefore,
+        createdOrStartedAfter,
         jobKinds,
         args,
         tag,
@@ -896,13 +938,21 @@ export class JobService {
          */
         scriptHash?: string,
         /**
-         * filter on created before (inclusive) timestamp
+         * filter on started before (inclusive) timestamp
          */
         startedBefore?: string,
         /**
-         * filter on created after (exclusive) timestamp
+         * filter on started after (exclusive) timestamp
          */
         startedAfter?: string,
+        /**
+         * filter on created_at for non non started job and started_at otherwise before (inclusive) timestamp
+         */
+        createdOrStartedBefore?: string,
+        /**
+         * filter on created_at for non non started job and started_at otherwise after (exclusive) timestamp
+         */
+        createdOrStartedAfter?: string,
         /**
          * filter on job kind (values 'preview', 'script', 'dependencies', 'flow') separated by,
          */
@@ -947,6 +997,8 @@ export class JobService {
                 'script_hash': scriptHash,
                 'started_before': startedBefore,
                 'started_after': startedAfter,
+                'created_or_started_before': createdOrStartedBefore,
+                'created_or_started_after': createdOrStartedAfter,
                 'job_kinds': jobKinds,
                 'args': args,
                 'tag': tag,
@@ -955,6 +1007,18 @@ export class JobService {
                 'is_flow_step': isFlowStep,
                 'success': success,
             },
+        });
+    }
+
+    /**
+     * get db clock
+     * @returns number the timestamp of the db that can be used to compute the drift
+     * @throws ApiError
+     */
+    public static getDbClock(): CancelablePromise<number> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/jobs/db_clock',
         });
     }
 
