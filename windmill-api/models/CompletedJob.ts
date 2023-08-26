@@ -52,6 +52,7 @@ export namespace CompletedJob {
         DEPENDENCIES = 'dependencies',
         FLOW = 'flow',
         FLOWDEPENDENCIES = 'flowdependencies',
+        APPDEPENDENCIES = 'appdependencies',
         FLOWPREVIEW = 'flowpreview',
         SCRIPT_HUB = 'script_hub',
         IDENTITY = 'identity',

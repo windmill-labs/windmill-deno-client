@@ -49,6 +49,7 @@ export namespace QueuedJob {
         PREVIEW = 'preview',
         DEPENDENCIES = 'dependencies',
         FLOWDEPENDENCIES = 'flowdependencies',
+        APPDEPENDENCIES = 'appdependencies',
         FLOW = 'flow',
         FLOWPREVIEW = 'flowpreview',
         SCRIPT_HUB = 'script_hub',
