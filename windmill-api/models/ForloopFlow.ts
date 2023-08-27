@@ -11,5 +11,6 @@ export type ForloopFlow = {
     skip_failures: boolean;
     type: 'forloopflow';
     parallel?: boolean;
+    parallelism?: number;
 };
 
