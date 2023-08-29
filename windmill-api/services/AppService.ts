@@ -365,6 +365,7 @@ export class AppService {
                 content: string;
                 language: string;
                 path?: string;
+                cache_ttl?: number;
             };
             force_viewer_static_fields?: any;
         },

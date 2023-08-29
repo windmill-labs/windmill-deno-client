@@ -11,5 +11,6 @@ export type FlowValue = {
     concurrent_limit?: number;
     concurrency_time_window_s?: number;
     skip_expr?: string;
+    cache_ttl?: number;
 };
 

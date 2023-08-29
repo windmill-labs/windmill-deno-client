@@ -18,6 +18,7 @@ export type NewScript = {
     envs?: Array<string>;
     concurrent_limit?: Array<number>;
     concurrency_time_window_s?: Array<number>;
+    cache_ttl?: number;
 };
 
 export namespace NewScript {
