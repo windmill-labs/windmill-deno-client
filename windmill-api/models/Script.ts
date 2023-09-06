@@ -33,6 +33,7 @@ export type Script = {
     concurrent_limit?: Array<number>;
     concurrency_time_window_s?: Array<number>;
     cache_ttl?: number;
+    dedicated_worker?: boolean;
 };
 
 export namespace Script {
