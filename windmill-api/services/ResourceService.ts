@@ -261,6 +261,31 @@ export class ResourceService {
     }
 
     /**
+     * list resource names
+     * @returns any resource list names
+     * @throws ApiError
+     */
+    public static listResourceNames({
+        workspace,
+        name,
+    }: {
+        workspace: string,
+        name: string,
+    }): CancelablePromise<Array<{
+        name: string;
+        path: string;
+    }>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/resources/list_names/{name}',
+            path: {
+                'workspace': workspace,
+                'name': name,
+            },
+        });
+    }
+
+    /**
      * create resource_type
      * @returns string resource_type created
      * @throws ApiError
