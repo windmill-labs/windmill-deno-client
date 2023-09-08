@@ -79,6 +79,42 @@ export class ScriptService {
     }
 
     /**
+     * query hub scripts by similarity
+     * @returns any script details
+     * @throws ApiError
+     */
+    public static queryHubScripts({
+        text,
+        kind,
+        limit,
+    }: {
+        /**
+         * query text
+         */
+        text: string,
+        /**
+         * query scripts kind
+         */
+        kind?: string,
+        /**
+         * query limit
+         */
+        limit?: number,
+    }): CancelablePromise<Array<{
+        id: string;
+    }>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/scripts/hub/query',
+            query: {
+                'text': text,
+                'kind': kind,
+                'limit': limit,
+            },
+        });
+    }
+
+    /**
      * list all available scripts
      * @returns Script All available scripts
      * @throws ApiError
