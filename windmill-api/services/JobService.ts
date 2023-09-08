@@ -752,6 +752,27 @@ export class JobService {
     }
 
     /**
+     * get completed count
+     * @returns any completed count
+     * @throws ApiError
+     */
+    public static getCompletedCount({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<{
+        database_length: number;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/jobs/completed/count',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
      * cancel all jobs
      * @returns string uuids of canceled jobs
      * @throws ApiError
