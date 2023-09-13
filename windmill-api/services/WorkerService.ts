@@ -49,4 +49,64 @@ export class WorkerService {
         });
     }
 
+    /**
+     * list workers
+     * @returns any a list of workers
+     * @throws ApiError
+     */
+    public static listWorkerGroups(): CancelablePromise<Array<{
+        name: string;
+        config: any;
+    }>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/workers/list_worker_groups',
+        });
+    }
+
+    /**
+     * Update Worker Group
+     * @returns string Update a worker group
+     * @throws ApiError
+     */
+    public static updateWorkerGroup({
+        name,
+        requestBody,
+    }: {
+        name: string,
+        /**
+         * worker group
+         */
+        requestBody: any,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/workers/worker_group/{name}',
+            path: {
+                'name': name,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * Delete Worker Group
+     * @returns string Delete a worker group
+     * @throws ApiError
+     */
+    public static deleteWorkerGroup({
+        name,
+    }: {
+        name: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/workers/worker_group/{name}',
+            path: {
+                'name': name,
+            },
+        });
+    }
+
 }

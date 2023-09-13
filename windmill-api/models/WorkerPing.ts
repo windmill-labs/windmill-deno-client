@@ -10,5 +10,6 @@ export type WorkerPing = {
     ip: string;
     jobs_executed: number;
     custom_tags?: Array<string>;
+    worker_group: string;
 };
 
