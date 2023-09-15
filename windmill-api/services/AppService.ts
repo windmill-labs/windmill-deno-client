@@ -243,6 +243,28 @@ export class AppService {
     }
 
     /**
+     * get public resource
+     * @returns any resource value
+     * @throws ApiError
+     */
+    public static getPublicResource({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/apps_u/public_resource/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
      * get public secret of app
      * @returns string app secret
      * @throws ApiError
