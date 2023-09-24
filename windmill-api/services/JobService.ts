@@ -924,6 +924,7 @@ export class JobService {
         startedBefore,
         startedAfter,
         createdOrStartedBefore,
+        running,
         createdOrStartedAfter,
         jobKinds,
         args,
@@ -970,6 +971,10 @@ export class JobService {
          * filter on created_at for non non started job and started_at otherwise before (inclusive) timestamp
          */
         createdOrStartedBefore?: string,
+        /**
+         * filter on running jobs
+         */
+        running?: boolean,
         /**
          * filter on created_at for non non started job and started_at otherwise after (exclusive) timestamp
          */
@@ -1019,6 +1024,7 @@ export class JobService {
                 'started_before': startedBefore,
                 'started_after': startedAfter,
                 'created_or_started_before': createdOrStartedBefore,
+                'running': running,
                 'created_or_started_after': createdOrStartedAfter,
                 'job_kinds': jobKinds,
                 'args': args,

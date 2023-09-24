@@ -86,6 +86,7 @@ export { AdminService } from './services/AdminService.ts';
 export { AppService } from './services/AppService.ts';
 export { AuditService } from './services/AuditService.ts';
 export { CaptureService } from './services/CaptureService.ts';
+export { ConfigService } from './services/ConfigService.ts';
 export { DraftService } from './services/DraftService.ts';
 export { FavoriteService } from './services/FavoriteService.ts';
 export { FlowService } from './services/FlowService.ts';

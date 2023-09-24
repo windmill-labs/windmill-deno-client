@@ -66,4 +66,58 @@ export class SettingService {
         });
     }
 
+    /**
+     * test smtp
+     * @returns string status
+     * @throws ApiError
+     */
+    public static testSmtp({
+        requestBody,
+    }: {
+        /**
+         * test smtp payload
+         */
+        requestBody: {
+            to: string;
+            smtp: {
+                host: string;
+                username: string;
+                password: string;
+                port: number;
+                from: string;
+                tls_implicit: boolean;
+            };
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/settings/test_smtp',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * test license key
+     * @returns string status
+     * @throws ApiError
+     */
+    public static testLicenseKey({
+        requestBody,
+    }: {
+        /**
+         * test license key
+         */
+        requestBody: {
+            license_key: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/settings/test_license_key',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
 }
