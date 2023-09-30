@@ -272,6 +272,43 @@ export class UserService {
     }
 
     /**
+     * get tutorial progress
+     * @returns any tutorial progress
+     * @throws ApiError
+     */
+    public static getTutorialProgress(): CancelablePromise<{
+        progress?: number;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/users/tutorial_progress',
+        });
+    }
+
+    /**
+     * update tutorial progress
+     * @returns string tutorial progress
+     * @throws ApiError
+     */
+    public static updateTutorialProgress({
+        requestBody,
+    }: {
+        /**
+         * progress update
+         */
+        requestBody: {
+            progress?: number;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/users/tutorial_progress',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * get current usage outside of premium workspaces
      * @returns number free usage
      * @throws ApiError

@@ -329,6 +329,7 @@ export class WorkspaceService {
         webhook?: string;
         deploy_to?: string;
         openai_resource_path?: string;
+        code_completion_enabled: boolean;
         error_handler?: string;
     }> {
         return __request(OpenAPI, {
@@ -493,25 +494,26 @@ export class WorkspaceService {
     }
 
     /**
-     * edit OpenAI resource path
+     * edit copilot config
      * @returns string status
      * @throws ApiError
      */
-    public static editOpenaiResourcePath({
+    public static editCopilotConfig({
         workspace,
         requestBody,
     }: {
         workspace: string,
         /**
-         * WorkspaceOpenaiResourcePath
+         * WorkspaceCopilotConfig
          */
         requestBody: {
             openai_resource_path?: string;
+            code_completion_enabled: boolean;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/w/{workspace}/workspaces/edit_openai_resource_path',
+            url: '/w/{workspace}/workspaces/edit_copilot_config',
             path: {
                 'workspace': workspace,
             },
@@ -521,18 +523,21 @@ export class WorkspaceService {
     }
 
     /**
-     * OpenAI resource path exists
-     * @returns boolean status
+     * get copilot info
+     * @returns any status
      * @throws ApiError
      */
-    public static existsOpenaiResourcePath({
+    public static getCopilotInfo({
         workspace,
     }: {
         workspace: string,
-    }): CancelablePromise<boolean> {
+    }): CancelablePromise<{
+        exists_openai_resource_path: boolean;
+        code_completion_enabled: boolean;
+    }> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/workspaces/exists_openai_resource_path',
+            url: '/w/{workspace}/workspaces/get_copilot_info',
             path: {
                 'workspace': workspace,
             },
