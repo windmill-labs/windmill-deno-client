@@ -74,6 +74,28 @@ export class FlowService {
     }
 
     /**
+     * list flows for search
+     * @returns any flow list
+     * @throws ApiError
+     */
+    public static listSearchFlow({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<Array<{
+        path: string;
+        value: any;
+    }>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/flows/list_search',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
      * list all available flows
      * @returns any All available flow
      * @throws ApiError

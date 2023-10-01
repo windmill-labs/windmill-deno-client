@@ -115,6 +115,28 @@ export class ScriptService {
     }
 
     /**
+     * list scripts for search
+     * @returns any script list
+     * @throws ApiError
+     */
+    public static listSearchScript({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<Array<{
+        path: string;
+        content: string;
+    }>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/scripts/list_search',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
      * list all available scripts
      * @returns Script All available scripts
      * @throws ApiError

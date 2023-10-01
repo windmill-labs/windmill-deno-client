@@ -58,6 +58,28 @@ export class AppService {
     }
 
     /**
+     * list apps for search
+     * @returns any app list
+     * @throws ApiError
+     */
+    public static listSearchApp({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<Array<{
+        path: string;
+        value: any;
+    }>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/apps/list_search',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
      * list all available apps
      * @returns ListableApp All available apps
      * @throws ApiError
