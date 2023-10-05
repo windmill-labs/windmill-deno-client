@@ -157,9 +157,14 @@ export class ResourceService {
     public static getResourceValueInterpolated({
         workspace,
         path,
+        jobId,
     }: {
         workspace: string,
         path: string,
+        /**
+         * job id
+         */
+        jobId?: string,
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -167,6 +172,9 @@ export class ResourceService {
             path: {
                 'workspace': workspace,
                 'path': path,
+            },
+            query: {
+                'job_id': jobId,
             },
         });
     }
