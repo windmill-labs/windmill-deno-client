@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { CreateWorkspace } from '../models/CreateWorkspace.ts';
+import type { ScriptArgs } from '../models/ScriptArgs.ts';
 import type { UserWorkspaceList } from '../models/UserWorkspaceList.ts';
 import type { Workspace } from '../models/Workspace.ts';
 import type { WorkspaceInvite } from '../models/WorkspaceInvite.ts';
@@ -331,6 +332,7 @@ export class WorkspaceService {
         openai_resource_path?: string;
         code_completion_enabled: boolean;
         error_handler?: string;
+        error_handler_extra_args?: ScriptArgs;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -404,6 +406,38 @@ export class WorkspaceService {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/w/{workspace}/workspaces/edit_slack_command',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * run a job that sends a message to Slack
+     * @returns any status
+     * @throws ApiError
+     */
+    public static runSlackMessageTestJob({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * path to hub script to run and its corresponding args
+         */
+        requestBody: {
+            hub_script_path?: string;
+            channel?: string;
+            test_msg?: string;
+        },
+    }): CancelablePromise<{
+        job_uuid?: string;
+    }> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/run_slack_message_test_job',
             path: {
                 'workspace': workspace,
             },
@@ -559,6 +593,7 @@ export class WorkspaceService {
          */
         requestBody: {
             error_handler?: string;
+            error_handler_extra_args?: ScriptArgs;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {

@@ -13,5 +13,6 @@ export type FlowMetadata = {
     starred?: boolean;
     draft_only?: boolean;
     tag?: string;
+    ws_error_handler_muted?: boolean;
 };
 

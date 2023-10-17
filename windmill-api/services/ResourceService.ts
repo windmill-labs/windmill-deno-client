@@ -474,4 +474,50 @@ export class ResourceService {
         });
     }
 
+    /**
+     * list hub resource types
+     * @returns any resource type details
+     * @throws ApiError
+     */
+    public static listHubResourceTypes(): CancelablePromise<Array<{
+        id: string;
+        name: string;
+        schema?: any;
+    }>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/resources/type/hub/list',
+        });
+    }
+
+    /**
+     * query hub resource types by similarity
+     * @returns any resource type details
+     * @throws ApiError
+     */
+    public static queryHubResourceTypes({
+        text,
+        limit,
+    }: {
+        /**
+         * query text
+         */
+        text: string,
+        /**
+         * query limit
+         */
+        limit?: number,
+    }): CancelablePromise<Array<{
+        id: string;
+    }>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/resources/type/hub/query',
+            query: {
+                'text': text,
+                'limit': limit,
+            },
+        });
+    }
+
 }

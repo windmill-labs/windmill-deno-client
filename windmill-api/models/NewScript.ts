@@ -20,6 +20,7 @@ export type NewScript = {
     concurrency_time_window_s?: Array<number>;
     cache_ttl?: number;
     dedicated_worker?: boolean;
+    ws_error_handler_muted?: boolean;
 };
 
 export namespace NewScript {

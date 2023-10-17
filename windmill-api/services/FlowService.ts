@@ -196,6 +196,37 @@ export class FlowService {
     }
 
     /**
+     * Toggle ON and OFF the workspace error handler for a given flow
+     * @returns string error handler toggled
+     * @throws ApiError
+     */
+    public static toggleWorkspaceErrorHandlerForFlow({
+        workspace,
+        path,
+        requestBody,
+    }: {
+        workspace: string,
+        path: string,
+        /**
+         * Workspace error handler enabled
+         */
+        requestBody: {
+            muted?: boolean;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/flows/toggle_workspace_error_handler/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * get flow by path with draft
      * @returns any flow details with draft
      * @throws ApiError

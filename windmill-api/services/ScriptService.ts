@@ -154,7 +154,7 @@ export class ScriptService {
         parentHash,
         showArchived,
         isTemplate,
-        kind,
+        kinds,
         starredOnly,
     }: {
         workspace: string,
@@ -221,10 +221,10 @@ export class ScriptService {
         isTemplate?: boolean,
         /**
          * (default regardless)
-         * script kind
+         * script kinds to filter, split by comma
          *
          */
-        kind?: string,
+        kinds?: string,
         /**
          * (default false)
          * show only the starred items
@@ -250,7 +250,7 @@ export class ScriptService {
                 'parent_hash': parentHash,
                 'show_archived': showArchived,
                 'is_template': isTemplate,
-                'kind': kind,
+                'kinds': kinds,
                 'starred_only': starredOnly,
             },
         });
@@ -295,6 +295,37 @@ export class ScriptService {
             url: '/w/{workspace}/scripts/create',
             path: {
                 'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * Toggle ON and OFF the workspace error handler for a given script
+     * @returns string error handler toggled
+     * @throws ApiError
+     */
+    public static toggleWorkspaceErrorHandlerForScript({
+        workspace,
+        path,
+        requestBody,
+    }: {
+        workspace: string,
+        path: string,
+        /**
+         * Workspace error handler enabled
+         */
+        requestBody: {
+            muted?: boolean;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/scripts/toggle_workspace_error_handler/p/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
             },
             body: requestBody,
             mediaType: 'application/json',
