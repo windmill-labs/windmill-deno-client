@@ -12,29 +12,6 @@ import { request as __request } from '../core/request.ts';
 export class ScriptService {
 
     /**
-     * list all available hub scripts
-     * @returns any hub scripts list
-     * @throws ApiError
-     */
-    public static listHubScripts(): CancelablePromise<{
-        asks?: Array<{
-            id: number;
-            ask_id: number;
-            summary: string;
-            app: string;
-            approved: boolean;
-            kind: 'script' | 'failure' | 'trigger' | 'command' | 'approval';
-            votes: number;
-            views: number;
-        }>;
-    }> {
-        return __request(OpenAPI, {
-            method: 'GET',
-            url: '/scripts/hub/list',
-        });
-    }
-
-    /**
      * get hub script content by path
      * @returns string script details
      * @throws ApiError
@@ -79,6 +56,51 @@ export class ScriptService {
     }
 
     /**
+     * get top hub scripts
+     * @returns any hub scripts list
+     * @throws ApiError
+     */
+    public static getTopHubScripts({
+        limit,
+        app,
+        kind,
+    }: {
+        /**
+         * query limit
+         */
+        limit?: number,
+        /**
+         * query scripts app
+         */
+        app?: string,
+        /**
+         * query scripts kind
+         */
+        kind?: string,
+    }): CancelablePromise<{
+        asks?: Array<{
+            id: number;
+            ask_id: number;
+            summary: string;
+            app: string;
+            approved: boolean;
+            kind: 'script' | 'failure' | 'trigger' | 'command' | 'approval';
+            votes: number;
+            views: number;
+        }>;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/scripts/hub/top',
+            query: {
+                'limit': limit,
+                'app': app,
+                'kind': kind,
+            },
+        });
+    }
+
+    /**
      * query hub scripts by similarity
      * @returns any script details
      * @throws ApiError
@@ -87,6 +109,7 @@ export class ScriptService {
         text,
         kind,
         limit,
+        app,
     }: {
         /**
          * query text
@@ -100,16 +123,27 @@ export class ScriptService {
          * query limit
          */
         limit?: number,
+        /**
+         * query scripts app
+         */
+        app?: string,
     }): CancelablePromise<Array<{
-        id: string;
+        ask_id: number;
+        id: number;
+        version_id: number;
+        summary: string;
+        app: string;
+        kind: 'script' | 'failure' | 'trigger' | 'command' | 'approval';
+        score: number;
     }>> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/scripts/hub/query',
+            url: '/embeddings/query_hub_scripts',
             query: {
                 'text': text,
                 'kind': kind,
                 'limit': limit,
+                'app': app,
             },
         });
     }
@@ -137,8 +171,8 @@ export class ScriptService {
     }
 
     /**
-     * list all available scripts
-     * @returns Script All available scripts
+     * list all scripts
+     * @returns Script All scripts
      * @throws ApiError
      */
     public static listScripts({
@@ -257,7 +291,7 @@ export class ScriptService {
     }
 
     /**
-     * list all available scripts paths
+     * list all scripts paths
      * @returns string list of script paths
      * @throws ApiError
      */

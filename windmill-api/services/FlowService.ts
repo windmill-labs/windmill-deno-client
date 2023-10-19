@@ -13,7 +13,7 @@ import { request as __request } from '../core/request.ts';
 export class FlowService {
 
     /**
-     * list all available hub flows
+     * list all hub flows
      * @returns any hub flows list
      * @throws ApiError
      */
@@ -55,7 +55,7 @@ export class FlowService {
     }
 
     /**
-     * list all available flow paths
+     * list all flow paths
      * @returns string list of flow paths
      * @throws ApiError
      */
@@ -96,8 +96,8 @@ export class FlowService {
     }
 
     /**
-     * list all available flows
-     * @returns any All available flow
+     * list all flows
+     * @returns any All flow
      * @throws ApiError
      */
     public static listFlows({

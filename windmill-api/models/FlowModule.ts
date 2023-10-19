@@ -27,6 +27,8 @@ export type FlowModule = {
         resume_form?: {
             schema?: any;
         };
+        user_auth_required?: boolean;
+        user_groups_required?: InputTransform;
     };
     retry?: Retry;
 };

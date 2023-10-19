@@ -10,8 +10,8 @@ import { request as __request } from '../core/request.ts';
 export class RawAppService {
 
     /**
-     * list all available raw apps
-     * @returns ListableRawApp All available raw apps
+     * list all raw apps
+     * @returns ListableRawApp All raw apps
      * @throws ApiError
      */
     public static listRawApps({

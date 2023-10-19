@@ -614,8 +614,8 @@ export class JobService {
     }
 
     /**
-     * list all available queued jobs
-     * @returns QueuedJob All available queued jobs
+     * list all queued jobs
+     * @returns QueuedJob All queued jobs
      * @throws ApiError
      */
     public static listQueue({
@@ -792,8 +792,8 @@ export class JobService {
     }
 
     /**
-     * list all available completed jobs
-     * @returns CompletedJob All available completed jobs
+     * list all completed jobs
+     * @returns CompletedJob All completed jobs
      * @throws ApiError
      */
     public static listCompletedJobs({
@@ -909,7 +909,7 @@ export class JobService {
     }
 
     /**
-     * list all available jobs
+     * list all jobs
      * @returns Job All jobs
      * @throws ApiError
      */

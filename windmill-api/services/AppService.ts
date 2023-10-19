@@ -13,7 +13,7 @@ import { request as __request } from '../core/request.ts';
 export class AppService {
 
     /**
-     * list all available hub apps
+     * list all hub apps
      * @returns any hub apps list
      * @throws ApiError
      */
@@ -80,8 +80,8 @@ export class AppService {
     }
 
     /**
-     * list all available apps
-     * @returns ListableApp All available apps
+     * list all apps
+     * @returns ListableApp All apps
      * @throws ApiError
      */
     public static listApps({

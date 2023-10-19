@@ -475,27 +475,11 @@ export class ResourceService {
     }
 
     /**
-     * list hub resource types
+     * query resource types by similarity
      * @returns any resource type details
      * @throws ApiError
      */
-    public static listHubResourceTypes(): CancelablePromise<Array<{
-        id: string;
-        name: string;
-        schema?: any;
-    }>> {
-        return __request(OpenAPI, {
-            method: 'GET',
-            url: '/resources/type/hub/list',
-        });
-    }
-
-    /**
-     * query hub resource types by similarity
-     * @returns any resource type details
-     * @throws ApiError
-     */
-    public static queryHubResourceTypes({
+    public static queryResourceTypes({
         text,
         limit,
     }: {
@@ -508,11 +492,13 @@ export class ResourceService {
          */
         limit?: number,
     }): CancelablePromise<Array<{
-        id: string;
+        name: string;
+        score: number;
+        schema?: any;
     }>> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/resources/type/hub/query',
+            url: '/embeddings/query_resource_types',
             query: {
                 'text': text,
                 'limit': limit,

@@ -94,6 +94,7 @@ export { FolderService } from './services/FolderService.ts';
 export { GranularAclService } from './services/GranularAclService.ts';
 export { GroupService } from './services/GroupService.ts';
 export { InputService } from './services/InputService.ts';
+export { IntegrationService } from './services/IntegrationService.ts';
 export { JobService } from './services/JobService.ts';
 export { OauthService } from './services/OauthService.ts';
 export { RawAppService } from './services/RawAppService.ts';
