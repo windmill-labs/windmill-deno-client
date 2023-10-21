@@ -83,8 +83,8 @@ export class ScriptService {
             ask_id: number;
             summary: string;
             app: string;
-            approved: boolean;
-            kind: 'script' | 'failure' | 'trigger' | 'command' | 'approval';
+            version_id: number;
+            kind: 'script' | 'failure' | 'trigger' | 'approval';
             votes: number;
             views: number;
         }>;
@@ -133,7 +133,7 @@ export class ScriptService {
         version_id: number;
         summary: string;
         app: string;
-        kind: 'script' | 'failure' | 'trigger' | 'command' | 'approval';
+        kind: 'script' | 'failure' | 'trigger' | 'approval';
         score: number;
     }>> {
         return __request(OpenAPI, {

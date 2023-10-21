@@ -1180,12 +1180,15 @@ export class JobService {
     public static getCompletedJobResultMaybe({
         workspace,
         id,
+        getStarted,
     }: {
         workspace: string,
         id: string,
+        getStarted?: boolean,
     }): CancelablePromise<{
         completed: boolean;
         result: any;
+        started?: boolean;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -1193,6 +1196,9 @@ export class JobService {
             path: {
                 'workspace': workspace,
                 'id': id,
+            },
+            query: {
+                'get_started': getStarted,
             },
         });
     }
