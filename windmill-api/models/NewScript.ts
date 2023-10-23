@@ -21,6 +21,7 @@ export type NewScript = {
     cache_ttl?: number;
     dedicated_worker?: boolean;
     ws_error_handler_muted?: boolean;
+    priority?: number;
 };
 
 export namespace NewScript {

@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { HubScriptKind } from '../models/HubScriptKind.ts';
 import type { NewScript } from '../models/NewScript.ts';
 import type { NewScriptWithDraft } from '../models/NewScriptWithDraft.ts';
 import type { Script } from '../models/Script.ts';
@@ -84,7 +85,7 @@ export class ScriptService {
             summary: string;
             app: string;
             version_id: number;
-            kind: 'script' | 'failure' | 'trigger' | 'approval';
+            kind: HubScriptKind;
             votes: number;
             views: number;
         }>;
@@ -133,7 +134,7 @@ export class ScriptService {
         version_id: number;
         summary: string;
         app: string;
-        kind: 'script' | 'failure' | 'trigger' | 'approval';
+        kind: HubScriptKind;
         score: number;
     }>> {
         return __request(OpenAPI, {

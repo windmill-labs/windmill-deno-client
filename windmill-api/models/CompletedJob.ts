@@ -42,6 +42,7 @@ export type CompletedJob = {
     visible_to_owner: boolean;
     mem_peak?: number;
     tag: string;
+    priority?: number;
 };
 
 export namespace CompletedJob {

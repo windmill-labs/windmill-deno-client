@@ -36,6 +36,7 @@ export { GlobalUserInfo } from './models/GlobalUserInfo.ts';
 export type { Graphql } from './models/Graphql.ts';
 export type { Group } from './models/Group.ts';
 export { Http } from './models/Http.ts';
+export type { HubScriptKind } from './models/HubScriptKind.ts';
 export type { Identity } from './models/Identity.ts';
 export type { Input } from './models/Input.ts';
 export type { InputTransform } from './models/InputTransform.ts';

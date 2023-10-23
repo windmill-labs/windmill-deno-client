@@ -14,5 +14,6 @@ export type FlowMetadata = {
     draft_only?: boolean;
     tag?: string;
     ws_error_handler_muted?: boolean;
+    priority?: number;
 };
 

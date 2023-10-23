@@ -40,6 +40,7 @@ export type QueuedJob = {
     visible_to_owner: boolean;
     mem_peak?: number;
     tag: string;
+    priority?: number;
 };
 
 export namespace QueuedJob {
