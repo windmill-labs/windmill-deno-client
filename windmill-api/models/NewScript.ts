@@ -16,8 +16,8 @@ export type NewScript = {
     tag?: string;
     draft_only?: boolean;
     envs?: Array<string>;
-    concurrent_limit?: Array<number>;
-    concurrency_time_window_s?: Array<number>;
+    concurrent_limit?: number;
+    concurrency_time_window_s?: number;
     cache_ttl?: number;
     dedicated_worker?: boolean;
     ws_error_handler_muted?: boolean;
