@@ -65,6 +65,7 @@ export { QueuedJob } from './models/QueuedJob.ts';
 export { RawScript } from './models/RawScript.ts';
 export type { Resource } from './models/Resource.ts';
 export type { ResourceType } from './models/ResourceType.ts';
+export type { RestartedFrom } from './models/RestartedFrom.ts';
 export type { Retry } from './models/Retry.ts';
 export { RunnableType } from './models/RunnableType.ts';
 export type { Schedule } from './models/Schedule.ts';

@@ -449,6 +449,81 @@ export class JobService {
     }
 
     /**
+     * restart a completed flow at a given step
+     * @returns string job created
+     * @throws ApiError
+     */
+    public static restartFlowAtStep({
+        workspace,
+        id,
+        stepId,
+        requestBody,
+        scheduledFor,
+        scheduledInSecs,
+        parentJob,
+        jobId,
+        includeHeader,
+        invisibleToOwner,
+    }: {
+        workspace: string,
+        id: string,
+        /**
+         * step id to restart the flow from
+         */
+        stepId: string,
+        /**
+         * flow args
+         */
+        requestBody: ScriptArgs,
+        /**
+         * when to schedule this job (leave empty for immediate run)
+         */
+        scheduledFor?: string,
+        /**
+         * schedule the script to execute in the number of seconds starting now
+         */
+        scheduledInSecs?: number,
+        /**
+         * The parent job that is at the origin and responsible for the execution of this script if any
+         */
+        parentJob?: string,
+        /**
+         * The job id to assign to the created job. if missing, job is chosen randomly using the ULID scheme. If a job id already exists in the queue or as a completed job, the request to create one will fail (Bad Request)
+         */
+        jobId?: string,
+        /**
+         * List of headers's keys (separated with ',') whove value are added to the args
+         * Header's key lowercased and '-'' replaced to '_' such that 'Content-Type' becomes the 'content_type' arg key
+         *
+         */
+        includeHeader?: string,
+        /**
+         * make the run invisible to the the flow owner (default false)
+         */
+        invisibleToOwner?: boolean,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/jobs/restart/f/{id}/from/{step_id}',
+            path: {
+                'workspace': workspace,
+                'id': id,
+                'step_id': stepId,
+            },
+            query: {
+                'scheduled_for': scheduledFor,
+                'scheduled_in_secs': scheduledInSecs,
+                'parent_job': parentJob,
+                'job_id': jobId,
+                'include_header': includeHeader,
+                'invisible_to_owner': invisibleToOwner,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * run script by hash
      * @returns string job created
      * @throws ApiError

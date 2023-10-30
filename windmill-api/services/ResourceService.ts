@@ -480,9 +480,11 @@ export class ResourceService {
      * @throws ApiError
      */
     public static queryResourceTypes({
+        workspace,
         text,
         limit,
     }: {
+        workspace: string,
         /**
          * query text
          */
@@ -498,7 +500,10 @@ export class ResourceService {
     }>> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/embeddings/query_resource_types',
+            url: '/w/{workspace}/embeddings/query_resource_types',
+            path: {
+                'workspace': workspace,
+            },
             query: {
                 'text': text,
                 'limit': limit,
