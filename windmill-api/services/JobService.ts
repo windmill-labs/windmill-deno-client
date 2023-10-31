@@ -457,6 +457,7 @@ export class JobService {
         workspace,
         id,
         stepId,
+        branchOrIterationN,
         requestBody,
         scheduledFor,
         scheduledInSecs,
@@ -471,6 +472,10 @@ export class JobService {
          * step id to restart the flow from
          */
         stepId: string,
+        /**
+         * for branchall or loop, the iteration at which the flow should restart
+         */
+        branchOrIterationN: number,
         /**
          * flow args
          */
@@ -504,11 +509,12 @@ export class JobService {
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/w/{workspace}/jobs/restart/f/{id}/from/{step_id}',
+            url: '/w/{workspace}/jobs/restart/f/{id}/from/{step_id}/{branch_or_iteration_n}',
             path: {
                 'workspace': workspace,
                 'id': id,
                 'step_id': stepId,
+                'branch_or_iteration_n': branchOrIterationN,
             },
             query: {
                 'scheduled_for': scheduledFor,
