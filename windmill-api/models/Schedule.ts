@@ -24,5 +24,6 @@ export type Schedule = {
     on_recovery?: string;
     on_recovery_times?: number;
     on_recovery_extra_args?: ScriptArgs;
+    ws_error_handler_muted?: boolean;
 };
 
