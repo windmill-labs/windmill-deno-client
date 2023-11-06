@@ -11,5 +11,6 @@ export type WorkerPing = {
     jobs_executed: number;
     custom_tags?: Array<string>;
     worker_group: string;
+    wm_version: string;
 };
 

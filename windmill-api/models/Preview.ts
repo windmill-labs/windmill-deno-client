@@ -11,6 +11,7 @@ export type Preview = {
     language?: Preview.language;
     tag?: string;
     kind?: Preview.kind;
+    dedicated_worker?: boolean;
 };
 
 export namespace Preview {

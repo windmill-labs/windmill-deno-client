@@ -333,6 +333,7 @@ export class WorkspaceService {
         code_completion_enabled: boolean;
         error_handler?: string;
         error_handler_extra_args?: ScriptArgs;
+        error_handler_muted_on_cancel?: boolean;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -594,6 +595,7 @@ export class WorkspaceService {
         requestBody: {
             error_handler?: string;
             error_handler_extra_args?: ScriptArgs;
+            error_handler_muted_on_cancel?: boolean;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {

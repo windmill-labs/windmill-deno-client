@@ -120,4 +120,16 @@ export class SettingService {
         });
     }
 
+    /**
+     * send stats
+     * @returns string status
+     * @throws ApiError
+     */
+    public static sendStats(): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/settings/send_stats',
+        });
+    }
+
 }
