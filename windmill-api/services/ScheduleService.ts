@@ -263,4 +263,38 @@ export class ScheduleService {
         });
     }
 
+    /**
+     * Set default error or recoevery handler
+     * @returns any default error handler set
+     * @throws ApiError
+     */
+    public static setDefaultErrorOrRecoveryHandler({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * Handler description
+         */
+        requestBody: {
+            handler_type: 'error' | 'recovery';
+            override_existing: boolean;
+            path: string;
+            extra_args?: any;
+            number_of_occurence?: number;
+            number_of_occurence_exact?: boolean;
+            workspace_handler_muted?: boolean;
+        },
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/schedules/setdefaulthandler',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
 }
