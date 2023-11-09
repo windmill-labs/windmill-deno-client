@@ -279,7 +279,7 @@ export class ScheduleService {
         requestBody: {
             handler_type: 'error' | 'recovery';
             override_existing: boolean;
-            path: string;
+            path?: string;
             extra_args?: any;
             number_of_occurence?: number;
             number_of_occurence_exact?: boolean;
