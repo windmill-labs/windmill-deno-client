@@ -29,6 +29,7 @@ export namespace RawScript {
         MYSQL = 'mysql',
         BIGQUERY = 'bigquery',
         SNOWFLAKE = 'snowflake',
+        MSSQL = 'mssql',
         GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
     }

@@ -50,6 +50,7 @@ export namespace Script {
         MYSQL = 'mysql',
         BIGQUERY = 'bigquery',
         SNOWFLAKE = 'snowflake',
+        MSSQL = 'mssql',
         GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
         BUN = 'bun',

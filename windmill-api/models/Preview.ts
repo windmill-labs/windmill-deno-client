@@ -26,6 +26,7 @@ export namespace Preview {
         MYSQL = 'mysql',
         BIGQUERY = 'bigquery',
         SNOWFLAKE = 'snowflake',
+        MSSQL = 'mssql',
         GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
         BUN = 'bun',
