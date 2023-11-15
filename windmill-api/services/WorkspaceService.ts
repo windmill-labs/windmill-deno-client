@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { CreateWorkspace } from '../models/CreateWorkspace.ts';
+import type { LargeFileStorage } from '../models/LargeFileStorage.ts';
 import type { ScriptArgs } from '../models/ScriptArgs.ts';
 import type { UserWorkspaceList } from '../models/UserWorkspaceList.ts';
 import type { Workspace } from '../models/Workspace.ts';
@@ -334,6 +335,7 @@ export class WorkspaceService {
         error_handler?: string;
         error_handler_extra_args?: ScriptArgs;
         error_handler_muted_on_cancel?: boolean;
+        large_file_storage?: LargeFileStorage;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -366,6 +368,25 @@ export class WorkspaceService {
     }
 
     /**
+     * get if workspace is premium
+     * @returns boolean status
+     * @throws ApiError
+     */
+    public static getIsPremium({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<boolean> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/workspaces/is_premium',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
      * get premium info
      * @returns any status
      * @throws ApiError
@@ -377,6 +398,7 @@ export class WorkspaceService {
     }): CancelablePromise<{
         premium: boolean;
         usage?: number;
+        seats?: number;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -606,6 +628,53 @@ export class WorkspaceService {
             },
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * edit large file storage settings
+     * @returns any status
+     * @throws ApiError
+     */
+    public static editLargeFileStorageConfig({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * LargeFileStorage info
+         */
+        requestBody: {
+            large_file_storage?: LargeFileStorage;
+        },
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/edit_large_file_storage_config',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * get large file storage config
+     * @returns LargeFileStorage status
+     * @throws ApiError
+     */
+    public static getLargeFileStorageConfig({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<LargeFileStorage> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/workspaces/get_large_file_storage_config',
+            path: {
+                'workspace': workspace,
+            },
         });
     }
 
