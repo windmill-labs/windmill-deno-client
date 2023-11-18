@@ -309,6 +309,18 @@ export class UserService {
     }
 
     /**
+     * leave instance
+     * @returns string status
+     * @throws ApiError
+     */
+    public static leaveInstance(): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/users/leave_instance',
+        });
+    }
+
+    /**
      * get current usage outside of premium workspaces
      * @returns number free usage
      * @throws ApiError
@@ -377,25 +389,6 @@ export class UserService {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/w/{workspace}/users/whoami',
-            path: {
-                'workspace': workspace,
-            },
-        });
-    }
-
-    /**
-     * leave workspace
-     * @returns string status
-     * @throws ApiError
-     */
-    public static leaveWorkspace({
-        workspace,
-    }: {
-        workspace: string,
-    }): CancelablePromise<string> {
-        return __request(OpenAPI, {
-            method: 'POST',
-            url: '/w/{workspace}/users/leave_workspace',
             path: {
                 'workspace': workspace,
             },

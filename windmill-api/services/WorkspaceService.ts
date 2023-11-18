@@ -292,6 +292,25 @@ export class WorkspaceService {
     }
 
     /**
+     * leave workspace
+     * @returns string status
+     * @throws ApiError
+     */
+    public static leaveWorkspace({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/leave',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
      * list pending invites for a workspace
      * @returns WorkspaceInvite user
      * @throws ApiError
@@ -509,6 +528,7 @@ export class WorkspaceService {
          */
         requestBody: {
             operator?: boolean;
+            invite_all?: boolean;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
