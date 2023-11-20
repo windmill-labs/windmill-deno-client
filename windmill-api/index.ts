@@ -82,6 +82,7 @@ export type { UpdateInput } from './models/UpdateInput.ts';
 export type { Usage } from './models/Usage.ts';
 export type { User } from './models/User.ts';
 export type { UserWorkspaceList } from './models/UserWorkspaceList.ts';
+export { WindmillFilePreview } from './models/WindmillFilePreview.ts';
 export type { WindmillLargeFile } from './models/WindmillLargeFile.ts';
 export type { WorkerPing } from './models/WorkerPing.ts';
 export type { Workspace } from './models/Workspace.ts';

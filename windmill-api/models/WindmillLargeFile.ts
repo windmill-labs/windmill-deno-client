@@ -4,6 +4,5 @@
 
 export type WindmillLargeFile = {
     s3: string;
-    s3_bucket?: string;
 };
 
