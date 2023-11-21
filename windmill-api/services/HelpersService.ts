@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { WindmillFileMetadata } from '../models/WindmillFileMetadata.ts';
 import type { WindmillFilePreview } from '../models/WindmillFilePreview.ts';
 import type { WindmillLargeFile } from '../models/WindmillLargeFile.ts';
 
@@ -64,10 +65,14 @@ export class HelpersService {
      */
     public static listStoredFiles({
         workspace,
+        maxKeys,
+        marker,
     }: {
         workspace: string,
+        maxKeys: number,
+        marker?: string,
     }): CancelablePromise<{
-        file_count: number;
+        next_marker?: string;
         windmill_large_files: Array<WindmillLargeFile>;
     }> {
         return __request(OpenAPI, {
@@ -75,6 +80,34 @@ export class HelpersService {
             url: '/w/{workspace}/job_helpers/list_stored_files',
             path: {
                 'workspace': workspace,
+            },
+            query: {
+                'max_keys': maxKeys,
+                'marker': marker,
+            },
+        });
+    }
+
+    /**
+     * Load metadata of the file
+     * @returns WindmillFileMetadata FileMetadata
+     * @throws ApiError
+     */
+    public static loadFileMetadata({
+        workspace,
+        fileKey,
+    }: {
+        workspace: string,
+        fileKey: string,
+    }): CancelablePromise<WindmillFileMetadata> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/job_helpers/load_file_metadata',
+            path: {
+                'workspace': workspace,
+            },
+            query: {
+                'file_key': fileKey,
             },
         });
     }
@@ -87,15 +120,19 @@ export class HelpersService {
     public static loadFilePreview({
         workspace,
         fileKey,
-        from,
-        length,
-        separator,
+        fileSizeInBytes,
+        fileMimeType,
+        csvSeparator,
+        readBytesFrom,
+        readBytesLength,
     }: {
         workspace: string,
         fileKey: string,
-        from?: number,
-        length?: number,
-        separator?: string,
+        fileSizeInBytes?: number,
+        fileMimeType?: string,
+        csvSeparator?: string,
+        readBytesFrom?: number,
+        readBytesLength?: number,
     }): CancelablePromise<WindmillFilePreview> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -105,9 +142,11 @@ export class HelpersService {
             },
             query: {
                 'file_key': fileKey,
-                'from': from,
-                'length': length,
-                'separator': separator,
+                'file_size_in_bytes': fileSizeInBytes,
+                'file_mime_type': fileMimeType,
+                'csv_separator': csvSeparator,
+                'read_bytes_from': readBytesFrom,
+                'read_bytes_length': readBytesLength,
             },
         });
     }
