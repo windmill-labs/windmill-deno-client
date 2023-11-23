@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { PolarsClientKwargs } from '../models/PolarsClientKwargs.ts';
 import type { WindmillFileMetadata } from '../models/WindmillFileMetadata.ts';
 import type { WindmillFilePreview } from '../models/WindmillFilePreview.ts';
 import type { WindmillLargeFile } from '../models/WindmillLargeFile.ts';
@@ -31,6 +32,39 @@ export class HelpersService {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/w/{workspace}/job_helpers/duckdb_connection_settings',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * Converts an S3 resource to the set of arguments necessary to connect Polars to an S3 bucket
+     * @returns any Connection settings
+     * @throws ApiError
+     */
+    public static polarsConnectionSettings({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * S3 resource to connect to
+         */
+        requestBody: any,
+    }): CancelablePromise<{
+        endpoint_url: string;
+        key?: string;
+        secret?: string;
+        use_ssl: boolean;
+        cache_regions: boolean;
+        client_kwargs: PolarsClientKwargs;
+    }> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/job_helpers/polars_connection_settings',
             path: {
                 'workspace': workspace,
             },

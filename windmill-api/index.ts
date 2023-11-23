@@ -60,6 +60,7 @@ export type { OpenFlow } from './models/OpenFlow.ts';
 export type { OpenFlowWPath } from './models/OpenFlowWPath.ts';
 export type { PathFlow } from './models/PathFlow.ts';
 export type { PathScript } from './models/PathScript.ts';
+export type { PolarsClientKwargs } from './models/PolarsClientKwargs.ts';
 export { Policy } from './models/Policy.ts';
 export { Preview } from './models/Preview.ts';
 export { QueuedJob } from './models/QueuedJob.ts';
