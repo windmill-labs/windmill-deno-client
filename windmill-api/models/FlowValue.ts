@@ -13,5 +13,6 @@ export type FlowValue = {
     skip_expr?: string;
     cache_ttl?: number;
     priority?: number;
+    early_return?: string;
 };
 
