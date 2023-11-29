@@ -615,10 +615,17 @@ export class UserService {
      * @returns TruncatedToken truncated token
      * @throws ApiError
      */
-    public static listTokens(): CancelablePromise<Array<TruncatedToken>> {
+    public static listTokens({
+        excludeEphemeral,
+    }: {
+        excludeEphemeral?: boolean,
+    }): CancelablePromise<Array<TruncatedToken>> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/users/tokens/list',
+            query: {
+                'exclude_ephemeral': excludeEphemeral,
+            },
         });
     }
 
