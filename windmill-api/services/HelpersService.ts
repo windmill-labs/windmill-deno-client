@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { PolarsClientKwargs } from '../models/PolarsClientKwargs.ts';
+import type { S3Resource } from '../models/S3Resource.ts';
 import type { WindmillFileMetadata } from '../models/WindmillFileMetadata.ts';
 import type { WindmillFilePreview } from '../models/WindmillFilePreview.ts';
 import type { WindmillLargeFile } from '../models/WindmillLargeFile.ts';
@@ -25,7 +26,9 @@ export class HelpersService {
         /**
          * S3 resource to connect to
          */
-        requestBody: any,
+        requestBody: {
+            s3_resource?: S3Resource;
+        },
     }): CancelablePromise<{
         connection_settings_str?: string;
     }> {
@@ -53,7 +56,9 @@ export class HelpersService {
         /**
          * S3 resource to connect to
          */
-        requestBody: any,
+        requestBody: {
+            s3_resource?: S3Resource;
+        },
     }): CancelablePromise<{
         endpoint_url: string;
         key?: string;
