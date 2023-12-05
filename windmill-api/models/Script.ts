@@ -36,6 +36,9 @@ export type Script = {
     dedicated_worker?: boolean;
     ws_error_handler_muted?: boolean;
     priority?: number;
+    restart_unless_cancelled?: boolean;
+    timeout?: number;
+    delete_after_use?: boolean;
 };
 
 export namespace Script {

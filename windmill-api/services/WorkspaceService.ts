@@ -6,6 +6,7 @@ import type { LargeFileStorage } from '../models/LargeFileStorage.ts';
 import type { ScriptArgs } from '../models/ScriptArgs.ts';
 import type { UserWorkspaceList } from '../models/UserWorkspaceList.ts';
 import type { Workspace } from '../models/Workspace.ts';
+import type { WorkspaceGitSync } from '../models/WorkspaceGitSync.ts';
 import type { WorkspaceInvite } from '../models/WorkspaceInvite.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
@@ -355,6 +356,7 @@ export class WorkspaceService {
         error_handler_extra_args?: ScriptArgs;
         error_handler_muted_on_cancel?: boolean;
         large_file_storage?: LargeFileStorage;
+        git_sync?: WorkspaceGitSync;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -671,6 +673,34 @@ export class WorkspaceService {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/w/{workspace}/workspaces/edit_large_file_storage_config',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * edit workspace git sync settings
+     * @returns any status
+     * @throws ApiError
+     */
+    public static editWorkspaceGitSyncConfig({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * Workspace Git sync settings
+         */
+        requestBody: {
+            git_sync_settings?: WorkspaceGitSync;
+        },
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/edit_git_sync_config',
             path: {
                 'workspace': workspace,
             },

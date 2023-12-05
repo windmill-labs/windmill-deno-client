@@ -16,5 +16,6 @@ export type FlowMetadata = {
     ws_error_handler_muted?: boolean;
     priority?: number;
     dedicated_worker?: boolean;
+    timeout?: number;
 };
 

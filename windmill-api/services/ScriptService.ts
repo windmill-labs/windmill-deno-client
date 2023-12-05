@@ -5,6 +5,7 @@ import type { HubScriptKind } from '../models/HubScriptKind.ts';
 import type { NewScript } from '../models/NewScript.ts';
 import type { NewScriptWithDraft } from '../models/NewScriptWithDraft.ts';
 import type { Script } from '../models/Script.ts';
+import type { ScriptHistory } from '../models/ScriptHistory.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
 import { OpenAPI } from '../core/OpenAPI.ts';
@@ -496,6 +497,62 @@ export class ScriptService {
                 'workspace': workspace,
                 'path': path,
             },
+        });
+    }
+
+    /**
+     * get history of a script by path
+     * @returns ScriptHistory script history
+     * @throws ApiError
+     */
+    public static getScriptHistoryByPath({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<Array<ScriptHistory>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/scripts/history/p/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
+     * update history of a script
+     * @returns string success
+     * @throws ApiError
+     */
+    public static updateScriptHistory({
+        workspace,
+        hash,
+        path,
+        requestBody,
+    }: {
+        workspace: string,
+        hash: string,
+        path: string,
+        /**
+         * Script deployment message
+         */
+        requestBody: {
+            deployment_msg?: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/scripts/history_update/h/{hash}/p/{path}',
+            path: {
+                'workspace': workspace,
+                'hash': hash,
+                'path': path,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
 

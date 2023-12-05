@@ -44,6 +44,36 @@ export class HelpersService {
     }
 
     /**
+     * Converts an S3 resource to the set of instructions necessary to connect DuckDB to an S3 bucket
+     * @returns any Connection settings
+     * @throws ApiError
+     */
+    public static duckdbConnectionSettingsV2({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * S3 resource path to use to generate the connection settings. If empty, the S3 resource defined in the workspace settings will be used
+         */
+        requestBody: {
+            s3_resource_path?: string;
+        },
+    }): CancelablePromise<{
+        connection_settings_str: string;
+    }> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/job_helpers/v2/duckdb_connection_settings',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * Converts an S3 resource to the set of arguments necessary to connect Polars to an S3 bucket
      * @returns any Connection settings
      * @throws ApiError
@@ -70,6 +100,50 @@ export class HelpersService {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/w/{workspace}/job_helpers/polars_connection_settings',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * Converts an S3 resource to the set of arguments necessary to connect Polars to an S3 bucket
+     * @returns any Connection settings
+     * @throws ApiError
+     */
+    public static polarsConnectionSettingsV2({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * S3 resource path to use to generate the connection settings. If empty, the S3 resource defined in the workspace settings will be used
+         */
+        requestBody: {
+            s3_resource_path?: string;
+        },
+    }): CancelablePromise<{
+        s3fs_args: {
+            endpoint_url: string;
+            key?: string;
+            secret?: string;
+            use_ssl: boolean;
+            cache_regions: boolean;
+            client_kwargs: PolarsClientKwargs;
+        };
+        polars_cloud_options?: {
+            aws_endpoint_url: string;
+            aws_access_key_id?: string;
+            aws_secret_access_key?: string;
+            aws_region: string;
+            aws_allow_http: boolean;
+        };
+    }> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/job_helpers/v2/polars_connection_settings',
             path: {
                 'workspace': workspace,
             },
@@ -162,6 +236,7 @@ export class HelpersService {
         fileSizeInBytes,
         fileMimeType,
         csvSeparator,
+        csvHasHeader,
         readBytesFrom,
         readBytesLength,
     }: {
@@ -170,6 +245,7 @@ export class HelpersService {
         fileSizeInBytes?: number,
         fileMimeType?: string,
         csvSeparator?: string,
+        csvHasHeader?: boolean,
         readBytesFrom?: number,
         readBytesLength?: number,
     }): CancelablePromise<WindmillFilePreview> {
@@ -184,6 +260,7 @@ export class HelpersService {
                 'file_size_in_bytes': fileSizeInBytes,
                 'file_mime_type': fileMimeType,
                 'csv_separator': csvSeparator,
+                'csv_has_header': csvHasHeader,
                 'read_bytes_from': readBytesFrom,
                 'read_bytes_length': readBytesLength,
             },

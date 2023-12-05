@@ -22,6 +22,10 @@ export type NewScript = {
     dedicated_worker?: boolean;
     ws_error_handler_muted?: boolean;
     priority?: number;
+    restart_unless_cancelled?: boolean;
+    timeout?: number;
+    delete_after_use?: boolean;
+    deployment_message?: string;
 };
 
 export namespace NewScript {

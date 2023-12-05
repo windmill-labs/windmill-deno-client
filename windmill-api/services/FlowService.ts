@@ -287,6 +287,7 @@ export class FlowService {
          */
         requestBody: (OpenFlowWPath & {
             draft_only?: boolean;
+            deployment_message?: string;
         }),
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
@@ -315,7 +316,9 @@ export class FlowService {
         /**
          * Partially filled flow
          */
-        requestBody: OpenFlowWPath,
+        requestBody: (OpenFlowWPath & {
+            deployment_message?: string;
+        }),
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',

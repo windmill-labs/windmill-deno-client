@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { AppHistory } from '../models/AppHistory.ts';
 import type { AppWithLastVersion } from '../models/AppWithLastVersion.ts';
 import type { AppWithLastVersionWDraft } from '../models/AppWithLastVersionWDraft.ts';
 import type { ListableApp } from '../models/ListableApp.ts';
@@ -163,6 +164,7 @@ export class AppService {
             summary: string;
             policy: Policy;
             draft_only?: boolean;
+            deployment_message?: string;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
@@ -239,6 +241,62 @@ export class AppService {
                 'workspace': workspace,
                 'path': path,
             },
+        });
+    }
+
+    /**
+     * get app history by path
+     * @returns AppHistory app history
+     * @throws ApiError
+     */
+    public static getAppHistoryByPath({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<Array<AppHistory>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/apps/history/p/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
+     * update app history
+     * @returns string success
+     * @throws ApiError
+     */
+    public static updateAppHistory({
+        workspace,
+        id,
+        version,
+        requestBody,
+    }: {
+        workspace: string,
+        id: number,
+        version: number,
+        /**
+         * App deployment message
+         */
+        requestBody: {
+            deployment_msg?: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/apps/history_update/a/{id}/v/{version}',
+            path: {
+                'workspace': workspace,
+                'id': id,
+                'version': version,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
 
@@ -372,6 +430,7 @@ export class AppService {
             summary?: string;
             value?: any;
             policy?: Policy;
+            deployment_message?: string;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {

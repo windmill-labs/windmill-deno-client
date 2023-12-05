@@ -16,6 +16,7 @@ export type FlowModule = {
     sleep?: InputTransform;
     cache_ttl?: number;
     timeout?: number;
+    delete_after_use?: boolean;
     summary?: string;
     mock?: {
         enabled?: boolean;

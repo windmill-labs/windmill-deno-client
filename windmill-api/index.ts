@@ -6,6 +6,7 @@ export { CancelablePromise, CancelError } from './core/CancelablePromise.ts';
 export { OpenAPI } from './core/OpenAPI.ts';
 export type { OpenAPIConfig } from './core/OpenAPI.ts';
 
+export type { AppHistory } from './models/AppHistory.ts';
 export { AppWithLastVersion } from './models/AppWithLastVersion.ts';
 export type { AppWithLastVersionWDraft } from './models/AppWithLastVersionWDraft.ts';
 export { AuditLog } from './models/AuditLog.ts';
@@ -75,6 +76,7 @@ export type { Schedule } from './models/Schedule.ts';
 export type { ScheduleWJobs } from './models/ScheduleWJobs.ts';
 export { Script } from './models/Script.ts';
 export type { ScriptArgs } from './models/ScriptArgs.ts';
+export type { ScriptHistory } from './models/ScriptHistory.ts';
 export type { SlackToken } from './models/SlackToken.ts';
 export type { StaticTransform } from './models/StaticTransform.ts';
 export type { TokenResponse } from './models/TokenResponse.ts';
@@ -88,6 +90,7 @@ export { WindmillFilePreview } from './models/WindmillFilePreview.ts';
 export type { WindmillLargeFile } from './models/WindmillLargeFile.ts';
 export type { WorkerPing } from './models/WorkerPing.ts';
 export type { Workspace } from './models/Workspace.ts';
+export type { WorkspaceGitSync } from './models/WorkspaceGitSync.ts';
 export type { WorkspaceInvite } from './models/WorkspaceInvite.ts';
 
 export { AdminService } from './services/AdminService.ts';
