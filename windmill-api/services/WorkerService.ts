@@ -49,4 +49,23 @@ export class WorkerService {
         });
     }
 
+    /**
+     * exists worker with tag
+     * @returns boolean whether a worker with the tag exists
+     * @throws ApiError
+     */
+    public static existsWorkerWithTag({
+        tag,
+    }: {
+        tag: string,
+    }): CancelablePromise<boolean> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/workers/exists_worker_with_tag',
+            query: {
+                'tag': tag,
+            },
+        });
+    }
+
 }
