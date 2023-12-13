@@ -11,6 +11,7 @@ export type Retry = {
         attempts?: number;
         multiplier?: number;
         seconds?: number;
+        random_factor?: number;
     };
 };
 
