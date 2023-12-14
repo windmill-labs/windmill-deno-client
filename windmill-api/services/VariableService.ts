@@ -134,6 +134,7 @@ export class VariableService {
         workspace,
         path,
         decryptSecret,
+        includeEncrypted,
     }: {
         workspace: string,
         path: string,
@@ -143,6 +144,11 @@ export class VariableService {
          *
          */
         decryptSecret?: boolean,
+        /**
+         * ask to include the encrypted value if secret and decrypt secret is not true (default: false)
+         *
+         */
+        includeEncrypted?: boolean,
     }): CancelablePromise<ListableVariable> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -153,6 +159,7 @@ export class VariableService {
             },
             query: {
                 'decrypt_secret': decryptSecret,
+                'include_encrypted': includeEncrypted,
             },
         });
     }
