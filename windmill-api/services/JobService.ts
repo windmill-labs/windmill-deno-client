@@ -26,6 +26,7 @@ export class JobService {
         scheduledFor,
         scheduledInSecs,
         parentJob,
+        tag,
         jobId,
         invisibleToOwner,
     }: {
@@ -48,6 +49,10 @@ export class JobService {
          */
         parentJob?: string,
         /**
+         * Override the tag to use
+         */
+        tag?: string,
+        /**
          * The job id to assign to the created job. if missing, job is chosen randomly using the ULID scheme. If a job id already exists in the queue or as a completed job, the request to create one will fail (Bad Request)
          */
         jobId?: string,
@@ -67,6 +72,7 @@ export class JobService {
                 'scheduled_for': scheduledFor,
                 'scheduled_in_secs': scheduledInSecs,
                 'parent_job': parentJob,
+                'tag': tag,
                 'job_id': jobId,
                 'invisible_to_owner': invisibleToOwner,
             },
@@ -143,6 +149,7 @@ export class JobService {
         path,
         requestBody,
         parentJob,
+        tag,
         jobId,
         includeHeader,
         queueLimit,
@@ -157,6 +164,10 @@ export class JobService {
          * The parent job that is at the origin and responsible for the execution of this script if any
          */
         parentJob?: string,
+        /**
+         * Override the tag to use
+         */
+        tag?: string,
         /**
          * The job id to assign to the created job. if missing, job is chosen randomly using the ULID scheme. If a job id already exists in the queue or as a completed job, the request to create one will fail (Bad Request)
          */
@@ -182,6 +193,7 @@ export class JobService {
             },
             query: {
                 'parent_job': parentJob,
+                'tag': tag,
                 'job_id': jobId,
                 'include_header': includeHeader,
                 'queue_limit': queueLimit,
@@ -200,6 +212,7 @@ export class JobService {
         workspace,
         path,
         parentJob,
+        tag,
         jobId,
         includeHeader,
         queueLimit,
@@ -211,6 +224,10 @@ export class JobService {
          * The parent job that is at the origin and responsible for the execution of this script if any
          */
         parentJob?: string,
+        /**
+         * Override the tag to use
+         */
+        tag?: string,
         /**
          * The job id to assign to the created job. if missing, job is chosen randomly using the ULID scheme. If a job id already exists in the queue or as a completed job, the request to create one will fail (Bad Request)
          */
@@ -242,6 +259,7 @@ export class JobService {
             },
             query: {
                 'parent_job': parentJob,
+                'tag': tag,
                 'job_id': jobId,
                 'include_header': includeHeader,
                 'queue_limit': queueLimit,
@@ -391,6 +409,7 @@ export class JobService {
         scheduledFor,
         scheduledInSecs,
         parentJob,
+        tag,
         jobId,
         includeHeader,
         invisibleToOwner,
@@ -413,6 +432,10 @@ export class JobService {
          * The parent job that is at the origin and responsible for the execution of this script if any
          */
         parentJob?: string,
+        /**
+         * Override the tag to use
+         */
+        tag?: string,
         /**
          * The job id to assign to the created job. if missing, job is chosen randomly using the ULID scheme. If a job id already exists in the queue or as a completed job, the request to create one will fail (Bad Request)
          */
@@ -439,6 +462,7 @@ export class JobService {
                 'scheduled_for': scheduledFor,
                 'scheduled_in_secs': scheduledInSecs,
                 'parent_job': parentJob,
+                'tag': tag,
                 'job_id': jobId,
                 'include_header': includeHeader,
                 'invisible_to_owner': invisibleToOwner,
@@ -462,6 +486,7 @@ export class JobService {
         scheduledFor,
         scheduledInSecs,
         parentJob,
+        tag,
         jobId,
         includeHeader,
         invisibleToOwner,
@@ -493,6 +518,10 @@ export class JobService {
          */
         parentJob?: string,
         /**
+         * Override the tag to use
+         */
+        tag?: string,
+        /**
          * The job id to assign to the created job. if missing, job is chosen randomly using the ULID scheme. If a job id already exists in the queue or as a completed job, the request to create one will fail (Bad Request)
          */
         jobId?: string,
@@ -520,6 +549,7 @@ export class JobService {
                 'scheduled_for': scheduledFor,
                 'scheduled_in_secs': scheduledInSecs,
                 'parent_job': parentJob,
+                'tag': tag,
                 'job_id': jobId,
                 'include_header': includeHeader,
                 'invisible_to_owner': invisibleToOwner,
@@ -541,6 +571,7 @@ export class JobService {
         scheduledFor,
         scheduledInSecs,
         parentJob,
+        tag,
         jobId,
         includeHeader,
         invisibleToOwner,
@@ -563,6 +594,10 @@ export class JobService {
          * The parent job that is at the origin and responsible for the execution of this script if any
          */
         parentJob?: string,
+        /**
+         * Override the tag to use
+         */
+        tag?: string,
         /**
          * The job id to assign to the created job. if missing, job is chosen randomly using the ULID scheme. If a job id already exists in the queue or as a completed job, the request to create one will fail (Bad Request)
          */
@@ -589,6 +624,7 @@ export class JobService {
                 'scheduled_for': scheduledFor,
                 'scheduled_in_secs': scheduledInSecs,
                 'parent_job': parentJob,
+                'tag': tag,
                 'job_id': jobId,
                 'include_header': includeHeader,
                 'invisible_to_owner': invisibleToOwner,
@@ -711,6 +747,7 @@ export class JobService {
         startedBefore,
         startedAfter,
         success,
+        scheduledForBeforeNow,
         jobKinds,
         suspended,
         running,
@@ -760,6 +797,10 @@ export class JobService {
          */
         success?: boolean,
         /**
+         * filter on jobs scheduled_for before now (hence waitinf for a worker)
+         */
+        scheduledForBeforeNow?: boolean,
+        /**
          * filter on job kind (values 'preview', 'script', 'dependencies', 'flow') separated by,
          */
         jobKinds?: string,
@@ -801,6 +842,7 @@ export class JobService {
                 'started_before': startedBefore,
                 'started_after': startedAfter,
                 'success': success,
+                'scheduled_for_before_now': scheduledForBeforeNow,
                 'job_kinds': jobKinds,
                 'suspended': suspended,
                 'running': running,
@@ -1006,6 +1048,7 @@ export class JobService {
         startedAfter,
         createdOrStartedBefore,
         running,
+        scheduledForBeforeNow,
         createdOrStartedAfter,
         jobKinds,
         args,
@@ -1057,6 +1100,10 @@ export class JobService {
          */
         running?: boolean,
         /**
+         * filter on jobs scheduled_for before now (hence waitinf for a worker)
+         */
+        scheduledForBeforeNow?: boolean,
+        /**
          * filter on created_at for non non started job and started_at otherwise after (exclusive) timestamp
          */
         createdOrStartedAfter?: string,
@@ -1106,6 +1153,7 @@ export class JobService {
                 'started_after': startedAfter,
                 'created_or_started_before': createdOrStartedBefore,
                 'running': running,
+                'scheduled_for_before_now': scheduledForBeforeNow,
                 'created_or_started_after': createdOrStartedAfter,
                 'job_kinds': jobKinds,
                 'args': args,
@@ -1331,6 +1379,37 @@ export class JobService {
             path: {
                 'workspace': workspace,
                 'id': id,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * cancel all queued jobs for persistent script
+     * @returns string persistent job scaled down to zero
+     * @throws ApiError
+     */
+    public static cancelPersistentQueuedJobs({
+        workspace,
+        path,
+        requestBody,
+    }: {
+        workspace: string,
+        path: string,
+        /**
+         * reason
+         */
+        requestBody: {
+            reason?: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/jobs_u/queue/cancel_persistent/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
             },
             body: requestBody,
             mediaType: 'application/json',

@@ -133,7 +133,7 @@ export class HelpersService {
             cache_regions: boolean;
             client_kwargs: PolarsClientKwargs;
         };
-        polars_cloud_options?: {
+        polars_cloud_options: {
             aws_endpoint_url: string;
             aws_access_key_id?: string;
             aws_secret_access_key?: string;
@@ -144,6 +144,40 @@ export class HelpersService {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/w/{workspace}/job_helpers/v2/polars_connection_settings',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * Converts an S3 resource to the set of arguments necessary to connect to an S3 bucket using boto3 in Python
+     * @returns any Connection settings
+     * @throws ApiError
+     */
+    public static boto3ConnectionSettingsV2({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * S3 resource path to use to generate the connection settings. If empty, the S3 resource defined in the workspace settings will be used
+         */
+        requestBody: {
+            s3_resource_path?: string;
+        },
+    }): CancelablePromise<{
+        endpoint_url: string;
+        region_name: string;
+        use_ssl: boolean;
+        aws_access_key_id?: string;
+        aws_secret_access_key?: string;
+    }> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/job_helpers/v2/boto3_connection_settings',
             path: {
                 'workspace': workspace,
             },
