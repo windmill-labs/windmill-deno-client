@@ -153,31 +153,25 @@ export class HelpersService {
     }
 
     /**
-     * Converts an S3 resource to the set of arguments necessary to connect to an S3 bucket using boto3 in Python
-     * @returns any Connection settings
+     * Returns the s3 resource associated to the provided path, or the workspace default S3 resource
+     * @returns S3Resource Connection settings
      * @throws ApiError
      */
-    public static boto3ConnectionSettingsV2({
+    public static s3ResourceInfo({
         workspace,
         requestBody,
     }: {
         workspace: string,
         /**
-         * S3 resource path to use to generate the connection settings. If empty, the S3 resource defined in the workspace settings will be used
+         * S3 resource path to use. If empty, the S3 resource defined in the workspace settings will be used
          */
         requestBody: {
             s3_resource_path?: string;
         },
-    }): CancelablePromise<{
-        endpoint_url: string;
-        region_name: string;
-        use_ssl: boolean;
-        aws_access_key_id?: string;
-        aws_secret_access_key?: string;
-    }> {
+    }): CancelablePromise<S3Resource> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/w/{workspace}/job_helpers/v2/boto3_connection_settings',
+            url: '/w/{workspace}/job_helpers/v2/s3_resource_info',
             path: {
                 'workspace': workspace,
             },
