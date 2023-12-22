@@ -56,6 +56,7 @@ export namespace QueuedJob {
         SCRIPT_HUB = 'script_hub',
         IDENTITY = 'identity',
         DEPLOYMENTCALLBACK = 'deploymentcallback',
+        SINGLESCRIPTFLOW = 'singlescriptflow',
     }
 
     export enum language {

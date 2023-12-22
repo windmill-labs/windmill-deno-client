@@ -3,6 +3,7 @@
 /* eslint-disable */
 import type { PolarsClientKwargs } from '../models/PolarsClientKwargs.ts';
 import type { S3Resource } from '../models/S3Resource.ts';
+import type { UploadFilePart } from '../models/UploadFilePart.ts';
 import type { WindmillFileMetadata } from '../models/WindmillFileMetadata.ts';
 import type { WindmillFilePreview } from '../models/WindmillFilePreview.ts';
 import type { WindmillLargeFile } from '../models/WindmillLargeFile.ts';
@@ -133,12 +134,12 @@ export class HelpersService {
             cache_regions: boolean;
             client_kwargs: PolarsClientKwargs;
         };
-        polars_cloud_options: {
+        storage_options: {
             aws_endpoint_url: string;
             aws_access_key_id?: string;
             aws_secret_access_key?: string;
             aws_region: string;
-            aws_allow_http: boolean;
+            aws_allow_http: string;
         };
     }> {
         return __request(OpenAPI, {
@@ -292,6 +293,94 @@ export class HelpersService {
                 'read_bytes_from': readBytesFrom,
                 'read_bytes_length': readBytesLength,
             },
+        });
+    }
+
+    /**
+     * Permanently delete file from S3
+     * @returns any Confirmation
+     * @throws ApiError
+     */
+    public static deleteS3File({
+        workspace,
+        fileKey,
+    }: {
+        workspace: string,
+        fileKey: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/w/{workspace}/job_helpers/delete_s3_file',
+            path: {
+                'workspace': workspace,
+            },
+            query: {
+                'file_key': fileKey,
+            },
+        });
+    }
+
+    /**
+     * Move a S3 file from one path to the other within the same bucket
+     * @returns any Confirmation
+     * @throws ApiError
+     */
+    public static moveS3File({
+        workspace,
+        srcFileKey,
+        destFileKey,
+    }: {
+        workspace: string,
+        srcFileKey: string,
+        destFileKey: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/job_helpers/move_s3_file',
+            path: {
+                'workspace': workspace,
+            },
+            query: {
+                'src_file_key': srcFileKey,
+                'dest_file_key': destFileKey,
+            },
+        });
+    }
+
+    /**
+     * Upload file to S3 bucket using multipart upload
+     * @returns any Chunk upload status
+     * @throws ApiError
+     */
+    public static multipartFileUpload({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * Query args for a multipart file upload to S3
+         */
+        requestBody: {
+            file_key: string;
+            part_content?: Array<number>;
+            upload_id?: string;
+            parts: Array<UploadFilePart>;
+            is_final: boolean;
+            cancel_upload: boolean;
+        },
+    }): CancelablePromise<{
+        upload_id: string;
+        parts: Array<UploadFilePart>;
+        is_done: boolean;
+    }> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/job_helpers/multipart_upload_s3_file',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
 

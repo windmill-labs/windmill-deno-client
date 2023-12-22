@@ -82,6 +82,7 @@ export type { StaticTransform } from './models/StaticTransform.ts';
 export type { TokenResponse } from './models/TokenResponse.ts';
 export type { TruncatedToken } from './models/TruncatedToken.ts';
 export type { UpdateInput } from './models/UpdateInput.ts';
+export type { UploadFilePart } from './models/UploadFilePart.ts';
 export type { Usage } from './models/Usage.ts';
 export type { User } from './models/User.ts';
 export type { UserWorkspaceList } from './models/UserWorkspaceList.ts';

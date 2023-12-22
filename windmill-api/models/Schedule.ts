@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { Retry } from './Retry.ts';
 import type { ScriptArgs } from './ScriptArgs.ts';
 
 export type Schedule = {
@@ -25,5 +26,6 @@ export type Schedule = {
     on_recovery_times?: number;
     on_recovery_extra_args?: ScriptArgs;
     ws_error_handler_muted?: boolean;
+    retry?: Retry;
 };
 
