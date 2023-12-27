@@ -22,5 +22,7 @@ export type NewSchedule = {
     on_recovery_extra_args?: ScriptArgs;
     ws_error_handler_muted?: boolean;
     retry?: Retry;
+    no_flow_overlap?: boolean;
+    summary?: string;
 };
 
