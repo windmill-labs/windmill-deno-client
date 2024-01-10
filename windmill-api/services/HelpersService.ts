@@ -367,6 +367,7 @@ export class HelpersService {
             parts: Array<UploadFilePart>;
             is_final: boolean;
             cancel_upload: boolean;
+            s3_resource_path?: string;
         },
     }): CancelablePromise<{
         upload_id: string;
