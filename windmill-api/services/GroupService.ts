@@ -42,6 +42,133 @@ export class GroupService {
     }
 
     /**
+     * create instance group
+     * @returns string instance group created
+     * @throws ApiError
+     */
+    public static createInstanceGroup({
+        requestBody,
+    }: {
+        /**
+         * create instance group
+         */
+        requestBody: {
+            name: string;
+            summary?: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/groups/create',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * update instance group
+     * @returns string instance group updated
+     * @throws ApiError
+     */
+    public static updateInstanceGroup({
+        name,
+        requestBody,
+    }: {
+        name: string,
+        /**
+         * update instance group
+         */
+        requestBody: {
+            new_summary: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/groups/udpate/{name}',
+            path: {
+                'name': name,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * delete instance group
+     * @returns string instance group deleted
+     * @throws ApiError
+     */
+    public static deleteInstanceGroup({
+        name,
+    }: {
+        name: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/groups/delete/{name}',
+            path: {
+                'name': name,
+            },
+        });
+    }
+
+    /**
+     * add user to instance group
+     * @returns string user added to instance group
+     * @throws ApiError
+     */
+    public static addUserToInstanceGroup({
+        name,
+        requestBody,
+    }: {
+        name: string,
+        /**
+         * user to add to instance group
+         */
+        requestBody: {
+            email: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/groups/adduser/{name}',
+            path: {
+                'name': name,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * remove user from instance group
+     * @returns string user removed from instance group
+     * @throws ApiError
+     */
+    public static removeUserFromInstanceGroup({
+        name,
+        requestBody,
+    }: {
+        name: string,
+        /**
+         * user to remove from instance group
+         */
+        requestBody: {
+            email: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/groups/removeuser/{name}',
+            path: {
+                'name': name,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * list groups
      * @returns Group group list
      * @throws ApiError

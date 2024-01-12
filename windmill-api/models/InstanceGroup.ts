@@ -4,6 +4,7 @@
 
 export type InstanceGroup = {
     name: string;
+    summary?: string;
     emails?: Array<string>;
 };
 
