@@ -84,7 +84,7 @@ export class GroupService {
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/groups/udpate/{name}',
+            url: '/groups/update/{name}',
             path: {
                 'name': name,
             },
@@ -130,7 +130,7 @@ export class GroupService {
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
-            method: 'DELETE',
+            method: 'POST',
             url: '/groups/adduser/{name}',
             path: {
                 'name': name,
@@ -158,7 +158,7 @@ export class GroupService {
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
-            method: 'DELETE',
+            method: 'POST',
             url: '/groups/removeuser/{name}',
             path: {
                 'name': name,
