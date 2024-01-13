@@ -83,7 +83,6 @@ export class OauthService {
         requestBody: {
             refresh_token?: string;
             expires_in: number;
-            owner: string;
             client: string;
         },
     }): CancelablePromise<string> {
