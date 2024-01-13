@@ -201,7 +201,7 @@ export class HelpersService {
     }
 
     /**
-     * List the file keys available in the worspace files storage (S3)
+     * List the file keys available in the workspace files storage (S3)
      * @returns any List of file keys
      * @throws ApiError
      */

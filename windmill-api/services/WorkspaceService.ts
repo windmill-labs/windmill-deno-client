@@ -356,7 +356,7 @@ export class WorkspaceService {
         error_handler_extra_args?: ScriptArgs;
         error_handler_muted_on_cancel?: boolean;
         large_file_storage?: LargeFileStorage;
-        git_sync?: WorkspaceGitSync;
+        git_sync?: Array<WorkspaceGitSync>;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -695,7 +695,7 @@ export class WorkspaceService {
          * Workspace Git sync settings
          */
         requestBody: {
-            git_sync_settings?: WorkspaceGitSync;
+            git_sync_settings?: Array<WorkspaceGitSync>;
         },
     }): CancelablePromise<any> {
         return __request(OpenAPI, {

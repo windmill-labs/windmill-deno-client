@@ -29,5 +29,6 @@ export type Schedule = {
     retry?: Retry;
     summary?: string;
     no_flow_overlap?: boolean;
+    tag?: string;
 };
 

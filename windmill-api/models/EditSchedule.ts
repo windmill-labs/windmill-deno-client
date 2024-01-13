@@ -20,5 +20,6 @@ export type EditSchedule = {
     retry?: Retry;
     no_flow_overlap?: boolean;
     summary?: string;
+    tag?: string;
 };
 
