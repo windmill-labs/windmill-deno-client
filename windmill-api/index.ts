@@ -68,6 +68,7 @@ export { Policy } from './models/Policy.ts';
 export { Preview } from './models/Preview.ts';
 export { QueuedJob } from './models/QueuedJob.ts';
 export { RawScript } from './models/RawScript.ts';
+export { RawScriptForDependencies } from './models/RawScriptForDependencies.ts';
 export type { Resource } from './models/Resource.ts';
 export type { ResourceType } from './models/ResourceType.ts';
 export type { RestartedFrom } from './models/RestartedFrom.ts';

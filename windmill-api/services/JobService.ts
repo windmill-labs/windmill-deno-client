@@ -6,6 +6,7 @@ import type { FlowPreview } from '../models/FlowPreview.ts';
 import type { Job } from '../models/Job.ts';
 import type { Preview } from '../models/Preview.ts';
 import type { QueuedJob } from '../models/QueuedJob.ts';
+import type { RawScriptForDependencies } from '../models/RawScriptForDependencies.ts';
 import type { ScriptArgs } from '../models/ScriptArgs.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
@@ -676,6 +677,37 @@ export class JobService {
                 'include_header': includeHeader,
                 'invisible_to_owner': invisibleToOwner,
                 'job_id': jobId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * run a one-off dependencies job
+     * @returns any dependency job result
+     * @throws ApiError
+     */
+    public static runRawScriptDependencies({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * raw script content
+         */
+        requestBody: {
+            raw_scripts: Array<RawScriptForDependencies>;
+            entrypoint: string;
+        },
+    }): CancelablePromise<{
+        lock: string;
+    }> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/jobs/run/dependencies',
+            path: {
+                'workspace': workspace,
             },
             body: requestBody,
             mediaType: 'application/json',
