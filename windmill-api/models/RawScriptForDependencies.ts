@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 export type RawScriptForDependencies = {
-    content: string;
+    raw_code: string;
     path: string;
     language: RawScriptForDependencies.language;
 };

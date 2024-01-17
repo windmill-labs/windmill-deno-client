@@ -10,7 +10,7 @@ export type NewScript = {
     content: string;
     schema?: any;
     is_template?: boolean;
-    lock?: Array<string>;
+    lock?: string;
     language: NewScript.language;
     kind?: NewScript.kind;
     tag?: string;
