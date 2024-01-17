@@ -116,6 +116,7 @@ export { IntegrationService } from './services/IntegrationService.ts';
 export { JobService } from './services/JobService.ts';
 export { MetricsService } from './services/MetricsService.ts';
 export { OauthService } from './services/OauthService.ts';
+export { OidcService } from './services/OidcService.ts';
 export { RawAppService } from './services/RawAppService.ts';
 export { ResourceService } from './services/ResourceService.ts';
 export { ScheduleService } from './services/ScheduleService.ts';
