@@ -361,8 +361,9 @@ export class HelpersService {
          * Query args for a multipart file upload to S3
          */
         requestBody: {
-            file_key: string;
-            part_content?: Array<number>;
+            file_key?: string;
+            file_extension?: string;
+            part_content: Array<number>;
             upload_id?: string;
             parts: Array<UploadFilePart>;
             is_final: boolean;
@@ -373,6 +374,7 @@ export class HelpersService {
         upload_id: string;
         parts: Array<UploadFilePart>;
         is_done: boolean;
+        file_key: string;
     }> {
         return __request(OpenAPI, {
             method: 'POST',

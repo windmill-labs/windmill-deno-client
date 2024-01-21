@@ -1349,6 +1349,7 @@ export class JobService {
     }): CancelablePromise<{
         completed: boolean;
         result: any;
+        success?: boolean;
         started?: boolean;
     }> {
         return __request(OpenAPI, {
