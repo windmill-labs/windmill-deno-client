@@ -6,7 +6,6 @@ export type WindmillFilePreview = {
     msg?: string;
     content?: string;
     content_type: WindmillFilePreview.content_type;
-    download_url?: string;
 };
 
 export namespace WindmillFilePreview {

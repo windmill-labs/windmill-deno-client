@@ -297,6 +297,32 @@ export class HelpersService {
     }
 
     /**
+     * Generate a unique URL to download the file
+     * @returns any Download URL
+     * @throws ApiError
+     */
+    public static generateDownloadUrl({
+        workspace,
+        fileKey,
+    }: {
+        workspace: string,
+        fileKey: string,
+    }): CancelablePromise<{
+        download_url: string;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/job_helpers/generate_download_url',
+            path: {
+                'workspace': workspace,
+            },
+            query: {
+                'file_key': fileKey,
+            },
+        });
+    }
+
+    /**
      * Permanently delete file from S3
      * @returns any Confirmation
      * @throws ApiError
