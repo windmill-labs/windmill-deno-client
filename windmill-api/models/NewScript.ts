@@ -26,6 +26,7 @@ export type NewScript = {
     timeout?: number;
     delete_after_use?: boolean;
     deployment_message?: string;
+    concurrency_key?: string;
 };
 
 export namespace NewScript {

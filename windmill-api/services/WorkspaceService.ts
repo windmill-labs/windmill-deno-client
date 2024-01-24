@@ -357,6 +357,7 @@ export class WorkspaceService {
         error_handler_muted_on_cancel?: boolean;
         large_file_storage?: LargeFileStorage;
         git_sync?: Array<WorkspaceGitSync>;
+        default_app?: string;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -706,6 +707,55 @@ export class WorkspaceService {
             },
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * edit default app for workspace
+     * @returns string status
+     * @throws ApiError
+     */
+    public static editWorkspaceDefaultApp({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * Workspace default app
+         */
+        requestBody: {
+            default_app_path?: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/edit_default_app',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * get default app for workspace
+     * @returns any status
+     * @throws ApiError
+     */
+    public static getWorkspaceDefaultApp({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<{
+        default_app_path?: string;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/workspaces/default_app',
+            path: {
+                'workspace': workspace,
+            },
         });
     }
 
