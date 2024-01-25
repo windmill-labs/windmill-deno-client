@@ -1,7 +1,6 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { bool } from '../models/bool/index.ts';
 import type { PolarsClientKwargs } from '../models/PolarsClientKwargs.ts';
 import type { S3Resource } from '../models/S3Resource.ts';
 import type { UploadFilePart } from '../models/UploadFilePart.ts';
@@ -317,7 +316,7 @@ export class HelpersService {
         offset?: number,
         limit?: number,
         sortCol?: string,
-        sortDesc?: bool,
+        sortDesc?: boolean,
         search?: string,
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
