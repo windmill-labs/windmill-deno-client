@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { bool } from '../models/bool/index.ts';
 import type { PolarsClientKwargs } from '../models/PolarsClientKwargs.ts';
 import type { S3Resource } from '../models/S3Resource.ts';
 import type { UploadFilePart } from '../models/UploadFilePart.ts';
@@ -293,6 +294,45 @@ export class HelpersService {
                 'csv_has_header': csvHasHeader,
                 'read_bytes_from': readBytesFrom,
                 'read_bytes_length': readBytesLength,
+            },
+        });
+    }
+
+    /**
+     * Load a preview of a parquet file
+     * @returns any Parquet Preview
+     * @throws ApiError
+     */
+    public static loadParquetPreview({
+        workspace,
+        path,
+        offset,
+        limit,
+        sortCol,
+        sortDesc,
+        search,
+    }: {
+        workspace: string,
+        path: string,
+        offset?: number,
+        limit?: number,
+        sortCol?: string,
+        sortDesc?: bool,
+        search?: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/job_helpers/load_parquet_preview/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+            query: {
+                'offset': offset,
+                'limit': limit,
+                'sort_col': sortCol,
+                'sort_desc': sortDesc,
+                'search': search,
             },
         });
     }
