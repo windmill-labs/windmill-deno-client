@@ -216,6 +216,7 @@ export class HelpersService {
     }): CancelablePromise<{
         next_marker?: string;
         windmill_large_files: Array<WindmillLargeFile>;
+        restricted_access?: boolean;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -395,6 +396,7 @@ export class HelpersService {
             is_final: boolean;
             cancel_upload: boolean;
             s3_resource_path?: string;
+            file_expiration?: string;
         },
     }): CancelablePromise<{
         upload_id: string;
@@ -405,6 +407,41 @@ export class HelpersService {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/w/{workspace}/job_helpers/multipart_upload_s3_file',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * Download file to S3 bucket
+     * @returns any Chunk of the downloaded file
+     * @throws ApiError
+     */
+    public static multipartFileDownload({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * Query args for a multipart file upload to S3
+         */
+        requestBody: {
+            file_key: string;
+            part_number: number;
+            file_size?: number;
+            s3_resource_path?: string;
+        },
+    }): CancelablePromise<{
+        file_size?: number;
+        part_content: Array<number>;
+        next_part_number?: number;
+    }> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/job_helpers/multipart_download_s3_file',
             path: {
                 'workspace': workspace,
             },

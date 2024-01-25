@@ -5,6 +5,7 @@
 export type LargeFileStorage = {
     type?: LargeFileStorage.type;
     s3_resource_path?: string;
+    public_resource?: boolean;
 };
 
 export namespace LargeFileStorage {
