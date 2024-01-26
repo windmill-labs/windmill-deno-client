@@ -309,7 +309,8 @@ export class HelpersService {
         limit,
         sortCol,
         sortDesc,
-        search,
+        searchCol,
+        searchTerm,
     }: {
         workspace: string,
         path: string,
@@ -317,7 +318,8 @@ export class HelpersService {
         limit?: number,
         sortCol?: string,
         sortDesc?: boolean,
-        search?: string,
+        searchCol?: string,
+        searchTerm?: string,
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -331,7 +333,8 @@ export class HelpersService {
                 'limit': limit,
                 'sort_col': sortCol,
                 'sort_desc': sortDesc,
-                'search': search,
+                'search_col': searchCol,
+                'search_term': searchTerm,
             },
         });
     }
