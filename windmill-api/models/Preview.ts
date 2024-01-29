@@ -12,6 +12,7 @@ export type Preview = {
     tag?: string;
     kind?: Preview.kind;
     dedicated_worker?: boolean;
+    lock?: string;
 };
 
 export namespace Preview {
