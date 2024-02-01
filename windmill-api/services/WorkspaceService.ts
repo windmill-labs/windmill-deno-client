@@ -346,6 +346,7 @@ export class WorkspaceService {
         slack_command_script?: string;
         auto_invite_domain?: string;
         auto_invite_operator?: boolean;
+        auto_add?: boolean;
         plan?: string;
         customer_id?: string;
         webhook?: string;
@@ -532,6 +533,7 @@ export class WorkspaceService {
         requestBody: {
             operator?: boolean;
             invite_all?: boolean;
+            auto_add?: boolean;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {

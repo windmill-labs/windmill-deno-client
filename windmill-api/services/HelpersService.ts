@@ -3,7 +3,6 @@
 /* eslint-disable */
 import type { PolarsClientKwargs } from '../models/PolarsClientKwargs.ts';
 import type { S3Resource } from '../models/S3Resource.ts';
-import type { UploadFilePart } from '../models/UploadFilePart.ts';
 import type { WindmillFileMetadata } from '../models/WindmillFileMetadata.ts';
 import type { WindmillFilePreview } from '../models/WindmillFilePreview.ts';
 import type { WindmillLargeFile } from '../models/WindmillLargeFile.ts';
@@ -209,10 +208,12 @@ export class HelpersService {
         workspace,
         maxKeys,
         marker,
+        prefix,
     }: {
         workspace: string,
         maxKeys: number,
         marker?: string,
+        prefix?: string,
     }): CancelablePromise<{
         next_marker?: string;
         windmill_large_files: Array<WindmillLargeFile>;
@@ -227,6 +228,7 @@ export class HelpersService {
             query: {
                 'max_keys': maxKeys,
                 'marker': marker,
+                'prefix': prefix,
             },
         });
     }
@@ -340,32 +342,6 @@ export class HelpersService {
     }
 
     /**
-     * Generate a unique URL to download the file
-     * @returns any Download URL
-     * @throws ApiError
-     */
-    public static generateDownloadUrl({
-        workspace,
-        fileKey,
-    }: {
-        workspace: string,
-        fileKey: string,
-    }): CancelablePromise<{
-        download_url: string;
-    }> {
-        return __request(OpenAPI, {
-            method: 'GET',
-            url: '/w/{workspace}/job_helpers/generate_download_url',
-            path: {
-                'workspace': workspace,
-            },
-            query: {
-                'file_key': fileKey,
-            },
-        });
-    }
-
-    /**
      * Permanently delete file from S3
      * @returns any Confirmation
      * @throws ApiError
@@ -417,78 +393,68 @@ export class HelpersService {
     }
 
     /**
-     * Upload file to S3 bucket using multipart upload
-     * @returns any Chunk upload status
+     * Upload file to S3 bucket
+     * @returns any File upload status
      * @throws ApiError
      */
-    public static multipartFileUpload({
+    public static fileUpload({
         workspace,
         requestBody,
+        fileKey,
+        fileExtension,
+        s3ResourcePath,
     }: {
         workspace: string,
         /**
-         * Query args for a multipart file upload to S3
+         * File content
          */
-        requestBody: {
-            file_key?: string;
-            file_extension?: string;
-            part_content: Array<number>;
-            upload_id?: string;
-            parts: Array<UploadFilePart>;
-            is_final: boolean;
-            cancel_upload: boolean;
-            s3_resource_path?: string;
-            file_expiration?: string;
-        },
+        requestBody: Blob,
+        fileKey?: string,
+        fileExtension?: string,
+        s3ResourcePath?: string,
     }): CancelablePromise<{
-        upload_id: string;
-        parts: Array<UploadFilePart>;
-        is_done: boolean;
         file_key: string;
     }> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/w/{workspace}/job_helpers/multipart_upload_s3_file',
+            url: '/w/{workspace}/job_helpers/upload_s3_file',
             path: {
                 'workspace': workspace,
             },
+            query: {
+                'file_key': fileKey,
+                'file_extension': fileExtension,
+                's3_resource_path': s3ResourcePath,
+            },
             body: requestBody,
-            mediaType: 'application/json',
+            mediaType: 'application/octet-stream',
         });
     }
 
     /**
      * Download file to S3 bucket
-     * @returns any Chunk of the downloaded file
+     * @returns binary Chunk of the downloaded file
      * @throws ApiError
      */
-    public static multipartFileDownload({
+    public static fileDownload({
         workspace,
-        requestBody,
+        fileKey,
+        s3ResourcePath,
     }: {
         workspace: string,
-        /**
-         * Query args for a multipart file upload to S3
-         */
-        requestBody: {
-            file_key: string;
-            part_number: number;
-            file_size?: number;
-            s3_resource_path?: string;
-        },
-    }): CancelablePromise<{
-        file_size?: number;
-        part_content: Array<number>;
-        next_part_number?: number;
-    }> {
+        fileKey: string,
+        s3ResourcePath?: string,
+    }): CancelablePromise<Blob> {
         return __request(OpenAPI, {
-            method: 'POST',
-            url: '/w/{workspace}/job_helpers/multipart_download_s3_file',
+            method: 'GET',
+            url: '/w/{workspace}/job_helpers/download_s3_file',
             path: {
                 'workspace': workspace,
             },
-            body: requestBody,
-            mediaType: 'application/json',
+            query: {
+                'file_key': fileKey,
+                's3_resource_path': s3ResourcePath,
+            },
         });
     }
 
