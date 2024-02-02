@@ -403,6 +403,7 @@ export class HelpersService {
         fileKey,
         fileExtension,
         s3ResourcePath,
+        resourceType,
     }: {
         workspace: string,
         /**
@@ -412,6 +413,7 @@ export class HelpersService {
         fileKey?: string,
         fileExtension?: string,
         s3ResourcePath?: string,
+        resourceType?: string,
     }): CancelablePromise<{
         file_key: string;
     }> {
@@ -425,6 +427,7 @@ export class HelpersService {
                 'file_key': fileKey,
                 'file_extension': fileExtension,
                 's3_resource_path': s3ResourcePath,
+                'resource_type': resourceType,
             },
             body: requestBody,
             mediaType: 'application/octet-stream',
@@ -440,10 +443,12 @@ export class HelpersService {
         workspace,
         fileKey,
         s3ResourcePath,
+        resourceType,
     }: {
         workspace: string,
         fileKey: string,
         s3ResourcePath?: string,
+        resourceType?: string,
     }): CancelablePromise<Blob> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -454,6 +459,7 @@ export class HelpersService {
             query: {
                 'file_key': fileKey,
                 's3_resource_path': s3ResourcePath,
+                'resource_type': resourceType,
             },
         });
     }

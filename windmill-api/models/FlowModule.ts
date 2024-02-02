@@ -30,6 +30,7 @@ export type FlowModule = {
         };
         user_auth_required?: boolean;
         user_groups_required?: InputTransform;
+        self_approval_disabled?: boolean;
     };
     priority?: number;
     retry?: Retry;
