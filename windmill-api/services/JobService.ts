@@ -1233,6 +1233,28 @@ export class JobService {
     }
 
     /**
+     * get root job id
+     * @returns string get root job id
+     * @throws ApiError
+     */
+    public static getRootJobId({
+        workspace,
+        id,
+    }: {
+        workspace: string,
+        id: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/jobs_u/get_root_job_id/{id}',
+            path: {
+                'workspace': workspace,
+                'id': id,
+            },
+        });
+    }
+
+    /**
      * get job logs
      * @returns string job details
      * @throws ApiError
