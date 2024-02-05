@@ -1290,6 +1290,28 @@ export class JobService {
     }
 
     /**
+     * get flow debug info
+     * @returns any flow debug info details
+     * @throws ApiError
+     */
+    public static getFlowDebugInfo({
+        workspace,
+        id,
+    }: {
+        workspace: string,
+        id: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/jobs_u/get_flow_debug_info/{id}',
+            path: {
+                'workspace': workspace,
+                'id': id,
+            },
+        });
+    }
+
+    /**
      * get completed job
      * @returns CompletedJob job details
      * @throws ApiError
