@@ -6,7 +6,7 @@ import type { LargeFileStorage } from '../models/LargeFileStorage.ts';
 import type { ScriptArgs } from '../models/ScriptArgs.ts';
 import type { UserWorkspaceList } from '../models/UserWorkspaceList.ts';
 import type { Workspace } from '../models/Workspace.ts';
-import type { WorkspaceGitSync } from '../models/WorkspaceGitSync.ts';
+import type { WorkspaceGitSyncSettings } from '../models/WorkspaceGitSyncSettings.ts';
 import type { WorkspaceInvite } from '../models/WorkspaceInvite.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
@@ -357,7 +357,7 @@ export class WorkspaceService {
         error_handler_extra_args?: ScriptArgs;
         error_handler_muted_on_cancel?: boolean;
         large_file_storage?: LargeFileStorage;
-        git_sync?: Array<WorkspaceGitSync>;
+        git_sync?: WorkspaceGitSyncSettings;
         default_app?: string;
     }> {
         return __request(OpenAPI, {
@@ -698,7 +698,7 @@ export class WorkspaceService {
          * Workspace Git sync settings
          */
         requestBody: {
-            git_sync_settings?: Array<WorkspaceGitSync>;
+            git_sync_settings?: WorkspaceGitSyncSettings;
         },
     }): CancelablePromise<any> {
         return __request(OpenAPI, {

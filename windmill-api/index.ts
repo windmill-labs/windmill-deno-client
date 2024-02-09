@@ -34,6 +34,7 @@ export { FlowStatusModule } from './models/FlowStatusModule.ts';
 export type { FlowValue } from './models/FlowValue.ts';
 export type { Folder } from './models/Folder.ts';
 export type { ForloopFlow } from './models/ForloopFlow.ts';
+export type { GitRepositorySettings } from './models/GitRepositorySettings.ts';
 export { GlobalUserInfo } from './models/GlobalUserInfo.ts';
 export type { Group } from './models/Group.ts';
 export type { HubScriptKind } from './models/HubScriptKind.ts';
@@ -95,7 +96,7 @@ export { WindmillFilePreview } from './models/WindmillFilePreview.ts';
 export type { WindmillLargeFile } from './models/WindmillLargeFile.ts';
 export type { WorkerPing } from './models/WorkerPing.ts';
 export type { Workspace } from './models/Workspace.ts';
-export type { WorkspaceGitSync } from './models/WorkspaceGitSync.ts';
+export type { WorkspaceGitSyncSettings } from './models/WorkspaceGitSyncSettings.ts';
 export type { WorkspaceInvite } from './models/WorkspaceInvite.ts';
 
 export { AdminService } from './services/AdminService.ts';
