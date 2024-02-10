@@ -22,6 +22,30 @@ export class WorkerService {
     }
 
     /**
+     * get all instance default tags
+     * @returns string list of default tags
+     * @throws ApiError
+     */
+    public static geDefaultTags(): CancelablePromise<Array<string>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/workers/get_default_tags',
+        });
+    }
+
+    /**
+     * is default tags per workspace
+     * @returns boolean is the default tags per workspace
+     * @throws ApiError
+     */
+    public static isDefaultTagsPerWorkspace(): CancelablePromise<boolean> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/workers/is_default_tags_per_workspace',
+        });
+    }
+
+    /**
      * list workers
      * @returns WorkerPing a list of workers
      * @throws ApiError
