@@ -786,6 +786,7 @@ export class JobService {
         args,
         result,
         tag,
+        allWorkspaces,
     }: {
         workspace: string,
         /**
@@ -856,6 +857,10 @@ export class JobService {
          * filter on jobs with a given tag/worker group
          */
         tag?: string,
+        /**
+         * get jobs from all workspaces (only valid if request come from the `admins` workspace)
+         */
+        allWorkspaces?: boolean,
     }): CancelablePromise<Array<QueuedJob>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -881,6 +886,7 @@ export class JobService {
                 'args': args,
                 'result': result,
                 'tag': tag,
+                'all_workspaces': allWorkspaces,
             },
         });
     }
@@ -892,8 +898,13 @@ export class JobService {
      */
     public static getQueueCount({
         workspace,
+        allWorkspaces,
     }: {
         workspace: string,
+        /**
+         * get jobs from all workspaces (only valid if request come from the `admins` workspace)
+         */
+        allWorkspaces?: boolean,
     }): CancelablePromise<{
         database_length: number;
     }> {
@@ -902,6 +913,9 @@ export class JobService {
             url: '/w/{workspace}/jobs/queue/count',
             path: {
                 'workspace': workspace,
+            },
+            query: {
+                'all_workspaces': allWorkspaces,
             },
         });
     }
@@ -1089,6 +1103,7 @@ export class JobService {
         isSkipped,
         isFlowStep,
         success,
+        allWorkspaces,
     }: {
         workspace: string,
         /**
@@ -1167,6 +1182,10 @@ export class JobService {
          * filter on successful jobs
          */
         success?: boolean,
+        /**
+         * get jobs from all workspaces (only valid if request come from the `admins` workspace)
+         */
+        allWorkspaces?: boolean,
     }): CancelablePromise<Array<Job>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -1194,6 +1213,7 @@ export class JobService {
                 'is_skipped': isSkipped,
                 'is_flow_step': isFlowStep,
                 'success': success,
+                'all_workspaces': allWorkspaces,
             },
         });
     }
