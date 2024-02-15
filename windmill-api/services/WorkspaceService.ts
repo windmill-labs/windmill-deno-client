@@ -741,6 +741,55 @@ export class WorkspaceService {
     }
 
     /**
+     * retrieves the encryption key for this workspace
+     * @returns any status
+     * @throws ApiError
+     */
+    public static getWorkspaceEncryptionKey({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<{
+        key: string;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/workspaces/encryption_key',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
+     * update the encryption key for this workspace
+     * @returns string status
+     * @throws ApiError
+     */
+    public static setWorkspaceEncryptionKey({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * New encryption key
+         */
+        requestBody: {
+            new_key: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/encryption_key',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * get default app for workspace
      * @returns any status
      * @throws ApiError
