@@ -132,4 +132,25 @@ export class SettingService {
         });
     }
 
+    /**
+     * test metadata
+     * @returns string status
+     * @throws ApiError
+     */
+    public static testMetadata({
+        requestBody,
+    }: {
+        /**
+         * test metadata
+         */
+        requestBody: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/saml/test_metadata',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
 }
