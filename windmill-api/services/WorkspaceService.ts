@@ -348,6 +348,7 @@ export class WorkspaceService {
         auto_invite_operator?: boolean;
         auto_add?: boolean;
         plan?: string;
+        automatic_billing: boolean;
         customer_id?: string;
         webhook?: string;
         deploy_to?: string;
@@ -422,6 +423,7 @@ export class WorkspaceService {
         premium: boolean;
         usage?: number;
         seats?: number;
+        automatic_billing: boolean;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -429,6 +431,35 @@ export class WorkspaceService {
             path: {
                 'workspace': workspace,
             },
+        });
+    }
+
+    /**
+     * set automatic billing
+     * @returns string status
+     * @throws ApiError
+     */
+    public static setAutomaticBilling({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * automatic billing
+         */
+        requestBody: {
+            automatic_billing: boolean;
+            seats?: number;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/set_automatic_billing',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
 
