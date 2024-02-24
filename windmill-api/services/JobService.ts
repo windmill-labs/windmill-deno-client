@@ -983,6 +983,7 @@ export class JobService {
         tag,
         isSkipped,
         isFlowStep,
+        hasNullParent,
     }: {
         workspace: string,
         /**
@@ -1049,6 +1050,10 @@ export class JobService {
          * is the job a flow step
          */
         isFlowStep?: boolean,
+        /**
+         * has null parent
+         */
+        hasNullParent?: boolean,
     }): CancelablePromise<Array<CompletedJob>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -1073,6 +1078,7 @@ export class JobService {
                 'tag': tag,
                 'is_skipped': isSkipped,
                 'is_flow_step': isFlowStep,
+                'has_null_parent': hasNullParent,
             },
         });
     }
@@ -1102,6 +1108,7 @@ export class JobService {
         result,
         isSkipped,
         isFlowStep,
+        hasNullParent,
         success,
         allWorkspaces,
     }: {
@@ -1179,6 +1186,10 @@ export class JobService {
          */
         isFlowStep?: boolean,
         /**
+         * has null parent
+         */
+        hasNullParent?: boolean,
+        /**
          * filter on successful jobs
          */
         success?: boolean,
@@ -1212,6 +1223,7 @@ export class JobService {
                 'result': result,
                 'is_skipped': isSkipped,
                 'is_flow_step': isFlowStep,
+                'has_null_parent': hasNullParent,
                 'success': success,
                 'all_workspaces': allWorkspaces,
             },

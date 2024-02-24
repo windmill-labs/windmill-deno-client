@@ -220,7 +220,7 @@ export class FolderService {
          * owner user to folder
          */
         requestBody: {
-            owner?: string;
+            owner: string;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
@@ -251,7 +251,8 @@ export class FolderService {
          * added owner to folder
          */
         requestBody: {
-            owner?: string;
+            owner: string;
+            write: boolean;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
