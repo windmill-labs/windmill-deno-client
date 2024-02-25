@@ -9,6 +9,7 @@ import type { NewTokenImpersonate } from '../models/NewTokenImpersonate.ts';
 import type { NewUser } from '../models/NewUser.ts';
 import type { TruncatedToken } from '../models/TruncatedToken.ts';
 import type { User } from '../models/User.ts';
+import type { UserUsage } from '../models/UserUsage.ts';
 import type { WorkspaceInvite } from '../models/WorkspaceInvite.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
@@ -524,6 +525,25 @@ export class UserService {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/w/{workspace}/users/list',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
+     * list users usage
+     * @returns UserUsage user
+     * @throws ApiError
+     */
+    public static listUsersUsage({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<Array<UserUsage>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/users/list_usage',
             path: {
                 'workspace': workspace,
             },

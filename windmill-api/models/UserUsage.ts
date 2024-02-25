@@ -2,7 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type Usage = {
+export type UserUsage = {
+    email?: string;
     executions?: number;
 };
 

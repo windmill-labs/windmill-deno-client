@@ -2,8 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Usage } from './Usage.ts';
-
 export type User = {
     email: string;
     username: string;
@@ -15,6 +13,5 @@ export type User = {
     groups?: Array<string>;
     folders: Array<string>;
     folders_owners: Array<string>;
-    usage?: Usage;
 };
 
