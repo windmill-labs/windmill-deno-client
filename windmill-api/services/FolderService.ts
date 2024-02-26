@@ -252,7 +252,7 @@ export class FolderService {
          */
         requestBody: {
             owner: string;
-            write: boolean;
+            write?: boolean;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
