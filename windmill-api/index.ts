@@ -58,7 +58,6 @@ export { NewScript } from './models/NewScript.ts';
 export type { NewScriptWithDraft } from './models/NewScriptWithDraft.ts';
 export type { NewToken } from './models/NewToken.ts';
 export type { NewTokenImpersonate } from './models/NewTokenImpersonate.ts';
-export type { NewUser } from './models/NewUser.ts';
 export type { OpenFlow } from './models/OpenFlow.ts';
 export type { OpenFlowWPath } from './models/OpenFlowWPath.ts';
 export type { PathFlow } from './models/PathFlow.ts';

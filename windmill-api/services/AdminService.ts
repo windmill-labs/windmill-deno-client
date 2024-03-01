@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { EditWorkspaceUser } from '../models/EditWorkspaceUser.ts';
-import type { NewUser } from '../models/NewUser.ts';
+import type { User } from '../models/User.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
 import { OpenAPI } from '../core/OpenAPI.ts';
@@ -11,28 +11,24 @@ import { request as __request } from '../core/request.ts';
 export class AdminService {
 
     /**
-     * create user (require admin privilege)
-     * @returns string user created
+     * get user (require admin privilege)
+     * @returns User user created
      * @throws ApiError
      */
-    public static createUser({
+    public static getUser({
         workspace,
-        requestBody,
+        username,
     }: {
         workspace: string,
-        /**
-         * new user
-         */
-        requestBody: NewUser,
-    }): CancelablePromise<string> {
+        username: string,
+    }): CancelablePromise<User> {
         return __request(OpenAPI, {
-            method: 'POST',
-            url: '/w/{workspace}/users/add',
+            method: 'GET',
+            url: '/w/{workspace}/users/{username}',
             path: {
                 'workspace': workspace,
+                'username': username,
             },
-            body: requestBody,
-            mediaType: 'application/json',
         });
     }
 

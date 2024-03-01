@@ -6,7 +6,6 @@ import type { GlobalUserInfo } from '../models/GlobalUserInfo.ts';
 import type { Login } from '../models/Login.ts';
 import type { NewToken } from '../models/NewToken.ts';
 import type { NewTokenImpersonate } from '../models/NewTokenImpersonate.ts';
-import type { NewUser } from '../models/NewUser.ts';
 import type { TruncatedToken } from '../models/TruncatedToken.ts';
 import type { User } from '../models/User.ts';
 import type { UserUsage } from '../models/UserUsage.ts';
@@ -53,28 +52,24 @@ export class UserService {
     }
 
     /**
-     * create user (require admin privilege)
-     * @returns string user created
+     * get user (require admin privilege)
+     * @returns User user created
      * @throws ApiError
      */
-    public static createUser({
+    public static getUser({
         workspace,
-        requestBody,
+        username,
     }: {
         workspace: string,
-        /**
-         * new user
-         */
-        requestBody: NewUser,
-    }): CancelablePromise<string> {
+        username: string,
+    }): CancelablePromise<User> {
         return __request(OpenAPI, {
-            method: 'POST',
-            url: '/w/{workspace}/users/add',
+            method: 'GET',
+            url: '/w/{workspace}/users/{username}',
             path: {
                 'workspace': workspace,
+                'username': username,
             },
-            body: requestBody,
-            mediaType: 'application/json',
         });
     }
 
