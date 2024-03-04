@@ -8,6 +8,7 @@ import type { Preview } from '../models/Preview.ts';
 import type { QueuedJob } from '../models/QueuedJob.ts';
 import type { RawScriptForDependencies } from '../models/RawScriptForDependencies.ts';
 import type { ScriptArgs } from '../models/ScriptArgs.ts';
+import type { WorkflowTask } from '../models/WorkflowTask.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
 import { OpenAPI } from '../core/OpenAPI.ts';
@@ -677,6 +678,38 @@ export class JobService {
                 'include_header': includeHeader,
                 'invisible_to_owner': invisibleToOwner,
                 'job_id': jobId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * run code-workflow task
+     * @returns string job created
+     * @throws ApiError
+     */
+    public static runCodeWorkflowTask({
+        workspace,
+        jobId,
+        entrypoint,
+        requestBody,
+    }: {
+        workspace: string,
+        jobId: string,
+        entrypoint: string,
+        /**
+         * preview
+         */
+        requestBody: WorkflowTask,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/jobs/workflow_as_code/{job_id}/{entrypoint}',
+            path: {
+                'workspace': workspace,
+                'job_id': jobId,
+                'entrypoint': entrypoint,
             },
             body: requestBody,
             mediaType: 'application/json',
