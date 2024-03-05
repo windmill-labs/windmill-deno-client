@@ -8,6 +8,7 @@ import type { Preview } from '../models/Preview.ts';
 import type { QueuedJob } from '../models/QueuedJob.ts';
 import type { RawScriptForDependencies } from '../models/RawScriptForDependencies.ts';
 import type { ScriptArgs } from '../models/ScriptArgs.ts';
+import type { WorkflowStatusRecord } from '../models/WorkflowStatusRecord.ts';
 import type { WorkflowTask } from '../models/WorkflowTask.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
@@ -1361,7 +1362,7 @@ export class JobService {
         completed?: boolean;
         new_logs?: string;
         mem_peak?: number;
-        flow_status?: any;
+        flow_status?: WorkflowStatusRecord;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
