@@ -1361,6 +1361,7 @@ export class JobService {
         completed?: boolean;
         new_logs?: string;
         mem_peak?: number;
+        flow_status?: any;
     }> {
         return __request(OpenAPI, {
             method: 'GET',

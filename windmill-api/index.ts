@@ -94,6 +94,7 @@ export type { WindmillFileMetadata } from './models/WindmillFileMetadata.ts';
 export { WindmillFilePreview } from './models/WindmillFilePreview.ts';
 export type { WindmillLargeFile } from './models/WindmillLargeFile.ts';
 export type { WorkerPing } from './models/WorkerPing.ts';
+export type { WorkflowStatus } from './models/WorkflowStatus.ts';
 export type { WorkflowTask } from './models/WorkflowTask.ts';
 export type { Workspace } from './models/Workspace.ts';
 export type { WorkspaceGitSyncSettings } from './models/WorkspaceGitSyncSettings.ts';
