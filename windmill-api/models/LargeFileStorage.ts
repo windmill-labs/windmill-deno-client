@@ -14,6 +14,8 @@ export namespace LargeFileStorage {
     export enum type {
         S3STORAGE = 'S3Storage',
         AZURE_BLOB_STORAGE = 'AzureBlobStorage',
+        AZURE_WORKLOAD_IDENTITY = 'AzureWorkloadIdentity',
+        S3AWS_OIDC = 'S3AwsOidc',
     }
 
 
