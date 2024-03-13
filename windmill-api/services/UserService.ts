@@ -203,6 +203,59 @@ export class UserService {
     }
 
     /**
+     * global username info (require super admin)
+     * @returns any user renamed
+     * @throws ApiError
+     */
+    public static globalUsernameInfo({
+        email,
+    }: {
+        email: string,
+    }): CancelablePromise<{
+        username: string;
+        workspace_usernames: Array<{
+            workspace_id: string;
+            username: string;
+        }>;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/users/username_info/{email}',
+            path: {
+                'email': email,
+            },
+        });
+    }
+
+    /**
+     * global rename user (require super admin)
+     * @returns string user renamed
+     * @throws ApiError
+     */
+    public static globalUserRename({
+        email,
+        requestBody,
+    }: {
+        email: string,
+        /**
+         * new username
+         */
+        requestBody: {
+            new_username: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/users/rename/{email}',
+            path: {
+                'email': email,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * global delete user (require super admin)
      * @returns string user deleted
      * @throws ApiError
@@ -404,7 +457,7 @@ export class UserService {
          */
         requestBody: {
             workspace_id: string;
-            username: string;
+            username?: string;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {

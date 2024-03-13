@@ -98,6 +98,7 @@ export type { WorkflowStatus } from './models/WorkflowStatus.ts';
 export type { WorkflowStatusRecord } from './models/WorkflowStatusRecord.ts';
 export type { WorkflowTask } from './models/WorkflowTask.ts';
 export type { Workspace } from './models/Workspace.ts';
+export type { WorkspaceDefaultScripts } from './models/WorkspaceDefaultScripts.ts';
 export type { WorkspaceGitSyncSettings } from './models/WorkspaceGitSyncSettings.ts';
 export type { WorkspaceInvite } from './models/WorkspaceInvite.ts';
 

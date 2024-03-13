@@ -6,6 +6,7 @@ import type { LargeFileStorage } from '../models/LargeFileStorage.ts';
 import type { ScriptArgs } from '../models/ScriptArgs.ts';
 import type { UserWorkspaceList } from '../models/UserWorkspaceList.ts';
 import type { Workspace } from '../models/Workspace.ts';
+import type { WorkspaceDefaultScripts } from '../models/WorkspaceDefaultScripts.ts';
 import type { WorkspaceGitSyncSettings } from '../models/WorkspaceGitSyncSettings.ts';
 import type { WorkspaceInvite } from '../models/WorkspaceInvite.ts';
 
@@ -190,7 +191,7 @@ export class WorkspaceService {
         requestBody: {
             email: string;
             is_admin: boolean;
-            username: string;
+            username?: string;
             operator: boolean;
         },
     }): CancelablePromise<string> {
@@ -768,6 +769,51 @@ export class WorkspaceService {
             },
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * edit default scripts for workspace
+     * @returns string status
+     * @throws ApiError
+     */
+    public static editDefaultScripts({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * Workspace default app
+         */
+        requestBody?: WorkspaceDefaultScripts,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/default_scripts',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * get default scripts for workspace
+     * @returns WorkspaceDefaultScripts status
+     * @throws ApiError
+     */
+    public static getDefaultScripts({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<WorkspaceDefaultScripts> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/workspaces/default_scripts',
+            path: {
+                'workspace': workspace,
+            },
         });
     }
 

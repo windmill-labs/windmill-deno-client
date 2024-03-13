@@ -9,6 +9,7 @@ export type GlobalUserInfo = {
     verified: boolean;
     name?: string;
     company?: string;
+    username?: string;
 };
 
 export namespace GlobalUserInfo {
