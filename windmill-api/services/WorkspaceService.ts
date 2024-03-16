@@ -357,10 +357,11 @@ export class WorkspaceService {
         code_completion_enabled: boolean;
         error_handler?: string;
         error_handler_extra_args?: ScriptArgs;
-        error_handler_muted_on_cancel?: boolean;
+        error_handler_muted_on_cancel: boolean;
         large_file_storage?: LargeFileStorage;
         git_sync?: WorkspaceGitSyncSettings;
         default_app?: string;
+        default_scripts?: WorkspaceDefaultScripts;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
