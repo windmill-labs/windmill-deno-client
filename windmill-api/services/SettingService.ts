@@ -121,6 +121,33 @@ export class SettingService {
     }
 
     /**
+     * test s3 config
+     * @returns string status
+     * @throws ApiError
+     */
+    public static testS3Config({
+        requestBody,
+    }: {
+        /**
+         * test s3 config
+         */
+        requestBody: {
+            bucket?: string;
+            region?: string;
+            access_key?: string;
+            secret_key?: string;
+            endpoint?: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/settings/test_s3_config',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * send stats
      * @returns string status
      * @throws ApiError
