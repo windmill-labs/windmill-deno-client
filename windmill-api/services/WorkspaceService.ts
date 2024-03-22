@@ -313,6 +313,76 @@ export class WorkspaceService {
     }
 
     /**
+     * get workspace name
+     * @returns string status
+     * @throws ApiError
+     */
+    public static getWorkspaceName({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/workspaces/get_workspace_name',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
+     * change workspace name
+     * @returns string status
+     * @throws ApiError
+     */
+    public static changeWorkspaceName({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        requestBody?: {
+            new_name?: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/change_workspace_name',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * change workspace id
+     * @returns string status
+     * @throws ApiError
+     */
+    public static changeWorkspaceId({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        requestBody?: {
+            new_id?: string;
+            new_name?: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/change_workspace_id',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * list pending invites for a workspace
      * @returns WorkspaceInvite user
      * @throws ApiError
