@@ -889,6 +889,35 @@ export class WorkspaceService {
     }
 
     /**
+     * set environment variable
+     * @returns string status
+     * @throws ApiError
+     */
+    public static setEnvironmentVariable({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * Workspace default app
+         */
+        requestBody: {
+            name: string;
+            value?: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/set_environment_variable',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * retrieves the encryption key for this workspace
      * @returns any status
      * @throws ApiError

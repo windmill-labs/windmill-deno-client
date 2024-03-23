@@ -1284,9 +1284,11 @@ export class JobService {
     public static getJob({
         workspace,
         id,
+        noLogs,
     }: {
         workspace: string,
         id: string,
+        noLogs?: boolean,
     }): CancelablePromise<Job> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -1294,6 +1296,9 @@ export class JobService {
             path: {
                 'workspace': workspace,
                 'id': id,
+            },
+            query: {
+                'no_logs': noLogs,
             },
         });
     }
@@ -1361,6 +1366,7 @@ export class JobService {
         running?: boolean;
         completed?: boolean;
         new_logs?: string;
+        log_offset?: number;
         mem_peak?: number;
         flow_status?: WorkflowStatusRecord;
     }> {

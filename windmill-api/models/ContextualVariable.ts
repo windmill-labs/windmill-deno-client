@@ -6,5 +6,6 @@ export type ContextualVariable = {
     name: string;
     value: string;
     description: string;
+    is_custom: boolean;
 };
 
