@@ -121,19 +121,24 @@ export class SettingService {
     }
 
     /**
-     * test s3 config
+     * test object storage config
      * @returns string status
      * @throws ApiError
      */
-    public static testS3Config({
+    public static testObjectStorageConfig({
         requestBody,
     }: {
         /**
-         * test s3 config
+         * test object storage config
          */
         requestBody: {
+            type?: string;
             bucket?: string;
             region?: string;
+            accessKey?: string;
+            accountName?: string;
+            tenantId?: string;
+            clientId?: string;
             access_key?: string;
             secret_key?: string;
             endpoint?: string;
@@ -141,7 +146,7 @@ export class SettingService {
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/settings/test_s3_config',
+            url: '/settings/test_object_storage_config',
             body: requestBody,
             mediaType: 'application/json',
         });
