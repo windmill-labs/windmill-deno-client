@@ -131,18 +131,7 @@ export class SettingService {
         /**
          * test object storage config
          */
-        requestBody: {
-            type?: string;
-            bucket?: string;
-            region?: string;
-            accessKey?: string;
-            accountName?: string;
-            tenantId?: string;
-            clientId?: string;
-            access_key?: string;
-            secret_key?: string;
-            endpoint?: string;
-        },
+        requestBody: any,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
