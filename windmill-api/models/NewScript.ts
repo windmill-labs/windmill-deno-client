@@ -27,6 +27,7 @@ export type NewScript = {
     delete_after_use?: boolean;
     deployment_message?: string;
     concurrency_key?: string;
+    visible_to_runner_only?: boolean;
 };
 
 export namespace NewScript {

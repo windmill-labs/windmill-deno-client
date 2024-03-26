@@ -39,6 +39,7 @@ export type Script = {
     restart_unless_cancelled?: boolean;
     timeout?: number;
     delete_after_use?: boolean;
+    visible_to_runner_only?: boolean;
 };
 
 export namespace Script {

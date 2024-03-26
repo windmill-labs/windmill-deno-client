@@ -11,5 +11,6 @@ export type OpenFlowWPath = (OpenFlow & {
     priority?: number;
     dedicated_worker?: boolean;
     timeout?: number;
+    visible_to_runner_only?: boolean;
 });
 
