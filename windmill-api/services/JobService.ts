@@ -1740,6 +1740,63 @@ export class JobService {
     }
 
     /**
+     * set flow user state at a given key
+     * @returns string flow user state updated
+     * @throws ApiError
+     */
+    public static setFlowUserState({
+        workspace,
+        id,
+        key,
+        requestBody,
+    }: {
+        workspace: string,
+        id: string,
+        key: string,
+        /**
+         * new value
+         */
+        requestBody: any,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/jobs/flow/user_states/{id}/{key}',
+            path: {
+                'workspace': workspace,
+                'id': id,
+                'key': key,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * get flow user state at a given key
+     * @returns any flow user state updated
+     * @throws ApiError
+     */
+    public static getFlowUserState({
+        workspace,
+        id,
+        key,
+    }: {
+        workspace: string,
+        id: string,
+        key: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/jobs/flow/user_states/{id}/{key}',
+            path: {
+                'workspace': workspace,
+                'id': id,
+                'key': key,
+            },
+        });
+    }
+
+    /**
      * resume a job for a suspended flow as an owner
      * @returns string job resumed
      * @throws ApiError
