@@ -31,6 +31,7 @@ export type FlowModule = {
         user_auth_required?: boolean;
         user_groups_required?: InputTransform;
         self_approval_disabled?: boolean;
+        hide_cancel?: boolean;
     };
     priority?: number;
     retry?: Retry;
