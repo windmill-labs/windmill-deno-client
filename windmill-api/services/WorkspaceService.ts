@@ -1006,4 +1006,23 @@ export class WorkspaceService {
         });
     }
 
+    /**
+     * get usage
+     * @returns number usage
+     * @throws ApiError
+     */
+    public static getWorkspaceUsage({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<number> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/workspaces/usage',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
 }
