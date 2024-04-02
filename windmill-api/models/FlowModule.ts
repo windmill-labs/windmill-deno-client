@@ -34,6 +34,7 @@ export type FlowModule = {
         hide_cancel?: boolean;
     };
     priority?: number;
+    continue_on_error?: boolean;
     retry?: Retry;
 };
 
