@@ -90,6 +90,7 @@ export type { UploadFilePart } from './models/UploadFilePart.ts';
 export type { User } from './models/User.ts';
 export type { UserUsage } from './models/UserUsage.ts';
 export type { UserWorkspaceList } from './models/UserWorkspaceList.ts';
+export type { WhileloopFlow } from './models/WhileloopFlow.ts';
 export type { WindmillFileMetadata } from './models/WindmillFileMetadata.ts';
 export { WindmillFilePreview } from './models/WindmillFilePreview.ts';
 export type { WindmillLargeFile } from './models/WindmillLargeFile.ts';
