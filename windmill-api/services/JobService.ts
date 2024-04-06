@@ -30,6 +30,7 @@ export class JobService {
         scheduledInSecs,
         parentJob,
         tag,
+        cacheTtl,
         jobId,
         invisibleToOwner,
     }: {
@@ -56,6 +57,10 @@ export class JobService {
          */
         tag?: string,
         /**
+         * Override the cache time to live (in seconds). Can not be used to disable caching, only override with a new cache ttl
+         */
+        cacheTtl?: string,
+        /**
          * The job id to assign to the created job. if missing, job is chosen randomly using the ULID scheme. If a job id already exists in the queue or as a completed job, the request to create one will fail (Bad Request)
          */
         jobId?: string,
@@ -76,6 +81,7 @@ export class JobService {
                 'scheduled_in_secs': scheduledInSecs,
                 'parent_job': parentJob,
                 'tag': tag,
+                'cache_ttl': cacheTtl,
                 'job_id': jobId,
                 'invisible_to_owner': invisibleToOwner,
             },
@@ -153,6 +159,7 @@ export class JobService {
         requestBody,
         parentJob,
         tag,
+        cacheTtl,
         jobId,
         includeHeader,
         queueLimit,
@@ -171,6 +178,10 @@ export class JobService {
          * Override the tag to use
          */
         tag?: string,
+        /**
+         * Override the cache time to live (in seconds). Can not be used to disable caching, only override with a new cache ttl
+         */
+        cacheTtl?: string,
         /**
          * The job id to assign to the created job. if missing, job is chosen randomly using the ULID scheme. If a job id already exists in the queue or as a completed job, the request to create one will fail (Bad Request)
          */
@@ -197,6 +208,7 @@ export class JobService {
             query: {
                 'parent_job': parentJob,
                 'tag': tag,
+                'cache_ttl': cacheTtl,
                 'job_id': jobId,
                 'include_header': includeHeader,
                 'queue_limit': queueLimit,
@@ -216,6 +228,7 @@ export class JobService {
         path,
         parentJob,
         tag,
+        cacheTtl,
         jobId,
         includeHeader,
         queueLimit,
@@ -231,6 +244,10 @@ export class JobService {
          * Override the tag to use
          */
         tag?: string,
+        /**
+         * Override the cache time to live (in seconds). Can not be used to disable caching, only override with a new cache ttl
+         */
+        cacheTtl?: string,
         /**
          * The job id to assign to the created job. if missing, job is chosen randomly using the ULID scheme. If a job id already exists in the queue or as a completed job, the request to create one will fail (Bad Request)
          */
@@ -263,6 +280,7 @@ export class JobService {
             query: {
                 'parent_job': parentJob,
                 'tag': tag,
+                'cache_ttl': cacheTtl,
                 'job_id': jobId,
                 'include_header': includeHeader,
                 'queue_limit': queueLimit,
@@ -575,6 +593,7 @@ export class JobService {
         scheduledInSecs,
         parentJob,
         tag,
+        cacheTtl,
         jobId,
         includeHeader,
         invisibleToOwner,
@@ -602,6 +621,10 @@ export class JobService {
          */
         tag?: string,
         /**
+         * Override the cache time to live (in seconds). Can not be used to disable caching, only override with a new cache ttl
+         */
+        cacheTtl?: string,
+        /**
          * The job id to assign to the created job. if missing, job is chosen randomly using the ULID scheme. If a job id already exists in the queue or as a completed job, the request to create one will fail (Bad Request)
          */
         jobId?: string,
@@ -628,6 +651,7 @@ export class JobService {
                 'scheduled_in_secs': scheduledInSecs,
                 'parent_job': parentJob,
                 'tag': tag,
+                'cache_ttl': cacheTtl,
                 'job_id': jobId,
                 'include_header': includeHeader,
                 'invisible_to_owner': invisibleToOwner,

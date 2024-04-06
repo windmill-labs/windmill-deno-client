@@ -197,6 +197,7 @@ export class ScheduleService {
         workspace,
         page,
         perPage,
+        args,
         path,
         isFlow,
     }: {
@@ -209,6 +210,10 @@ export class ScheduleService {
          * number of items to return for a given page (default 30, max 100)
          */
         perPage?: number,
+        /**
+         * filter on jobs containing those args as a json subset (@> in postgres)
+         */
+        args?: string,
         /**
          * filter by path
          */
@@ -224,6 +229,7 @@ export class ScheduleService {
             query: {
                 'page': page,
                 'per_page': perPage,
+                'args': args,
                 'path': path,
                 'is_flow': isFlow,
             },
