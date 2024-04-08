@@ -844,6 +844,8 @@ export class JobService {
         args,
         result,
         tag,
+        page,
+        perPage,
         allWorkspaces,
     }: {
         workspace: string,
@@ -916,6 +918,14 @@ export class JobService {
          */
         tag?: string,
         /**
+         * which page to return (start at 1, default 1)
+         */
+        page?: number,
+        /**
+         * number of items to return for a given page (default 30, max 100)
+         */
+        perPage?: number,
+        /**
          * get jobs from all workspaces (only valid if request come from the `admins` workspace)
          */
         allWorkspaces?: boolean,
@@ -944,6 +954,8 @@ export class JobService {
                 'args': args,
                 'result': result,
                 'tag': tag,
+                'page': page,
+                'per_page': perPage,
                 'all_workspaces': allWorkspaces,
             },
         });
@@ -1039,6 +1051,8 @@ export class JobService {
         args,
         result,
         tag,
+        page,
+        perPage,
         isSkipped,
         isFlowStep,
         hasNullParent,
@@ -1101,6 +1115,14 @@ export class JobService {
          */
         tag?: string,
         /**
+         * which page to return (start at 1, default 1)
+         */
+        page?: number,
+        /**
+         * number of items to return for a given page (default 30, max 100)
+         */
+        perPage?: number,
+        /**
          * is the job skipped
          */
         isSkipped?: boolean,
@@ -1134,6 +1156,8 @@ export class JobService {
                 'args': args,
                 'result': result,
                 'tag': tag,
+                'page': page,
+                'per_page': perPage,
                 'is_skipped': isSkipped,
                 'is_flow_step': isFlowStep,
                 'has_null_parent': hasNullParent,
@@ -1164,6 +1188,8 @@ export class JobService {
         args,
         tag,
         result,
+        page,
+        perPage,
         isSkipped,
         isFlowStep,
         hasNullParent,
@@ -1236,6 +1262,14 @@ export class JobService {
          */
         result?: string,
         /**
+         * which page to return (start at 1, default 1)
+         */
+        page?: number,
+        /**
+         * number of items to return for a given page (default 30, max 100)
+         */
+        perPage?: number,
+        /**
          * is the job skipped
          */
         isSkipped?: boolean,
@@ -1279,6 +1313,8 @@ export class JobService {
                 'args': args,
                 'tag': tag,
                 'result': result,
+                'page': page,
+                'per_page': perPage,
                 'is_skipped': isSkipped,
                 'is_flow_step': isFlowStep,
                 'has_null_parent': hasNullParent,
