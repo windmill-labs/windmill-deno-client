@@ -9,6 +9,7 @@ export type FlowValue = {
     failure_module?: FlowModule;
     same_worker?: boolean;
     concurrent_limit?: number;
+    concurrency_key?: string;
     concurrency_time_window_s?: number;
     skip_expr?: string;
     cache_ttl?: number;
