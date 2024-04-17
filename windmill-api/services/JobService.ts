@@ -1445,6 +1445,28 @@ export class JobService {
     }
 
     /**
+     * get log file from object store
+     * @returns any job log
+     * @throws ApiError
+     */
+    public static getLogFileFromStore({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/jobs_u/get_log_file/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
      * get flow debug info
      * @returns any flow debug info details
      * @throws ApiError

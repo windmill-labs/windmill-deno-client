@@ -8,8 +8,7 @@ export type FlowMetadata = {
     edited_by: string;
     edited_at: string;
     archived: boolean;
-    extra_perms: any;
-    additionalProperties?: boolean;
+    extra_perms: Record<string, boolean>;
     starred?: boolean;
     draft_only?: boolean;
     tag?: string;
