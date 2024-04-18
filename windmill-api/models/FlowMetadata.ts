@@ -2,13 +2,15 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { ExtraPerms } from './ExtraPerms.ts';
+
 export type FlowMetadata = {
     workspace_id?: string;
     path: string;
     edited_by: string;
     edited_at: string;
     archived: boolean;
-    extra_perms: Record<string, boolean>;
+    extra_perms: ExtraPerms;
     starred?: boolean;
     draft_only?: boolean;
     tag?: string;

@@ -24,6 +24,7 @@ export type { EditResourceType } from './models/EditResourceType.ts';
 export type { EditSchedule } from './models/EditSchedule.ts';
 export type { EditVariable } from './models/EditVariable.ts';
 export type { EditWorkspaceUser } from './models/EditWorkspaceUser.ts';
+export type { ExtraPerms } from './models/ExtraPerms.ts';
 export type { Flow } from './models/Flow.ts';
 export type { FlowMetadata } from './models/FlowMetadata.ts';
 export type { FlowModule } from './models/FlowModule.ts';
