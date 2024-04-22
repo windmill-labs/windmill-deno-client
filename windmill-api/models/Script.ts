@@ -40,6 +40,7 @@ export type Script = {
     timeout?: number;
     delete_after_use?: boolean;
     visible_to_runner_only?: boolean;
+    no_main_func: boolean;
 };
 
 export namespace Script {

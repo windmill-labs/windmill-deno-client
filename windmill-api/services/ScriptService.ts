@@ -189,6 +189,7 @@ export class ScriptService {
         lastParentHash,
         parentHash,
         showArchived,
+        hideWithoutMain,
         isTemplate,
         kinds,
         starredOnly,
@@ -248,6 +249,12 @@ export class ScriptService {
          */
         showArchived?: boolean,
         /**
+         * (default false)
+         * hide the scripts without an exported main function
+         *
+         */
+        hideWithoutMain?: boolean,
+        /**
          * (default regardless)
          * if true show only the templates
          * if false show only the non templates
@@ -285,6 +292,7 @@ export class ScriptService {
                 'last_parent_hash': lastParentHash,
                 'parent_hash': parentHash,
                 'show_archived': showArchived,
+                'hide_without_main': hideWithoutMain,
                 'is_template': isTemplate,
                 'kinds': kinds,
                 'starred_only': starredOnly,
