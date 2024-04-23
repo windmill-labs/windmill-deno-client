@@ -847,6 +847,7 @@ export class JobService {
         page,
         perPage,
         allWorkspaces,
+        isNotSchedule,
     }: {
         workspace: string,
         /**
@@ -929,6 +930,10 @@ export class JobService {
          * get jobs from all workspaces (only valid if request come from the `admins` workspace)
          */
         allWorkspaces?: boolean,
+        /**
+         * is not a scheduled job
+         */
+        isNotSchedule?: boolean,
     }): CancelablePromise<Array<QueuedJob>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -957,6 +962,7 @@ export class JobService {
                 'page': page,
                 'per_page': perPage,
                 'all_workspaces': allWorkspaces,
+                'is_not_schedule': isNotSchedule,
             },
         });
     }
@@ -1039,6 +1045,7 @@ export class JobService {
         workspace,
         orderDesc,
         createdBy,
+        label,
         parentJob,
         scriptPathExact,
         scriptPathStart,
@@ -1056,6 +1063,7 @@ export class JobService {
         isSkipped,
         isFlowStep,
         hasNullParent,
+        isNotSchedule,
     }: {
         workspace: string,
         /**
@@ -1066,6 +1074,10 @@ export class JobService {
          * mask to filter exact matching user creator
          */
         createdBy?: string,
+        /**
+         * mask to filter exact matching job's label (job labels are completed jobs with as a result an object containing a string at key 'wm_label')
+         */
+        label?: string,
         /**
          * The parent job that is at the origin and responsible for the execution of this script if any
          */
@@ -1134,6 +1146,10 @@ export class JobService {
          * has null parent
          */
         hasNullParent?: boolean,
+        /**
+         * is not a scheduled job
+         */
+        isNotSchedule?: boolean,
     }): CancelablePromise<Array<CompletedJob>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -1144,6 +1160,7 @@ export class JobService {
             query: {
                 'order_desc': orderDesc,
                 'created_by': createdBy,
+                'label': label,
                 'parent_job': parentJob,
                 'script_path_exact': scriptPathExact,
                 'script_path_start': scriptPathStart,
@@ -1161,6 +1178,7 @@ export class JobService {
                 'is_skipped': isSkipped,
                 'is_flow_step': isFlowStep,
                 'has_null_parent': hasNullParent,
+                'is_not_schedule': isNotSchedule,
             },
         });
     }
@@ -1173,6 +1191,7 @@ export class JobService {
     public static listJobs({
         workspace,
         createdBy,
+        label,
         parentJob,
         scriptPathExact,
         scriptPathStart,
@@ -1195,12 +1214,17 @@ export class JobService {
         hasNullParent,
         success,
         allWorkspaces,
+        isNotSchedule,
     }: {
         workspace: string,
         /**
          * mask to filter exact matching user creator
          */
         createdBy?: string,
+        /**
+         * mask to filter exact matching job's label (job labels are completed jobs with as a result an object containing a string at key 'wm_label')
+         */
+        label?: string,
         /**
          * The parent job that is at the origin and responsible for the execution of this script if any
          */
@@ -1289,6 +1313,10 @@ export class JobService {
          * get jobs from all workspaces (only valid if request come from the `admins` workspace)
          */
         allWorkspaces?: boolean,
+        /**
+         * is not a scheduled job
+         */
+        isNotSchedule?: boolean,
     }): CancelablePromise<Array<Job>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -1298,6 +1326,7 @@ export class JobService {
             },
             query: {
                 'created_by': createdBy,
+                'label': label,
                 'parent_job': parentJob,
                 'script_path_exact': scriptPathExact,
                 'script_path_start': scriptPathStart,
@@ -1320,6 +1349,7 @@ export class JobService {
                 'has_null_parent': hasNullParent,
                 'success': success,
                 'all_workspaces': allWorkspaces,
+                'is_not_schedule': isNotSchedule,
             },
         });
     }
