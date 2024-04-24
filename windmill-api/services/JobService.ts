@@ -1075,7 +1075,7 @@ export class JobService {
          */
         createdBy?: string,
         /**
-         * mask to filter exact matching job's label (job labels are completed jobs with as a result an object containing a string at key 'wm_label')
+         * mask to filter exact matching job's label (job labels are completed jobs with as a result an object containing a string in the array at key 'wm_labels')
          */
         label?: string,
         /**
@@ -1222,7 +1222,7 @@ export class JobService {
          */
         createdBy?: string,
         /**
-         * mask to filter exact matching job's label (job labels are completed jobs with as a result an object containing a string at key 'wm_label')
+         * mask to filter exact matching job's label (job labels are completed jobs with as a result an object containing a string in the array at key 'wm_labels')
          */
         label?: string,
         /**

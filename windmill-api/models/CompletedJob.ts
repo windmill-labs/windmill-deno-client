@@ -43,6 +43,7 @@ export type CompletedJob = {
     mem_peak?: number;
     tag: string;
     priority?: number;
+    labels?: Array<string>;
 };
 
 export namespace CompletedJob {
