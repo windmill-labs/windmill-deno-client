@@ -471,6 +471,7 @@ export class AppService {
                 cache_ttl?: number;
             };
             force_viewer_static_fields?: any;
+            force_viewer_one_of_fields?: any;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
