@@ -41,6 +41,7 @@ export type Script = {
     delete_after_use?: boolean;
     visible_to_runner_only?: boolean;
     no_main_func: boolean;
+    codebase?: string;
 };
 
 export namespace Script {

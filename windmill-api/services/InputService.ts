@@ -52,6 +52,28 @@ export class InputService {
     }
 
     /**
+     * Get args from history or saved input
+     * @returns any args
+     * @throws ApiError
+     */
+    public static getArgsFromHistoryOrSavedInput({
+        workspace,
+        jobOrInputId,
+    }: {
+        workspace: string,
+        jobOrInputId: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/inputs/{jobOrInputId}/args',
+            path: {
+                'workspace': workspace,
+                'jobOrInputId': jobOrInputId,
+            },
+        });
+    }
+
+    /**
      * List saved Inputs for a Runnable
      * @returns Input Saved Inputs for a Runnable
      * @throws ApiError

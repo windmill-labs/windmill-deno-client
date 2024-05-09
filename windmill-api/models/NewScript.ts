@@ -29,6 +29,7 @@ export type NewScript = {
     concurrency_key?: string;
     visible_to_runner_only?: boolean;
     no_main_func?: boolean;
+    codebase?: string;
 };
 
 export namespace NewScript {
