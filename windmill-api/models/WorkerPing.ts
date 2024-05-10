@@ -12,5 +12,8 @@ export type WorkerPing = {
     custom_tags?: Array<string>;
     worker_group: string;
     wm_version: string;
+    current_job_id?: string;
+    current_job_workspace_id?: string;
+    occupancy_rate?: number;
 };
 

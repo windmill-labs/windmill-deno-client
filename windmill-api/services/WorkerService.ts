@@ -98,4 +98,22 @@ export class WorkerService {
         });
     }
 
+    /**
+     * get queue metrics
+     * @returns any metrics
+     * @throws ApiError
+     */
+    public static getQueueMetrics(): CancelablePromise<Array<{
+        id: string;
+        values: Array<{
+            created_at: string;
+            value: number;
+        }>;
+    }>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/workers/queue_metrics',
+        });
+    }
+
 }
