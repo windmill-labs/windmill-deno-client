@@ -32,6 +32,7 @@ export namespace RawScript {
         MSSQL = 'mssql',
         GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
+        PHP = 'php',
     }
 
 

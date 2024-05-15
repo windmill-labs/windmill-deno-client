@@ -14,6 +14,7 @@ export type { BranchAll } from './models/BranchAll.ts';
 export type { BranchOne } from './models/BranchOne.ts';
 export { CompletedJob } from './models/CompletedJob.ts';
 export type { ConcurrencyGroup } from './models/ConcurrencyGroup.ts';
+export type { ConcurrencyIntervals } from './models/ConcurrencyIntervals.ts';
 export type { ContextualVariable } from './models/ContextualVariable.ts';
 export type { CreateInput } from './models/CreateInput.ts';
 export type { CreateResource } from './models/CreateResource.ts';

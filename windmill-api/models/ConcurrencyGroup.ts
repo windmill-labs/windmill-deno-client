@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 export type ConcurrencyGroup = {
-    concurrency_id: string;
-    job_uuids: Array<string>;
+    concurrency_key: string;
+    total_running: number;
 };
 
