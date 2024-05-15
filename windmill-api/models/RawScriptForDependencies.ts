@@ -24,6 +24,7 @@ export namespace RawScriptForDependencies {
         GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
         BUN = 'bun',
+        PHP = 'php',
     }
 
 

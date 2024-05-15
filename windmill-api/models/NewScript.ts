@@ -48,6 +48,7 @@ export namespace NewScript {
         GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
         BUN = 'bun',
+        PHP = 'php',
     }
 
     export enum kind {

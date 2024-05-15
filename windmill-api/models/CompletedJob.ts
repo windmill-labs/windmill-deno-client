@@ -76,6 +76,7 @@ export namespace CompletedJob {
         GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
         BUN = 'bun',
+        PHP = 'php',
     }
 
 

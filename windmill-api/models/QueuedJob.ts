@@ -73,6 +73,7 @@ export namespace QueuedJob {
         GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
         BUN = 'bun',
+        PHP = 'php',
     }
 
 

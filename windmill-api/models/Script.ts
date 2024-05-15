@@ -60,6 +60,7 @@ export namespace Script {
         GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
         BUN = 'bun',
+        PHP = 'php',
     }
 
     export enum kind {
