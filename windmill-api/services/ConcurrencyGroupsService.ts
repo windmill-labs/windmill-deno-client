@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { ConcurrencyGroup } from '../models/ConcurrencyGroup.ts';
-import type { ConcurrencyIntervals } from '../models/ConcurrencyIntervals.ts';
+import type { ExtendedJobs } from '../models/ExtendedJobs.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
 import { OpenAPI } from '../core/OpenAPI.ts';
@@ -62,10 +62,10 @@ export class ConcurrencyGroupsService {
 
     /**
      * Get intervals of job runtime concurrency
-     * @returns ConcurrencyIntervals time
+     * @returns ExtendedJobs time
      * @throws ApiError
      */
-    public static getConcurrencyIntervals({
+    public static listExtendedJobs({
         workspace,
         concurrencyKey,
         rowLimit,
@@ -198,10 +198,10 @@ export class ConcurrencyGroupsService {
          * is not a scheduled job
          */
         isNotSchedule?: boolean,
-    }): CancelablePromise<ConcurrencyIntervals> {
+    }): CancelablePromise<ExtendedJobs> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/concurrency_groups/intervals',
+            url: '/w/{workspace}/concurrency_groups/list_jobs',
             path: {
                 'workspace': workspace,
             },
