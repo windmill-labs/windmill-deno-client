@@ -32,6 +32,7 @@ export type Script = {
     envs?: Array<string>;
     concurrent_limit?: number;
     concurrency_time_window_s?: number;
+    concurrency_key?: string;
     cache_ttl?: number;
     dedicated_worker?: boolean;
     ws_error_handler_muted?: boolean;
