@@ -25,6 +25,7 @@ export type FlowStatusModule = {
         resume_id: number;
         approver: string;
     }>;
+    failed_retries?: Array<string>;
 };
 
 export namespace FlowStatusModule {

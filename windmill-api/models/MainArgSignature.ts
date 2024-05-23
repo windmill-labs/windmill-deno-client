@@ -28,6 +28,7 @@ export type MainArgSignature = {
         has_default?: boolean;
         default?: any;
     }>;
+    no_main_func: boolean | null;
 };
 
 export namespace MainArgSignature {

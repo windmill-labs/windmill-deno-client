@@ -618,6 +618,28 @@ export class UserService {
     }
 
     /**
+     * get email from username
+     * @returns string email
+     * @throws ApiError
+     */
+    public static usernameToEmail({
+        workspace,
+        username,
+    }: {
+        workspace: string,
+        username: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/users/username_to_email/{username}',
+            path: {
+                'workspace': workspace,
+                'username': username,
+            },
+        });
+    }
+
+    /**
      * create token
      * @returns string token created
      * @throws ApiError

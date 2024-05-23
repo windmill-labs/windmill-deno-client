@@ -14,6 +14,7 @@ export type RawScript = {
     tag?: string;
     concurrent_limit?: number;
     concurrency_time_window_s?: number;
+    custom_concurrency_key?: string;
 };
 
 export namespace RawScript {
