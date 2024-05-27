@@ -15,5 +15,8 @@ export type WorkerPing = {
     current_job_id?: string;
     current_job_workspace_id?: string;
     occupancy_rate?: number;
+    memory?: number;
+    vcpus?: number;
+    memory_usage?: number;
 };
 

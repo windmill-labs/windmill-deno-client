@@ -186,13 +186,38 @@ export class OauthService {
 
     /**
      * list oauth connects
-     * @returns any list of oauth connects clients
+     * @returns string list of oauth connects clients
      * @throws ApiError
      */
-    public static listOAuthConnects(): CancelablePromise<any> {
+    public static listOAuthConnects(): CancelablePromise<Array<string>> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/oauth/list_connects',
+        });
+    }
+
+    /**
+     * get oauth connect
+     * @returns any get
+     * @throws ApiError
+     */
+    public static getOAuthConnect({
+        client,
+    }: {
+        /**
+         * client name
+         */
+        client: string,
+    }): CancelablePromise<{
+        extra_params?: any;
+        scopes?: Array<string>;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/oauth/get_connect/{client}',
+            path: {
+                'client': client,
+            },
         });
     }
 

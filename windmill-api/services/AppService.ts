@@ -468,10 +468,12 @@ export class AppService {
                 content: string;
                 language: string;
                 path?: string;
+                lock?: string;
                 cache_ttl?: number;
             };
             force_viewer_static_fields?: any;
             force_viewer_one_of_fields?: any;
+            force_viewer_allow_user_resources?: Array<string>;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
