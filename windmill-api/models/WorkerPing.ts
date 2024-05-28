@@ -18,5 +18,6 @@ export type WorkerPing = {
     memory?: number;
     vcpus?: number;
     memory_usage?: number;
+    wm_memory_usage?: number;
 };
 
