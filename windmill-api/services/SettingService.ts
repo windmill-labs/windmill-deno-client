@@ -154,6 +154,33 @@ export class SettingService {
     }
 
     /**
+     * get latest key renewal attempt
+     * @returns any status
+     * @throws ApiError
+     */
+    public static getLatestKeyRenewalAttempt(): CancelablePromise<{
+        result: string;
+        attempted_at: string;
+    } | null> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/settings/latest_key_renewal_attempt',
+        });
+    }
+
+    /**
+     * renew license key
+     * @returns string status
+     * @throws ApiError
+     */
+    public static renewLicenseKey(): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/settings/renew_license_key',
+        });
+    }
+
+    /**
      * test metadata
      * @returns string status
      * @throws ApiError
