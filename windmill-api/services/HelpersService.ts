@@ -181,14 +181,16 @@ export class HelpersService {
     }
 
     /**
-     * Test connection to the workspace datasets storage
+     * Test connection to the workspace object storage
      * @returns any Connection settings
      * @throws ApiError
      */
     public static datasetStorageTestConnection({
         workspace,
+        storage,
     }: {
         workspace: string,
+        storage?: string,
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -196,11 +198,14 @@ export class HelpersService {
             path: {
                 'workspace': workspace,
             },
+            query: {
+                'storage': storage,
+            },
         });
     }
 
     /**
-     * List the file keys available in the workspace files storage (S3)
+     * List the file keys available in a workspace object storage
      * @returns any List of file keys
      * @throws ApiError
      */
@@ -209,11 +214,13 @@ export class HelpersService {
         maxKeys,
         marker,
         prefix,
+        storage,
     }: {
         workspace: string,
         maxKeys: number,
         marker?: string,
         prefix?: string,
+        storage?: string,
     }): CancelablePromise<{
         next_marker?: string;
         windmill_large_files: Array<WindmillLargeFile>;
@@ -229,6 +236,7 @@ export class HelpersService {
                 'max_keys': maxKeys,
                 'marker': marker,
                 'prefix': prefix,
+                'storage': storage,
             },
         });
     }
@@ -241,9 +249,11 @@ export class HelpersService {
     public static loadFileMetadata({
         workspace,
         fileKey,
+        storage,
     }: {
         workspace: string,
         fileKey: string,
+        storage?: string,
     }): CancelablePromise<WindmillFileMetadata> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -253,6 +263,7 @@ export class HelpersService {
             },
             query: {
                 'file_key': fileKey,
+                'storage': storage,
             },
         });
     }
@@ -271,6 +282,7 @@ export class HelpersService {
         csvHasHeader,
         readBytesFrom,
         readBytesLength,
+        storage,
     }: {
         workspace: string,
         fileKey: string,
@@ -280,6 +292,7 @@ export class HelpersService {
         csvHasHeader?: boolean,
         readBytesFrom?: number,
         readBytesLength?: number,
+        storage?: string,
     }): CancelablePromise<WindmillFilePreview> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -295,6 +308,7 @@ export class HelpersService {
                 'csv_has_header': csvHasHeader,
                 'read_bytes_from': readBytesFrom,
                 'read_bytes_length': readBytesLength,
+                'storage': storage,
             },
         });
     }
@@ -313,6 +327,7 @@ export class HelpersService {
         sortDesc,
         searchCol,
         searchTerm,
+        storage,
     }: {
         workspace: string,
         path: string,
@@ -322,6 +337,7 @@ export class HelpersService {
         sortDesc?: boolean,
         searchCol?: string,
         searchTerm?: string,
+        storage?: string,
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -337,6 +353,52 @@ export class HelpersService {
                 'sort_desc': sortDesc,
                 'search_col': searchCol,
                 'search_term': searchTerm,
+                'storage': storage,
+            },
+        });
+    }
+
+    /**
+     * Load a preview of a csv file
+     * @returns any Csv Preview
+     * @throws ApiError
+     */
+    public static loadCsvPreview({
+        workspace,
+        path,
+        offset,
+        limit,
+        sortCol,
+        sortDesc,
+        searchCol,
+        searchTerm,
+        storage,
+    }: {
+        workspace: string,
+        path: string,
+        offset?: number,
+        limit?: number,
+        sortCol?: string,
+        sortDesc?: boolean,
+        searchCol?: string,
+        searchTerm?: string,
+        storage?: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/job_helpers/load_csv_preview/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+            query: {
+                'offset': offset,
+                'limit': limit,
+                'sort_col': sortCol,
+                'sort_desc': sortDesc,
+                'search_col': searchCol,
+                'search_term': searchTerm,
+                'storage': storage,
             },
         });
     }
@@ -349,9 +411,11 @@ export class HelpersService {
     public static deleteS3File({
         workspace,
         fileKey,
+        storage,
     }: {
         workspace: string,
         fileKey: string,
+        storage?: string,
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'DELETE',
@@ -361,6 +425,7 @@ export class HelpersService {
             },
             query: {
                 'file_key': fileKey,
+                'storage': storage,
             },
         });
     }
@@ -374,10 +439,12 @@ export class HelpersService {
         workspace,
         srcFileKey,
         destFileKey,
+        storage,
     }: {
         workspace: string,
         srcFileKey: string,
         destFileKey: string,
+        storage?: string,
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -388,6 +455,7 @@ export class HelpersService {
             query: {
                 'src_file_key': srcFileKey,
                 'dest_file_key': destFileKey,
+                'storage': storage,
             },
         });
     }
@@ -404,6 +472,7 @@ export class HelpersService {
         fileExtension,
         s3ResourcePath,
         resourceType,
+        storage,
     }: {
         workspace: string,
         /**
@@ -414,6 +483,7 @@ export class HelpersService {
         fileExtension?: string,
         s3ResourcePath?: string,
         resourceType?: string,
+        storage?: string,
     }): CancelablePromise<{
         file_key: string;
     }> {
@@ -428,6 +498,7 @@ export class HelpersService {
                 'file_extension': fileExtension,
                 's3_resource_path': s3ResourcePath,
                 'resource_type': resourceType,
+                'storage': storage,
             },
             body: requestBody,
             mediaType: 'application/octet-stream',
@@ -444,15 +515,48 @@ export class HelpersService {
         fileKey,
         s3ResourcePath,
         resourceType,
+        storage,
     }: {
         workspace: string,
         fileKey: string,
         s3ResourcePath?: string,
         resourceType?: string,
+        storage?: string,
     }): CancelablePromise<Blob> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/w/{workspace}/job_helpers/download_s3_file',
+            path: {
+                'workspace': workspace,
+            },
+            query: {
+                'file_key': fileKey,
+                's3_resource_path': s3ResourcePath,
+                'resource_type': resourceType,
+                'storage': storage,
+            },
+        });
+    }
+
+    /**
+     * Download file to S3 bucket
+     * @returns string The downloaded file
+     * @throws ApiError
+     */
+    public static fileDownloadParquetAsCsv({
+        workspace,
+        fileKey,
+        s3ResourcePath,
+        resourceType,
+    }: {
+        workspace: string,
+        fileKey: string,
+        s3ResourcePath?: string,
+        resourceType?: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/job_helpers/download_s3_parquet_file_as_csv',
             path: {
                 'workspace': workspace,
             },

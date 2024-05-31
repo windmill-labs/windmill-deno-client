@@ -7,6 +7,12 @@ export type LargeFileStorage = {
     s3_resource_path?: string;
     azure_blob_resource_path?: string;
     public_resource?: boolean;
+    secondary_storage?: Record<string, {
+        type?: 'S3Storage' | 'AzureBlobStorage' | 'AzureWorkloadIdentity' | 'S3AwsOidc';
+        s3_resource_path?: string;
+        azure_blob_resource_path?: string;
+        public_resource?: boolean;
+    }>;
 };
 
 export namespace LargeFileStorage {
