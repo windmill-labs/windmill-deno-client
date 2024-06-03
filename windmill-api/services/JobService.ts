@@ -1549,9 +1549,17 @@ export class JobService {
     public static getCompletedJobResult({
         workspace,
         id,
+        suspendedJob,
+        resumeId,
+        secret,
+        approver,
     }: {
         workspace: string,
         id: string,
+        suspendedJob?: string,
+        resumeId?: number,
+        secret?: string,
+        approver?: string,
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -1559,6 +1567,12 @@ export class JobService {
             path: {
                 'workspace': workspace,
                 'id': id,
+            },
+            query: {
+                'suspended_job': suspendedJob,
+                'resume_id': resumeId,
+                'secret': secret,
+                'approver': approver,
             },
         });
     }

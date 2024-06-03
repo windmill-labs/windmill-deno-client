@@ -41,6 +41,8 @@ export type QueuedJob = {
     mem_peak?: number;
     tag: string;
     priority?: number;
+    self_wait_time_ms?: number;
+    aggregate_wait_time_ms?: number;
 };
 
 export namespace QueuedJob {

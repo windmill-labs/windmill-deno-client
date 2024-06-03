@@ -44,6 +44,8 @@ export type CompletedJob = {
     tag: string;
     priority?: number;
     labels?: Array<string>;
+    self_wait_time_ms?: number;
+    aggregate_wait_time_ms?: number;
 };
 
 export namespace CompletedJob {
