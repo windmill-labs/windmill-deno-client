@@ -373,6 +373,7 @@ export class HelpersService {
         searchCol,
         searchTerm,
         storage,
+        csvSeparator,
     }: {
         workspace: string,
         path: string,
@@ -383,6 +384,7 @@ export class HelpersService {
         searchCol?: string,
         searchTerm?: string,
         storage?: string,
+        csvSeparator?: string,
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -399,6 +401,7 @@ export class HelpersService {
                 'search_col': searchCol,
                 'search_term': searchTerm,
                 'storage': storage,
+                'csv_separator': csvSeparator,
             },
         });
     }

@@ -181,6 +181,18 @@ export class SettingService {
     }
 
     /**
+     * create customer portal session
+     * @returns string url to portal
+     * @throws ApiError
+     */
+    public static createCustomerPortalSession(): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/settings/customer_portal',
+        });
+    }
+
+    /**
      * test metadata
      * @returns string status
      * @throws ApiError
