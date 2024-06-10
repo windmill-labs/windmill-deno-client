@@ -707,14 +707,26 @@ export class UserService {
      */
     public static listTokens({
         excludeEphemeral,
+        page,
+        perPage,
     }: {
         excludeEphemeral?: boolean,
+        /**
+         * which page to return (start at 1, default 1)
+         */
+        page?: number,
+        /**
+         * number of items to return for a given page (default 30, max 100)
+         */
+        perPage?: number,
     }): CancelablePromise<Array<TruncatedToken>> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/users/tokens/list',
             query: {
                 'exclude_ephemeral': excludeEphemeral,
+                'page': page,
+                'per_page': perPage,
             },
         });
     }
