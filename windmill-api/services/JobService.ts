@@ -1019,21 +1019,178 @@ export class JobService {
     }
 
     /**
-     * cancel all jobs
-     * @returns string uuids of canceled jobs
+     * get the ids of all jobs matching the given filters
+     * @returns string uuids of jobs
      * @throws ApiError
      */
-    public static cancelAll({
+    public static listFilteredUuids({
         workspace,
+        orderDesc,
+        createdBy,
+        parentJob,
+        scriptPathExact,
+        scriptPathStart,
+        schedulePath,
+        scriptHash,
+        startedBefore,
+        startedAfter,
+        success,
+        scheduledForBeforeNow,
+        jobKinds,
+        suspended,
+        running,
+        args,
+        result,
+        tag,
+        page,
+        perPage,
+        concurrencyKey,
+        allWorkspaces,
+        isNotSchedule,
     }: {
         workspace: string,
+        /**
+         * order by desc order (default true)
+         */
+        orderDesc?: boolean,
+        /**
+         * mask to filter exact matching user creator
+         */
+        createdBy?: string,
+        /**
+         * The parent job that is at the origin and responsible for the execution of this script if any
+         */
+        parentJob?: string,
+        /**
+         * mask to filter exact matching path
+         */
+        scriptPathExact?: string,
+        /**
+         * mask to filter matching starting path
+         */
+        scriptPathStart?: string,
+        /**
+         * mask to filter by schedule path
+         */
+        schedulePath?: string,
+        /**
+         * mask to filter exact matching path
+         */
+        scriptHash?: string,
+        /**
+         * filter on started before (inclusive) timestamp
+         */
+        startedBefore?: string,
+        /**
+         * filter on started after (exclusive) timestamp
+         */
+        startedAfter?: string,
+        /**
+         * filter on successful jobs
+         */
+        success?: boolean,
+        /**
+         * filter on jobs scheduled_for before now (hence waitinf for a worker)
+         */
+        scheduledForBeforeNow?: boolean,
+        /**
+         * filter on job kind (values 'preview', 'script', 'dependencies', 'flow') separated by,
+         */
+        jobKinds?: string,
+        /**
+         * filter on suspended jobs
+         */
+        suspended?: boolean,
+        /**
+         * filter on running jobs
+         */
+        running?: boolean,
+        /**
+         * filter on jobs containing those args as a json subset (@> in postgres)
+         */
+        args?: string,
+        /**
+         * filter on jobs containing those result as a json subset (@> in postgres)
+         */
+        result?: string,
+        /**
+         * filter on jobs with a given tag/worker group
+         */
+        tag?: string,
+        /**
+         * which page to return (start at 1, default 1)
+         */
+        page?: number,
+        /**
+         * number of items to return for a given page (default 30, max 100)
+         */
+        perPage?: number,
+        concurrencyKey?: string,
+        /**
+         * get jobs from all workspaces (only valid if request come from the `admins` workspace)
+         */
+        allWorkspaces?: boolean,
+        /**
+         * is not a scheduled job
+         */
+        isNotSchedule?: boolean,
     }): CancelablePromise<Array<string>> {
         return __request(OpenAPI, {
-            method: 'POST',
-            url: '/w/{workspace}/jobs/queue/cancel_all',
+            method: 'GET',
+            url: '/w/{workspace}/jobs/queue/list_filtered_uuids',
             path: {
                 'workspace': workspace,
             },
+            query: {
+                'order_desc': orderDesc,
+                'created_by': createdBy,
+                'parent_job': parentJob,
+                'script_path_exact': scriptPathExact,
+                'script_path_start': scriptPathStart,
+                'schedule_path': schedulePath,
+                'script_hash': scriptHash,
+                'started_before': startedBefore,
+                'started_after': startedAfter,
+                'success': success,
+                'scheduled_for_before_now': scheduledForBeforeNow,
+                'job_kinds': jobKinds,
+                'suspended': suspended,
+                'running': running,
+                'args': args,
+                'result': result,
+                'tag': tag,
+                'page': page,
+                'per_page': perPage,
+                'concurrency_key': concurrencyKey,
+                'all_workspaces': allWorkspaces,
+                'is_not_schedule': isNotSchedule,
+            },
+        });
+    }
+
+    /**
+     * cancel jobs based on the given uuids
+     * @returns string uuids of canceled jobs
+     * @throws ApiError
+     */
+    public static cancelSelection({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * uuids of the jobs to cancel
+         */
+        requestBody: Array<string>,
+    }): CancelablePromise<Array<string>> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/jobs/queue/cancel_selection',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
 
