@@ -7,5 +7,7 @@ export type ResourceType = {
     name: string;
     schema?: any;
     description?: string;
+    created_by?: string;
+    edited_at?: string;
 };
 

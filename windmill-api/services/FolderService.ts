@@ -84,6 +84,7 @@ export class FolderService {
          */
         requestBody: {
             name: string;
+            summary?: string;
             owners?: Array<string>;
             extra_perms?: any;
         },
@@ -115,6 +116,7 @@ export class FolderService {
          * update folder
          */
         requestBody: {
+            summary?: string;
             owners?: Array<string>;
             extra_perms?: any;
         },

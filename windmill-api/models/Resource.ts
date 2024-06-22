@@ -10,5 +10,7 @@ export type Resource = {
     value?: any;
     is_oauth: boolean;
     extra_perms?: Record<string, boolean>;
+    created_by?: string;
+    edited_at?: string;
 };
 

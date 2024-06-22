@@ -15,5 +15,7 @@ export type ListableResource = {
     is_linked: boolean;
     is_refreshed: boolean;
     account?: number;
+    created_by?: string;
+    edited_at?: string;
 };
 

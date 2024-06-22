@@ -215,14 +215,19 @@ export class VariableService {
      */
     public static listVariable({
         workspace,
+        pathStart,
     }: {
         workspace: string,
+        pathStart?: string,
     }): CancelablePromise<Array<ListableVariable>> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/w/{workspace}/variables/list',
             path: {
                 'workspace': workspace,
+            },
+            query: {
+                'path_start': pathStart,
             },
         });
     }

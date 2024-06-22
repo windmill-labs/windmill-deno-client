@@ -200,6 +200,7 @@ export class ScheduleService {
         args,
         path,
         isFlow,
+        pathStart,
     }: {
         workspace: string,
         /**
@@ -219,6 +220,7 @@ export class ScheduleService {
          */
         path?: string,
         isFlow?: boolean,
+        pathStart?: string,
     }): CancelablePromise<Array<Schedule>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -232,6 +234,7 @@ export class ScheduleService {
                 'args': args,
                 'path': path,
                 'is_flow': isFlow,
+                'path_start': pathStart,
             },
         });
     }

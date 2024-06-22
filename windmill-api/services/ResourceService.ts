@@ -234,6 +234,7 @@ export class ResourceService {
         perPage,
         resourceType,
         resourceTypeExclude,
+        pathStart,
     }: {
         workspace: string,
         /**
@@ -252,6 +253,7 @@ export class ResourceService {
          * resource_types to not list from, separated by ',',
          */
         resourceTypeExclude?: string,
+        pathStart?: string,
     }): CancelablePromise<Array<ListableResource>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -264,6 +266,7 @@ export class ResourceService {
                 'per_page': perPage,
                 'resource_type': resourceType,
                 'resource_type_exclude': resourceTypeExclude,
+                'path_start': pathStart,
             },
         });
     }
