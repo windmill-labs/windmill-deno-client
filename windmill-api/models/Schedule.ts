@@ -30,5 +30,6 @@ export type Schedule = {
     summary?: string;
     no_flow_overlap?: boolean;
     tag?: string;
+    paused_until?: string;
 };
 
