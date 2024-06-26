@@ -110,6 +110,7 @@ export class FlowService {
         pathExact,
         showArchived,
         starredOnly,
+        includeDraftOnly,
     }: {
         workspace: string,
         /**
@@ -138,7 +139,7 @@ export class FlowService {
         pathExact?: string,
         /**
          * (default false)
-         * show also the archived files.
+         * show only the archived files.
          * when multiple archived hash share the same path, only the ones with the latest create_at
          * are displayed.
          *
@@ -150,6 +151,12 @@ export class FlowService {
          *
          */
         starredOnly?: boolean,
+        /**
+         * (default false)
+         * include items that have no deployed version
+         *
+         */
+        includeDraftOnly?: boolean,
     }): CancelablePromise<Array<(Flow & {
         has_draft?: boolean;
         draft_only?: boolean;
@@ -169,6 +176,7 @@ export class FlowService {
                 'path_exact': pathExact,
                 'show_archived': showArchived,
                 'starred_only': starredOnly,
+                'include_draft_only': includeDraftOnly,
             },
         });
     }

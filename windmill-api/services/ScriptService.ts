@@ -189,7 +189,8 @@ export class ScriptService {
         lastParentHash,
         parentHash,
         showArchived,
-        hideWithoutMain,
+        includeWithoutMain,
+        includeDraftOnly,
         isTemplate,
         kinds,
         starredOnly,
@@ -241,7 +242,7 @@ export class ScriptService {
         parentHash?: string,
         /**
          * (default false)
-         * show also the archived files.
+         * show only the archived files.
          * when multiple archived hash share the same path, only the ones with the latest create_at
          * are
          * ed.
@@ -250,10 +251,16 @@ export class ScriptService {
         showArchived?: boolean,
         /**
          * (default false)
-         * hide the scripts without an exported main function
+         * include scripts without an exported main function
          *
          */
-        hideWithoutMain?: boolean,
+        includeWithoutMain?: boolean,
+        /**
+         * (default false)
+         * include scripts that have no deployed version
+         *
+         */
+        includeDraftOnly?: boolean,
         /**
          * (default regardless)
          * if true show only the templates
@@ -292,7 +299,8 @@ export class ScriptService {
                 'last_parent_hash': lastParentHash,
                 'parent_hash': parentHash,
                 'show_archived': showArchived,
-                'hide_without_main': hideWithoutMain,
+                'include_without_main': includeWithoutMain,
+                'include_draft_only': includeDraftOnly,
                 'is_template': isTemplate,
                 'kinds': kinds,
                 'starred_only': starredOnly,
