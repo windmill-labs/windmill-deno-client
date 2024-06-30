@@ -1361,6 +1361,7 @@ export class JobService {
         running,
         scheduledForBeforeNow,
         createdOrStartedAfter,
+        createdOrStartedAfterCompletedJobs,
         jobKinds,
         args,
         tag,
@@ -1427,6 +1428,10 @@ export class JobService {
          * filter on created_at for non non started job and started_at otherwise after (exclusive) timestamp
          */
         createdOrStartedAfter?: string,
+        /**
+         * filter on created_at for non non started job and started_at otherwise after (exclusive) timestamp but only for the completed jobs
+         */
+        createdOrStartedAfterCompletedJobs?: string,
         /**
          * filter on job kind (values 'preview', 'script', 'dependencies', 'flow') separated by,
          */
@@ -1496,6 +1501,7 @@ export class JobService {
                 'running': running,
                 'scheduled_for_before_now': scheduledForBeforeNow,
                 'created_or_started_after': createdOrStartedAfter,
+                'created_or_started_after_completed_jobs': createdOrStartedAfterCompletedJobs,
                 'job_kinds': jobKinds,
                 'args': args,
                 'tag': tag,
@@ -2237,6 +2243,7 @@ export class JobService {
         running,
         scheduledForBeforeNow,
         createdOrStartedAfter,
+        createdOrStartedAfterCompletedJobs,
         jobKinds,
         args,
         tag,
@@ -2305,6 +2312,10 @@ export class JobService {
          * filter on created_at for non non started job and started_at otherwise after (exclusive) timestamp
          */
         createdOrStartedAfter?: string,
+        /**
+         * filter on created_at for non non started job and started_at otherwise after (exclusive) timestamp but only for the completed jobs
+         */
+        createdOrStartedAfterCompletedJobs?: string,
         /**
          * filter on job kind (values 'preview', 'script', 'dependencies', 'flow') separated by,
          */
@@ -2376,6 +2387,7 @@ export class JobService {
                 'running': running,
                 'scheduled_for_before_now': scheduledForBeforeNow,
                 'created_or_started_after': createdOrStartedAfter,
+                'created_or_started_after_completed_jobs': createdOrStartedAfterCompletedJobs,
                 'job_kinds': jobKinds,
                 'args': args,
                 'tag': tag,
