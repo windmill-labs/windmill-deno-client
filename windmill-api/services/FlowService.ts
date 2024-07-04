@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { Flow } from '../models/Flow.ts';
+import type { FlowVersion } from '../models/FlowVersion.ts';
 import type { Input } from '../models/Input.ts';
 import type { OpenFlow } from '../models/OpenFlow.ts';
 import type { OpenFlowWPath } from '../models/OpenFlowWPath.ts';
@@ -111,6 +112,7 @@ export class FlowService {
         showArchived,
         starredOnly,
         includeDraftOnly,
+        withDeploymentMsg,
     }: {
         workspace: string,
         /**
@@ -157,6 +159,12 @@ export class FlowService {
          *
          */
         includeDraftOnly?: boolean,
+        /**
+         * (default false)
+         * include deployment message
+         *
+         */
+        withDeploymentMsg?: boolean,
     }): CancelablePromise<Array<(Flow & {
         has_draft?: boolean;
         draft_only?: boolean;
@@ -177,7 +185,89 @@ export class FlowService {
                 'show_archived': showArchived,
                 'starred_only': starredOnly,
                 'include_draft_only': includeDraftOnly,
+                'with_deployment_msg': withDeploymentMsg,
             },
+        });
+    }
+
+    /**
+     * get flow history by path
+     * @returns FlowVersion Flow history
+     * @throws ApiError
+     */
+    public static getFlowHistory({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<Array<FlowVersion>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/flows/history/p/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
+     * get flow version
+     * @returns Flow flow details
+     * @throws ApiError
+     */
+    public static getFlowVersion({
+        workspace,
+        version,
+        path,
+    }: {
+        workspace: string,
+        version: number,
+        path: string,
+    }): CancelablePromise<Flow> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/flows/get/v/{version}/p/{path}',
+            path: {
+                'workspace': workspace,
+                'version': version,
+                'path': path,
+            },
+        });
+    }
+
+    /**
+     * update flow history
+     * @returns string success
+     * @throws ApiError
+     */
+    public static updateFlowHistory({
+        workspace,
+        version,
+        path,
+        requestBody,
+    }: {
+        workspace: string,
+        version: number,
+        path: string,
+        /**
+         * Flow deployment message
+         */
+        requestBody: {
+            deployment_msg: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/flows/history_update/v/{version}/p/{path}',
+            path: {
+                'workspace': workspace,
+                'version': version,
+                'path': path,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
 

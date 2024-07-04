@@ -95,6 +95,7 @@ export class AppService {
         pathExact,
         starredOnly,
         includeDraftOnly,
+        withDeploymentMsg,
     }: {
         workspace: string,
         /**
@@ -133,6 +134,12 @@ export class AppService {
          *
          */
         includeDraftOnly?: boolean,
+        /**
+         * (default false)
+         * include deployment message
+         *
+         */
+        withDeploymentMsg?: boolean,
     }): CancelablePromise<Array<ListableApp>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -149,6 +156,7 @@ export class AppService {
                 'path_exact': pathExact,
                 'starred_only': starredOnly,
                 'include_draft_only': includeDraftOnly,
+                'with_deployment_msg': withDeploymentMsg,
             },
         });
     }

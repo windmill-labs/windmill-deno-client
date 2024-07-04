@@ -194,6 +194,7 @@ export class ScriptService {
         isTemplate,
         kinds,
         starredOnly,
+        withDeploymentMsg,
     }: {
         workspace: string,
         /**
@@ -281,6 +282,12 @@ export class ScriptService {
          *
          */
         starredOnly?: boolean,
+        /**
+         * (default false)
+         * include deployment message
+         *
+         */
+        withDeploymentMsg?: boolean,
     }): CancelablePromise<Array<Script>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -304,6 +311,7 @@ export class ScriptService {
                 'is_template': isTemplate,
                 'kinds': kinds,
                 'starred_only': starredOnly,
+                'with_deployment_msg': withDeploymentMsg,
             },
         });
     }

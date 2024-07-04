@@ -34,6 +34,7 @@ export type { FlowPreview } from './models/FlowPreview.ts';
 export type { FlowStatus } from './models/FlowStatus.ts';
 export { FlowStatusModule } from './models/FlowStatusModule.ts';
 export type { FlowValue } from './models/FlowValue.ts';
+export type { FlowVersion } from './models/FlowVersion.ts';
 export type { Folder } from './models/Folder.ts';
 export type { ForloopFlow } from './models/ForloopFlow.ts';
 export type { GitRepositorySettings } from './models/GitRepositorySettings.ts';
