@@ -44,6 +44,8 @@ export class AuditService {
         after,
         username,
         operation,
+        operations,
+        excludeOperations,
         resource,
         actionKind,
     }: {
@@ -73,6 +75,14 @@ export class AuditService {
          */
         operation?: string,
         /**
+         * comma separated list of exact operations to include
+         */
+        operations?: string,
+        /**
+         * comma separated list of operations to exclude
+         */
+        excludeOperations?: string,
+        /**
          * filter on exact or prefix name of resource
          */
         resource?: string,
@@ -94,6 +104,8 @@ export class AuditService {
                 'after': after,
                 'username': username,
                 'operation': operation,
+                'operations': operations,
+                'exclude_operations': excludeOperations,
                 'resource': resource,
                 'action_kind': actionKind,
             },
