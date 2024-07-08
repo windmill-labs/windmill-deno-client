@@ -59,9 +59,13 @@ export class InputService {
     public static getArgsFromHistoryOrSavedInput({
         workspace,
         jobOrInputId,
+        input,
+        allowLarge,
     }: {
         workspace: string,
         jobOrInputId: string,
+        input?: boolean,
+        allowLarge?: boolean,
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -69,6 +73,10 @@ export class InputService {
             path: {
                 'workspace': workspace,
                 'jobOrInputId': jobOrInputId,
+            },
+            query: {
+                'input': input,
+                'allow_large': allowLarge,
             },
         });
     }
