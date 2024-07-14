@@ -13,6 +13,7 @@ export type FlowStatusModule = {
         args?: any;
     };
     flow_jobs?: Array<string>;
+    flow_jobs_success?: Array<boolean>;
     branch_chosen?: {
         type: FlowStatusModule.type;
         branch?: number;
