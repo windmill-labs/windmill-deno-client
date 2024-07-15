@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { ExportedInstanceGroup } from '../models/ExportedInstanceGroup.ts';
 import type { Group } from '../models/Group.ts';
 import type { InstanceGroup } from '../models/InstanceGroup.ts';
 
@@ -163,6 +164,39 @@ export class GroupService {
             path: {
                 'name': name,
             },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * export instance groups
+     * @returns ExportedInstanceGroup exported instance groups
+     * @throws ApiError
+     */
+    public static exportInstanceGroups(): CancelablePromise<Array<ExportedInstanceGroup>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/groups/export',
+        });
+    }
+
+    /**
+     * overwrite instance groups
+     * @returns string success message
+     * @throws ApiError
+     */
+    public static overwriteInstanceGroups({
+        requestBody,
+    }: {
+        /**
+         * overwrite instance groups
+         */
+        requestBody: Array<ExportedInstanceGroup>,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/groups/overwrite',
             body: requestBody,
             mediaType: 'application/json',
         });

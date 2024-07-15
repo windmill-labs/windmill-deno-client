@@ -1,6 +1,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { GlobalSetting } from '../models/GlobalSetting.ts';
+
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
 import { OpenAPI } from '../core/OpenAPI.ts';
 import { request as __request } from '../core/request.ts';
@@ -210,6 +212,18 @@ export class SettingService {
             url: '/saml/test_metadata',
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * list global settings
+     * @returns GlobalSetting list of settings
+     * @throws ApiError
+     */
+    public static listGlobalSettings(): CancelablePromise<Array<GlobalSetting>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/settings/list_global',
         });
     }
 

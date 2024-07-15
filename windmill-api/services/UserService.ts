@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { EditWorkspaceUser } from '../models/EditWorkspaceUser.ts';
+import type { ExportedUser } from '../models/ExportedUser.ts';
 import type { GlobalUserInfo } from '../models/GlobalUserInfo.ts';
 import type { Login } from '../models/Login.ts';
 import type { NewToken } from '../models/NewToken.ts';
@@ -271,6 +272,39 @@ export class UserService {
             path: {
                 'email': email,
             },
+        });
+    }
+
+    /**
+     * global overwrite users (require super admin and EE)
+     * @returns string Success message
+     * @throws ApiError
+     */
+    public static globalUsersOverwrite({
+        requestBody,
+    }: {
+        /**
+         * List of users
+         */
+        requestBody: Array<ExportedUser>,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/users/overwrite',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * global export users (require super admin and EE)
+     * @returns ExportedUser exported users
+     * @throws ApiError
+     */
+    public static globalUsersExport(): CancelablePromise<Array<ExportedUser>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/users/export',
         });
     }
 

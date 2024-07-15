@@ -953,6 +953,7 @@ export class WorkspaceService {
          */
         requestBody: {
             new_key: string;
+            skip_reencrypt?: boolean;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {

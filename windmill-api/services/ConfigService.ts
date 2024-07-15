@@ -1,6 +1,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { Config } from '../models/Config.ts';
+
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
 import { OpenAPI } from '../core/OpenAPI.ts';
 import { request as __request } from '../core/request.ts';
@@ -83,6 +85,18 @@ export class ConfigService {
             path: {
                 'name': name,
             },
+        });
+    }
+
+    /**
+     * list configs
+     * @returns Config list of configs
+     * @throws ApiError
+     */
+    public static listConfigs(): CancelablePromise<Array<Config>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/configs/list',
         });
     }
 
