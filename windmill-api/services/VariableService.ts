@@ -216,9 +216,19 @@ export class VariableService {
     public static listVariable({
         workspace,
         pathStart,
+        page,
+        perPage,
     }: {
         workspace: string,
         pathStart?: string,
+        /**
+         * which page to return (start at 1, default 1)
+         */
+        page?: number,
+        /**
+         * number of items to return for a given page (default 30, max 100)
+         */
+        perPage?: number,
     }): CancelablePromise<Array<ListableVariable>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -228,6 +238,8 @@ export class VariableService {
             },
             query: {
                 'path_start': pathStart,
+                'page': page,
+                'per_page': perPage,
             },
         });
     }
