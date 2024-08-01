@@ -9,5 +9,6 @@ export type CreateVariable = {
     description: string;
     account?: number;
     is_oauth?: boolean;
+    expires_at?: string;
 };
 

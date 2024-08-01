@@ -15,5 +15,6 @@ export type ListableVariable = {
     refresh_error?: string;
     is_linked?: boolean;
     is_refreshed?: boolean;
+    expires_at?: string;
 };
 
