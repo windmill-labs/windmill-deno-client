@@ -7,6 +7,7 @@ import type { ScriptArgs } from '../models/ScriptArgs.ts';
 import type { UserWorkspaceList } from '../models/UserWorkspaceList.ts';
 import type { Workspace } from '../models/Workspace.ts';
 import type { WorkspaceDefaultScripts } from '../models/WorkspaceDefaultScripts.ts';
+import type { WorkspaceDeployUISettings } from '../models/WorkspaceDeployUISettings.ts';
 import type { WorkspaceGitSyncSettings } from '../models/WorkspaceGitSyncSettings.ts';
 import type { WorkspaceInvite } from '../models/WorkspaceInvite.ts';
 
@@ -430,6 +431,7 @@ export class WorkspaceService {
         error_handler_muted_on_cancel: boolean;
         large_file_storage?: LargeFileStorage;
         git_sync?: WorkspaceGitSyncSettings;
+        deploy_ui?: WorkspaceDeployUISettings;
         default_app?: string;
         default_scripts?: WorkspaceDefaultScripts;
     }> {
@@ -807,6 +809,34 @@ export class WorkspaceService {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/w/{workspace}/workspaces/edit_git_sync_config',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * edit workspace deploy ui settings
+     * @returns any status
+     * @throws ApiError
+     */
+    public static editWorkspaceDeployUiSettings({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * Workspace deploy UI settings
+         */
+        requestBody: {
+            deploy_ui_settings?: WorkspaceDeployUISettings;
+        },
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/edit_deploy_ui_config',
             path: {
                 'workspace': workspace,
             },
