@@ -175,10 +175,17 @@ export class SettingService {
      * @returns string status
      * @throws ApiError
      */
-    public static renewLicenseKey(): CancelablePromise<string> {
+    public static renewLicenseKey({
+        licenseKey,
+    }: {
+        licenseKey?: string,
+    }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/settings/renew_license_key',
+            query: {
+                'license_key': licenseKey,
+            },
         });
     }
 
@@ -187,10 +194,17 @@ export class SettingService {
      * @returns string url to portal
      * @throws ApiError
      */
-    public static createCustomerPortalSession(): CancelablePromise<string> {
+    public static createCustomerPortalSession({
+        licenseKey,
+    }: {
+        licenseKey?: string,
+    }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/settings/customer_portal',
+            query: {
+                'license_key': licenseKey,
+            },
         });
     }
 
