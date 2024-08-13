@@ -984,6 +984,7 @@ export class JobService {
         allWorkspaces?: boolean,
     }): CancelablePromise<{
         database_length: number;
+        suspended?: number;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -1363,6 +1364,7 @@ export class JobService {
         createdOrStartedAfter,
         createdOrStartedAfterCompletedJobs,
         jobKinds,
+        suspended,
         args,
         tag,
         result,
@@ -1437,6 +1439,10 @@ export class JobService {
          */
         jobKinds?: string,
         /**
+         * filter on suspended jobs
+         */
+        suspended?: boolean,
+        /**
          * filter on jobs containing those args as a json subset (@> in postgres)
          */
         args?: string,
@@ -1503,6 +1509,7 @@ export class JobService {
                 'created_or_started_after': createdOrStartedAfter,
                 'created_or_started_after_completed_jobs': createdOrStartedAfterCompletedJobs,
                 'job_kinds': jobKinds,
+                'suspended': suspended,
                 'args': args,
                 'tag': tag,
                 'result': result,
