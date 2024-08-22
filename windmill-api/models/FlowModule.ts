@@ -13,6 +13,10 @@ export type FlowModule = {
         skip_if_stopped?: boolean;
         expr: string;
     };
+    stop_after_all_iters_if?: {
+        skip_if_stopped?: boolean;
+        expr: string;
+    };
     sleep?: InputTransform;
     cache_ttl?: number;
     timeout?: number;
