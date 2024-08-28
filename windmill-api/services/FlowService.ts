@@ -279,9 +279,11 @@ export class FlowService {
     public static getFlowByPath({
         workspace,
         path,
+        withStarredInfo,
     }: {
         workspace: string,
         path: string,
+        withStarredInfo?: boolean,
     }): CancelablePromise<Flow> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -289,6 +291,9 @@ export class FlowService {
             path: {
                 'workspace': workspace,
                 'path': path,
+            },
+            query: {
+                'with_starred_info': withStarredInfo,
             },
         });
     }

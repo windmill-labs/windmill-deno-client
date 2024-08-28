@@ -224,9 +224,11 @@ export class AppService {
     public static getAppByPath({
         workspace,
         path,
+        withStarredInfo,
     }: {
         workspace: string,
         path: string,
+        withStarredInfo?: boolean,
     }): CancelablePromise<AppWithLastVersion> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -234,6 +236,9 @@ export class AppService {
             path: {
                 'workspace': workspace,
                 'path': path,
+            },
+            query: {
+                'with_starred_info': withStarredInfo,
             },
         });
     }

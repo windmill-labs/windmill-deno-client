@@ -190,6 +190,7 @@ export class UserService {
          */
         requestBody: {
             is_super_admin?: boolean;
+            name?: string;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {

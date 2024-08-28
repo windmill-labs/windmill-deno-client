@@ -488,9 +488,11 @@ export class ScriptService {
     public static getScriptByPath({
         workspace,
         path,
+        withStarredInfo,
     }: {
         workspace: string,
         path: string,
+        withStarredInfo?: boolean,
     }): CancelablePromise<Script> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -498,6 +500,9 @@ export class ScriptService {
             path: {
                 'workspace': workspace,
                 'path': path,
+            },
+            query: {
+                'with_starred_info': withStarredInfo,
             },
         });
     }
@@ -657,9 +662,11 @@ export class ScriptService {
     public static getScriptByHash({
         workspace,
         hash,
+        withStarredInfo,
     }: {
         workspace: string,
         hash: string,
+        withStarredInfo?: boolean,
     }): CancelablePromise<Script> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -667,6 +674,9 @@ export class ScriptService {
             path: {
                 'workspace': workspace,
                 'hash': hash,
+            },
+            query: {
+                'with_starred_info': withStarredInfo,
             },
         });
     }
