@@ -25,6 +25,7 @@ export namespace RawScriptForDependencies {
         NATIVETS = 'nativets',
         BUN = 'bun',
         PHP = 'php',
+        RUST = 'rust',
     }
 
 

@@ -49,6 +49,7 @@ export namespace NewScript {
         NATIVETS = 'nativets',
         BUN = 'bun',
         PHP = 'php',
+        RUST = 'rust',
     }
 
     export enum kind {

@@ -76,6 +76,7 @@ export namespace QueuedJob {
         NATIVETS = 'nativets',
         BUN = 'bun',
         PHP = 'php',
+        RUST = 'rust',
     }
 
 

@@ -79,6 +79,7 @@ export namespace CompletedJob {
         NATIVETS = 'nativets',
         BUN = 'bun',
         PHP = 'php',
+        RUST = 'rust',
     }
 
 
