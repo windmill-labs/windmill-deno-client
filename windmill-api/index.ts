@@ -137,6 +137,7 @@ export { RawAppService } from './services/RawAppService.ts';
 export { ResourceService } from './services/ResourceService.ts';
 export { ScheduleService } from './services/ScheduleService.ts';
 export { ScriptService } from './services/ScriptService.ts';
+export { ServiceLogsService } from './services/ServiceLogsService.ts';
 export { SettingService } from './services/SettingService.ts';
 export { SettingsService } from './services/SettingsService.ts';
 export { UserService } from './services/UserService.ts';

@@ -1824,7 +1824,7 @@ export class JobService {
     }
 
     /**
-     * cancel queued job
+     * cancel queued or running job
      * @returns string job canceled
      * @throws ApiError
      */

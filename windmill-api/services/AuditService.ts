@@ -59,7 +59,7 @@ export class AuditService {
          */
         perPage?: number,
         /**
-         * filter on created before (exclusive) timestamp
+         * filter on started before (inclusive) timestamp
          */
         before?: string,
         /**
