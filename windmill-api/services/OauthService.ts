@@ -39,6 +39,30 @@ export class OauthService {
     }
 
     /**
+     * connect slack callback instance
+     * @returns string success message
+     * @throws ApiError
+     */
+    public static connectSlackCallbackInstance({
+        requestBody,
+    }: {
+        /**
+         * code endpoint
+         */
+        requestBody: {
+            code: string;
+            state: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/oauth/connect_slack_callback',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * connect callback
      * @returns TokenResponse oauth token
      * @throws ApiError
