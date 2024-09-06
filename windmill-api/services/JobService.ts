@@ -1358,6 +1358,8 @@ export class JobService {
         scriptHash,
         startedBefore,
         startedAfter,
+        createdBefore,
+        createdAfter,
         createdOrStartedBefore,
         running,
         scheduledForBeforeNow,
@@ -1414,6 +1416,14 @@ export class JobService {
          * filter on started after (exclusive) timestamp
          */
         startedAfter?: string,
+        /**
+         * filter on created before (inclusive) timestamp
+         */
+        createdBefore?: string,
+        /**
+         * filter on created after (exclusive) timestamp
+         */
+        createdAfter?: string,
         /**
          * filter on created_at for non non started job and started_at otherwise before (inclusive) timestamp
          */
@@ -1503,6 +1513,8 @@ export class JobService {
                 'script_hash': scriptHash,
                 'started_before': startedBefore,
                 'started_after': startedAfter,
+                'created_before': createdBefore,
+                'created_after': createdAfter,
                 'created_or_started_before': createdOrStartedBefore,
                 'running': running,
                 'scheduled_for_before_now': scheduledForBeforeNow,

@@ -286,7 +286,7 @@ export class ScheduleService {
          * Handler description
          */
         requestBody: {
-            handler_type: 'error' | 'recovery';
+            handler_type: 'error' | 'recovery' | 'success';
             override_existing: boolean;
             path?: string;
             extra_args?: any;
