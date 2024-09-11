@@ -9,5 +9,6 @@ export type PathScript = {
     path: string;
     hash?: string;
     type: 'script';
+    tag_override?: string;
 };
 
