@@ -359,6 +359,41 @@ export class HelpersService {
     }
 
     /**
+     * Load the table row count
+     * @returns any Table count
+     * @throws ApiError
+     */
+    public static loadTableRowCount({
+        workspace,
+        path,
+        searchCol,
+        searchTerm,
+        storage,
+    }: {
+        workspace: string,
+        path: string,
+        searchCol?: string,
+        searchTerm?: string,
+        storage?: string,
+    }): CancelablePromise<{
+        count?: number;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/job_helpers/load_table_count/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+            query: {
+                'search_col': searchCol,
+                'search_term': searchTerm,
+                'storage': storage,
+            },
+        });
+    }
+
+    /**
      * Load a preview of a csv file
      * @returns any Csv Preview
      * @throws ApiError
