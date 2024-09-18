@@ -1652,17 +1652,20 @@ export class JobService {
         id,
         running,
         logOffset,
+        getProgress,
     }: {
         workspace: string,
         id: string,
         running?: boolean,
         logOffset?: number,
+        getProgress?: boolean,
     }): CancelablePromise<{
         running?: boolean;
         completed?: boolean;
         new_logs?: string;
         log_offset?: number;
         mem_peak?: number;
+        progress?: number;
         flow_status?: WorkflowStatusRecord;
     }> {
         return __request(OpenAPI, {
@@ -1675,6 +1678,7 @@ export class JobService {
             query: {
                 'running': running,
                 'log_offset': logOffset,
+                'get_progress': getProgress,
             },
         });
     }

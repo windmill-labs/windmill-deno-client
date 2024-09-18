@@ -48,4 +48,58 @@ export class MetricsService {
         });
     }
 
+    /**
+     * set job metrics
+     * @returns any Job progress updated
+     * @throws ApiError
+     */
+    public static setJobProgress({
+        workspace,
+        id,
+        requestBody,
+    }: {
+        workspace: string,
+        id: string,
+        /**
+         * parameters for statistics retrieval
+         */
+        requestBody: {
+            percent?: number;
+            flow_job_id?: string;
+        },
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/job_metrics/set_progress/{id}',
+            path: {
+                'workspace': workspace,
+                'id': id,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * get job progress
+     * @returns number job progress between 0 and 99
+     * @throws ApiError
+     */
+    public static getJobProgress({
+        workspace,
+        id,
+    }: {
+        workspace: string,
+        id: string,
+    }): CancelablePromise<number> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/job_metrics/get_progress/{id}',
+            path: {
+                'workspace': workspace,
+                'id': id,
+            },
+        });
+    }
+
 }

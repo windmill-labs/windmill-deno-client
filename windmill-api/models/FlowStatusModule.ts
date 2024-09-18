@@ -7,6 +7,7 @@ export type FlowStatusModule = {
     id?: string;
     job?: string;
     count?: number;
+    progress?: number;
     iterator?: {
         index?: number;
         itered?: Array<any>;
