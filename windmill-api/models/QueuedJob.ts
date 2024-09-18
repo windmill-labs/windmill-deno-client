@@ -77,6 +77,7 @@ export namespace QueuedJob {
         BUN = 'bun',
         PHP = 'php',
         RUST = 'rust',
+        ANSIBLE = 'ansible',
     }
 
 

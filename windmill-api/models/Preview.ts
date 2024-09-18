@@ -33,6 +33,7 @@ export namespace Preview {
         BUN = 'bun',
         PHP = 'php',
         RUST = 'rust',
+        ANSIBLE = 'ansible',
     }
 
     export enum kind {

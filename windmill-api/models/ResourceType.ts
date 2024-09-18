@@ -9,5 +9,6 @@ export type ResourceType = {
     description?: string;
     created_by?: string;
     edited_at?: string;
+    format_extension?: string;
 };
 

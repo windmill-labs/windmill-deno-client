@@ -345,6 +345,25 @@ export class ResourceService {
     }
 
     /**
+     * get map from resource type to format extension
+     * @returns any map from resource type to file ext
+     * @throws ApiError
+     */
+    public static fileResourceTypeToFileExtMap({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/resources/file_resource_type_to_file_ext_map',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
      * delete resource_type
      * @returns string resource_type deleted
      * @throws ApiError
