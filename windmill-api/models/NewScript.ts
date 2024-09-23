@@ -30,6 +30,7 @@ export type NewScript = {
     visible_to_runner_only?: boolean;
     no_main_func?: boolean;
     codebase?: string;
+    has_preprocessor?: boolean;
 };
 
 export namespace NewScript {

@@ -29,6 +29,7 @@ export class JobService {
         requestBody,
         scheduledFor,
         scheduledInSecs,
+        skipPreprocessor,
         parentJob,
         tag,
         cacheTtl,
@@ -49,6 +50,10 @@ export class JobService {
          * schedule the script to execute in the number of seconds starting now
          */
         scheduledInSecs?: number,
+        /**
+         * skip the preprocessor
+         */
+        skipPreprocessor?: boolean,
         /**
          * The parent job that is at the origin and responsible for the execution of this script if any
          */
@@ -80,6 +85,7 @@ export class JobService {
             query: {
                 'scheduled_for': scheduledFor,
                 'scheduled_in_secs': scheduledInSecs,
+                'skip_preprocessor': skipPreprocessor,
                 'parent_job': parentJob,
                 'tag': tag,
                 'cache_ttl': cacheTtl,
@@ -430,6 +436,7 @@ export class JobService {
         requestBody,
         scheduledFor,
         scheduledInSecs,
+        skipPreprocessor,
         parentJob,
         tag,
         jobId,
@@ -450,6 +457,10 @@ export class JobService {
          * schedule the script to execute in the number of seconds starting now
          */
         scheduledInSecs?: number,
+        /**
+         * skip the preprocessor
+         */
+        skipPreprocessor?: boolean,
         /**
          * The parent job that is at the origin and responsible for the execution of this script if any
          */
@@ -483,6 +494,7 @@ export class JobService {
             query: {
                 'scheduled_for': scheduledFor,
                 'scheduled_in_secs': scheduledInSecs,
+                'skip_preprocessor': skipPreprocessor,
                 'parent_job': parentJob,
                 'tag': tag,
                 'job_id': jobId,
@@ -592,6 +604,7 @@ export class JobService {
         requestBody,
         scheduledFor,
         scheduledInSecs,
+        skipPreprocessor,
         parentJob,
         tag,
         cacheTtl,
@@ -613,6 +626,10 @@ export class JobService {
          * schedule the script to execute in the number of seconds starting now
          */
         scheduledInSecs?: number,
+        /**
+         * skip the preprocessor
+         */
+        skipPreprocessor?: boolean,
         /**
          * The parent job that is at the origin and responsible for the execution of this script if any
          */
@@ -650,6 +667,7 @@ export class JobService {
             query: {
                 'scheduled_for': scheduledFor,
                 'scheduled_in_secs': scheduledInSecs,
+                'skip_preprocessor': skipPreprocessor,
                 'parent_job': parentJob,
                 'tag': tag,
                 'cache_ttl': cacheTtl,

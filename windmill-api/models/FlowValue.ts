@@ -7,6 +7,7 @@ import type { FlowModule } from './FlowModule.ts';
 export type FlowValue = {
     modules: Array<FlowModule>;
     failure_module?: FlowModule;
+    preprocessor_module?: FlowModule;
     same_worker?: boolean;
     concurrent_limit?: number;
     concurrency_key?: string;

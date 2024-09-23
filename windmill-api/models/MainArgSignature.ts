@@ -29,6 +29,7 @@ export type MainArgSignature = {
         default?: any;
     }>;
     no_main_func: boolean | null;
+    has_preprocessor: boolean | null;
 };
 
 export namespace MainArgSignature {

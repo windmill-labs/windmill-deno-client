@@ -100,6 +100,30 @@ export class SettingService {
     }
 
     /**
+     * test critical channels
+     * @returns string status
+     * @throws ApiError
+     */
+    public static testCriticalChannels({
+        requestBody,
+    }: {
+        /**
+         * test critical channel payload
+         */
+        requestBody: Array<{
+            email?: string;
+            slack_channel?: string;
+        }>,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/settings/test_critical_channels',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * test license key
      * @returns string status
      * @throws ApiError

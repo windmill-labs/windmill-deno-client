@@ -8,6 +8,7 @@ export type FlowStatus = {
     step: number;
     modules: Array<FlowStatusModule>;
     user_states?: any;
+    preprocessor_module?: FlowStatusModule;
     failure_module: (FlowStatusModule & {
         parent_module?: string;
     });
