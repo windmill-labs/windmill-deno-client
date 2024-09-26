@@ -15,6 +15,9 @@ export type WorkerPing = {
     last_job_id?: string;
     last_job_workspace_id?: string;
     occupancy_rate?: number;
+    occupancy_rate_15s?: number;
+    occupancy_rate_5m?: number;
+    occupancy_rate_30m?: number;
     memory?: number;
     vcpus?: number;
     memory_usage?: number;

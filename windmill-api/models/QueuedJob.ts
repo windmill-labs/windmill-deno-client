@@ -43,6 +43,7 @@ export type QueuedJob = {
     priority?: number;
     self_wait_time_ms?: number;
     aggregate_wait_time_ms?: number;
+    suspend?: number;
 };
 
 export namespace QueuedJob {

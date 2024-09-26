@@ -1568,6 +1568,37 @@ export class JobService {
     }
 
     /**
+     * Count jobs by tag
+     * @returns any Job counts by tag
+     * @throws ApiError
+     */
+    public static countJobsByTag({
+        horizonSecs,
+        workspaceId,
+    }: {
+        /**
+         * Past Time horizon in seconds (when to start the count = now - horizon) (default is 3600)
+         */
+        horizonSecs?: number,
+        /**
+         * Specific workspace ID to filter results (optional)
+         */
+        workspaceId?: string,
+    }): CancelablePromise<Array<{
+        tag: string;
+        count: number;
+    }>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/jobs/completed/count_by_tag',
+            query: {
+                'horizon_secs': horizonSecs,
+                'workspace_id': workspaceId,
+            },
+        });
+    }
+
+    /**
      * get job
      * @returns Job job details
      * @throws ApiError
