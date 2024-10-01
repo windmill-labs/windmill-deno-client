@@ -28,6 +28,7 @@ export type FlowStatusModule = {
         approver: string;
     }>;
     failed_retries?: Array<string>;
+    skipped?: boolean;
 };
 
 export namespace FlowStatusModule {
