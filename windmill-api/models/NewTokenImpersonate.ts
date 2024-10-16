@@ -6,5 +6,6 @@ export type NewTokenImpersonate = {
     label?: string;
     expiration?: string;
     impersonate_email: string;
+    workspace_id?: string;
 };
 

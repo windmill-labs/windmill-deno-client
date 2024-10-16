@@ -199,7 +199,10 @@ export class OauthService {
      * @throws ApiError
      */
     public static listOAuthLogins(): CancelablePromise<{
-        oauth: Array<string>;
+        oauth: Array<{
+            type: string;
+            display_name?: string;
+        }>;
         saml?: string;
     }> {
         return __request(OpenAPI, {

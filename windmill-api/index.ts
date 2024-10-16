@@ -96,6 +96,7 @@ export type { SlackToken } from './models/SlackToken.ts';
 export type { StaticTransform } from './models/StaticTransform.ts';
 export type { TimeseriesMetric } from './models/TimeseriesMetric.ts';
 export type { TokenResponse } from './models/TokenResponse.ts';
+export type { TriggersCount } from './models/TriggersCount.ts';
 export type { TruncatedToken } from './models/TruncatedToken.ts';
 export type { UpdateInput } from './models/UpdateInput.ts';
 export type { UploadFilePart } from './models/UploadFilePart.ts';

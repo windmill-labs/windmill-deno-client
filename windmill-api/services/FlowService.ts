@@ -5,6 +5,8 @@ import type { Flow } from '../models/Flow.ts';
 import type { FlowVersion } from '../models/FlowVersion.ts';
 import type { OpenFlow } from '../models/OpenFlow.ts';
 import type { OpenFlowWPath } from '../models/OpenFlowWPath.ts';
+import type { TriggersCount } from '../models/TriggersCount.ts';
+import type { TruncatedToken } from '../models/TruncatedToken.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
 import { OpenAPI } from '../core/OpenAPI.ts';
@@ -293,6 +295,50 @@ export class FlowService {
             },
             query: {
                 'with_starred_info': withStarredInfo,
+            },
+        });
+    }
+
+    /**
+     * get triggers count of flow
+     * @returns TriggersCount triggers count
+     * @throws ApiError
+     */
+    public static getTriggersCountOfFlow({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<TriggersCount> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/flows/get_triggers_count/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
+     * get tokens with flow scope
+     * @returns TruncatedToken tokens list
+     * @throws ApiError
+     */
+    public static listTokensOfFlow({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<Array<TruncatedToken>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/flows/list_tokens/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
             },
         });
     }

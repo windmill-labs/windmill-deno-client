@@ -6,6 +6,8 @@ import type { NewScript } from '../models/NewScript.ts';
 import type { NewScriptWithDraft } from '../models/NewScriptWithDraft.ts';
 import type { Script } from '../models/Script.ts';
 import type { ScriptHistory } from '../models/ScriptHistory.ts';
+import type { TriggersCount } from '../models/TriggersCount.ts';
+import type { TruncatedToken } from '../models/TruncatedToken.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
 import { OpenAPI } from '../core/OpenAPI.ts';
@@ -503,6 +505,50 @@ export class ScriptService {
             },
             query: {
                 'with_starred_info': withStarredInfo,
+            },
+        });
+    }
+
+    /**
+     * get triggers count of script
+     * @returns TriggersCount triggers count
+     * @throws ApiError
+     */
+    public static getTriggersCountOfScript({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<TriggersCount> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/scripts/get_triggers_count/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
+     * get tokens with script scope
+     * @returns TruncatedToken tokens list
+     * @throws ApiError
+     */
+    public static listTokensOfScript({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<Array<TruncatedToken>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/scripts/list_tokens/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
             },
         });
     }
