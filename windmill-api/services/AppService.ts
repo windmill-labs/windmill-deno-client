@@ -288,6 +288,28 @@ export class AppService {
     }
 
     /**
+     * get apps's latest version
+     * @returns AppHistory App version
+     * @throws ApiError
+     */
+    public static getAppLatestVersion({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<AppHistory> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/apps/get_latest_version/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
      * update app history
      * @returns string success
      * @throws ApiError

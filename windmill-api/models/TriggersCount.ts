@@ -10,5 +10,6 @@ export type TriggersCount = {
     http_routes_count?: number;
     webhook_count?: number;
     email_count?: number;
+    websocket_count?: number;
 };
 

@@ -1056,4 +1056,26 @@ export class WorkspaceService {
         });
     }
 
+    /**
+     * get used triggers
+     * @returns any status
+     * @throws ApiError
+     */
+    public static getUsedTriggers({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<{
+        http_routes_used: boolean;
+        websocket_used: boolean;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/workspaces/used_triggers',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
 }

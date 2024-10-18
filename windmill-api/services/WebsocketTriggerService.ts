@@ -1,34 +1,34 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { EditHttpTrigger } from '../models/EditHttpTrigger.ts';
-import type { HttpTrigger } from '../models/HttpTrigger.ts';
-import type { NewHttpTrigger } from '../models/NewHttpTrigger.ts';
+import type { EditWebsocketTrigger } from '../models/EditWebsocketTrigger.ts';
+import type { NewWebsocketTrigger } from '../models/NewWebsocketTrigger.ts';
+import type { WebsocketTrigger } from '../models/WebsocketTrigger.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
 import { OpenAPI } from '../core/OpenAPI.ts';
 import { request as __request } from '../core/request.ts';
 
-export class HttpTriggerService {
+export class WebsocketTriggerService {
 
     /**
-     * create http trigger
-     * @returns string http trigger created
+     * create websocket trigger
+     * @returns string websocket trigger created
      * @throws ApiError
      */
-    public static createHttpTrigger({
+    public static createWebsocketTrigger({
         workspace,
         requestBody,
     }: {
         workspace: string,
         /**
-         * new http trigger
+         * new websocket trigger
          */
-        requestBody: NewHttpTrigger,
+        requestBody: NewWebsocketTrigger,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/w/{workspace}/http_triggers/create',
+            url: '/w/{workspace}/websocket_triggers/create',
             path: {
                 'workspace': workspace,
             },
@@ -38,11 +38,11 @@ export class HttpTriggerService {
     }
 
     /**
-     * update http trigger
-     * @returns string http trigger updated
+     * update websocket trigger
+     * @returns string websocket trigger updated
      * @throws ApiError
      */
-    public static updateHttpTrigger({
+    public static updateWebsocketTrigger({
         workspace,
         path,
         requestBody,
@@ -52,11 +52,11 @@ export class HttpTriggerService {
         /**
          * updated trigger
          */
-        requestBody: EditHttpTrigger,
+        requestBody: EditWebsocketTrigger,
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/w/{workspace}/http_triggers/update/{path}',
+            url: '/w/{workspace}/websocket_triggers/update/{path}',
             path: {
                 'workspace': workspace,
                 'path': path,
@@ -67,11 +67,11 @@ export class HttpTriggerService {
     }
 
     /**
-     * delete http trigger
-     * @returns string http trigger deleted
+     * delete websocket trigger
+     * @returns string websocket trigger deleted
      * @throws ApiError
      */
-    public static deleteHttpTrigger({
+    public static deleteWebsocketTrigger({
         workspace,
         path,
     }: {
@@ -80,7 +80,7 @@ export class HttpTriggerService {
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'DELETE',
-            url: '/w/{workspace}/http_triggers/delete/{path}',
+            url: '/w/{workspace}/websocket_triggers/delete/{path}',
             path: {
                 'workspace': workspace,
                 'path': path,
@@ -89,20 +89,20 @@ export class HttpTriggerService {
     }
 
     /**
-     * get http trigger
-     * @returns HttpTrigger http trigger deleted
+     * get websocket trigger
+     * @returns WebsocketTrigger websocket trigger deleted
      * @throws ApiError
      */
-    public static getHttpTrigger({
+    public static getWebsocketTrigger({
         workspace,
         path,
     }: {
         workspace: string,
         path: string,
-    }): CancelablePromise<HttpTrigger> {
+    }): CancelablePromise<WebsocketTrigger> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/http_triggers/get/{path}',
+            url: '/w/{workspace}/websocket_triggers/get/{path}',
             path: {
                 'workspace': workspace,
                 'path': path,
@@ -111,11 +111,11 @@ export class HttpTriggerService {
     }
 
     /**
-     * list http triggers
-     * @returns HttpTrigger http trigger list
+     * list websocket triggers
+     * @returns WebsocketTrigger websocket trigger list
      * @throws ApiError
      */
-    public static listHttpTriggers({
+    public static listWebsocketTriggers({
         workspace,
         page,
         perPage,
@@ -138,10 +138,10 @@ export class HttpTriggerService {
         path?: string,
         isFlow?: boolean,
         pathStart?: string,
-    }): CancelablePromise<Array<HttpTrigger>> {
+    }): CancelablePromise<Array<WebsocketTrigger>> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/http_triggers/list',
+            url: '/w/{workspace}/websocket_triggers/list',
             path: {
                 'workspace': workspace,
             },
@@ -156,11 +156,11 @@ export class HttpTriggerService {
     }
 
     /**
-     * does http trigger exists
-     * @returns boolean http trigger exists
+     * does websocket trigger exists
+     * @returns boolean websocket trigger exists
      * @throws ApiError
      */
-    public static existsHttpTrigger({
+    public static existsWebsocketTrigger({
         workspace,
         path,
     }: {
@@ -169,7 +169,7 @@ export class HttpTriggerService {
     }): CancelablePromise<boolean> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/http_triggers/exists/{path}',
+            url: '/w/{workspace}/websocket_triggers/exists/{path}',
             path: {
                 'workspace': workspace,
                 'path': path,
@@ -178,28 +178,30 @@ export class HttpTriggerService {
     }
 
     /**
-     * does route exists
-     * @returns boolean route exists
+     * set enabled websocket trigger
+     * @returns string websocket trigger enabled set
      * @throws ApiError
      */
-    public static existsRoute({
+    public static setWebsocketTriggerEnabled({
         workspace,
+        path,
         requestBody,
     }: {
         workspace: string,
+        path: string,
         /**
-         * route exists request
+         * updated websocket trigger enable
          */
         requestBody: {
-            route_path: string;
-            http_method: 'get' | 'post' | 'put' | 'delete' | 'patch';
+            enabled: boolean;
         },
-    }): CancelablePromise<boolean> {
+    }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/w/{workspace}/http_triggers/route_exists',
+            url: '/w/{workspace}/websocket_triggers/setenabled/{path}',
             path: {
                 'workspace': workspace,
+                'path': path,
             },
             body: requestBody,
             mediaType: 'application/json',

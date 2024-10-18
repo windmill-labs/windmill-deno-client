@@ -214,6 +214,28 @@ export class FlowService {
     }
 
     /**
+     * get flow's latest version
+     * @returns FlowVersion Flow version
+     * @throws ApiError
+     */
+    public static getFlowLatestVersion({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<FlowVersion> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/flows/get_latest_version/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
      * get flow version
      * @returns Flow flow details
      * @throws ApiError

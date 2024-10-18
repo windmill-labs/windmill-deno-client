@@ -598,6 +598,28 @@ export class ScriptService {
     }
 
     /**
+     * get scripts's latest version (hash)
+     * @returns ScriptHistory Script version/hash
+     * @throws ApiError
+     */
+    public static getScriptLatestVersion({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<ScriptHistory> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/scripts/get_latest_version/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
      * update history of a script
      * @returns string success
      * @throws ApiError
