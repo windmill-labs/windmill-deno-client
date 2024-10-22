@@ -50,6 +50,7 @@ export namespace AuditLog {
         USERS_DELETE = 'users.delete',
         USERS_UPDATE = 'users.update',
         USERS_LOGIN = 'users.login',
+        USERS_LOGIN_FAILURE = 'users.login_failure',
         USERS_LOGOUT = 'users.logout',
         USERS_ACCEPT_INVITE = 'users.accept_invite',
         USERS_DECLINE_INVITE = 'users.decline_invite',
