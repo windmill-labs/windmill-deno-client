@@ -62,6 +62,7 @@ export namespace AuditLog {
         USERS_IMPERSONATE = 'users.impersonate',
         USERS_LEAVE_WORKSPACE = 'users.leave_workspace',
         OAUTH_LOGIN = 'oauth.login',
+        OAUTH_LOGIN_FAILURE = 'oauth.login_failure',
         OAUTH_SIGNUP = 'oauth.signup',
         VARIABLES_CREATE = 'variables.create',
         VARIABLES_DELETE = 'variables.delete',
