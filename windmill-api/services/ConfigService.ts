@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { AutoscalingEvent } from '../models/AutoscalingEvent.ts';
 import type { Config } from '../models/Config.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
@@ -97,6 +98,25 @@ export class ConfigService {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/configs/list',
+        });
+    }
+
+    /**
+     * List autoscaling events
+     * @returns AutoscalingEvent List of autoscaling events
+     * @throws ApiError
+     */
+    public static listAutoscalingEvents({
+        workerGroup,
+    }: {
+        workerGroup: string,
+    }): CancelablePromise<Array<AutoscalingEvent>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/configs/list_autoscaling_events/{worker_group}',
+            path: {
+                'worker_group': workerGroup,
+            },
         });
     }
 

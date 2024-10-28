@@ -10,6 +10,7 @@ export type { AppHistory } from './models/AppHistory.ts';
 export { AppWithLastVersion } from './models/AppWithLastVersion.ts';
 export type { AppWithLastVersionWDraft } from './models/AppWithLastVersionWDraft.ts';
 export { AuditLog } from './models/AuditLog.ts';
+export type { AutoscalingEvent } from './models/AutoscalingEvent.ts';
 export type { BranchAll } from './models/BranchAll.ts';
 export type { BranchOne } from './models/BranchOne.ts';
 export { CompletedJob } from './models/CompletedJob.ts';
