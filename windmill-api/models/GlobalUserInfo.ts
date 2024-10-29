@@ -10,6 +10,7 @@ export type GlobalUserInfo = {
     name?: string;
     company?: string;
     username?: string;
+    operator_only?: boolean;
 };
 
 export namespace GlobalUserInfo {

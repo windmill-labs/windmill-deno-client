@@ -575,6 +575,7 @@ export class UserService {
     public static listUsersAsSuperAdmin({
         page,
         perPage,
+        activeOnly,
     }: {
         /**
          * which page to return (start at 1, default 1)
@@ -584,6 +585,10 @@ export class UserService {
          * number of items to return for a given page (default 30, max 100)
          */
         perPage?: number,
+        /**
+         * filter only active users
+         */
+        activeOnly?: boolean,
     }): CancelablePromise<Array<GlobalUserInfo>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -591,6 +596,7 @@ export class UserService {
             query: {
                 'page': page,
                 'per_page': perPage,
+                'active_only': activeOnly,
             },
         });
     }
