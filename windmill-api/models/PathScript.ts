@@ -10,5 +10,6 @@ export type PathScript = {
     hash?: string;
     type: 'script';
     tag_override?: string;
+    is_trigger?: boolean;
 };
 
