@@ -88,6 +88,7 @@ export class SettingService {
                 port: number;
                 from: string;
                 tls_implicit: boolean;
+                disable_tls: boolean;
             };
         },
     }): CancelablePromise<string> {

@@ -2,6 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { ScriptArgs } from './ScriptArgs.ts';
+import type { WebsocketTriggerInitialMessage } from './WebsocketTriggerInitialMessage.ts';
+
 export type NewWebsocketTrigger = {
     path: string;
     script_path: string;
@@ -12,5 +15,7 @@ export type NewWebsocketTrigger = {
         key: string;
         value: any;
     }>;
+    initial_messages: Array<WebsocketTriggerInitialMessage>;
+    url_runnable_args: ScriptArgs;
 };
 
