@@ -511,6 +511,8 @@ export class HelpersService {
         s3ResourcePath,
         resourceType,
         storage,
+        contentType,
+        contentDisposition,
     }: {
         workspace: string,
         /**
@@ -522,6 +524,8 @@ export class HelpersService {
         s3ResourcePath?: string,
         resourceType?: string,
         storage?: string,
+        contentType?: string,
+        contentDisposition?: string,
     }): CancelablePromise<{
         file_key: string;
     }> {
@@ -537,6 +541,8 @@ export class HelpersService {
                 's3_resource_path': s3ResourcePath,
                 'resource_type': resourceType,
                 'storage': storage,
+                'content_type': contentType,
+                'content_disposition': contentDisposition,
             },
             body: requestBody,
             mediaType: 'application/octet-stream',
