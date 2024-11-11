@@ -21,6 +21,7 @@ export type { CreateInput } from './models/CreateInput.ts';
 export type { CreateResource } from './models/CreateResource.ts';
 export type { CreateVariable } from './models/CreateVariable.ts';
 export type { CreateWorkspace } from './models/CreateWorkspace.ts';
+export type { CriticalAlert } from './models/CriticalAlert.ts';
 export { EditHttpTrigger } from './models/EditHttpTrigger.ts';
 export type { EditResource } from './models/EditResource.ts';
 export type { EditResourceType } from './models/EditResourceType.ts';

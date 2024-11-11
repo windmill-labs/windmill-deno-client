@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { CriticalAlert } from '../models/CriticalAlert.ts';
 import type { GlobalSetting } from '../models/GlobalSetting.ts';
 
 import type { CancelablePromise } from '../core/CancelablePromise.ts';
@@ -121,6 +122,65 @@ export class SettingService {
             url: '/settings/test_critical_channels',
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * Get all critical alerts
+     * @returns CriticalAlert Successfully retrieved all critical alerts
+     * @throws ApiError
+     */
+    public static getCriticalAlerts({
+        page = 1,
+        pageSize = 10,
+        acknowledged,
+    }: {
+        page?: number,
+        pageSize?: number,
+        acknowledged?: boolean | null,
+    }): CancelablePromise<Array<CriticalAlert>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/settings/critical_alerts',
+            query: {
+                'page': page,
+                'page_size': pageSize,
+                'acknowledged': acknowledged,
+            },
+        });
+    }
+
+    /**
+     * Acknowledge a critical alert
+     * @returns string Successfully acknowledged the critical alert
+     * @throws ApiError
+     */
+    public static acknowledgeCriticalAlert({
+        id,
+    }: {
+        /**
+         * The ID of the critical alert to acknowledge
+         */
+        id: number,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/settings/critical_alerts/{id}/acknowledge',
+            path: {
+                'id': id,
+            },
+        });
+    }
+
+    /**
+     * Acknowledge all unacknowledged critical alerts
+     * @returns string Successfully acknowledged all unacknowledged critical alerts.
+     * @throws ApiError
+     */
+    public static acknowledgeAllCriticalAlerts(): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/settings/critical_alerts/acknowledge_all',
         });
     }
 
