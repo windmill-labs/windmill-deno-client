@@ -66,7 +66,7 @@ export class UserService {
     }): CancelablePromise<User> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/w/{workspace}/users/{username}',
+            url: '/w/{workspace}/users/get/{username}',
             path: {
                 'workspace': workspace,
                 'username': username,
