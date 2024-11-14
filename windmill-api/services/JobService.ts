@@ -1038,6 +1038,39 @@ export class JobService {
     }
 
     /**
+     * count number of completed jobs with filter
+     * @returns number Count of completed jobs
+     * @throws ApiError
+     */
+    public static countCompletedJobs({
+        workspace,
+        completedAfterSAgo,
+        success,
+        tags,
+        allWorkspaces,
+    }: {
+        workspace: string,
+        completedAfterSAgo?: number,
+        success?: boolean,
+        tags?: string,
+        allWorkspaces?: boolean,
+    }): CancelablePromise<number> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/jobs/completed/count_jobs',
+            path: {
+                'workspace': workspace,
+            },
+            query: {
+                'completed_after_s_ago': completedAfterSAgo,
+                'success': success,
+                'tags': tags,
+                'all_workspaces': allWorkspaces,
+            },
+        });
+    }
+
+    /**
      * get the ids of all jobs matching the given filters
      * @returns string uuids of jobs
      * @throws ApiError

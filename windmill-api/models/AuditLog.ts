@@ -31,7 +31,7 @@ export namespace AuditLog {
         JOBS_DISAPPROVAL = 'jobs.disapproval',
         JOBS_DELETE = 'jobs.delete',
         ACCOUNT_DELETE = 'account.delete',
-        OPENAI_REQUEST = 'openai.request',
+        AI_REQUEST = 'ai.request',
         RESOURCES_CREATE = 'resources.create',
         RESOURCES_UPDATE = 'resources.update',
         RESOURCES_DELETE = 'resources.delete',

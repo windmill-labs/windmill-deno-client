@@ -149,6 +149,62 @@ export class UserService {
     }
 
     /**
+     * set password for a specific user (require super admin)
+     * @returns string password set
+     * @throws ApiError
+     */
+    public static setPasswordForUser({
+        user,
+        requestBody,
+    }: {
+        user: string,
+        /**
+         * set password
+         */
+        requestBody: {
+            password: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/users/set_password_of/{user}',
+            path: {
+                'user': user,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * set login type for a specific user (require super admin)
+     * @returns string login type set
+     * @throws ApiError
+     */
+    public static setLoginTypeForUser({
+        user,
+        requestBody,
+    }: {
+        user: string,
+        /**
+         * set login type
+         */
+        requestBody: {
+            login_type: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/users/set_login_type/{user}',
+            path: {
+                'user': user,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * create user
      * @returns string user created
      * @throws ApiError

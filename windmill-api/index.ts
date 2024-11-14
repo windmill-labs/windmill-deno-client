@@ -6,6 +6,7 @@ export { CancelablePromise, CancelError } from './core/CancelablePromise.ts';
 export { OpenAPI } from './core/OpenAPI.ts';
 export type { OpenAPIConfig } from './core/OpenAPI.ts';
 
+export type { AiResource } from './models/AiResource.ts';
 export type { AppHistory } from './models/AppHistory.ts';
 export { AppWithLastVersion } from './models/AppWithLastVersion.ts';
 export type { AppWithLastVersionWDraft } from './models/AppWithLastVersionWDraft.ts';

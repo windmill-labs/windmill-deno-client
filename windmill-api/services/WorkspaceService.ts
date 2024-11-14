@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { AiResource } from '../models/AiResource.ts';
 import type { CreateWorkspace } from '../models/CreateWorkspace.ts';
 import type { LargeFileStorage } from '../models/LargeFileStorage.ts';
 import type { ScriptArgs } from '../models/ScriptArgs.ts';
@@ -424,7 +425,7 @@ export class WorkspaceService {
         customer_id?: string;
         webhook?: string;
         deploy_to?: string;
-        openai_resource_path?: string;
+        ai_resource?: AiResource;
         code_completion_enabled: boolean;
         error_handler?: string;
         error_handler_extra_args?: ScriptArgs;
@@ -694,7 +695,7 @@ export class WorkspaceService {
          * WorkspaceCopilotConfig
          */
         requestBody: {
-            openai_resource_path?: string;
+            ai_resource?: AiResource;
             code_completion_enabled: boolean;
         },
     }): CancelablePromise<string> {
@@ -719,7 +720,8 @@ export class WorkspaceService {
     }: {
         workspace: string,
     }): CancelablePromise<{
-        exists_openai_resource_path: boolean;
+        ai_provider: string;
+        exists_ai_resource: boolean;
         code_completion_enabled: boolean;
     }> {
         return __request(OpenAPI, {

@@ -116,4 +116,16 @@ export class WorkerService {
         });
     }
 
+    /**
+     * get counts of jobs waiting for an executor per tag
+     * @returns number queue counts
+     * @throws ApiError
+     */
+    public static getCountsOfJobsWaitingPerTag(): CancelablePromise<Record<string, number>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/workers/queue_counts',
+        });
+    }
+
 }
