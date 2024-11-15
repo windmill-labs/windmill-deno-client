@@ -326,4 +326,109 @@ export class SettingService {
         });
     }
 
+    /**
+     * Get all critical alerts for this workspace
+     * @returns CriticalAlert Successfully retrieved all critical alerts
+     * @throws ApiError
+     */
+    public static workspaceGetCriticalAlerts({
+        workspace,
+        page = 1,
+        pageSize = 10,
+        acknowledged,
+    }: {
+        workspace: string,
+        page?: number,
+        pageSize?: number,
+        acknowledged?: boolean | null,
+    }): CancelablePromise<Array<CriticalAlert>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/workspaces/critical_alerts',
+            path: {
+                'workspace': workspace,
+            },
+            query: {
+                'page': page,
+                'page_size': pageSize,
+                'acknowledged': acknowledged,
+            },
+        });
+    }
+
+    /**
+     * Acknowledge a critical alert for this workspace
+     * @returns string Successfully acknowledged the critical alert
+     * @throws ApiError
+     */
+    public static workspaceAcknowledgeCriticalAlert({
+        workspace,
+        id,
+    }: {
+        workspace: string,
+        /**
+         * The ID of the critical alert to acknowledge
+         */
+        id: number,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/critical_alerts/{id}/acknowledge',
+            path: {
+                'workspace': workspace,
+                'id': id,
+            },
+        });
+    }
+
+    /**
+     * Acknowledge all unacknowledged critical alerts for this workspace
+     * @returns string Successfully acknowledged all unacknowledged critical alerts.
+     * @throws ApiError
+     */
+    public static workspaceAcknowledgeAllCriticalAlerts({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/critical_alerts/acknowledge_all',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
+     * Mute critical alert UI for this workspace
+     * @returns string Successfully updated mute critical alert settings.
+     * @throws ApiError
+     */
+    public static workspaceMuteCriticalAlertsUi({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * Boolean flag to mute critical alerts.
+         */
+        requestBody: {
+            /**
+             * Whether critical alerts should be muted.
+             */
+            mute_critical_alerts?: boolean;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/critical_alerts/mute',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
 }

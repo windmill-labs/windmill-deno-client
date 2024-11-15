@@ -435,6 +435,7 @@ export class WorkspaceService {
         deploy_ui?: WorkspaceDeployUISettings;
         default_app?: string;
         default_scripts?: WorkspaceDefaultScripts;
+        mute_critical_alerts?: boolean;
     }> {
         return __request(OpenAPI, {
             method: 'GET',

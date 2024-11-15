@@ -23,5 +23,9 @@ export type CriticalAlert = {
      * Acknowledgment status of the alert, can be true, false, or null if not set
      */
     acknowledged?: boolean | null;
+    /**
+     * Workspace id if the alert is in the scope of a workspace
+     */
+    workspace_id?: string | null;
 };
 
