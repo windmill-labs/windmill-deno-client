@@ -1071,6 +1071,7 @@ export class WorkspaceService {
     }): CancelablePromise<{
         http_routes_used: boolean;
         websocket_used: boolean;
+        kafka_used: boolean;
     }> {
         return __request(OpenAPI, {
             method: 'GET',

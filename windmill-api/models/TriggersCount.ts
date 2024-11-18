@@ -11,5 +11,6 @@ export type TriggersCount = {
     webhook_count?: number;
     email_count?: number;
     websocket_count?: number;
+    kafka_count?: number;
 };
 
