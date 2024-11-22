@@ -26,6 +26,7 @@ export class ScheduleService {
         requestBody: {
             schedule: string;
             timezone: string;
+            cron_version?: string;
         },
     }): CancelablePromise<Array<string>> {
         return __request(OpenAPI, {

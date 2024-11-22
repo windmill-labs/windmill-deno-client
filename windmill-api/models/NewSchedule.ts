@@ -28,5 +28,6 @@ export type NewSchedule = {
     summary?: string;
     tag?: string;
     paused_until?: string;
+    cron_version?: string;
 };
 

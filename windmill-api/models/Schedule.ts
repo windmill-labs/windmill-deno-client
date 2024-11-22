@@ -33,5 +33,6 @@ export type Schedule = {
     no_flow_overlap?: boolean;
     tag?: string;
     paused_until?: string;
+    cron_version?: string;
 };
 

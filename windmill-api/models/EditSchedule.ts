@@ -24,5 +24,6 @@ export type EditSchedule = {
     summary?: string;
     tag?: string;
     paused_until?: string;
+    cron_version?: string;
 };
 

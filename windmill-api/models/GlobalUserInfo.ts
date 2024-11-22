@@ -6,6 +6,7 @@ export type GlobalUserInfo = {
     email: string;
     login_type: GlobalUserInfo.login_type;
     super_admin: boolean;
+    devops?: boolean;
     verified: boolean;
     name?: string;
     company?: string;

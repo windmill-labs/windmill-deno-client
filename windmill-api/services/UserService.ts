@@ -246,6 +246,7 @@ export class UserService {
          */
         requestBody: {
             is_super_admin?: boolean;
+            is_devops?: boolean;
             name?: string;
         },
     }): CancelablePromise<string> {
