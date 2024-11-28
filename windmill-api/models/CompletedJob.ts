@@ -62,6 +62,7 @@ export namespace CompletedJob {
         IDENTITY = 'identity',
         DEPLOYMENTCALLBACK = 'deploymentcallback',
         SINGLESCRIPTFLOW = 'singlescriptflow',
+        FLOWSCRIPT = 'flowscript',
     }
 
     export enum language {

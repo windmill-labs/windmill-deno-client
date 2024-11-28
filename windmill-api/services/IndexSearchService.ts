@@ -95,12 +95,10 @@ export class IndexSearchService {
      */
     public static countSearchLogsIndex({
         searchQuery,
-        hosts,
         minTs,
         maxTs,
     }: {
         searchQuery: string,
-        hosts: string,
         minTs?: string,
         maxTs?: string,
     }): CancelablePromise<{
@@ -118,7 +116,6 @@ export class IndexSearchService {
             url: '/srch/index/search/count_service_logs',
             query: {
                 'search_query': searchQuery,
-                'hosts': hosts,
                 'min_ts': minTs,
                 'max_ts': maxTs,
             },
