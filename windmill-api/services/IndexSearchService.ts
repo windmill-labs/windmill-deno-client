@@ -122,4 +122,23 @@ export class IndexSearchService {
         });
     }
 
+    /**
+     * Restart container and delete the index to recreate it.
+     * @returns string idx to be deleted and container restarting
+     * @throws ApiError
+     */
+    public static clearIndex({
+        idxName,
+    }: {
+        idxName: 'JobIndex' | 'ServiceLogIndex',
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/srch/index/delete/{idx_name}',
+            path: {
+                'idx_name': idxName,
+            },
+        });
+    }
+
 }
