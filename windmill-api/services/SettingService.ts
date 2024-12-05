@@ -127,7 +127,7 @@ export class SettingService {
 
     /**
      * Get all critical alerts
-     * @returns CriticalAlert Successfully retrieved all critical alerts
+     * @returns any Successfully retrieved all critical alerts
      * @throws ApiError
      */
     public static getCriticalAlerts({
@@ -138,7 +138,17 @@ export class SettingService {
         page?: number,
         pageSize?: number,
         acknowledged?: boolean | null,
-    }): CancelablePromise<Array<CriticalAlert>> {
+    }): CancelablePromise<{
+        alerts?: Array<CriticalAlert>;
+        /**
+         * Total number of rows matching the query.
+         */
+        total_rows?: number;
+        /**
+         * Total number of pages based on the page size.
+         */
+        total_pages?: number;
+    }> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/settings/critical_alerts',
@@ -328,7 +338,7 @@ export class SettingService {
 
     /**
      * Get all critical alerts for this workspace
-     * @returns CriticalAlert Successfully retrieved all critical alerts
+     * @returns any Successfully retrieved all critical alerts
      * @throws ApiError
      */
     public static workspaceGetCriticalAlerts({
@@ -341,7 +351,17 @@ export class SettingService {
         page?: number,
         pageSize?: number,
         acknowledged?: boolean | null,
-    }): CancelablePromise<Array<CriticalAlert>> {
+    }): CancelablePromise<{
+        alerts?: Array<CriticalAlert>;
+        /**
+         * Total number of rows matching the query.
+         */
+        total_rows?: number;
+        /**
+         * Total number of pages based on the page size.
+         */
+        total_pages?: number;
+    }> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/w/{workspace}/workspaces/critical_alerts',

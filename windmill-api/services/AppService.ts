@@ -59,6 +59,27 @@ export class AppService {
     }
 
     /**
+     * get public app by custom path
+     * @returns any app details
+     * @throws ApiError
+     */
+    public static getPublicAppByCustomPath({
+        customPath,
+    }: {
+        customPath: string,
+    }): CancelablePromise<(AppWithLastVersion & {
+        workspace_id?: string;
+    })> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/apps_u/public_app_by_custom_path/{custom_path}',
+            path: {
+                'custom_path': customPath,
+            },
+        });
+    }
+
+    /**
      * list apps for search
      * @returns any app list
      * @throws ApiError
@@ -181,6 +202,7 @@ export class AppService {
             policy: Policy;
             draft_only?: boolean;
             deployment_message?: string;
+            custom_path?: string;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
@@ -474,6 +496,7 @@ export class AppService {
             value?: any;
             policy?: Policy;
             deployment_message?: string;
+            custom_path?: string;
         },
     }): CancelablePromise<string> {
         return __request(OpenAPI, {
@@ -485,6 +508,28 @@ export class AppService {
             },
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * check if custom path exists
+     * @returns boolean custom path exists
+     * @throws ApiError
+     */
+    public static customPathExists({
+        workspace,
+        customPath,
+    }: {
+        workspace: string,
+        customPath: string,
+    }): CancelablePromise<boolean> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/apps/custom_path_exists/{custom_path}',
+            path: {
+                'workspace': workspace,
+                'custom_path': customPath,
+            },
         });
     }
 
