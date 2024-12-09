@@ -266,6 +266,28 @@ export class AppService {
     }
 
     /**
+     * get app lite by path
+     * @returns AppWithLastVersion app lite details
+     * @throws ApiError
+     */
+    public static getAppLiteByPath({
+        workspace,
+        path,
+    }: {
+        workspace: string,
+        path: string,
+    }): CancelablePromise<AppWithLastVersion> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/apps/get/lite/{path}',
+            path: {
+                'workspace': workspace,
+                'path': path,
+            },
+        });
+    }
+
+    /**
      * get app by path with draft
      * @returns AppWithLastVersionWDraft app details with draft
      * @throws ApiError
@@ -551,6 +573,7 @@ export class AppService {
         requestBody: {
             component: string;
             path?: string;
+            version?: number;
             args: any;
             raw_code?: {
                 content: string;
@@ -559,6 +582,7 @@ export class AppService {
                 lock?: string;
                 cache_ttl?: number;
             };
+            id?: number;
             force_viewer_static_fields?: any;
             force_viewer_one_of_fields?: any;
             force_viewer_allow_user_resources?: Array<string>;

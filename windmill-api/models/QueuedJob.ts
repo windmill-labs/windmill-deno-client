@@ -61,6 +61,8 @@ export namespace QueuedJob {
         DEPLOYMENTCALLBACK = 'deploymentcallback',
         SINGLESCRIPTFLOW = 'singlescriptflow',
         FLOWSCRIPT = 'flowscript',
+        FLOWNODE = 'flownode',
+        APPSCRIPT = 'appscript',
     }
 
     export enum language {
