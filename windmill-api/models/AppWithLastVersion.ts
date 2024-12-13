@@ -16,6 +16,7 @@ export type AppWithLastVersion = {
     policy: Policy;
     execution_mode: AppWithLastVersion.execution_mode;
     extra_perms: Record<string, boolean>;
+    custom_path?: string;
 };
 
 export namespace AppWithLastVersion {

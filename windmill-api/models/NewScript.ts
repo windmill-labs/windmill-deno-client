@@ -52,6 +52,7 @@ export namespace NewScript {
         PHP = 'php',
         RUST = 'rust',
         ANSIBLE = 'ansible',
+        CSHARP = 'csharp',
     }
 
     export enum kind {

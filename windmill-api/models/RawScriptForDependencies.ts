@@ -27,6 +27,7 @@ export namespace RawScriptForDependencies {
         PHP = 'php',
         RUST = 'rust',
         ANSIBLE = 'ansible',
+        CSHARP = 'csharp',
     }
 
 

@@ -84,6 +84,7 @@ export namespace CompletedJob {
         PHP = 'php',
         RUST = 'rust',
         ANSIBLE = 'ansible',
+        CSHARP = 'csharp',
     }
 
 

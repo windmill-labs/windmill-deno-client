@@ -65,6 +65,7 @@ export namespace Script {
         PHP = 'php',
         RUST = 'rust',
         ANSIBLE = 'ansible',
+        CSHARP = 'csharp',
     }
 
     export enum kind {
