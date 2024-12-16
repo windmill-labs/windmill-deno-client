@@ -402,13 +402,20 @@ export class UserService {
 
     /**
      * refresh the current token
-     * @returns string free usage
+     * @returns string new token
      * @throws ApiError
      */
-    public static refreshUserToken(): CancelablePromise<string> {
+    public static refreshUserToken({
+        ifExpiringInLessThanS,
+    }: {
+        ifExpiringInLessThanS?: number,
+    }): CancelablePromise<string> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/users/refresh_token',
+            query: {
+                'if_expiring_in_less_than_s': ifExpiringInLessThanS,
+            },
         });
     }
 
