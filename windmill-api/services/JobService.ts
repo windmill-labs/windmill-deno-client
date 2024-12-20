@@ -2079,6 +2079,45 @@ export class JobService {
     }
 
     /**
+     * generate interactive slack approval for suspended job
+     * @returns any Interactive slack approval message sent successfully
+     * @throws ApiError
+     */
+    public static getSlackApprovalPayload({
+        workspace,
+        id,
+        slackResourcePath,
+        channelId,
+        flowStepId,
+        approver,
+        message,
+    }: {
+        workspace: string,
+        id: string,
+        slackResourcePath: string,
+        channelId: string,
+        flowStepId: string,
+        approver?: string,
+        message?: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/jobs/slack_approval/{id}',
+            path: {
+                'workspace': workspace,
+                'id': id,
+            },
+            query: {
+                'approver': approver,
+                'message': message,
+                'slack_resource_path': slackResourcePath,
+                'channel_id': channelId,
+                'flow_step_id': flowStepId,
+            },
+        });
+    }
+
+    /**
      * resume a job for a suspended flow
      * @returns string job resumed
      * @throws ApiError
