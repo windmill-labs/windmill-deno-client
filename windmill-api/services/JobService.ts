@@ -2091,6 +2091,8 @@ export class JobService {
         flowStepId,
         approver,
         message,
+        defaultArgsJson,
+        dynamicEnumJson,
     }: {
         workspace: string,
         id: string,
@@ -2099,6 +2101,8 @@ export class JobService {
         flowStepId: string,
         approver?: string,
         message?: string,
+        defaultArgsJson?: string,
+        dynamicEnumJson?: string,
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -2113,6 +2117,8 @@ export class JobService {
                 'slack_resource_path': slackResourcePath,
                 'channel_id': channelId,
                 'flow_step_id': flowStepId,
+                'default_args_json': defaultArgsJson,
+                'dynamic_enum_json': dynamicEnumJson,
             },
         });
     }
