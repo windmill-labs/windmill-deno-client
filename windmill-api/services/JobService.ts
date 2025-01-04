@@ -2092,7 +2092,7 @@ export class JobService {
         approver,
         message,
         defaultArgsJson,
-        dynamicEnumJson,
+        dynamicEnumsJson,
     }: {
         workspace: string,
         id: string,
@@ -2102,7 +2102,7 @@ export class JobService {
         approver?: string,
         message?: string,
         defaultArgsJson?: string,
-        dynamicEnumJson?: string,
+        dynamicEnumsJson?: string,
     }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -2118,7 +2118,7 @@ export class JobService {
                 'channel_id': channelId,
                 'flow_step_id': flowStepId,
                 'default_args_json': defaultArgsJson,
-                'dynamic_enum_json': dynamicEnumJson,
+                'dynamic_enums_json': dynamicEnumsJson,
             },
         });
     }
