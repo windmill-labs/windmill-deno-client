@@ -14,7 +14,7 @@ export type EditWebsocketTrigger = {
         key: string;
         value: any;
     }>;
-    initial_messages: Array<WebsocketTriggerInitialMessage>;
-    url_runnable_args: ScriptArgs;
+    initial_messages?: Array<WebsocketTriggerInitialMessage>;
+    url_runnable_args?: ScriptArgs;
 };
 
