@@ -6,5 +6,6 @@ export type CreateWorkspace = {
     id: string;
     name: string;
     username?: string;
+    color?: string;
 };
 

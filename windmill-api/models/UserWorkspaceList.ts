@@ -8,6 +8,7 @@ export type UserWorkspaceList = {
         id: string;
         name: string;
         username: string;
+        color: string;
     }>;
 };
 

@@ -8,4 +8,5 @@ export enum CaptureTriggerKind {
     WEBSOCKET = 'websocket',
     KAFKA = 'kafka',
     EMAIL = 'email',
+    NATS = 'nats',
 }

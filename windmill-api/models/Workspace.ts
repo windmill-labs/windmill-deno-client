@@ -7,5 +7,6 @@ export type Workspace = {
     name: string;
     owner: string;
     domain?: string;
+    color?: string;
 };
 

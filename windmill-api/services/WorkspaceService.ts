@@ -385,6 +385,31 @@ export class WorkspaceService {
     }
 
     /**
+     * change workspace id
+     * @returns string status
+     * @throws ApiError
+     */
+    public static changeWorkspaceColor({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        requestBody?: {
+            color?: string;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/change_workspace_color',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * list pending invites for a workspace
      * @returns WorkspaceInvite user
      * @throws ApiError
@@ -436,6 +461,7 @@ export class WorkspaceService {
         default_app?: string;
         default_scripts?: WorkspaceDefaultScripts;
         mute_critical_alerts?: boolean;
+        color?: string;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -1072,6 +1098,7 @@ export class WorkspaceService {
         http_routes_used: boolean;
         websocket_used: boolean;
         kafka_used: boolean;
+        nats_used: boolean;
     }> {
         return __request(OpenAPI, {
             method: 'GET',

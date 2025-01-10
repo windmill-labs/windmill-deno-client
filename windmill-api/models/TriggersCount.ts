@@ -12,5 +12,6 @@ export type TriggersCount = {
     email_count?: number;
     websocket_count?: number;
     kafka_count?: number;
+    nats_count?: number;
 };
 
