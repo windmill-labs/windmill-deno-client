@@ -105,11 +105,21 @@ export class CaptureService {
         runnableKind,
         path,
         triggerKind,
+        page,
+        perPage,
     }: {
         workspace: string,
         runnableKind: 'script' | 'flow',
         path: string,
         triggerKind?: CaptureTriggerKind,
+        /**
+         * which page to return (start at 1, default 1)
+         */
+        page?: number,
+        /**
+         * number of items to return for a given page (default 30, max 100)
+         */
+        perPage?: number,
     }): CancelablePromise<Array<Capture>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -121,6 +131,8 @@ export class CaptureService {
             },
             query: {
                 'trigger_kind': triggerKind,
+                'page': page,
+                'per_page': perPage,
             },
         });
     }

@@ -23,6 +23,7 @@ export class InputService {
         runnableType,
         page,
         perPage,
+        includePreview,
     }: {
         workspace: string,
         runnableId?: string,
@@ -35,6 +36,7 @@ export class InputService {
          * number of items to return for a given page (default 30, max 100)
          */
         perPage?: number,
+        includePreview?: boolean,
     }): CancelablePromise<Array<Input>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -47,6 +49,7 @@ export class InputService {
                 'runnable_type': runnableType,
                 'page': page,
                 'per_page': perPage,
+                'include_preview': includePreview,
             },
         });
     }
