@@ -76,6 +76,7 @@ export namespace QueuedJob {
         BIGQUERY = 'bigquery',
         SNOWFLAKE = 'snowflake',
         MSSQL = 'mssql',
+        ORACLEDB = 'oracledb',
         GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
         BUN = 'bun',

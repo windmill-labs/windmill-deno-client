@@ -12,5 +12,6 @@ export type OpenFlowWPath = (OpenFlow & {
     dedicated_worker?: boolean;
     timeout?: number;
     visible_to_runner_only?: boolean;
+    on_behalf_of_email?: string;
 });
 

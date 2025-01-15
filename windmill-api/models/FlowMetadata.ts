@@ -19,5 +19,6 @@ export type FlowMetadata = {
     dedicated_worker?: boolean;
     timeout?: number;
     visible_to_runner_only?: boolean;
+    on_behalf_of_email?: string;
 };
 

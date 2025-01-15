@@ -44,6 +44,7 @@ export type Script = {
     no_main_func: boolean;
     codebase?: string;
     has_preprocessor: boolean;
+    on_behalf_of_email?: string;
 };
 
 export namespace Script {
@@ -59,6 +60,7 @@ export namespace Script {
         BIGQUERY = 'bigquery',
         SNOWFLAKE = 'snowflake',
         MSSQL = 'mssql',
+        ORACLEDB = 'oracledb',
         GRAPHQL = 'graphql',
         NATIVETS = 'nativets',
         BUN = 'bun',
