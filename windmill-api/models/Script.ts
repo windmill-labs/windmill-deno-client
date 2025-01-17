@@ -76,6 +76,7 @@ export namespace Script {
         TRIGGER = 'trigger',
         COMMAND = 'command',
         APPROVAL = 'approval',
+        PREPROCESSOR = 'preprocessor',
     }
 
 

@@ -526,6 +526,7 @@ export class WorkspaceService {
         usage?: number;
         seats?: number;
         automatic_billing: boolean;
+        owner: string;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -557,6 +558,56 @@ export class WorkspaceService {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/w/{workspace}/workspaces/set_automatic_billing',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
+     * get threshold alert info
+     * @returns any status
+     * @throws ApiError
+     */
+    public static getThresholdAlert({
+        workspace,
+    }: {
+        workspace: string,
+    }): CancelablePromise<{
+        threshold_alert_amount?: number;
+        last_alert_sent?: string;
+    }> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/w/{workspace}/workspaces/threshold_alert',
+            path: {
+                'workspace': workspace,
+            },
+        });
+    }
+
+    /**
+     * set threshold alert info
+     * @returns string status
+     * @throws ApiError
+     */
+    public static setThresholdAlert({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        /**
+         * threshold alert info
+         */
+        requestBody: {
+            threshold_alert_amount?: number;
+        },
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/threshold_alert',
             path: {
                 'workspace': workspace,
             },

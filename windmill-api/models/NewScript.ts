@@ -63,6 +63,7 @@ export namespace NewScript {
         TRIGGER = 'trigger',
         COMMAND = 'command',
         APPROVAL = 'approval',
+        PREPROCESSOR = 'preprocessor',
     }
 
 

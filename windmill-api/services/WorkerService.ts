@@ -14,10 +14,20 @@ export class WorkerService {
      * @returns string list of custom tags
      * @throws ApiError
      */
-    public static getCustomTags(): CancelablePromise<Array<string>> {
+    public static getCustomTags({
+        workspace,
+        showWorkspaceRestriction,
+    }: {
+        workspace?: string,
+        showWorkspaceRestriction?: boolean,
+    }): CancelablePromise<Array<string>> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/workers/custom_tags',
+            query: {
+                'workspace': workspace,
+                'show_workspace_restriction': showWorkspaceRestriction,
+            },
         });
     }
 
