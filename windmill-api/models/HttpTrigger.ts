@@ -2,10 +2,10 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type HttpTrigger = {
+import type { TriggerExtraProperty } from './TriggerExtraProperty.ts';
+
+export type HttpTrigger = (TriggerExtraProperty & {
     path: string;
-    edited_by: string;
-    edited_at: string;
     script_path: string;
     route_path: string;
     static_asset_config?: {
@@ -14,13 +14,10 @@ export type HttpTrigger = {
         filename?: string;
     };
     is_flow: boolean;
-    extra_perms: Record<string, boolean>;
-    email: string;
-    workspace_id: string;
     http_method: HttpTrigger.http_method;
     is_async: boolean;
     requires_auth: boolean;
-};
+});
 
 export namespace HttpTrigger {
 

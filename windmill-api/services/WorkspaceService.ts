@@ -4,6 +4,7 @@
 import type { AiResource } from '../models/AiResource.ts';
 import type { CreateWorkspace } from '../models/CreateWorkspace.ts';
 import type { LargeFileStorage } from '../models/LargeFileStorage.ts';
+import type { OperatorSettings } from '../models/OperatorSettings.ts';
 import type { ScriptArgs } from '../models/ScriptArgs.ts';
 import type { UserWorkspaceList } from '../models/UserWorkspaceList.ts';
 import type { Workspace } from '../models/Workspace.ts';
@@ -410,6 +411,30 @@ export class WorkspaceService {
     }
 
     /**
+     * Update operator settings for a workspace
+     * Updates the operator settings for a specific workspace. Requires workspace admin privileges.
+     * @returns string Operator settings updated successfully
+     * @throws ApiError
+     */
+    public static updateOperatorSettings({
+        workspace,
+        requestBody,
+    }: {
+        workspace: string,
+        requestBody: OperatorSettings,
+    }): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/w/{workspace}/workspaces/operator_settings',
+            path: {
+                'workspace': workspace,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+
+    /**
      * list pending invites for a workspace
      * @returns WorkspaceInvite user
      * @throws ApiError
@@ -462,6 +487,7 @@ export class WorkspaceService {
         default_scripts?: WorkspaceDefaultScripts;
         mute_critical_alerts?: boolean;
         color?: string;
+        operator_settings?: OperatorSettings;
     }> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -1150,6 +1176,7 @@ export class WorkspaceService {
         websocket_used: boolean;
         kafka_used: boolean;
         nats_used: boolean;
+        postgres_used: boolean;
     }> {
         return __request(OpenAPI, {
             method: 'GET',

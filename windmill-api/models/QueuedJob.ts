@@ -5,6 +5,7 @@
 import type { FlowStatus } from './FlowStatus.ts';
 import type { FlowValue } from './FlowValue.ts';
 import type { ScriptArgs } from './ScriptArgs.ts';
+import type { ScriptLang } from './ScriptLang.ts';
 
 export type QueuedJob = {
     workspace_id?: string;
@@ -35,7 +36,7 @@ export type QueuedJob = {
     flow_status?: FlowStatus;
     raw_flow?: FlowValue;
     is_flow_step: boolean;
-    language?: QueuedJob.language;
+    language?: ScriptLang;
     email: string;
     visible_to_owner: boolean;
     mem_peak?: number;
@@ -63,27 +64,6 @@ export namespace QueuedJob {
         FLOWSCRIPT = 'flowscript',
         FLOWNODE = 'flownode',
         APPSCRIPT = 'appscript',
-    }
-
-    export enum language {
-        PYTHON3 = 'python3',
-        DENO = 'deno',
-        GO = 'go',
-        BASH = 'bash',
-        POWERSHELL = 'powershell',
-        POSTGRESQL = 'postgresql',
-        MYSQL = 'mysql',
-        BIGQUERY = 'bigquery',
-        SNOWFLAKE = 'snowflake',
-        MSSQL = 'mssql',
-        ORACLEDB = 'oracledb',
-        GRAPHQL = 'graphql',
-        NATIVETS = 'nativets',
-        BUN = 'bun',
-        PHP = 'php',
-        RUST = 'rust',
-        ANSIBLE = 'ansible',
-        CSHARP = 'csharp',
     }
 
 

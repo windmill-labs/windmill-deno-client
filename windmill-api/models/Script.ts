@@ -2,6 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { ScriptLang } from './ScriptLang.ts';
+
 export type Script = {
     workspace_id?: string;
     hash: string;
@@ -23,7 +25,7 @@ export type Script = {
     extra_perms: Record<string, boolean>;
     lock?: string;
     lock_error_logs?: string;
-    language: Script.language;
+    language: ScriptLang;
     kind: Script.kind;
     starred: boolean;
     tag?: string;
@@ -48,27 +50,6 @@ export type Script = {
 };
 
 export namespace Script {
-
-    export enum language {
-        PYTHON3 = 'python3',
-        DENO = 'deno',
-        GO = 'go',
-        BASH = 'bash',
-        POWERSHELL = 'powershell',
-        POSTGRESQL = 'postgresql',
-        MYSQL = 'mysql',
-        BIGQUERY = 'bigquery',
-        SNOWFLAKE = 'snowflake',
-        MSSQL = 'mssql',
-        ORACLEDB = 'oracledb',
-        GRAPHQL = 'graphql',
-        NATIVETS = 'nativets',
-        BUN = 'bun',
-        PHP = 'php',
-        RUST = 'rust',
-        ANSIBLE = 'ansible',
-        CSHARP = 'csharp',
-    }
 
     export enum kind {
         SCRIPT = 'script',

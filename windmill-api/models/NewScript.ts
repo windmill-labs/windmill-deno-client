@@ -2,6 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { ScriptLang } from './ScriptLang.ts';
+
 export type NewScript = {
     path: string;
     parent_hash?: string;
@@ -11,7 +13,7 @@ export type NewScript = {
     schema?: any;
     is_template?: boolean;
     lock?: string;
-    language: NewScript.language;
+    language: ScriptLang;
     kind?: NewScript.kind;
     tag?: string;
     draft_only?: boolean;
@@ -35,27 +37,6 @@ export type NewScript = {
 };
 
 export namespace NewScript {
-
-    export enum language {
-        PYTHON3 = 'python3',
-        DENO = 'deno',
-        GO = 'go',
-        BASH = 'bash',
-        POWERSHELL = 'powershell',
-        POSTGRESQL = 'postgresql',
-        MYSQL = 'mysql',
-        BIGQUERY = 'bigquery',
-        SNOWFLAKE = 'snowflake',
-        MSSQL = 'mssql',
-        ORACLEDB = 'oracledb',
-        GRAPHQL = 'graphql',
-        NATIVETS = 'nativets',
-        BUN = 'bun',
-        PHP = 'php',
-        RUST = 'rust',
-        ANSIBLE = 'ansible',
-        CSHARP = 'csharp',
-    }
 
     export enum kind {
         SCRIPT = 'script',

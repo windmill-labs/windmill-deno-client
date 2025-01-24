@@ -5,6 +5,7 @@
 import type { FlowStatus } from './FlowStatus.ts';
 import type { FlowValue } from './FlowValue.ts';
 import type { ScriptArgs } from './ScriptArgs.ts';
+import type { ScriptLang } from './ScriptLang.ts';
 
 export type CompletedJob = {
     workspace_id?: string;
@@ -36,7 +37,7 @@ export type CompletedJob = {
     flow_status?: FlowStatus;
     raw_flow?: FlowValue;
     is_flow_step: boolean;
-    language?: CompletedJob.language;
+    language?: ScriptLang;
     is_skipped: boolean;
     email: string;
     visible_to_owner: boolean;
@@ -65,27 +66,6 @@ export namespace CompletedJob {
         FLOWSCRIPT = 'flowscript',
         FLOWNODE = 'flownode',
         APPSCRIPT = 'appscript',
-    }
-
-    export enum language {
-        PYTHON3 = 'python3',
-        DENO = 'deno',
-        GO = 'go',
-        BASH = 'bash',
-        POWERSHELL = 'powershell',
-        POSTGRESQL = 'postgresql',
-        MYSQL = 'mysql',
-        BIGQUERY = 'bigquery',
-        SNOWFLAKE = 'snowflake',
-        MSSQL = 'mssql',
-        ORACLEDB = 'oracledb',
-        GRAPHQL = 'graphql',
-        NATIVETS = 'nativets',
-        BUN = 'bun',
-        PHP = 'php',
-        RUST = 'rust',
-        ANSIBLE = 'ansible',
-        CSHARP = 'csharp',
     }
 
 

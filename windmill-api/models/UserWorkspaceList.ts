@@ -2,6 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { OperatorSettings } from './OperatorSettings.ts';
+
 export type UserWorkspaceList = {
     email: string;
     workspaces: Array<{
@@ -9,6 +11,7 @@ export type UserWorkspaceList = {
         name: string;
         username: string;
         color: string;
+        operator_settings?: OperatorSettings;
     }>;
 };
 

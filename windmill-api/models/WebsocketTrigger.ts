@@ -3,18 +3,14 @@
 /* eslint-disable */
 
 import type { ScriptArgs } from './ScriptArgs.ts';
+import type { TriggerExtraProperty } from './TriggerExtraProperty.ts';
 import type { WebsocketTriggerInitialMessage } from './WebsocketTriggerInitialMessage.ts';
 
-export type WebsocketTrigger = {
+export type WebsocketTrigger = (TriggerExtraProperty & {
     path: string;
-    edited_by: string;
-    edited_at: string;
     script_path: string;
     url: string;
     is_flow: boolean;
-    extra_perms: Record<string, boolean>;
-    email: string;
-    workspace_id: string;
     server_id?: string;
     last_server_ping?: string;
     error?: string;
@@ -25,5 +21,5 @@ export type WebsocketTrigger = {
     }>;
     initial_messages?: Array<WebsocketTriggerInitialMessage>;
     url_runnable_args?: ScriptArgs;
-};
+});
 

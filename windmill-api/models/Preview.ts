@@ -3,12 +3,13 @@
 /* eslint-disable */
 
 import type { ScriptArgs } from './ScriptArgs.ts';
+import type { ScriptLang } from './ScriptLang.ts';
 
 export type Preview = {
     content?: string;
     path?: string;
     args: ScriptArgs;
-    language?: Preview.language;
+    language?: ScriptLang;
     tag?: string;
     kind?: Preview.kind;
     dedicated_worker?: boolean;
@@ -16,27 +17,6 @@ export type Preview = {
 };
 
 export namespace Preview {
-
-    export enum language {
-        PYTHON3 = 'python3',
-        DENO = 'deno',
-        GO = 'go',
-        BASH = 'bash',
-        POWERSHELL = 'powershell',
-        POSTGRESQL = 'postgresql',
-        MYSQL = 'mysql',
-        BIGQUERY = 'bigquery',
-        SNOWFLAKE = 'snowflake',
-        MSSQL = 'mssql',
-        ORACLEDB = 'oracledb',
-        GRAPHQL = 'graphql',
-        NATIVETS = 'nativets',
-        BUN = 'bun',
-        PHP = 'php',
-        RUST = 'rust',
-        ANSIBLE = 'ansible',
-        CSHARP = 'csharp',
-    }
 
     export enum kind {
         CODE = 'code',
